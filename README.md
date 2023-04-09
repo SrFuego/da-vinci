@@ -6,7 +6,7 @@
 
 ![Diagrama de Requests](connections/out/Da%20Vinci.png)
 
-> Version: v0.0.2
+> Mejoras para la v0.0.2:
 
 - Descripcion del proyecto:
   - [ ] FIX:
