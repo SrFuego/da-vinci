@@ -4,7 +4,7 @@
 
 ![Diagrama BPMN](context/out/bpmn.png)
 
-![Diagrama de Requests](connections/out/interactions/Da%20Vinci.png)
+![Diagrama de Requests](connections/out/Da%20Vinci.png)
 
 > Version: v0.0.2
 
