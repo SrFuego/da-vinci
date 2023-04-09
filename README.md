@@ -8,6 +8,15 @@
 
 > Version: v0.0.2
 
-- [ ] Agregar **Backoffice**:
-  - Admin para el staff desde donde agregar preguntas, examenes, solucionarios, etc
-- [ ] FIX La descripcion explica que tiene el sistema pero no te describe el proyecto con una historia
+[ ] Descripcion del proyecto:
+  - [ ] FIX:
+    - La descripcion explica que tiene el sistema pero no te describe el proyecto con una historia
+  - [ ] Agregar **Backoffice**:
+    - Admin para el staff desde donde agregar:
+      - Preguntas
+      - Examenes
+      - Solucionarios
+  - [ ] Partir la descripcion del proyecto (?):
+    - Experiencia ideal de usuario
+    - Seccionamiento del sistema:
+      - Explicacion de las partes
