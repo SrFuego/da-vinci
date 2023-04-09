@@ -8,7 +8,7 @@
 
 > Version: v0.0.2
 
-[ ] Descripcion del proyecto:
+- Descripcion del proyecto:
   - [ ] FIX:
     - La descripcion explica que tiene el sistema pero no te describe el proyecto con una historia
   - [ ] Agregar **Backoffice**:
