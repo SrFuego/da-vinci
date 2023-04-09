@@ -1,0 +1,85 @@
+@startuml Da Vinci
+!theme vibrant
+
+title Da Vinci
+
+actor Usuario
+boundary App
+queue Backend
+database DB
+
+
+Usuario ->> App: Abre la App
+App ->> Backend: Solicita datos iniciales \n(Lista de cursos con temas, \nLista de examenes pasados)
+Backend ->> DB: Query
+DB ->> Backend: Response
+Backend ->> App: Data
+App ->> Usuario: Muestra opciones \n(Lista de Cursos, Examenes pasados)
+
+
+group#Gold  #LimeGreen Lista de Cursos
+Usuario ->> App: Lista de Cursos \n(Selecciona 1, mas de 1 o random)
+App ->> Usuario: Lista de temas por Curso
+Usuario ->> App: Selecciona 1, mas de 1 o random
+App ->> Usuario: Lista de tipos de Evaluaciones \n(1x1, Set de PEA's)
+
+group#SkyBlue #LightBlue 1x1
+Usuario ->> App: 1x1
+App ->> Backend: Pide una PEA
+Backend ->> DB: Query
+DB ->> Backend: Response
+Backend ->> App: Devuelve una PEA \n(sin respuesta)
+App ->> Usuario: Se muestra la PEA con sus alternativas
+Usuario ->> App: Envia la respuesta \n(Selecciona alternativa o salta la PEA)
+App ->> Backend: Evalua la respuesta
+Backend ->> DB: Query pregunta con solucion
+DB ->> Backend: Response
+Backend ->> App: Compara la respuesta enviada con \nla respuesta correcta de la PEA
+App ->> Usuario: Muestra solucion
+Usuario ->> App: Otra pregunta o volver al home
+end
+
+group#SkyBlue #LightBlue Set de PEA's
+Usuario ->> App: Set de PEA's
+App ->> Usuario: Lista de cantidades \n(5, 10 o 20)
+Usuario ->> App: Selecciona alternativa de cantidad
+App ->> Backend: Request de lista de PEA's
+Backend ->> DB: Query lista de PEA's \n(sin respuestas)
+DB ->> Backend: Response
+Backend ->> App: Devuelve una lista de PEA's \n(sin respuesta)
+App ->> Usuario: Se muestra la lista de PEA's con sus alternativas \n(una por una, un boton para ver la lista de preguntas)
+Usuario ->> App: Envia las respuestas \n(Puede dejar preguntas en blanco)
+App ->> Backend: 
+Backend ->> DB: Query lista de PEA's con solucion
+DB ->> Backend: Response
+Backend ->> App: Compara las respuestas enviadas con \nlas respuestas correcta de la lista de PEA's
+App ->> Usuario: Muestra solucionario
+Usuario ->> App: Volver al home
+end
+
+end
+
+
+group#Gold #LimeGreen Examenes pasados
+Usuario ->> App: Examenes pasados
+App ->> Backend: Lista de PEA sin preguntas
+Backend ->> DB: Query
+DB ->> Backend: Response
+Backend ->> App: Devuelve una lista de Examenes \n(sin preguntas)
+App ->> Usuario: Muestra una lista de Examenes \n(por anio, por area, por universidad)
+Usuario ->> App: Selecciona el Examen de admision pasado \n(ejm. San Marcos 2023 - II Area D)
+App ->> Backend: Request de preguntas \n(sin respuestas)
+Backend ->> DB: Query
+DB ->> Backend: Response
+Backend ->> App: Data
+App ->> Usuario: Muestra las PEA's \n(una por una con sus alternativas y \nun boton para ver la lista de preguntas)
+Usuario ->> App: Envia las respuestas \n(Puede dejar preguntas en blanco)
+App ->> Backend: Evalua el examen
+Backend ->> DB: Query preguntas con solucionario
+DB ->> Backend: Response
+Backend ->> App: Compara las respuestas enviadas con \nlas respuestas correctas del examen
+App ->> Usuario: Muestra solucionario
+Usuario ->> App: Volver al home
+end
+
+@enduml
