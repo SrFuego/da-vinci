@@ -42,3 +42,11 @@
 - Resuelve
 - Envia sus respuestas
 - Solucionario, claves
+
+
+## Experiencia ideal de uso de la App
+### Backoffice:
+- Hace login en el backoffice y ve un panel donde agregar examenes, dentro de cada examen puede agregar preguntas o solucionario
+
+### Usuario:
+- Abre la App y puede elegir el tipo de evaluacion o practica que quiere hacer, luego el sistema le manda preguntas en el ritmo en el que las pidio y las va evaluando y muestra la solucion luego de que envia la respuesta
