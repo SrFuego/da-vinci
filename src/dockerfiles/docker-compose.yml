@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+    ###
+    # FAST_API CONFIGURATION
+    ###
+    backend:
+        container_name: backend
+        build:
+            context: ../.
+            dockerfile: Dockerfile
+        ports:
+            - 8000:8000
+        volumes:
+            - "$PWD:/app"
+        # env_file:
+        #     - .env
+        networks:
+            - net
+
+networks:
+    net:

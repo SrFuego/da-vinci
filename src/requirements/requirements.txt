@@ -1,0 +1,5 @@
+fastapi[all]
+pip-tools
+pytest
+pytest-bdd
+pytest-xdist
