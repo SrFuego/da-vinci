@@ -1,10 +1,17 @@
 # Da Vinci
 
+Debe tener instalado Docker
+
+Levantar el entorno de testing:
+
+`docker compose -f src/dockerfiles/docker-compose.yml up --build`
+
+
 > Version: v0.0.1
 
-![Diagrama BPMN](context/out/bpmn.png)
+![Diagrama BPMN](docs/context/out/bpmn.png)
 
-![Diagrama de Requests](connections/out/Da%20Vinci.png)
+![Diagrama de Requests](docs/connections/out/Da%20Vinci.png)
 
 > Mejoras para la v0.0.2:
 
