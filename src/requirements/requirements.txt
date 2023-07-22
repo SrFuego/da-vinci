@@ -1,5 +1,7 @@
 fastapi[all]
-pip-tools
-pytest
-pytest-bdd
-pytest-xdist
+behave
+
+
+
+
+# pip-tools
