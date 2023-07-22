@@ -1,6 +1,6 @@
 fastapi[all]
 behave
-
+allure-behave
 
 
 
