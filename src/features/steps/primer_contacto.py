@@ -1,7 +1,7 @@
 from behave import *
 
 
-@given("una persona en un navegador web")
+@given("un humano en un navegador web")
 def step_impl(context):
     pass
 
