@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-COPY requirements/requirements.txt /app/requirements.txt
+COPY ../requirements/requirements.txt /app/requirements.txt
 
 RUN mkdir tmp_downloads && \
     curl -o tmp_downloads/allure_2.23.0-1_all.deb \
