@@ -7,6 +7,18 @@ Levantar el entorno de testing:
 `docker compose -f src/dockerfiles/docker-compose.yml up --build`
 
 
+
+Generar reporte de Allure (dentro de `features/`):
+
+`behave -f allure_behave.formatter:AllureFormatter -o my_allure .`
+
+Allure serve report:
+
+`allure serve my_allure/`
+
+
+
+
 > Version: v0.0.1
 
 ![Diagrama BPMN](docs/context/out/bpmn.png)
