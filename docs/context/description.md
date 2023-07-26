@@ -37,7 +37,7 @@
 
 ## Entra en Evalucion Examenes pasados
 - Muestra 100 preguntas
-- Tiempo de 3 horas 
+- Tiempo de 3 horas
 - Bloqueador de notificaciones y llamadas
 - Resuelve
 - Envia sus respuestas
