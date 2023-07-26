@@ -1,12 +1,29 @@
 # Da Vinci
 
-Debe tener instalado Docker
+## Descripción del proyecto
+
+Es una App que le permite a los usuarios$^{(1)}$ practicar sus conocimientos generales resolviendo preguntas que vinieron en exámenes de admisión de la Universidad Nacional Mayor de San Marcos:
+- Muestra la pregunta con sus alternativas
+- Selecciona una alternativa
+- Envía la respuesta
+- El sistema evalúa y muestra:
+  - Puntaje
+  - Resolución
+  - Teoría relacionada
+
+$^{1}$ Especialmente útil para estudiantes pre-universitarios o escolares que busquen afinar sus conocimientos
+
+Backoffice:
+Para mostrar las preguntas de admisión, es necesario ingresarlas al sistema
+## Levantar el proyecto
+
+Debe tener instalado Docker:
+
+https://docs.docker.com/engine/install/
 
 Levantar el entorno de testing:
 
 `docker compose -f src/dockerfiles/docker-compose.yml up --build`
-
-
 
 Generar reporte de Allure (dentro de `features/`):
 
@@ -17,15 +34,16 @@ Allure serve report:
 `allure serve my_allure/`
 
 
+## Changelog
 
 
-> Version: v0.0.1
+> Current version: v0.0.1
 
 ![Diagrama BPMN](docs/context/out/bpmn.png)
 
 ![Diagrama de Requests](docs/connections/out/Da%20Vinci.png)
 
-> Mejoras para la v0.0.2:
+> v0.0.2:
 
 - Descripcion del proyecto:
   - [ ] FIX:
