@@ -2,9 +2,6 @@ version: '3.8'
 
 services:
 
-    ###
-    # FAST_API CONFIGURATION
-    ###
     backend:
         container_name: backend
         build:
@@ -13,7 +10,7 @@ services:
         ports:
             - 8000:8000
         volumes:
-            - "$PWD/src:/app"
+            - "$PWD/src:/daVinci"
         # env_file:
         #     - .env
         networks:

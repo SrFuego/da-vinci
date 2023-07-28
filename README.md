@@ -25,6 +25,8 @@ Levantar el entorno de testing:
 
 `docker compose -f src/dockerfiles/docker-compose.yml up --build`
 
+## Levantar reporte de tests
+
 Generar reporte de Allure (dentro de `features/`):
 
 `behave -f allure_behave.formatter:AllureFormatter -o my_allure .`
@@ -32,6 +34,16 @@ Generar reporte de Allure (dentro de `features/`):
 Allure serve report:
 
 `allure serve my_allure/`
+
+## Conectarse al container de backend
+
+`docker exec -it backend bash`
+
+## Generar dependencias actualizadas
+
+En el container:
+
+`bash requirements/update_requirements.sh`
 
 
 ## Changelog
