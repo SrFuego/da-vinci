@@ -1,8 +1,0 @@
-black
-fastapi[all]
-behave
-allure-behave
-
-
-
-# pip-tools

@@ -1,0 +1,8 @@
+-r common.in
+
+black
+pip-tools
+behave
+allure-behave
+ipython
+django-extensions
