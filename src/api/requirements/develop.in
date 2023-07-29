@@ -6,3 +6,6 @@ behave
 allure-behave
 ipython
 django-extensions
+pygraphviz
+pyparsing
+pydot
