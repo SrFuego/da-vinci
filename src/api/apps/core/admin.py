@@ -10,15 +10,78 @@ from django.contrib import admin
 
 
 # Local imports
-from .models import Pregunta, Alternativa
+from .models import (
+    Alternativa,
+    Area,
+    Carrera,
+    Curso,
+    ExamenDeAdmision,
+    Lectura,
+    Pregunta,
+    PreguntasPorCurso,
+    ProcesoDeAdmision,
+    Solucion,
+    Tema,
+    Universidad,
+)
 
 
 # Register your models here.
+@admin.register(Alternativa)
+class AlternativaModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Area)
+class AreaModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Carrera)
+class CarreraModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Curso)
+class CursoModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(ExamenDeAdmision)
+class ExamenDeAdmisionModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Lectura)
+class LecturaModelAdmin(admin.ModelAdmin):
+    pass
+
+
 @admin.register(Pregunta)
 class PreguntaModelAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Alternativa)
-class AlternativaModelAdmin(admin.ModelAdmin):
+@admin.register(PreguntasPorCurso)
+class PreguntasPorCursoModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(ProcesoDeAdmision)
+class ProcesoDeAdmisionModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Solucion)
+class SolucionModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Tema)
+class TemaModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Universidad)
+class UniversidadModelAdmin(admin.ModelAdmin):
     pass
