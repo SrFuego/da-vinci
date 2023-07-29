@@ -20,17 +20,17 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR ${WORK_DIR}
 
-# # Create a non-privileged user that the app will run under.
-# # See https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
-# ARG UID=10001
-# RUN adduser \
-#     --disabled-password \
-#     --gecos "" \
-#     --home "/nonexistent" \
-#     --shell "/sbin/nologin" \
-#     --no-create-home \
-#     --uid "${UID}" \
-#     appuser
+# Create a non-privileged user that the app will run under.
+# See https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
+ARG UID=10001
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "/nonexistent" \
+    --shell "/sbin/nologin" \
+    --no-create-home \
+    --uid "${UID}" \
+    appuser
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
@@ -52,7 +52,7 @@ WORKDIR ${WORK_DIR}
 #     rm -rf /var/lib/apt/lists/* && \
 #     rm -rf tmp_downloads
 
-COPY requirements/${REQUIREMENTS_FILE} ${REQUIREMENTS_FILE}
+COPY src/requirements/${REQUIREMENTS_FILE} ${REQUIREMENTS_FILE}
 
 RUN mkdir tmp_downloads && \
     curl -o tmp_downloads/allure_2.23.0-1_all.deb \
@@ -68,11 +68,11 @@ RUN mkdir tmp_downloads && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf tmp_downloads
 
-# # Switch to the non-privileged user to run the application.
-# USER appuser
+# Switch to the non-privileged user to run the application.
+USER appuser
 
 COPY . .
 
 EXPOSE 8000
 
-CMD ["python", "api/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "src/api/manage.py", "runserver", "0.0.0.0:8000"]
