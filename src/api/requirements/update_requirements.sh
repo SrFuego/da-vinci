@@ -9,5 +9,5 @@ environments=("develop")
 for i in ${!environments[@]}; do
     environment=${environments[$i]}
     echo "Environment: ${environment}"
-    pip-compile -r requirements/${environment}.in -o requirements/$(date +'%Y%m%d').${environment}
+    pip-compile -r src/api/requirements/${environment}.in -o src/api/requirements/$(date +'%Y%m%d').${environment}
 done

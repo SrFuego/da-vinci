@@ -6,13 +6,13 @@ services:
         container_name: backend
         build:
             context: ../../.
-            dockerfile: src/dockerfiles/Dockerfile
+            dockerfile: src/dockerfiles/Dockerfile.develop
         ports:
             - 8000:8000
-        # volumes:
-        #     - "$PWD:/daVinci"
-        # env_file:
-        #     - .env
+        volumes:
+            - "$PWD:/daVinci"
+        env_file:
+            - ../api/.env
         networks:
             - net
 
