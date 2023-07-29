@@ -71,26 +71,27 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 # # Django Rest Framework CORS configuration
 # CORS_ORIGIN_ALLOW_ALL = True
 
-# THIRD_PARTY_APPS_DEVELOP = ("django_extensions",)
+THIRD_PARTY_APPS_DEVELOP = ("django_extensions",)
 
-# INSTALLED_APPS += THIRD_PARTY_APPS_DEVELOP
+INSTALLED_APPS += THIRD_PARTY_APPS_DEVELOP
 
 
 # # Graph models conf
-# GRAPH_MODELS = {
-#     "all_applications": True,
-#     "group_models": True,
-#     "output": "database.png",
-#     "exclude_models": ",".join(
-#         [
-#             "AbstractBaseSession",
-#             "AbstractUser",
-#             "ContentType",
-#             "Group",
-#             "LogEntry",
-#             "Permission",
-#             "Session",
-#             "Token",
-#         ]
-#     ),
-# }
+GRAPH_MODELS = {
+    "all_applications": True,
+    "group_models": True,
+    "output": "database.png",
+    "exclude_models": ",".join(
+        [
+            "User",
+            "AbstractUser",
+            "Group",
+            "Permission",
+            "ContentType",
+            "LogEntry",
+            "Session",
+            "AbstractBaseSession",
+            # "Token",
+        ]
+    ),
+}
