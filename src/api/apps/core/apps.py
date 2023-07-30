@@ -14,5 +14,5 @@ from django.apps import AppConfig
 
 # Configure your app here.
 class CoreConfig(AppConfig):
-    name = 'apps.core'
-    verbose_name = 'Core'
+    name = "apps.core"
+    verbose_name = "Core"

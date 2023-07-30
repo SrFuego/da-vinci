@@ -1,0 +1,13 @@
+[
+{
+    "model": "core.carrera",
+    "pk": 1,
+    "fields": {
+        "nombre": "Presupuesto y Finanzas Públicas",
+        "area": 1,
+        "vacantes_admision": 85,
+        "vacantes_pre": 24,
+        "codigo": "11.4"
+    }
+}
+]

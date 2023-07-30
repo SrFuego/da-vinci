@@ -1,0 +1,14 @@
+[
+{
+    "model": "core.examendeadmision",
+    "pk": 1,
+    "fields": {
+        "area": 1,
+        "proceso_de_admision": 1,
+        "puntaje_correcta": 20.0,
+        "puntaje_incorrecta": -5.0,
+        "puntaje_en_blanco": 0.0,
+        "duracion": "00:00:03"
+    }
+}
+]

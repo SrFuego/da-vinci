@@ -10,6 +10,7 @@ from django.db import models
 
 
 # Local imports
+from .validators import restrict_quantity
 
 
 # Create your models here.
@@ -55,7 +56,7 @@ class ProcesoDeAdmision(models.Model):
     proceso = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.nombre
+        return "{}-{}".format(self.año, self.proceso)
 
     class Meta:
         verbose_name = "Proceso de Admisión"
@@ -73,8 +74,10 @@ class ExamenDeAdmision(models.Model):
     duracion = models.DurationField()
 
     def __str__(self):
-        return "{} Area: {} {}-{}".format(
-            self.universidad.abreviatura, self.area, self.año, self.proceso
+        return "{} {}, Area: {}".format(
+            self.area.universidad.abreviatura,
+            self.proceso_de_admision,
+            self.area,
         )
 
     class Meta:
@@ -95,7 +98,7 @@ class PreguntasPorCurso(models.Model):
     area = models.ManyToManyField("Area")
 
     def __str__(self):
-        return self.cantidad
+        return "{}: {}".format(self.curso.nombre, self.cantidad)
 
     class Meta:
         verbose_name = "Preguntas por curso"
@@ -138,7 +141,9 @@ class Pregunta(models.Model):
 
 class Alternativa(models.Model):
     respuesta = models.CharField(max_length=50)
-    pregunta = models.ForeignKey("Pregunta", on_delete=models.CASCADE)
+    pregunta = models.ForeignKey(
+        "Pregunta", on_delete=models.CASCADE, validators=(restrict_quantity,)
+    )
     # imagen = models.ImageField()
 
     def __str__(self):
