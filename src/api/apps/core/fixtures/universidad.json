@@ -1,0 +1,10 @@
+[
+{
+    "model": "core.universidad",
+    "pk": 1,
+    "fields": {
+        "nombre": "Universidad Nacional Mayor de San Marcos",
+        "abreviatura": "San Marcos"
+    }
+}
+]

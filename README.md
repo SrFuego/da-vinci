@@ -15,6 +15,7 @@ $^{1}$ Especialmente útil para estudiantes pre-universitarios o escolares que b
 
 Backoffice:
 Para mostrar las preguntas de admisión, es necesario ingresarlas al sistema
+
 ## Levantar el proyecto
 
 Debe tener instalado Docker:
@@ -45,6 +46,20 @@ En el container:
 
 `bash requirements/update_requirements.sh`
 
+## Generar fixtures
+
+`python src/api/manage.py dumpdata core.Universidad --format json --indent 4 -o src/api/apps/core/fixtures/universidad.json`
+`python src/api/manage.py dumpdata core.Area --format json --indent 4 -o src/api/apps/core/fixtures/area.json`
+`python src/api/manage.py dumpdata core.ProcesoDeAdmision --format json --indent 4 -o src/api/apps/core/fixtures/proceso_de_admision.json`
+`python src/api/manage.py dumpdata core.Carrera --format json --indent 4 -o src/api/apps/core/fixtures/carrera.json`
+`python src/api/manage.py dumpdata core.ExamenDeAdmision --format json --indent 4 -o src/api/apps/core/fixtures/examen_de_admision.json`
+`python src/api/manage.py dumpdata core.Curso --format json --indent 4 -o src/api/apps/core/fixtures/curso.json`
+`python src/api/manage.py dumpdata core.Tema --format json --indent 4 -o src/api/apps/core/fixtures/tema.json`
+`python src/api/manage.py dumpdata core.PreguntasPorCurso --format json --indent 4 -o src/api/apps/core/fixtures/preguntas_por_curso.json`
+`python src/api/manage.py dumpdata core.Lectura --format json --indent 4 -o src/api/apps/core/fixtures/lectura.json`
+`python src/api/manage.py dumpdata core.Pregunta --format json --indent 4 -o src/api/apps/core/fixtures/pregunta.json`
+`python src/api/manage.py dumpdata core.Alternativa --format json --indent 4 -o src/api/apps/core/fixtures/alternativa.json`
+`python src/api/manage.py dumpdata core.Solucion --format json --indent 4 -o src/api/apps/core/fixtures/solucion.json`
 
 ## Changelog
 
@@ -59,12 +74,7 @@ En el container:
 
 - Descripcion del proyecto:
   - [ ] FIX:
-    - La descripcion explica que tiene el sistema pero no te describe el proyecto con una historia
-  - [ ] Agregar **Backoffice**:
-    - Admin para el staff desde donde agregar:
-      - Preguntas
-      - Examenes
-      - Solucionarios
+    - La descripción explica qué tiene el sistema pero no te describe el proyecto con una historia
   - [ ] Partir la descripcion del proyecto (?):
     - Experiencia ideal de usuario
     - Seccionamiento del sistema:

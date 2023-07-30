@@ -1,0 +1,32 @@
+[
+{
+    "model": "core.solucion",
+    "pk": 1,
+    "fields": {
+        "nombre": "4",
+        "texto": "Se pasan los números a unidades, 2 + 2 pasa a ser 1 + 1 + 1 + 1, entonces sumaria 4 unidades",
+        "pregunta": 1,
+        "alternativa": 2
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 2,
+    "fields": {
+        "nombre": "Independencia del Perú",
+        "texto": "Se declaro el 28 de Julio de 1821",
+        "pregunta": 2,
+        "alternativa": 9
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 3,
+    "fields": {
+        "nombre": "Presidencia",
+        "texto": "Dina Boluarte",
+        "pregunta": 3,
+        "alternativa": 11
+    }
+}
+]
