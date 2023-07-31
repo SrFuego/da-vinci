@@ -44,7 +44,7 @@ Allure serve report:
 
 En el container:
 
-`bash requirements/update_requirements.sh`
+`bash src/api/requirements/update_requirements.sh`
 
 ## Generar fixtures
 
@@ -60,6 +60,11 @@ En el container:
 `python src/api/manage.py dumpdata core.Pregunta --format json --indent 4 -o src/api/apps/core/fixtures/pregunta.json`
 `python src/api/manage.py dumpdata core.Alternativa --format json --indent 4 -o src/api/apps/core/fixtures/alternativa.json`
 `python src/api/manage.py dumpdata core.Solucion --format json --indent 4 -o src/api/apps/core/fixtures/solucion.json`
+
+## Correr tests de características
+
+`python src/api/manage.py behave`
+
 
 ## Changelog
 
