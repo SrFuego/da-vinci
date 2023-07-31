@@ -9,6 +9,7 @@ Esquema del escenario: Responder preguntas indefinidamente (1x1)
 
 Dado que seleccionó la opción de preguntas aleatorias 1x1
 Y le muestra "<pregunta>"
+# | Cuanto es 2+2? | 4         |
 Cuando resuelve "<pregunta>"
 Y selecciona una alternativa
 Y envía "<respuesta>"
@@ -19,5 +20,5 @@ Y muestra una resolución con procedimiento
 Y muestra "pasar a la siguiente pregunta"
 
 Ejemplos: Bateria de preguntas
-| pregunta   | respuesta   |
-| pregunta_1 | respuesta_1 |
+| pregunta       | respuesta |
+| Cuanto es 2+2? | 4         |

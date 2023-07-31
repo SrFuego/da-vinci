@@ -9,3 +9,4 @@ django-extensions
 pygraphviz
 pyparsing
 pydot
+behave-django
