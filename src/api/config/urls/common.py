@@ -21,11 +21,24 @@ from django.contrib import admin
 from django.urls import include, path
 
 # from rest_framework.documentation import include_docs_urls
+from rest_framework.routers import DefaultRouter
 
-# from apps.core.routers import router
+from apps.core.routers import core_list as core_router
 
-# API_TITLE = '{{ project_name | title }}'
-# API_DESCRIPTION = '...'
+# API_TITLE = "Da Vinci"
+# API_DESCRIPTION = "API de prueba"
+
+
+routers_tuples = (core_router,)
+routers_lists = sum(
+    [list(router_tuple) for router_tuple in routers_tuples], []
+)
+
+router = DefaultRouter()
+
+for router_list in sorted(routers_lists):
+    router.register(router_list[0], router_list[1])
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -33,8 +46,9 @@ urlpatterns = [
     #     r'api-auth/',
     #     include('rest_framework.urls', namespace='rest_framework')),
     # path(
-    #     r'docs/',
-    #     include_docs_urls(title=API_TITLE, description=API_DESCRIPTION)),
-    # path(r'api/v1/', include((router.urls, 'api_v1'), namespace='api_v1')),
+    #     r"docs/",
+    #     include_docs_urls(title=API_TITLE, description=API_DESCRIPTION),
+    # ),
+    path("api/v1/", include((router.urls, "api_v1"), namespace="api_v1")),
     # path(r'api/v1/rest-auth/', include('rest_auth.urls'))
 ]
