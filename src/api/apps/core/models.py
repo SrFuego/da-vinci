@@ -138,6 +138,10 @@ class Pregunta(models.Model):
     def __str__(self):
         return self.enunciado
 
+    @property
+    def alternativas(self):
+        return self.alternativa_set.all().order_by("?")
+
 
 class Alternativa(models.Model):
     respuesta = models.CharField(max_length=50)

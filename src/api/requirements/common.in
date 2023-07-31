@@ -1,2 +1,5 @@
 django < 4.3
 # pillow
+djangorestframework
+markdown
+django-filter
