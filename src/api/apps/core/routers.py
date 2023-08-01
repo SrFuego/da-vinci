@@ -9,8 +9,11 @@
 
 
 # Local imports
-from .viewsets import PreguntaViewSet
+from .viewsets import MostrarPreguntaViewSet, ResolverPreguntaViewSet
 
 
 # Create your routers here.
-core_list = ((r"mostrar_pregunta", PreguntaViewSet),)
+core_list = (
+    (r"mostrar_pregunta", MostrarPreguntaViewSet),
+    (r"enviar_alternativa_seleccionada", ResolverPreguntaViewSet),
+)
