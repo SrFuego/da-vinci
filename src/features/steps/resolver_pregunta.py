@@ -3,6 +3,7 @@
 
 
 # Django imports
+from django.apps import apps
 from django.urls import reverse
 
 
@@ -14,31 +15,59 @@ from behave import given, when, then
 
 
 # Create your tests here.
-@given("que seleccionó la opción de preguntas aleatorias 1x1")
+Pregunta = apps.get_model("core", "Pregunta")
+Alternativa = apps.get_model("core", "Alternativa")
+ExamenDeAdmision = apps.get_model("core", "ExamenDeAdmision")
+Tema = apps.get_model("core", "Tema")
+Solucion = apps.get_model("core", "Solucion")
+
+
+@given('que seleccionó la opción: "Preguntas 1x1"')
 def selecciona_preguntas_1x1(context):
     # raise NotImplementedError(
-    #     "STEP: Given que seleccionó la opción de preguntas aleatorias 1x1"
+    #     'STEP: Given que seleccionó la opción: "Preguntas 1x1"'
     # )
     pass
 
 
-@given('le muestra "{pregunta}"')
+@given("le muestra una pregunta: {pregunta}")
 def muestra_una_pregunta_aleatoria(context, pregunta):
-    response = context.test.client.get(reverse("api_v1:pregunta-list"))
-    print(pregunta)
-    print(type(context))
-    print(dir(context))
-    print(context.table)
+    examen_de_admision = ExamenDeAdmision.objects.first()
+    tema = Tema.objects.first()
+    pregunta_db = Pregunta.objects.create(enunciado=pregunta, tema=tema)
+    pregunta_db.examen_de_admision.add(examen_de_admision)
+
+    response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
     context.test.assertEqual(response.status_code, 200)
-    context.test.assertIn("enunciado", response.data[0])
-    context.test.assertIn("alternativas", response.data[0])
-    # context.test.assertEqual(response.status_code, 404)
+    context.test.assertIn("enunciado", response.data)
+    context.test.assertEqual(response.data["enunciado"], pregunta)
 
 
-@when('resuelve "{pregunta_1}"')
-def resuelve_pregunta_aleatoria(context, pregunta_1):
-    # raise NotImplementedError('STEP: When resuelve "{pregunta_1}"')
-    pass
+@given("sus alternativas: {alternativas}, una es la {correcta}")
+def step_impl(context, alternativas, correcta):
+    pregunta_aux = Pregunta.objects.first()
+    for alternativa in alternativas.split(","):
+        alternativa_aux = Alternativa.objects.create(
+            respuesta=alternativa, pregunta=pregunta_aux
+        )
+        if alternativa is correcta:
+            Solucion.objects.create(
+                pregunta=pregunta_aux,
+                alternativa=alternativa_aux,
+                nombre="respuesta a: {pregunta_aux}",
+                texto="solucionario de la pregunta",
+            )
+    response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
+    context.test.assertEqual(response.status_code, 200)
+    context.test.assertIn("alternativas", response.data)
+    context.test.assertEqual(
+        ",".join(
+            sorted(
+                [item["respuesta"] for item in response.data["alternativas"]]
+            )
+        ),
+        alternativas,
+    )
 
 
 @when("selecciona una alternativa")
@@ -47,15 +76,19 @@ def selecciona_alternativa_de_pregunta_aleatoria(context):
     pass
 
 
-@when('envía "{respuesta_1}"')
-def envia_respuesta_de_pregunta_aleatoria(context, respuesta_1):
-    # raise NotImplementedError('STEP: When envía "{respuesta_1}"')
-    pass
+@when("envía {respuesta}")
+def envia_respuesta_de_pregunta_aleatoria(context, respuesta):
+    alternativa_seleccionada = Alternativa.objects.get(respuesta=respuesta)
+    response = context.test.client.post(
+        reverse("api_v1:enviar_alternativa_seleccionada-list"),
+        {"alternativa_seleccionada_id": alternativa_seleccionada.id},
+    )
+    context.test.assertEqual(response.status_code, 200)
 
 
-@then('evalúa "{respuesta_1}"')
-def evalua_respuesta(context, respuesta_1):
-    # raise NotImplementedError('STEP: Then evalúa "{respuesta_1}"')
+@then("evalúa {respuesta}")
+def evalua_respuesta(context, respuesta):
+    # raise NotImplementedError('STEP: Then evalúa {respuesta}')
     pass
 
 
@@ -83,9 +116,9 @@ def muestra_solucion_de_respuesta(context):
     pass
 
 
-@then('muestra "pasar a la siguiente pregunta"')
+@then('muestra boton: "pasar a la siguiente pregunta"')
 def muestra_boton_siguiente_pregunta(context):
     # raise NotImplementedError(
-    #     'STEP: Then muestra "pasar a la siguiente pregunta"'
+    #     'STEP: Then muestra boton: "pasar a la siguiente pregunta"'
     # )
     pass
