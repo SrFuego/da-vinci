@@ -1,3 +1,0 @@
-[behave]
-# behave need the `steps` path
-paths = src/features

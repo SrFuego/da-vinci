@@ -10,3 +10,4 @@ pygraphviz
 pyparsing
 pydot
 behave-django
+coverage
