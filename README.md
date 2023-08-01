@@ -66,6 +66,13 @@ En el container:
 `python src/api/manage.py behave`
 
 
+## Correr coverage de codigo
+
+`coverage run src/api/manage.py behave`
+
+`coverage html`
+
+
 ## Changelog
 
 

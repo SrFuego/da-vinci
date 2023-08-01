@@ -9,7 +9,7 @@
 from rest_framework.serializers import (
     ModelSerializer,
     Serializer,
-    ValidationError,
+    # ValidationError,
     IntegerField,
 )
 
@@ -62,13 +62,3 @@ class SolucionPostSerializer(ModelSerializer):
 class RespuestaEnviadaSerializer(Serializer):
     # pregunta = PreguntaSerializer()
     solucion = SolucionSerializer()
-
-
-class RespuestaEnviadaPostSerializer(Serializer):
-    pregunta = PreguntaPostSerializer()
-    solucion = SolucionPostSerializer()
-
-    # def to_representation(self, instance):
-    #     response = super().to_representation(instance)
-    #     response['other_field'] = instance.id# also response['other_field'] = otherSerializer(instance.model)
-    #     return response

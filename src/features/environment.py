@@ -1,3 +1,4 @@
+import coverage
 from rest_framework.test import APIClient
 
 
@@ -21,3 +22,13 @@ def before_all(context):
         # "src/api/apps/core/fixtures/alternativa.json",
         # "src/api/apps/core/fixtures/solucion.json",
     ]
+    cov = coverage.Coverage()
+    cov.start()
+    context.cov = cov
+
+
+def after_all(context):
+    cov = context.cov
+    cov.stop()
+    cov.save()
+    cov.html_report(directory="./cov")
