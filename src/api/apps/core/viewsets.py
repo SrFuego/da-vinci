@@ -21,7 +21,6 @@ class PreguntaViewSet(GenericViewSet):
     serializer_class = PreguntaSerializer
 
     def list(self, request, *args, **kwargs):
-        pregunta_random = self.get_queryset()[0]
-        queryset = Pregunta.objects.filter(id=pregunta_random.id)
-        serializer = self.get_serializer(queryset, many=True)
+        pregunta_random = self.get_queryset().first()
+        serializer = self.get_serializer(pregunta_random)
         return Response(serializer.data)
