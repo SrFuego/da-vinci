@@ -22,5 +22,13 @@
         "nombre": "Cargos Públicos",
         "curso": 10
     }
+},
+{
+    "model": "core.tema",
+    "pk": 4,
+    "fields": {
+        "nombre": "Comprensión de Lectura",
+        "curso": 1
+    }
 }
 ]

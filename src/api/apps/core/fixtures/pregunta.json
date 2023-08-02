@@ -1,41 +1,54 @@
 [
-    {
-        "model": "core.pregunta",
-        "pk": 1,
-        "fields": {
-            "enunciado": "¿Cuánto es 2 + 2?",
-            "lectura": null,
-            "tema": 1,
-            "cantidad_alternativas": 5,
-            "examen_de_admision": [
-                1
-            ]
-        }
-    },
-    {
-        "model": "core.pregunta",
-        "pk": 2,
-        "fields": {
-            "enunciado": "¿Cuando se proclamó la independencia del Perú?",
-            "lectura": null,
-            "tema": 2,
-            "cantidad_alternativas": 3,
-            "examen_de_admision": [
-                1
-            ]
-        }
-    },
-    {
-        "model": "core.pregunta",
-        "pk": 3,
-        "fields": {
-            "enunciado": "¿Quién ocupa la presidencia en el Perú?",
-            "lectura": null,
-            "tema": 3,
-            "cantidad_alternativas": 4,
-            "examen_de_admision": [
-                1
-            ]
-        }
+{
+    "model": "core.pregunta",
+    "pk": 1,
+    "fields": {
+        "enunciado": "¿Cuánto es 2 + 2?",
+        "lectura": null,
+        "tema": 1,
+        "cantidad_alternativas": 5,
+        "examen_de_admision": [
+            1
+        ]
     }
+},
+{
+    "model": "core.pregunta",
+    "pk": 2,
+    "fields": {
+        "enunciado": "¿Cuando se proclamó la independencia del Perú?",
+        "lectura": null,
+        "tema": 2,
+        "cantidad_alternativas": 3,
+        "examen_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 3,
+    "fields": {
+        "enunciado": "¿Quién ocupa la presidencia en el Perú?",
+        "lectura": null,
+        "tema": 3,
+        "cantidad_alternativas": 4,
+        "examen_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 4,
+    "fields": {
+        "enunciado": "¿Cuánto es 5+5?",
+        "lectura": null,
+        "tema": 1,
+        "cantidad_alternativas": 5,
+        "examen_de_admision": [
+            1
+        ]
+    }
+}
 ]
