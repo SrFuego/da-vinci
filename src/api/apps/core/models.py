@@ -73,6 +73,7 @@ class ExamenDeAdmision(models.Model):
     puntaje_incorrecta = models.FloatField()
     puntaje_en_blanco = models.FloatField(default=0)
     duracion = models.DurationField()
+    cantidad_de_preguntas = models.PositiveSmallIntegerField(default=100)
 
     def __str__(self):
         return "{} {}, Area: {}".format(
