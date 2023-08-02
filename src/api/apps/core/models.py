@@ -4,6 +4,7 @@
 
 # Django imports
 from django.db import models
+from django.db.models import CheckConstraint, Q, F
 
 
 # Third party apps imports
@@ -141,6 +142,16 @@ class Pregunta(models.Model):
     @property
     def alternativas(self):
         return self.alternativa_set.all().order_by("?")
+
+    class Meta:
+        constraints = [
+            CheckConstraint(
+                check=Q(lectura__isnull=False) | Q(tema__isnull=False),
+                name="check_pregunta_have_tema_or_lectura",
+                violation_error_message="Cada pregunta debe tener un tema "
+                "o pertenecer a una lectura",
+            ),
+        ]
 
 
 class Alternativa(models.Model):
