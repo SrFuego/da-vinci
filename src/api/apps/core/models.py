@@ -4,7 +4,7 @@
 
 # Django imports
 from django.db import models
-from django.db.models import CheckConstraint, Q, F
+from django.db.models import CheckConstraint, Q
 
 
 # Third party apps imports
@@ -143,6 +143,10 @@ class Pregunta(models.Model):
     @property
     def alternativas(self):
         return self.alternativa_set.all().order_by("?")
+
+    @property
+    def curso(self):
+        return self.tema.curso
 
     class Meta:
         constraints = [
