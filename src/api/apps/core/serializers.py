@@ -15,7 +15,7 @@ from rest_framework.serializers import (
 
 
 # Local imports
-from .models import Alternativa, Pregunta, Solucion
+from .models import Alternativa, Curso, Pregunta, Solucion, Tema
 
 
 # Create your serializers here.
@@ -25,12 +25,26 @@ class AlternativaSerializer(ModelSerializer):
         fields = ("id", "respuesta")
 
 
+class CursoSerializer(ModelSerializer):
+    class Meta:
+        model = Curso
+        fields = ("id", "nombre")
+
+
+class TemaSerializer(ModelSerializer):
+    class Meta:
+        model = Tema
+        fields = ("id", "nombre")
+
+
 class PreguntaSerializer(ModelSerializer):
     alternativas = AlternativaSerializer(many=True)
+    curso = CursoSerializer()
+    tema = TemaSerializer()
 
     class Meta:
         model = Pregunta
-        fields = ("id", "enunciado", "alternativas")
+        fields = ("id", "enunciado", "alternativas", "tema", "curso")
 
 
 class SolucionSerializer(ModelSerializer):
