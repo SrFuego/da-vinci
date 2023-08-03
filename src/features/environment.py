@@ -18,9 +18,9 @@ def before_all(context):
         "src/api/apps/core/fixtures/tema.json",
         "src/api/apps/core/fixtures/preguntas_por_curso.json",
         "src/api/apps/core/fixtures/lectura.json",
-        # "src/api/apps/core/fixtures/pregunta.json",
-        # "src/api/apps/core/fixtures/alternativa.json",
-        # "src/api/apps/core/fixtures/solucion.json",
+        "src/api/apps/core/fixtures/pregunta.json",
+        "src/api/apps/core/fixtures/alternativa.json",
+        "src/api/apps/core/fixtures/solucion.json",
     ]
     cov = coverage.Coverage()
     cov.start()
