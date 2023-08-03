@@ -14,11 +14,10 @@ from rest_framework.settings import api_settings
 
 
 # Local imports
-from .models import Pregunta, Alternativa, Solucion
+from .models import Pregunta, Alternativa
 from .serializers import (
     PreguntaSerializer,
     AlternativaSeleccionadaSerializer,
-    RespuestaEnviadaSerializer,
     SolucionSerializer,
 )
 
