@@ -46,7 +46,7 @@ class ResolverPreguntaViewSet(GenericViewSet):
         )
         solucion = alternativa_seleccionada.pregunta.solucion
         examen_de_admision = (
-            alternativa_seleccionada.pregunta.examen_de_admision.first()
+            alternativa_seleccionada.pregunta.examenes_de_admision.first()
         )
         es_correcta = solucion.es_correcta(alternativa_seleccionada)
         if es_correcta:

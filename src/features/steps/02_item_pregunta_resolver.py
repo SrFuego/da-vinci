@@ -28,7 +28,7 @@ def le_muestra_una_pregunta(context, pregunta):
     for pregunta_aux in Pregunta.objects.all():
         pregunta_aux.delete()
     pregunta_db = Pregunta.objects.create(enunciado=pregunta, tema=tema)
-    pregunta_db.examen_de_admision.add(examen_de_admision)
+    pregunta_db.examenes_de_admision.add(examen_de_admision)
     response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)

@@ -8,7 +8,8 @@
         "puntaje_correcta": 20.0,
         "puntaje_incorrecta": -5.0,
         "puntaje_en_blanco": 0.0,
-        "duracion": "00:00:03"
+        "duracion": "00:00:03",
+        "cantidad_de_preguntas": 100
     }
 }
 ]

@@ -7,7 +7,7 @@
         "lectura": null,
         "tema": 1,
         "cantidad_alternativas": 5,
-        "examen_de_admision": [
+        "examenes_de_admision": [
             1
         ]
     }
@@ -20,7 +20,7 @@
         "lectura": null,
         "tema": 2,
         "cantidad_alternativas": 3,
-        "examen_de_admision": [
+        "examenes_de_admision": [
             1
         ]
     }
@@ -33,7 +33,7 @@
         "lectura": null,
         "tema": 3,
         "cantidad_alternativas": 4,
-        "examen_de_admision": [
+        "examenes_de_admision": [
             1
         ]
     }
@@ -46,7 +46,7 @@
         "lectura": null,
         "tema": 1,
         "cantidad_alternativas": 5,
-        "examen_de_admision": [
+        "examenes_de_admision": [
             1
         ]
     }
