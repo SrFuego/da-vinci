@@ -48,12 +48,19 @@ class PreguntaSerializer(ModelSerializer):
 
 
 class SolucionSerializer(ModelSerializer):
-    alternativa = AlternativaSerializer(read_only=True)
+    alternativa_correcta = AlternativaSerializer(read_only=True)
     pregunta = PreguntaSerializer(read_only=True)
 
     class Meta:
         model = Solucion
-        fields = ("id", "nombre", "texto", "pregunta", "alternativa")
+        fields = (
+            "id",
+            "nombre",
+            "teoria",
+            "resolucion",
+            "pregunta",
+            "alternativa_correcta",
+        )
         read_only_fields = ("nombre", "texto")
 
 
