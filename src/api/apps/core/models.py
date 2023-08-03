@@ -127,7 +127,7 @@ class Lectura(models.Model):
 
 class Pregunta(models.Model):
     enunciado = models.CharField(max_length=50)
-    examen_de_admision = models.ManyToManyField("ExamenDeAdmision")
+    examenes_de_admision = models.ManyToManyField("ExamenDeAdmision")
     lectura = models.ForeignKey(
         "Lectura", on_delete=models.CASCADE, blank=True, null=True
     )
@@ -172,13 +172,19 @@ class Alternativa(models.Model):
 
 class Solucion(models.Model):
     nombre = models.CharField(max_length=50)
-    texto = models.TextField()
+    teoria = models.TextField()
+    resolucion = models.TextField()
     pregunta = models.OneToOneField("Pregunta", on_delete=models.CASCADE)
-    alternativa = models.OneToOneField("alternativa", on_delete=models.CASCADE)
+    alternativa_correcta = models.OneToOneField(
+        "alternativa", on_delete=models.CASCADE
+    )
     # imagen = models.ImageField()
 
     def __str__(self):
         return self.nombre
+
+    def es_correcta(self, alternativa):
+        return self.alternativa_correcta == alternativa
 
     class Meta:
         verbose_name = "Solución"
