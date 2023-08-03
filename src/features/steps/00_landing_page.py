@@ -15,7 +15,7 @@ def step_impl(context):
     pass
 
 
-@then('puede ver "{contenido}"')
+@then("puede ver {contenido}")
 def step_impl(context, contenido):
     # raise NotImplementedError('STEP: Then puede ver "{contenido}"')
     pass
@@ -30,7 +30,7 @@ def step_impl(context):
     pass
 
 
-@when('hago clic en el botón de descarga para "{sistema_operativo}"')
+@when("hago clic en el botón de descarga para {sistema_operativo}")
 def step_impl(context, sistema_operativo):
     # raise NotImplementedError(
     #     'STEP: When hago clic en el botón de descarga para "{sistema_operativo}"'
@@ -38,7 +38,7 @@ def step_impl(context, sistema_operativo):
     pass
 
 
-@then('es redirigido a la página de descarga de la App en "{store}"')
+@then("es redirigido a la página de descarga de la App en {store}")
 def step_impl(context, store):
     # raise NotImplementedError(
     #     'STEP: Then es redirigido a la página de descarga de la App en "{store}"'

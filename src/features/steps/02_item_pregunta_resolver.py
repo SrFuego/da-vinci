@@ -1,4 +1,3 @@
-# apps/core/models.py
 # Python imports
 
 
@@ -22,41 +21,27 @@ Tema = apps.get_model("core", "Tema")
 Solucion = apps.get_model("core", "Solucion")
 
 
-@given('que seleccionó la opción: "Preguntas 1x1"')
-def selecciona_preguntas_1x1(context):
-    # raise NotImplementedError(
-    #     'STEP: Given que seleccionó la opción: "Preguntas 1x1"'
-    # )
-    pass
-
-
-@given("le muestra una pregunta: {pregunta}")
-def muestra_una_pregunta_aleatoria(context, pregunta):
+@given("que le muestra una pregunta: {pregunta}")
+def le_muestra_una_pregunta(context, pregunta):
     examen_de_admision = ExamenDeAdmision.objects.first()
     tema = Tema.objects.first()
+    for pregunta_aux in Pregunta.objects.all():
+        pregunta_aux.delete()
     pregunta_db = Pregunta.objects.create(enunciado=pregunta, tema=tema)
     pregunta_db.examen_de_admision.add(examen_de_admision)
-
     response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertEqual(response.data["enunciado"], pregunta)
+    context.pregunta_db = pregunta_db
 
 
-@given("sus alternativas: {alternativas}, una es la {correcta}")
-def step_impl(context, alternativas, correcta):
-    pregunta_aux = Pregunta.objects.first()
+@given("sus alternativas: {alternativas}")
+def le_muestra_sus_alternativas(context, alternativas):
     for alternativa in alternativas.split(","):
-        alternativa_aux = Alternativa.objects.create(
-            respuesta=alternativa, pregunta=pregunta_aux
+        Alternativa.objects.create(
+            respuesta=alternativa, pregunta=context.pregunta_db
         )
-        if alternativa is correcta:
-            Solucion.objects.create(
-                pregunta=pregunta_aux,
-                alternativa=alternativa_aux,
-                nombre="respuesta a: {pregunta_aux}",
-                texto="solucionario de la pregunta",
-            )
     response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("alternativas", response.data)
@@ -68,16 +53,29 @@ def step_impl(context, alternativas, correcta):
         ),
         alternativas,
     )
+    # context.test.assertEqual(404, 200)
+
+
+@given("una de ellas es la correcta: {correcta}")
+def una_de_sus_alternativas_es_correcta(context, correcta):
+    for alternativa in context.pregunta_db.alternativas:
+        if alternativa.respuesta == correcta:
+            Solucion.objects.create(
+                pregunta=context.pregunta_db,
+                alternativa=alternativa,
+                nombre="respuesta a: {context.pregunta_db}",
+                texto="solucionario de la pregunta",
+            )
 
 
 @when("selecciona una alternativa")
-def selecciona_alternativa_de_pregunta_aleatoria(context):
+def selecciona_una_alternativa(context):
     # raise NotImplementedError("STEP: When selecciona una alternativa")
     pass
 
 
-@when("envía {respuesta}")
-def envia_respuesta_de_pregunta_aleatoria(context, respuesta):
+@when("la envía como {respuesta}")
+def la_envia_como_respuesta(context, respuesta):
     alternativa_seleccionada = Alternativa.objects.get(respuesta=respuesta)
     response = context.test.client.post(
         reverse("api_v1:enviar_alternativa_seleccionada-list"),
@@ -86,16 +84,16 @@ def envia_respuesta_de_pregunta_aleatoria(context, respuesta):
     context.test.assertEqual(response.status_code, 200)
 
 
-@then("evalúa {respuesta}")
-def evalua_respuesta(context, respuesta):
-    # raise NotImplementedError('STEP: Then evalúa {respuesta}')
+@then("se evalúa su {respuesta}")
+def se_evalua_su_respuesta(context, respuesta):
+    # raise NotImplementedError("STEP: Then se evalúa su 4")
     pass
 
 
-@then("la califica con el puntaje relacionado a la pregunta")
-def califica_respuesta(context):
+@then("la califica con el puntaje relacionado a: {pregunta}")
+def califica_su_respuesta_con_el_puntaje_de_la_pregunta(context, pregunta):
     # raise NotImplementedError(
-    #     "STEP: Then la califica con el puntaje relacionado a la pregunta"
+    #     "STEP: Then la califica con el puntaje relacionado a: Cuanto es 2+2?"
     # )
     pass
 
@@ -116,9 +114,9 @@ def muestra_solucion_de_respuesta(context):
     pass
 
 
-@then('muestra boton: "pasar a la siguiente pregunta"')
+@then('muestra un botón: "pasar a la siguiente pregunta"')
 def muestra_boton_siguiente_pregunta(context):
     # raise NotImplementedError(
-    #     'STEP: Then muestra boton: "pasar a la siguiente pregunta"'
+    #     'STEP: Then muestra un botón: "pasar a la siguiente pregunta"'
     # )
     pass
