@@ -4,9 +4,10 @@
     "pk": 1,
     "fields": {
         "nombre": "4",
-        "texto": "Se pasan los números a unidades, 2 + 2 pasa a ser 1 + 1 + 1 + 1, entonces sumaria 4 unidades",
+        "teoria": "",
+        "resolucion": "Se pasan los números a unidades, 2 + 2 pasa a ser 1 + 1 + 1 + 1, entonces sumaria 4 unidades",
         "pregunta": 1,
-        "alternativa": 2
+        "alternativa_correcta": 2
     }
 },
 {
@@ -14,9 +15,10 @@
     "pk": 2,
     "fields": {
         "nombre": "Independencia del Perú",
-        "texto": "Se declaro el 28 de Julio de 1821",
+        "teoria": "",
+        "resolucion": "Se declaro el 28 de Julio de 1821",
         "pregunta": 2,
-        "alternativa": 9
+        "alternativa_correcta": 9
     }
 },
 {
@@ -24,9 +26,10 @@
     "pk": 3,
     "fields": {
         "nombre": "Presidencia",
-        "texto": "Dina Boluarte",
+        "teoria": "",
+        "resolucion": "Dina Boluarte",
         "pregunta": 3,
-        "alternativa": 11
+        "alternativa_correcta": 11
     }
 }
 ]
