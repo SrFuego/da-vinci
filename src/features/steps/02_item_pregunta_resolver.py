@@ -53,7 +53,6 @@ def le_muestra_sus_alternativas(context, alternativas):
         ),
         alternativas,
     )
-    # context.test.assertEqual(404, 200)
 
 
 @given("una de ellas es la correcta: {correcta}")
@@ -62,9 +61,10 @@ def una_de_sus_alternativas_es_correcta(context, correcta):
         if alternativa.respuesta == correcta:
             Solucion.objects.create(
                 pregunta=context.pregunta_db,
-                alternativa=alternativa,
-                nombre="respuesta a: {context.pregunta_db}",
-                texto="solucionario de la pregunta",
+                alternativa_correcta=alternativa,
+                nombre="respuesta a: {}".format(context.pregunta_db),
+                resolucion="solucionario de la pregunta",
+                teoria="teoria de la pregunta",
             )
 
 
@@ -77,41 +77,39 @@ def selecciona_una_alternativa(context):
 @when("la envía como {respuesta}")
 def la_envia_como_respuesta(context, respuesta):
     alternativa_seleccionada = Alternativa.objects.get(respuesta=respuesta)
+    data = {"alternativa_seleccionada_id": alternativa_seleccionada.id}
     response = context.test.client.post(
-        reverse("api_v1:enviar_alternativa_seleccionada-list"),
-        {"alternativa_seleccionada_id": alternativa_seleccionada.id},
+        reverse("api_v1:enviar_alternativa_seleccionada-list"), data
     )
     context.test.assertEqual(response.status_code, 200)
+    context.response_data = response.data
+    # context.test.assertEqual(404, 200)
 
 
 @then("se evalúa su {respuesta}")
 def se_evalua_su_respuesta(context, respuesta):
-    # raise NotImplementedError("STEP: Then se evalúa su 4")
-    pass
+    context.test.assertIn("alternativa_enviada", context.response_data)
+    context.test.assertIn("solucion", context.response_data)
+    context.test.assertIn(
+        "alternativa_correcta", context.response_data["solucion"]
+    )
+    context.test.assertIn("es_correcta", context.response_data)
 
 
 @then("la califica con el puntaje relacionado a: {pregunta}")
 def califica_su_respuesta_con_el_puntaje_de_la_pregunta(context, pregunta):
-    # raise NotImplementedError(
-    #     "STEP: Then la califica con el puntaje relacionado a: Cuanto es 2+2?"
-    # )
-    pass
+    context.test.assertIn("puntaje_obtenido", context.response_data)
+    # context.test.assertEqual(404, 200)
 
 
 @then("muestra teoría del tema o temas relacionados")
 def muestra_teoria_de_respuesta(context):
-    # raise NotImplementedError(
-    #     "STEP: Then muestra teoría del tema o temas relacionados"
-    # )
-    pass
+    context.test.assertIn("teoria", context.response_data["solucion"])
 
 
 @then("muestra una resolución con procedimiento")
 def muestra_solucion_de_respuesta(context):
-    # raise NotImplementedError(
-    #     "STEP: Then muestra una resolución con procedimiento"
-    # )
-    pass
+    context.test.assertIn("resolucion", context.response_data["solucion"])
 
 
 @then('muestra un botón: "pasar a la siguiente pregunta"')
