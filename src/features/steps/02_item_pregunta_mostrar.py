@@ -55,21 +55,19 @@ def muestra_problema_de_admision(context):
 
 @then("el Curso (puede ser cualquiera)")
 def muestra_el_curso(context):
+    context.test.assertIn("curso", context.response_data)
+    context.test.assertTrue(len(context.response_data["curso"]) > 0)
     curso_response = Curso.objects.get(
         nombre=context.response_data["curso"]["nombre"]
     )
-    context.test.assertTrue(curso_response is not None)
-    context.test.assertIn("curso", context.response_data)
-    context.test.assertTrue(len(context.response_data["curso"]) > 0)
     context.curso_response = curso_response
 
 
 @then("el Tema (puede ser cualquiera del Curso)")
 def muestra_el_tema(context):
+    context.test.assertIn("tema", context.response_data)
+    context.test.assertTrue(len(context.response_data["tema"]) > 0)
     tema_response = Tema.objects.get(
         nombre=context.response_data["tema"]["nombre"]
     )
-    context.test.assertTrue(tema_response is not None)
-    context.test.assertIn("tema", context.response_data)
-    context.test.assertTrue(len(context.response_data["tema"]) > 0)
     context.test.assertIn(tema_response, context.curso_response.tema_set.all())
