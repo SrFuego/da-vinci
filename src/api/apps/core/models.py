@@ -144,8 +144,19 @@ class Pregunta(models.Model):
         return self.enunciado
 
     @property
+    def alternativas_registradas(self):
+        return self.alternativa_set.all()
+
+    @property
     def alternativas(self):
-        return self.alternativa_set.all().order_by("?")
+        # to UI
+        return self.alternativas_registradas.order_by("?")
+
+    @property
+    def alternativas_completas(self):
+        return (
+            self.cantidad_alternativas == self.alternativas_registradas.count()
+        )
 
     @property
     def curso(self):
