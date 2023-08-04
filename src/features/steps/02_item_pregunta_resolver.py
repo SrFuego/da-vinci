@@ -32,7 +32,6 @@ def le_muestra_una_pregunta(context, pregunta):
     response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
-    context.test.assertEqual(response.data["enunciado"], pregunta)
     context.pregunta_db = pregunta_db
 
 
@@ -52,6 +51,9 @@ def le_muestra_sus_alternativas(context, alternativas):
             )
         ),
         alternativas,
+    )
+    context.test.assertEqual(
+        response.data["enunciado"], context.pregunta_db.enunciado
     )
 
 
