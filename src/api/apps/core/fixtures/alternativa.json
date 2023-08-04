@@ -94,29 +94,5 @@
         "valor": "Alan García",
         "pregunta": 3
     }
-},
-{
-    "model": "core.alternativa",
-    "pk": 14,
-    "fields": {
-        "valor": "324234",
-        "pregunta": 4
-    }
-},
-{
-    "model": "core.alternativa",
-    "pk": 15,
-    "fields": {
-        "valor": "10",
-        "pregunta": 4
-    }
-},
-{
-    "model": "core.alternativa",
-    "pk": 16,
-    "fields": {
-        "valor": "9",
-        "pregunta": 4
-    }
 }
 ]

@@ -6,7 +6,7 @@
         "enunciado": "¿Cuánto es 2 + 2?",
         "lectura": null,
         "tema": 1,
-        "cantidad_alternativas": 5,
+        "cantidad_de_alternativas": 5,
         "examenes_de_admision": [
             1
         ]
@@ -19,7 +19,7 @@
         "enunciado": "¿Cuando se proclamó la independencia del Perú?",
         "lectura": null,
         "tema": 2,
-        "cantidad_alternativas": 3,
+        "cantidad_de_alternativas": 3,
         "examenes_de_admision": [
             1
         ]
@@ -32,20 +32,7 @@
         "enunciado": "¿Quién ocupa la presidencia en el Perú?",
         "lectura": null,
         "tema": 3,
-        "cantidad_alternativas": 4,
-        "examenes_de_admision": [
-            1
-        ]
-    }
-},
-{
-    "model": "core.pregunta",
-    "pk": 4,
-    "fields": {
-        "enunciado": "¿Cuánto es 5+5?",
-        "lectura": null,
-        "tema": 1,
-        "cantidad_alternativas": 3,
+        "cantidad_de_alternativas": 4,
         "examenes_de_admision": [
             1
         ]
