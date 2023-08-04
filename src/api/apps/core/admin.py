@@ -32,6 +32,18 @@ class AlternativaModelAdmin(admin.ModelAdmin):
     list_display = ["id", "valor", "pregunta"]
 
 
+class AlternativaInLine(admin.TabularInline):
+    model = Alternativa
+    extra = 0
+    min_num = 2
+
+    def get_max_num(self, request, obj=None, **kwargs):
+        if obj:
+            return obj.cantidad_de_alternativas
+        else:
+            return 5
+
+
 @admin.register(Area)
 class AreaModelAdmin(admin.ModelAdmin):
     pass
@@ -59,7 +71,7 @@ class LecturaModelAdmin(admin.ModelAdmin):
 
 @admin.register(Pregunta)
 class PreguntaModelAdmin(admin.ModelAdmin):
-    pass
+    inlines = [AlternativaInLine]
 
 
 @admin.register(PreguntasPorCurso)

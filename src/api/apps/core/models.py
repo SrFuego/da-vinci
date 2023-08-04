@@ -117,13 +117,13 @@ class Tema(models.Model):
 
 
 class Lectura(models.Model):
-    nombre = models.CharField(max_length=50)
+    titulo = models.CharField(max_length=50)
     texto = models.TextField()
     tema = models.ForeignKey("Tema", on_delete=models.CASCADE)
     # imagen = models.ImageField()
 
     def __str__(self):
-        return self.nombre
+        return self.titulo
 
 
 class Pregunta(models.Model):
@@ -135,7 +135,7 @@ class Pregunta(models.Model):
     tema = models.ForeignKey(
         "Tema", on_delete=models.CASCADE, blank=True, null=True
     )
-    cantidad_alternativas = models.SmallIntegerField(default=5)
+    cantidad_de_alternativas = models.SmallIntegerField(default=5)
     # imagen = models.ImageField()
     objects = models.Manager()
     to_ui_objects = PreguntaToUIManager()
@@ -159,14 +159,15 @@ class Pregunta(models.Model):
     @property
     def falta_completar_alternativas(self):
         return (
-            self.cantidad_alternativas_registradas < self.cantidad_alternativas
+            self.cantidad_alternativas_registradas
+            < self.cantidad_de_alternativas
         )
 
     @property
     def alternativas_completas(self):
         return (
             self.cantidad_alternativas_registradas
-            == self.cantidad_alternativas
+            == self.cantidad_de_alternativas
         )
 
     @property
