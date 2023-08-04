@@ -25,8 +25,10 @@ from .serializers import (
 
 # Create your viewsets here.
 class MostrarPreguntaViewSet(GenericViewSet):
-    queryset = Pregunta.objects.order_by("?")
     serializer_class = PreguntaSerializer
+
+    def get_queryset(self):
+        return Pregunta.to_ui_objects.order_by("?")
 
     def list(self, request, *args, **kwargs):
         pregunta_random = self.get_queryset().first()
@@ -35,7 +37,6 @@ class MostrarPreguntaViewSet(GenericViewSet):
 
 
 class ResolverPreguntaViewSet(GenericViewSet):
-    # queryset = Pregunta.objects.order_by("?")
     serializer_class = AlternativaSeleccionadaSerializer
 
     def create(self, request, *args, **kwargs):

@@ -11,6 +11,7 @@ from django.db.models import CheckConstraint, Q
 
 
 # Local imports
+from .managers import PreguntaToUIManager
 from .validators import restrict_quantity
 
 
@@ -136,6 +137,8 @@ class Pregunta(models.Model):
     )
     cantidad_alternativas = models.SmallIntegerField(default=5)
     # imagen = models.ImageField()
+    objects = models.Manager()
+    to_ui_objects = PreguntaToUIManager()
 
     def __str__(self):
         return self.enunciado

@@ -81,5 +81,4 @@ class SolucionPostSerializer(ModelSerializer):
 
 
 class RespuestaEnviadaSerializer(Serializer):
-    # pregunta = PreguntaSerializer()
     solucion = SolucionSerializer()
