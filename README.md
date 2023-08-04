@@ -30,7 +30,7 @@ Luego Da Vinci evalúa y muestra:
 
 ## Indice de comandos:
 
-[link](##-Next-Changelog)
+[link](#-Next-Changelog)
 
 
 ## Levantar el proyecto
