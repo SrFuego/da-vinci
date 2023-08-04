@@ -2,19 +2,35 @@
 
 ## Descripción del proyecto
 
-Es una App que le permite a los usuarios$^{(1)}$ practicar sus conocimientos generales resolviendo preguntas que vinieron en exámenes de admisión de la Universidad Nacional Mayor de San Marcos:
-- Muestra la pregunta con sus alternativas
-- Selecciona una alternativa
-- Envía la respuesta
-- El sistema evalúa y muestra:
-  - Puntaje
+Es una App que le permite a los _**usuarios**_ practicar sus conocimientos generales resolviendo preguntas que vinieron en exámenes de admisión de la Universidad Nacional Mayor de San Marcos, pueden elegir:
+- Preguntas individuales:
+  - Muestra una _**PEA**_
+  - Elige una alternativa o deja en blanco
+  - Envía la respuesta
+- Grupo de preguntas:
+  - Elige la cantidad: 4, 6 u 8
+  - Resuelve las _**PEA**_'s o las deja en blanco
+  - Envía las respuestas
+- Exámenes de admisión pasados:
+  - Examen completo (100 _**PEA**_'s con sus soluciones)
+  - Separados por Área y Proceso de Admisión
+  - Resuelve las _**PEA**_'s o las deja en blanco
+  - Envía las respuestas
+
+Luego Da Vinci evalúa y muestra:
+  - Puntaje obtenido
   - Resolución
   - Teoría relacionada
 
-$^{1}$ Especialmente útil para estudiantes pre-universitarios o escolares que busquen afinar sus conocimientos
+> Backoffice: Para mostrar las preguntas de admisión, es necesario ingresarlas al sistema
 
-Backoffice:
-Para mostrar las preguntas de admisión, es necesario ingresarlas al sistema
+#### *_**usuarios**_: Especialmente útil para estudiantes pre-universitarios o escolares que busquen afinar sus conocimientos
+
+#### *PEA: Pregunta de Examen de Admision
+
+## Indice de comandos:
+
+[link](##-Next-Changelog)
 
 
 ## Levantar el proyecto
@@ -23,7 +39,7 @@ Debe tener instalado Docker:
 
 https://docs.docker.com/engine/install/
 
-Levantar el entorno de testing:
+Levantar el entorno de desarrollo y pruebas:
 
 `docker compose -f src/dockerfiles/docker-compose.yml up --build`
 
@@ -82,6 +98,8 @@ Para sólo un modelo:
 ![Diagrama BPMN](docs/context/out/bpmn.png)
 
 ![Diagrama de Requests](docs/connections/out/Da%20Vinci.png)
+
+## Next Changelog
 
 > v0.0.2:
 

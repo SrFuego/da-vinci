@@ -1,5 +1,21 @@
 # # language: es
 
+
+# ## Entra en Evalucion de set de PEA's
+# - Muestra alternativas de cantidad de PEA's:
+#     - 5
+#     - 10
+#     - 20
+# - Resuelve las PEA una a una hasta completar la cantidad que selecciono
+# - Envia sus respuestas
+# - Se le muestra el solucionario (las  alternativas correctas)
+# >Vuelve a la vista para seleccionar curso
+
+
+
+
+
+
 # Característica: Mostrar un conjunto de preguntas
 #   Como usuario que desea practicar un curso o tema específico
 #   Quiero resolver problemas de examen de admisión

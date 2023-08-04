@@ -1,5 +1,17 @@
 # # language: es
 
+
+# ## Entra en Evalucion Examenes pasados
+# - Muestra 100 preguntas
+# - Tiempo de 3 horas
+# - Bloqueador de notificaciones y llamadas
+# - Resuelve
+# - Envia sus respuestas
+# - Solucionario, claves
+
+
+
+
 # Característica: Mostrar examenes pasados
 #   Como usuario que desea practicar examenes de admisión pasados
 #   Quiero resolver un examen de admisión
