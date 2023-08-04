@@ -29,9 +29,6 @@ def le_muestra_una_pregunta(context, pregunta):
         pregunta_aux.delete()
     pregunta_db = Pregunta.objects.create(enunciado=pregunta, tema=tema)
     pregunta_db.examenes_de_admision.add(examen_de_admision)
-    response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
-    context.test.assertEqual(response.status_code, 200)
-    context.test.assertIn("enunciado", response.data)
     context.pregunta_db = pregunta_db
 
 
@@ -41,20 +38,7 @@ def le_muestra_sus_alternativas(context, alternativas):
         Alternativa.objects.create(
             respuesta=alternativa, pregunta=context.pregunta_db
         )
-    response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
-    context.test.assertEqual(response.status_code, 200)
-    context.test.assertIn("alternativas", response.data)
-    context.test.assertEqual(
-        ",".join(
-            sorted(
-                [item["respuesta"] for item in response.data["alternativas"]]
-            )
-        ),
-        alternativas,
-    )
-    context.test.assertEqual(
-        response.data["enunciado"], context.pregunta_db.enunciado
-    )
+    context.alternativas_from_UI = alternativas
 
 
 @given("una de ellas es la correcta: {correcta}")
@@ -68,6 +52,21 @@ def una_de_sus_alternativas_es_correcta(context, correcta):
                 resolucion="solucionario de la pregunta",
                 teoria="teoria de la pregunta",
             )
+    response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
+    context.test.assertEqual(response.status_code, 200)
+    context.test.assertIn("enunciado", response.data)
+    context.test.assertIn("alternativas", response.data)
+    context.test.assertEqual(
+        ",".join(
+            sorted(
+                [item["respuesta"] for item in response.data["alternativas"]]
+            )
+        ),
+        context.alternativas_from_UI,
+    )
+    context.test.assertEqual(
+        response.data["enunciado"], context.pregunta_db.enunciado
+    )
 
 
 @when("selecciona una alternativa")
@@ -85,7 +84,6 @@ def la_envia_como_respuesta(context, respuesta):
     )
     context.test.assertEqual(response.status_code, 200)
     context.response_data = response.data
-    # context.test.assertEqual(404, 200)
 
 
 @then("se evalúa su {respuesta}")
@@ -101,7 +99,6 @@ def se_evalua_su_respuesta(context, respuesta):
 @then("la califica con el puntaje relacionado a: {pregunta}")
 def califica_su_respuesta_con_el_puntaje_de_la_pregunta(context, pregunta):
     context.test.assertIn("puntaje_obtenido", context.response_data)
-    # context.test.assertEqual(404, 200)
 
 
 @then("muestra teoría del tema o temas relacionados")
