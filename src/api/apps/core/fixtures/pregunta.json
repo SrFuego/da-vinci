@@ -45,7 +45,7 @@
         "enunciado": "¿Cuánto es 5+5?",
         "lectura": null,
         "tema": 1,
-        "cantidad_alternativas": 5,
+        "cantidad_alternativas": 3,
         "examenes_de_admision": [
             1
         ]

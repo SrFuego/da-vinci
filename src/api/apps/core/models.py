@@ -185,7 +185,7 @@ class Pregunta(models.Model):
 
 
 class Alternativa(models.Model):
-    respuesta = models.CharField(max_length=50)
+    valor = models.CharField(max_length=50)
     pregunta = models.ForeignKey(
         "Pregunta",
         on_delete=models.CASCADE,
@@ -193,7 +193,7 @@ class Alternativa(models.Model):
     # imagen = models.ImageField()
 
     def __str__(self):
-        return self.respuesta
+        return self.valor
 
     def clean(self):
         if not self.id:
@@ -207,7 +207,6 @@ class Alternativa(models.Model):
 
 
 class Solucion(models.Model):
-    nombre = models.CharField(max_length=50)
     teoria = models.TextField()
     resolucion = models.TextField()
     pregunta = models.OneToOneField("Pregunta", on_delete=models.CASCADE)
@@ -217,7 +216,7 @@ class Solucion(models.Model):
     # imagen = models.ImageField()
 
     def __str__(self):
-        return self.nombre
+        return "Solución de: {}".format(self.pregunta)
 
     def es_correcta(self, alternativa):
         return self.alternativa_correcta == alternativa
