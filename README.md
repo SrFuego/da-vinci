@@ -1,4 +1,4 @@
-# Da Vinci
+# Da Vinci 0.1.0
 
 ## Descripción del proyecto
 
@@ -30,7 +30,21 @@ Luego Da Vinci evalúa y muestra:
 
 ## Indice de comandos:
 
-[link](#next-changelog)
+- [Levantar el proyecto](#levantar-el-proyecto)
+
+- [Conectarse al container de backend](#conectarse-al-container-de-backend)
+
+- [Correr tests de características](#correr-tests-de-características)
+
+- [Correr coverage de codigo](#correr-coverage-de-codigo)
+
+- [Levantar reporte de tests](#levantar-reporte-de-tests)
+
+- [Actualizar fixtures](#actualizar-fixtures)
+
+- [Generar dependencias actualizadas](#generar-dependencias-actualizadas)
+
+- [Next Versions](#next-versions)
 
 
 ## Levantar el proyecto
@@ -64,14 +78,14 @@ Allure serve report:
 
 En el container:
 
-`bash src/api/requirements/update_requirements.sh`
+`bash scripts/update_requirements.sh`
 
 
-## Generar fixtures
+## Actualizar fixtures
 
 En el container:
 
-`bash src/api/apps/core/fixtures/update_fixtures.sh`
+`bash scripts/update_fixtures.sh`
 
 Para sólo un modelo:
 
@@ -90,23 +104,17 @@ Para sólo un modelo:
 `coverage html`
 
 
-## Changelog
+## Next Versions
 
+> v0.1.1:
+- Separar el API en apps de Django (todo está en `core`)
 
-> Current version: v0.0.1
+> v0.9.0:
+- UI Final
+  - App
+  - Web
+- UX Final
 
-![Diagrama BPMN](docs/context/out/bpmn.png)
-
-![Diagrama de Requests](docs/connections/out/Da%20Vinci.png)
-
-## Next Changelog
-
-> v0.0.2:
-
-- Descripcion del proyecto:
-  - [ ] FIX:
-    - La descripción explica qué tiene el sistema pero no te describe el proyecto con una historia
-  - [ ] Partir la descripcion del proyecto (?):
-    - Experiencia ideal de usuario
-    - Seccionamiento del sistema:
-      - Explicacion de las partes
+> v1.0.0:
+- App
+- Web
