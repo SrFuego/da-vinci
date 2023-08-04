@@ -22,7 +22,7 @@ from .models import Alternativa, Curso, Pregunta, Solucion, Tema
 class AlternativaSerializer(ModelSerializer):
     class Meta:
         model = Alternativa
-        fields = ("id", "respuesta")
+        fields = ("id", "valor")
 
 
 class CursoSerializer(ModelSerializer):
@@ -55,13 +55,12 @@ class SolucionSerializer(ModelSerializer):
         model = Solucion
         fields = (
             "id",
-            "nombre",
             "teoria",
             "resolucion",
             "pregunta",
             "alternativa_correcta",
         )
-        read_only_fields = ("nombre", "texto")
+        read_only_fields = ("texto",)
 
 
 class AlternativaSeleccionadaSerializer(Serializer):

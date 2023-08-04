@@ -3,7 +3,7 @@
     "model": "core.alternativa",
     "pk": 1,
     "fields": {
-        "respuesta": "3",
+        "valor": "3",
         "pregunta": 1
     }
 },
@@ -11,7 +11,7 @@
     "model": "core.alternativa",
     "pk": 2,
     "fields": {
-        "respuesta": "4",
+        "valor": "4",
         "pregunta": 1
     }
 },
@@ -19,7 +19,7 @@
     "model": "core.alternativa",
     "pk": 3,
     "fields": {
-        "respuesta": "5",
+        "valor": "5",
         "pregunta": 1
     }
 },
@@ -27,7 +27,7 @@
     "model": "core.alternativa",
     "pk": 4,
     "fields": {
-        "respuesta": "6",
+        "valor": "6",
         "pregunta": 1
     }
 },
@@ -35,7 +35,7 @@
     "model": "core.alternativa",
     "pk": 5,
     "fields": {
-        "respuesta": "7",
+        "valor": "7",
         "pregunta": 1
     }
 },
@@ -43,7 +43,7 @@
     "model": "core.alternativa",
     "pk": 7,
     "fields": {
-        "respuesta": "1825",
+        "valor": "1825",
         "pregunta": 2
     }
 },
@@ -51,7 +51,7 @@
     "model": "core.alternativa",
     "pk": 8,
     "fields": {
-        "respuesta": "1823",
+        "valor": "1823",
         "pregunta": 2
     }
 },
@@ -59,7 +59,7 @@
     "model": "core.alternativa",
     "pk": 9,
     "fields": {
-        "respuesta": "1821",
+        "valor": "1821",
         "pregunta": 2
     }
 },
@@ -67,7 +67,7 @@
     "model": "core.alternativa",
     "pk": 10,
     "fields": {
-        "respuesta": "Pedro Castillo",
+        "valor": "Pedro Castillo",
         "pregunta": 3
     }
 },
@@ -75,7 +75,7 @@
     "model": "core.alternativa",
     "pk": 11,
     "fields": {
-        "respuesta": "Dina Boluarte",
+        "valor": "Dina Boluarte",
         "pregunta": 3
     }
 },
@@ -83,7 +83,7 @@
     "model": "core.alternativa",
     "pk": 12,
     "fields": {
-        "respuesta": "Ollanta Humala",
+        "valor": "Ollanta Humala",
         "pregunta": 3
     }
 },
@@ -91,8 +91,32 @@
     "model": "core.alternativa",
     "pk": 13,
     "fields": {
-        "respuesta": "Alan García",
+        "valor": "Alan García",
         "pregunta": 3
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 14,
+    "fields": {
+        "valor": "324234",
+        "pregunta": 4
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 15,
+    "fields": {
+        "valor": "10",
+        "pregunta": 4
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 16,
+    "fields": {
+        "valor": "9",
+        "pregunta": 4
     }
 }
 ]

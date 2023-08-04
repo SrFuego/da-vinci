@@ -36,7 +36,7 @@ def le_muestra_una_pregunta(context, pregunta):
 def le_muestra_sus_alternativas(context, alternativas):
     for alternativa in alternativas.split(","):
         Alternativa.objects.create(
-            respuesta=alternativa, pregunta=context.pregunta_db
+            valor=alternativa, pregunta=context.pregunta_db
         )
     context.alternativas_from_UI = alternativas
 
@@ -44,11 +44,10 @@ def le_muestra_sus_alternativas(context, alternativas):
 @given("una de ellas es la correcta: {correcta}")
 def una_de_sus_alternativas_es_correcta(context, correcta):
     for alternativa in context.pregunta_db.alternativas:
-        if alternativa.respuesta == correcta:
+        if alternativa.valor is correcta:
             Solucion.objects.create(
                 pregunta=context.pregunta_db,
                 alternativa_correcta=alternativa,
-                nombre="respuesta a: {}".format(context.pregunta_db),
                 resolucion="solucionario de la pregunta",
                 teoria="teoria de la pregunta",
             )
@@ -58,9 +57,7 @@ def una_de_sus_alternativas_es_correcta(context, correcta):
     context.test.assertIn("alternativas", response.data)
     context.test.assertEqual(
         ",".join(
-            sorted(
-                [item["respuesta"] for item in response.data["alternativas"]]
-            )
+            sorted([item["valor"] for item in response.data["alternativas"]])
         ),
         context.alternativas_from_UI,
     )
@@ -77,7 +74,7 @@ def selecciona_una_alternativa(context):
 
 @when("la envía como {respuesta}")
 def la_envia_como_respuesta(context, respuesta):
-    alternativa_seleccionada = Alternativa.objects.get(respuesta=respuesta)
+    alternativa_seleccionada = Alternativa.objects.get(valor=respuesta)
     data = {"alternativa_seleccionada_id": alternativa_seleccionada.id}
     response = context.test.client.post(
         reverse("api_v1:enviar_alternativa_seleccionada-list"), data
