@@ -3,7 +3,7 @@
 
 
 # Django imports
-from django.db.models import Manager, F, Count
+from django.db.models import Manager
 
 
 # Third party apps imports
@@ -27,12 +27,4 @@ class PreguntaToUIManager(Manager):
                 id__in=id_preguntas_completas,
                 solucion__isnull=False,
             )
-            # .exclude(
-            #     solucion__resolucion="",
-            #     solucion__teoria="",
-            # )
-            # .exclude(
-            #     solucion__resolucion=None,
-            #     solucion__teoria=None,
-            # )
         )

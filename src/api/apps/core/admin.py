@@ -29,7 +29,7 @@ from .models import (
 # Register your models here.
 @admin.register(Alternativa)
 class AlternativaModelAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["id", "respuesta", "pregunta"]
 
 
 @admin.register(Area)
