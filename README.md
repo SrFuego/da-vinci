@@ -104,7 +104,7 @@ Para sólo un modelo:
 `coverage html`
 
 
-## Next Versions
+## Se vienen cositas
 
 > v0.1.1:
 - Separar el API en apps de Django (todo está en `core`)
