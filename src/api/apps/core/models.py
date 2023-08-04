@@ -5,6 +5,7 @@
 # Django imports
 from django.db import models
 from django.db.models import CheckConstraint, Q
+from django.core.exceptions import ValidationError
 
 
 # Third party apps imports
@@ -12,7 +13,6 @@ from django.db.models import CheckConstraint, Q
 
 # Local imports
 from .managers import PreguntaToUIManager
-from .validators import restrict_quantity
 
 
 # Create your models here.
@@ -148,14 +148,25 @@ class Pregunta(models.Model):
         return self.alternativa_set.all()
 
     @property
+    def cantidad_alternativas_registradas(self):
+        return self.alternativas_registradas.count()
+
+    @property
     def alternativas(self):
         # to UI
         return self.alternativas_registradas.order_by("?")
 
     @property
+    def falta_completar_alternativas(self):
+        return (
+            self.cantidad_alternativas_registradas < self.cantidad_alternativas
+        )
+
+    @property
     def alternativas_completas(self):
         return (
-            self.cantidad_alternativas == self.alternativas_registradas.count()
+            self.cantidad_alternativas_registradas
+            == self.cantidad_alternativas
         )
 
     @property
@@ -176,12 +187,23 @@ class Pregunta(models.Model):
 class Alternativa(models.Model):
     respuesta = models.CharField(max_length=50)
     pregunta = models.ForeignKey(
-        "Pregunta", on_delete=models.CASCADE, validators=(restrict_quantity,)
+        "Pregunta",
+        on_delete=models.CASCADE,
     )
     # imagen = models.ImageField()
 
     def __str__(self):
         return self.respuesta
+
+    def clean(self):
+        if not self.id:
+            if not self.pregunta.falta_completar_alternativas:
+                raise ValidationError(
+                    "Ya tiene {} alternativas".format(
+                        self.pregunta.cantidad_alternativas_registradas
+                    ),
+                    code="invalid",
+                )
 
 
 class Solucion(models.Model):
