@@ -15,12 +15,11 @@ from django.db.models import Manager, F, Count
 # Create your managers here.
 class PreguntaToUIManager(Manager):
     def get_queryset(self):
-        id_preguntas_completas = []
-        for pregunta in super().get_queryset():
-            aux_a = pregunta.cantidad_alternativas
-            aux_b = pregunta.alternativas.count()
-            if aux_a == aux_b:
-                id_preguntas_completas.append(pregunta.id)
+        id_preguntas_completas = [
+            pregunta.id
+            for pregunta in super().get_queryset()
+            if pregunta.alternativas_completas
+        ]
         return (
             super()
             .get_queryset()
