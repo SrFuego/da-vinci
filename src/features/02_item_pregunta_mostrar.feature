@@ -1,5 +1,13 @@
 # language: es
 
+# ## Entra en Evaluacion 1x1
+# - Muestra PEA con sus alternativas
+# - Responde la PEA, envia la respuesta
+# - Luego sale si es acierto o error
+# - Despues sale la Solucion detallada de la PEA
+# >Sigue esa misma secuencia
+
+
 Característica: Mostrar una pregunta individual
   Como usuario que desea resolver problemas
   Quiero resolver un problema de examen de admisión
