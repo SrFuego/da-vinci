@@ -22,32 +22,28 @@ Luego Da Vinci evalúa y muestra:
   - Resolución
   - Teoría relacionada
 
-> Backoffice: Para mostrar las preguntas de admisión, es necesario ingresarlas al sistema
+Para mostrar las preguntas de admisión es necesario ingresarlas al sistema por lo que contamos con un `Backoffice`
 
-#### *_**usuarios**_: Especialmente útil para estudiantes pre-universitarios o escolares que busquen afinar sus conocimientos
+> *_**usuarios**_: Especialmente útil para estudiantes pre-universitarios o escolares que busquen afinar sus conocimientos
 
-#### *PEA: Pregunta de Examen de Admision
+> *PEA: Pregunta de Examen de Admision
 
 ## Indice de comandos:
 
-- [Levantar el proyecto](#levantar-el-proyecto)
-
-- [Conectarse al container de backend](#conectarse-al-container-de-backend)
-
-- [Correr tests de características](#correr-tests-de-características)
-
-- [Correr coverage de codigo](#correr-coverage-de-codigo)
-
-- [Levantar reporte de tests](#levantar-reporte-de-tests)
-
-- [Actualizar fixtures](#actualizar-fixtures)
-
-- [Generar dependencias actualizadas](#generar-dependencias-actualizadas)
-
-- [Next Versions](#next-versions)
+- [Da Vinci 0.1.0](#da-vinci-010)
+  - [Descripción del proyecto](#descripción-del-proyecto)
+  - [Indice de comandos:](#indice-de-comandos)
+    - [Levantar el proyecto](#levantar-el-proyecto)
+    - [Levantar reporte de tests](#levantar-reporte-de-tests)
+    - [Conectarse al container de backend](#conectarse-al-container-de-backend)
+    - [Generar dependencias actualizadas](#generar-dependencias-actualizadas)
+    - [Actualizar fixtures](#actualizar-fixtures)
+    - [Correr tests de características](#correr-tests-de-características)
+    - [Correr coverage de codigo](#correr-coverage-de-codigo)
+- [Se vienen cositas](#se-vienen-cositas)
 
 
-## Levantar el proyecto
+### Levantar el proyecto
 
 Debe tener instalado Docker:
 
@@ -58,7 +54,7 @@ Levantar el entorno de desarrollo y pruebas:
 `docker compose -f src/dockerfiles/docker-compose.yml up --build`
 
 
-## Levantar reporte de tests
+### Levantar reporte de tests
 
 Generar reporte de Allure (dentro de `features/`):
 
@@ -69,19 +65,19 @@ Allure serve report:
 `allure serve my_allure/`
 
 
-## Conectarse al container de backend
+### Conectarse al container de backend
 
 `docker exec -it backend bash`
 
 
-## Generar dependencias actualizadas
+### Generar dependencias actualizadas
 
 En el container:
 
 `bash scripts/update_requirements.sh`
 
 
-## Actualizar fixtures
+### Actualizar fixtures
 
 En el container:
 
@@ -92,19 +88,19 @@ Para sólo un modelo:
 `python src/api/manage.py dumpdata core.{Model} --format json --indent 4 -o src/api/apps/core/fixtures/{filename}.json`
 
 
-## Correr tests de características
+### Correr tests de características
 
 `python src/api/manage.py behave`
 
 
-## Correr coverage de codigo
+### Correr coverage de codigo
 
 `coverage run src/api/manage.py behave`
 
 `coverage html`
 
 
-## Se vienen cositas
+# Se vienen cositas
 
 > v0.1.1:
 - Separar el API en apps de Django (todo está en `core`)
