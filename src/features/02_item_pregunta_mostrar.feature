@@ -13,13 +13,18 @@ Característica: Mostrar una pregunta individual
   Quiero resolver un problema de examen de admisión
   Para probar y mejorar mis conocimientos académicos
 
-  Antecedentes:
-    Dado un usuario en el home de la App Da Vinci
-    Y selecciona "Pregunta Individual"
-    Y le muestra "Pregunta Aleatoria" y "Elegir Curso"
+  # Antecedentes:
+  #   Dado un usuario en el home de la App Da Vinci
+  #   Y selecciona "Preguntas"
+  #   Y le muestra "Pregunta Individual" y "Grupo de Preguntas"
+  #   Y selecciona "Pregunta Individual"
+  #   Y le muestra "Pregunta Aleatoria" y "Elegir Curso"
 
   # Nueva
   Escenario: Pregunta Aleatoria
+    Dado un usuario en el home de la App Da Vinci
+    Y selecciona "Pregunta Individual"
+    Y le muestra "Pregunta Aleatoria" y "Elegir Curso"
     Cuando selecciona "Pregunta Aleatoria"
     Entonces le muestra un problema de admisión y sus alternativas
     Y el Curso (puede ser cualquiera)
