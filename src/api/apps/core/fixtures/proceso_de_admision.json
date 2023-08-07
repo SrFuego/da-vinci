@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
         "universidad": 1,
-        "año": "2023",
+        "temporada": "2023",
         "proceso": "II"
     }
 }

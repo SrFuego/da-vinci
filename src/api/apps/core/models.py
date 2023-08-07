@@ -54,11 +54,11 @@ class Carrera(models.Model):
 
 class ProcesoDeAdmision(models.Model):
     universidad = models.ForeignKey("Universidad", on_delete=models.CASCADE)
-    año = models.CharField(max_length=50)
+    temporada = models.CharField(max_length=50)
     proceso = models.CharField(max_length=50)
 
     def __str__(self):
-        return "{}-{}".format(self.año, self.proceso)
+        return "{}-{}".format(self.temporada, self.proceso)
 
     class Meta:
         verbose_name = "Proceso de Admisión"
