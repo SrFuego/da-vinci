@@ -1,0 +1,71 @@
+Primer Contacto:
+Abre la App Da Vinci
+...
+
+...
+Abre la App Da Vinci
+Da Vinci:
+Home de Da Vinci
+//Una pregunta, envías tu respuesta, la califica y muestra solución
+Selecciona Individual
+Selecciona Elegir Curso
+
+
+...
+Selecciona Individual
+Selecciona Pregunta Aleatoria
+Muestra un problema de Admisión Aleatorio
+//Contiene:
+//- Nombre del Curso
+//- Nombre del Tema
+//- Enunciado
+//- Alternativas
+Muestra un Problema de Admisión
+Selecciona una Alternativa
+Le da al botón= Enviar (Alternativa)
+Se envía su Respuesta (puede dejar en blanco)
+Da Vinci evalúa su Respuesta
+//Resalta:
+//- La Alternativa enviada
+//- La Alternativa correcta
+///Muestra la Pregunta con todas las Alternativas, la resolución y teoría del Tema y/o Curso relacionado
+Muestra la Solucion= \n-Enunciado \n-Alternativas \n-Resolución \n-Teoría del Tema y/o Curso relacionado \n-Puntaje obtenido
+También muestra botones de navegación
+Muestra un botón de Siguiente Pregunta
+Muestra un Problema de Admisión
+...
+
+
+
+
+
+
+
+
+
+
+
+...
+Home de Da Vinci
+//Un conjunto de preguntas (agrupadas por Área, Curso, Tema, etc), envía las respuestas de todo el grupo y las evalúa en conjunto
+Selecciona Grupo
+
+
+
+...
+Home de Da Vinci
+//Exámenes de admisión completos, envía todas las respuestas y las evalúa en conjunto
+Exámenes pasados
+
+
+
+...
+También muestra botones de navegación
+Muestra un botón de Home
+Home de Da Vinci
+...
+
+
+///...
+///Muestra una lista de opciones (cursos)
+///Selecciona Curso Aleatorio
