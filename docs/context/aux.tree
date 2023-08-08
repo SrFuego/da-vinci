@@ -1,0 +1,766 @@
+Primer Contacto:
+Abre la App Da Vinci
+
+Da Vinci:
+//- Individual: Una pregunta, envías tu respuesta y la califica
+//- Grupo: Un conjunto de preguntas (agrupadas por Área, Curso, Tema, etc), envía las respuestas de todo el grupo y las evalúa
+//- Exámenes pasados: Exámenes de admisión pasados, completos
+Home de Da Vinci
+...
+
+
+...
+Home de Da Vinci
+Selecciona Individual
+Muestra opciones de Pregunta Individual
+...
+
+
+...
+Muestra opciones de Pregunta Individual
+Selecciona Pregunta Aleatoria
+Muestra un problema de Admisión Aleatorio
+//Contiene:
+//- Nombre del Curso
+//- Nombre del Tema
+//- Enunciado
+//- Alternativas
+Muestra un Problema de Admisión
+Selecciona una Alternativa
+Le da al botón= Enviar (Alternativa)
+Se envía su Respuesta (puede dejar en blanco)
+Da Vinci evalúa su Respuesta
+//Resalta:
+//- La Alternativa enviada
+//- La Alternativa correcta
+///Muestra la Pregunta con todas las Alternativas, la resolución y teoría del Tema y/o Curso relacionado
+Muestra la Solucion= \n-Enunciado \n-Alternativas \n-Resolución \n-Teoría del Tema y/o Curso relacionado \n-Puntaje obtenido
+También muestra botones de navegación
+Muestra un botón de Siguiente Pregunta
+Muestra un Problema de Admisión
+...
+
+
+...
+Muestra opciones de Pregunta Individual
+Selecciona Elegir Curso
+Muestra una lista de opciones (lista de Cursos)
+...
+
+
+
+...
+Home de Da Vinci
+Selecciona Grupo
+
+
+
+...
+Home de Da Vinci
+Exámenes pasados
+
+
+
+...
+También muestra botones de navegación
+Muestra un botón de Home
+Home de Da Vinci
+...
+
+
+///...
+///Muestra una lista de opciones (cursos)
+///Selecciona Curso Aleatorio
+
+
+
+...
+Muestra una lista de opciones (lista de Cursos)
+Deja en blanco (Curso)
+Y le da al botón= Enviar (Curso)
+Muestra un problema de Admisión Aleatorio
+...
+
+
+
+...
+Muestra una lista de opciones (lista de Cursos)
+Selecciona un Curso
+Y le da al botón= Enviar (Curso)
+Muestra opciones de su selección
+Muestra una lista de los Temas del Curso seleccionado
+...
+
+
+
+
+
+
+
+
+
+
+
+...
+Y le da al botón= Enviar (Curso)
+Muestra opciones de su selección
+Muestra una lista los Cursos seleccionados con sus Temas
+Selecciona varias opciones (uno o varios Temas por Curso, si lo deja en blanco es Tema aleatorio para ese curso)
+Y le da al botón= Enviar (Tema)
+Muestra un problema de Admisión de alguno de los Temas elegidos, de cualquier Curso de la selección
+Muestra un Problema de Admisión
+...
+
+
+
+
+...
+Muestra una lista de opciones (lista de Cursos)
+Selecciona más de un Curso
+Y le da al botón= Enviar (Curso)
+...
+
+
+
+
+
+
+
+
+
+...
+Muestra una lista de los Temas del Curso seleccionado
+Deja en blanco (Tema)
+Y le da al botón= Enviar (Tema)
+Muestra un problema de Admisión de cualquier Tema del Curso que eligió
+Muestra un Problema de Admisión
+Selecciona una Alternativa
+...
+
+
+...
+Muestra una lista de los Temas del Curso seleccionado
+Selecciona un Tema
+Y le da al botón= Enviar (Tema)
+Muestra un problema de Admisión del Tema elegido
+Muestra un Problema de Admisión
+...
+
+
+
+
+...
+Muestra una lista de los Temas del Curso seleccionado
+Selecciona varios Temas
+...
+
+
+
+
+
+
+
+
+
+
+
+///Elegir Tema
+
+
+...
+Muestra una lista de los Temas del Curso seleccionado
+Selecciona un Tema
+Y le da al botón= Enviar (Tema)
+Muestra un problema de Admisión de alguno de los Temas elegidos
+Muestra un Problema de Admisión
+...
+
+
+
+
+
+
+
+...
+Muestra una lista de los Temas del Curso seleccionado
+Selecciona varios Temas
+Y le da al botón= Enviar (Tema)
+...
+
+
+
+
+
+
+
+
+
+
+
+Examenes pasados
+Muestra 100 preguntas en un tiempo de 3 horas
+Bloquea notificaciones y llamadas
+Lista de preguntas, se visualizan 1x1
+Puede dejar en blanco (saltar pregunta)
+Envia respuestas en grupo
+Se evalua y muestra solucionario con las claves
+Abrir App
+...
+
+...
+Abrir App
+Lista de cursos (selecciona 1 o mas)
+Lista de temas del curso (selecciona 1 o mas)
+Lista de tipos de Evaluaciones
+...
+
+...
+Lista de cursos (selecciona 1 o mas)
+Tema random
+Lista de tipos de Evaluaciones
+...
+
+
+...
+Lista de tipos de Evaluaciones
+1x1
+Se muestra la PEA con sus alternativas
+Se selecciona alternativa o se salta la PEA
+Tipo de Evaluacion?
+1x1
+Se envia la respuesta
+Evalua y muestra solucion
+Se muestra la PEA con sus alternativas
+...
+
+
+...
+Lista de tipos de Evaluaciones
+Set de PEA's
+Lista de cantidades de PEA's= 5, 10, 20
+Se muestra la PEA con sus alternativas
+Se selecciona alternativa o se salta la PEA
+Tipo de Evaluacion?
+Set de PEA's
+Se siguen mostrando PEA's hasta terminar la cantidad elegida
+Se envia las respuestas
+Se muestra Solucionario
+Lista de cursos (selecciona 1 o mas)
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///Backoffice:
+///Login
+///Autenticación
+/////- Área
+/////- Temporada (año)
+/////- Examen de Admisión
+///Completar datos donde va ir la pregunta
+///Ingresa pregunta
+///Agrega alternativas
+///Muesta confirmación "Pregunta ingresada"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Da Vinci:
+Instalar App
+Abrir App Da Vinci
+//- Individual: Una pregunta, envías tu respuesta y la califica
+//- Grupo: Un conjunto de preguntas (agrupadas por Área, Curso, Tema, etc), envía las respuestas de todo el grupo y las evalúa
+//- Exámenes pasados: Exámenes de admisión pasados, completos
+Home de Da Vinci
+...
+
+...
+Home de Da Vinci
+Selecciona Individual
+Muestra opciones de Pregunta Individual
+...
+
+
+...
+Muestra opciones de Pregunta Individual
+Selecciona Pregunta Aleatoria
+Muestra un problema de Admisión Aleatorio
+//Contiene:
+//- Nombre del Curso
+//- Nombre del Tema
+//- Enunciado
+//- Alternativas
+Muestra un Problema de Admisión
+Selecciona una Alternativa
+Le da al botón= Enviar (Alternativa)
+Se envía su Respuesta (puede dejar en blanco)
+Da Vinci evalúa su Respuesta
+//Resalta:
+//- La Alternativa enviada
+//- La Alternativa correcta
+///Muestra la Pregunta con todas las Alternativas, la resolución y teoría del Tema y/o Curso relacionado
+Muestra la Solucion= \n-Enunciado \n-Alternativas \n-Resolución \n-Teoría del Tema y/o Curso relacionado \n-Puntaje obtenido
+También muestra botones de navegación
+Muestra un botón de Siguiente Pregunta
+Muestra un Problema de Admisión
+...
+
+
+...
+Muestra opciones de Pregunta Individual
+Selecciona Elegir Curso
+Muestra una lista de opciones (lista de Cursos)
+...
+
+
+
+...
+Home de Da Vinci
+Selecciona Grupo
+
+
+
+...
+Home de Da Vinci
+Exámenes pasados
+
+
+
+...
+También muestra botones de navegación
+Muestra un botón de Home
+Home de Da Vinci
+...
+
+
+///...
+///Muestra una lista de opciones (cursos)
+///Selecciona Curso Aleatorio
+
+
+
+...
+Muestra una lista de opciones (lista de Cursos)
+Deja en blanco (Curso)
+Y le da al botón= Enviar (Curso)
+Muestra un problema de Admisión Aleatorio
+...
+
+
+
+...
+Muestra una lista de opciones (lista de Cursos)
+Selecciona un Curso
+Y le da al botón= Enviar (Curso)
+Muestra opciones de su selección (opciones de Temas para Cursos)
+Muestra Temas de un Curso
+...
+
+
+
+
+
+
+
+
+
+
+
+...
+Y le da al botón= Enviar (Curso)
+Muestra opciones de su selección (opciones de Temas para Cursos)
+Muestra una lista de varios Cursos (los seleccionados) con sus Temas
+Selecciona varias opciones (uno o varios Temas por Curso, si lo deja en blanco es Tema aleatorio para ese curso)
+Y le da al botón= Enviar (Tema)
+Muestra un problema de Admisión de alguno de los Temas elegidos, de cualquier Curso de la selección
+Muestra un Problema de Admisión
+...
+
+
+
+
+...
+Muestra una lista de opciones (lista de Cursos)
+Selecciona más de un Curso
+Y le da al botón= Enviar (Curso)
+...
+
+
+
+
+
+
+
+
+
+...
+Muestra Temas de un Curso
+Deja en blanco (Tema)
+Y le da al botón= Enviar (Tema)
+Muestra un problema de Admisión de cualquier Tema del Curso que eligió
+Muestra un Problema de Admisión
+Selecciona una Alternativa
+...
+
+
+...
+Muestra Temas de un Curso
+Selecciona un Tema
+Y le da al botón= Enviar (Tema)
+Muestra un problema de Admisión del Tema elegido
+Muestra un Problema de Admisión
+...
+
+
+
+
+///Elegir Tema
+
+
+...
+Muestra Temas de un Curso
+Selecciona un Tema
+Y le da al botón= Enviar (Tema)
+Muestra un problema de Admisión de alguno de los Temas elegidos
+Muestra un Problema de Admisión
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+...
+Muestra Temas de un Curso
+Selecciona varios Temas
+Y le da al botón= Enviar (Tema)
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Examenes pasados
+Muestra 100 preguntas en un tiempo de 3 horas
+Bloquea notificaciones y llamadas
+Lista de preguntas, se visualizan 1x1
+Puede dejar en blanco (saltar pregunta)
+Envia respuestas en grupo
+Se evalua y muestra solucionario con las claves
+Abrir App
+...
+
+...
+Abrir App
+Lista de cursos (selecciona 1 o mas)
+Lista de temas del curso (selecciona 1 o mas)
+Lista de tipos de Evaluaciones
+...
+
+...
+Lista de cursos (selecciona 1 o mas)
+Tema random
+Lista de tipos de Evaluaciones
+...
+
+
+...
+Lista de tipos de Evaluaciones
+1x1
+Se muestra la PEA con sus alternativas
+Se selecciona alternativa o se salta la PEA
+Tipo de Evaluacion?
+1x1
+Se envia la respuesta
+Evalua y muestra solucion
+Se muestra la PEA con sus alternativas
+...
+
+
+...
+Lista de tipos de Evaluaciones
+Set de PEA's
+Lista de cantidades de PEA's= 5, 10, 20
+Se muestra la PEA con sus alternativas
+Se selecciona alternativa o se salta la PEA
+Tipo de Evaluacion?
+Set de PEA's
+Se siguen mostrando PEA's hasta terminar la cantidad elegida
+Se envia las respuestas
+Se muestra Solucionario
+Lista de cursos (selecciona 1 o mas)
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ultimo
+
+
+Primer Contacto:
+Abre la App Da Vinci
+...
+
+...
+Abre la App Da Vinci
+Da Vinci:
+Home de Da Vinci
+//Una pregunta, envías tu respuesta, la califica y muestra solución
+Selecciona Individual
+Selecciona Elegir Curso
+Muestra una lista de opciones (lista de Cursos)
+...
+
+
+...
+Muestra una lista de opciones (lista de Cursos)
+Selecciona un Curso
+Y le da al botón= Enviar (Curso)?
+seleccionó varios cursos
+Muestra opciones de su selección
+Muestra una lista de los Temas del Curso seleccionado
+...
+
+
+...
+Muestra una lista de opciones (lista de Cursos)
+Deja en blanco (Curso)
+Y le da al botón= Enviar (Curso)?
+dejó en blanco
+Muestra un problema de Admisión Aleatorio
+...
+
+
+
+...
+Selecciona Individual
+Selecciona Pregunta Aleatoria
+Muestra un problema de Admisión Aleatorio
+//Contiene:
+//- Nombre del Curso
+//- Nombre del Tema
+//- Enunciado
+//- Alternativas
+Muestra un Problema de Admisión
+Selecciona una Alternativa
+Le da al botón= Enviar (Alternativa)
+Se envía su Respuesta (puede dejar en blanco)
+Da Vinci evalúa su Respuesta
+//Resalta:
+//- La Alternativa enviada
+//- La Alternativa correcta
+///Muestra la Pregunta con todas las Alternativas, la resolución y teoría del Tema y/o Curso relacionado
+Muestra la Solucion= \n-Enunciado \n-Alternativas \n-Resolución \n-Teoría del Tema y/o Curso relacionado \n-Puntaje obtenido
+También muestra botones de navegación
+Muestra un botón de Siguiente Pregunta
+Muestra un Problema de Admisión
+...
+
+
+
+
+
+
+
+
+
+
+
+...
+Home de Da Vinci
+//Un conjunto de preguntas (agrupadas por Área, Curso, Tema, etc), envía las respuestas de todo el grupo y las evalúa en conjunto
+Selecciona Grupo
+
+
+
+...
+Home de Da Vinci
+//Exámenes de admisión completos, envía todas las respuestas y las evalúa en conjunto
+Exámenes pasados
+
+
+
+...
+También muestra botones de navegación
+Muestra un botón de Home
+Home de Da Vinci
+...
+
+
+///...
+///Muestra una lista de opciones (cursos)
+///Selecciona Curso Aleatorio
