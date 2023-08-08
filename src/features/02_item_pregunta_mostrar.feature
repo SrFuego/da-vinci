@@ -29,6 +29,7 @@ Característica: Mostrar una pregunta individual
     Entonces le muestra un problema de admisión y sus alternativas
     Y el Curso (puede ser cualquiera)
     Y el Tema (puede ser cualquiera del Curso)
+    Y el examen de admisión en el que vino esa pregunta (institución, año, etc)
 
   # Escenario: Pregunta de un Curso, cualquier Tema
   #   Cuando que selecciona "Elegir Curso"

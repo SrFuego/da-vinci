@@ -10,8 +10,7 @@ Característica: Resolver pregunta individual
     Y sus alternativas: <alternativas>
     Y una de ellas es la correcta: <correcta>
     Cuando selecciona una alternativa
-    Y la envía como <respuesta>
-    Entonces se evalúa su <respuesta>
+    Entonces la envía y se evalúa su <respuesta>
     Y la califica con el puntaje relacionado a: <pregunta>
     Y muestra teoría del tema o temas relacionados
     Y muestra una resolución con procedimiento
