@@ -24,6 +24,7 @@ from .models import (
     Tema,
     Universidad,
 )
+from .forms import SolucionAdminForm
 
 
 # Register your models here.
@@ -86,7 +87,7 @@ class ProcesoDeAdmisionModelAdmin(admin.ModelAdmin):
 
 @admin.register(Solucion)
 class SolucionModelAdmin(admin.ModelAdmin):
-    pass
+    form = SolucionAdminForm
 
 
 @admin.register(Tema)
