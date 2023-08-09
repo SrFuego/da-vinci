@@ -72,8 +72,8 @@ def selecciona_una_alternativa(context):
     pass
 
 
-@when("la envía como {respuesta}")
-def la_envia_como_respuesta(context, respuesta):
+@then("la envía y se evalúa su {respuesta}")
+def la_envia_y_se_evalua_como_respuesta(context, respuesta):
     alternativa_seleccionada = Alternativa.objects.get(valor=respuesta)
     data = {"alternativa_seleccionada_id": alternativa_seleccionada.id}
     response = context.test.client.post(
@@ -81,10 +81,6 @@ def la_envia_como_respuesta(context, respuesta):
     )
     context.test.assertEqual(response.status_code, 200)
     context.response_data = response.data
-
-
-@then("se evalúa su {respuesta}")
-def se_evalua_su_respuesta(context, respuesta):
     context.test.assertIn("alternativa_enviada", context.response_data)
     context.test.assertIn("solucion", context.response_data)
     context.test.assertIn(

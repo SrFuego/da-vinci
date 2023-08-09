@@ -71,3 +71,14 @@ def muestra_el_tema(context):
         nombre=context.response_data["tema"]["nombre"]
     )
     context.test.assertIn(tema_response, context.curso_response.tema_set.all())
+
+
+@then(
+    "el examen de admisión en el que vino esa pregunta (institución, año, etc)"
+)
+def step_impl(context):
+    # raise NotImplementedError(
+    #     "STEP: Then el examen de admisión en el que vino esa pregunta (institución, año, etc)"
+    # )
+    # TODO: Mostrar examen de admisión
+    pass
