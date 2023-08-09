@@ -206,6 +206,21 @@ class Alternativa(models.Model):
                     code="invalid",
                 )
 
+    def calificar(self):
+        solucion = self.pregunta.solucion
+        examen_de_admision = self.pregunta.examenes_de_admision.first()
+        es_correcta = solucion.es_correcta(self)
+        if es_correcta:
+            puntaje_obtenido = examen_de_admision.puntaje_correcta
+        else:
+            puntaje_obtenido = examen_de_admision.puntaje_incorrecta
+        data = {
+            "solucion": solucion,
+            "es_correcta": es_correcta,
+            "puntaje_obtenido": puntaje_obtenido,
+        }
+        return data
+
 
 class Solucion(models.Model):
     teoria = models.TextField()

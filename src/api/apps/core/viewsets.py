@@ -42,27 +42,15 @@ class ResolverPreguntaViewSet(GenericViewSet):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        alternativa_seleccionada = get_object_or_404(
+        respuesta = get_object_or_404(
             Alternativa, pk=serializer.data["alternativa_seleccionada_id"]
         )
-        solucion = alternativa_seleccionada.pregunta.solucion
-        examen_de_admision = (
-            alternativa_seleccionada.pregunta.examenes_de_admision.first()
-        )
-        es_correcta = solucion.es_correcta(alternativa_seleccionada)
-        if es_correcta:
-            puntaje_obtenido = examen_de_admision.puntaje_correcta
-        else:
-            puntaje_obtenido = examen_de_admision.puntaje_incorrecta
+        data_calificada = respuesta.calificar()
         data = {
-            "solucion": SolucionSerializer(
-                alternativa_seleccionada.pregunta.solucion
-            ).data,
-            "alternativa_enviada": AlternativaSerializer(
-                alternativa_seleccionada
-            ).data,
-            "es_correcta": es_correcta,
-            "puntaje_obtenido": puntaje_obtenido,
+            "solucion": SolucionSerializer(data_calificada["solucion"]).data,
+            "alternativa_enviada": AlternativaSerializer(respuesta).data,
+            "es_correcta": data_calificada["es_correcta"],
+            "puntaje_obtenido": data_calificada["puntaje_obtenido"],
         }
         return Response(data, status=status.HTTP_200_OK)
 
