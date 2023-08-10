@@ -179,3 +179,4 @@ pyrightconfig.json
 *my_allure/
 
 *.vscode/
+**.DS_Store

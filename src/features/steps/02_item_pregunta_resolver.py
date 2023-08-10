@@ -51,7 +51,7 @@ def una_de_sus_alternativas_es_correcta(context, correcta):
                 resolucion="solucionario de la pregunta",
                 teoria="teoria de la pregunta",
             )
-    response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
+    response = context.test.client.get(reverse("api_v1:pregunta_aleatoria-list"))
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertIn("alternativas", response.data)
@@ -77,7 +77,7 @@ def la_envia_y_se_evalua_como_respuesta(context, respuesta):
     alternativa_seleccionada = Alternativa.objects.get(valor=respuesta)
     data = {"alternativa_seleccionada_id": alternativa_seleccionada.id}
     response = context.test.client.post(
-        reverse("api_v1:enviar_alternativa_seleccionada-list"), data
+        reverse("api_v1:resolver_pregunta_individual-list"), data
     )
     context.test.assertEqual(response.status_code, 200)
     context.response_data = response.data

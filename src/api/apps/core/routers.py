@@ -14,6 +14,6 @@ from .viewsets import MostrarPreguntaViewSet, ResolverPreguntaViewSet
 
 # Create your routers here.
 core_list = (
-    (r"mostrar_pregunta", MostrarPreguntaViewSet),
-    (r"enviar_alternativa_seleccionada", ResolverPreguntaViewSet),
+    (r"pregunta_aleatoria", MostrarPreguntaViewSet),
+    (r"resolver_pregunta_individual", ResolverPreguntaViewSet),
 )
