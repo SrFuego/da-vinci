@@ -46,7 +46,8 @@ def selecciona_pregunta_aleatoria(context):
 
 @then("le muestra un problema de admisión y sus alternativas")
 def muestra_problema_de_admision(context):
-    response = context.test.client.get(reverse("api_v1:mostrar_pregunta-list"))
+    response = context.test.client.get(reverse(
+        "api_v1:pregunta_aleatoria-list"))
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertIn("alternativas", response.data)
