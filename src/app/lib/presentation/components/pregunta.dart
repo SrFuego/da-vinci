@@ -57,7 +57,7 @@ class _PreguntaComponentState extends State<PreguntaComponent> {
                   const SizedBox(height: 30.0),
                   for (var i = 0; i < pregunta.alternativas.length; i++)
                     RadioListTile<int>(
-                      title: Text('${String.fromCharCode(i + 97)}) '
+                      title: Text('${String.fromCharCode(i + 97)})\t'
                           '${pregunta.alternativas[i].valor}'),
                       value: pregunta.alternativas[i].id,
                       groupValue: alternativaSeleccionada,
