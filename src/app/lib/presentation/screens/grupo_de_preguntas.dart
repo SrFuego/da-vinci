@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../components/base.dart';
 
-class GrupoDePreguntas extends StatelessWidget {
-  const GrupoDePreguntas({super.key});
+class GrupoDePreguntasScreen extends StatelessWidget {
+  const GrupoDePreguntasScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

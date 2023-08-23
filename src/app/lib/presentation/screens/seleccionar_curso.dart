@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../components/base.dart';
 
-class SeleccionarCurso extends StatelessWidget {
-  const SeleccionarCurso({super.key});
+class SeleccionarCursoScreen extends StatelessWidget {
+  const SeleccionarCursoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
