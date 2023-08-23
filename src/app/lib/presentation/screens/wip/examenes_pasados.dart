@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../components/base.dart';
+import 'package:da_vinci/presentation/components/base_screen.dart';
 
-class GrupoDePreguntasScreen extends StatelessWidget {
-  const GrupoDePreguntasScreen({super.key});
+class ExamenesPasadosScreen extends StatelessWidget {
+  const ExamenesPasadosScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/base.dart';
+import '../../components/base_screen.dart';
 
 class SeleccionarCursoScreen extends StatelessWidget {
   const SeleccionarCursoScreen({super.key});
