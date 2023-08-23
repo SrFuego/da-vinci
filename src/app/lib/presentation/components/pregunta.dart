@@ -4,14 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:da_vinci/infrastructure/models/pregunta.dart';
 import 'package:da_vinci/infrastructure/repository/pregunta.dart';
 
-enum SingingCharacter {
-  alternativaA,
-  alternativaB,
-  alternativaC,
-  alternativaD,
-  alternativaE
-}
-
 class PreguntaComponent extends StatefulWidget {
   const PreguntaComponent({super.key});
 
@@ -63,10 +55,11 @@ class _PreguntaComponentState extends State<PreguntaComponent> {
                     child: Text(pregunta.enunciado),
                   ),
                   const SizedBox(height: 30.0),
-                  for (var alternativa in pregunta.alternativas)
+                  for (var i = 0; i < pregunta.alternativas.length; i++)
                     RadioListTile<int>(
-                      title: Text('a) ${alternativa.valor}'),
-                      value: alternativa.id,
+                      title: Text('${String.fromCharCode(i + 97)}) '
+                          '${pregunta.alternativas[i].valor}'),
+                      value: pregunta.alternativas[i].id,
                       groupValue: alternativaSeleccionada,
                       onChanged: (int? value) {
                         setState(() {
