@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../components/button_with_description.dart';
-import '../components/base.dart';
+import '../../components/button_with_description.dart';
+import '../../components/base.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
