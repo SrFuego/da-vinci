@@ -10,6 +10,8 @@ class DioClient {
 
   Future<Pregunta> getPregunta() async {
     Pregunta pregunta;
+    print("va traer data de:");
+    print(_baseUrl + ('pregunta_aleatoria/'));
     Response response = await _dio.get(_baseUrl + ('pregunta_aleatoria/'));
     if (response.statusCode == 200) {
       print('Response data: ${response.data}');
