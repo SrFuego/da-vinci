@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'presentation/screens/home.dart';
-import 'presentation/screens/pregunta_individual.dart';
+import 'presentation/screens/navigation/home.dart';
+import 'presentation/screens/navigation/pregunta_individual.dart';
 import 'presentation/screens/grupo_de_preguntas.dart';
 import 'presentation/screens/examenes_pasados.dart';
 import 'presentation/screens/seleccionar_curso.dart';

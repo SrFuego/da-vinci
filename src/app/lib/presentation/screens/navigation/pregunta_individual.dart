@@ -1,7 +1,7 @@
 import 'package:da_vinci/presentation/components/base.dart';
 import 'package:flutter/material.dart';
 
-import '../components/button_with_description.dart';
+import '../../components/button_with_description.dart';
 
 class PreguntaIndividualScreen extends StatelessWidget {
   const PreguntaIndividualScreen({super.key});
