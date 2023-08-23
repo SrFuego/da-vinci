@@ -26,10 +26,10 @@ class DaVinciApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomeScreen(),
         '/individual': (context) => const PreguntaIndividualScreen(),
-        '/individual/aleatoria': (context) => const PreguntaAleatoria(),
-        '/individual/curso': (context) => const SeleccionarCurso(),
-        '/grupo': (context) => const GrupoDePreguntas(),
-        '/examenes': (context) => const ExamenesPasados(),
+        '/individual/aleatoria': (context) => const PreguntaAleatoriaScreen(),
+        '/individual/curso': (context) => const SeleccionarCursoScreen(),
+        '/grupo': (context) => const GrupoDePreguntasScreen(),
+        '/examenes': (context) => const ExamenesPasadosScreen(),
       },
     );
   }
