@@ -23,6 +23,7 @@ class RouterButtonWithDescription extends StatelessWidget {
           },
         ),
         Text(description),
+        const SizedBox(height: 40.0),
       ],
     );
   }
