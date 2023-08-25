@@ -10,6 +10,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+# Django Rest Framework CORS configuration
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
