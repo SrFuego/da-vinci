@@ -7,9 +7,8 @@ import 'presentation/screens/wip/examenes_pasados.dart';
 import 'presentation/screens/wip/seleccionar_curso.dart';
 import 'presentation/screens/pregunta_aleatoria.dart';
 
-import 'application/bloc/pregunta.dart';
-// import 'package:da_vinci/application/bloc/pregunta.dart';
-import 'infrastructure/models/pregunta.dart';
+import 'domain/bloc/pregunta.dart';
+import 'domain/models/pregunta.dart';
 
 void main() {
   runApp(const DaVinciApp());
@@ -23,9 +22,6 @@ class DaVinciApp extends StatefulWidget {
 }
 
 class _DaVinciAppState extends State<DaVinciApp> {
-  // Pregunta? pregunta = PreguntaBloc().getPreguntaAleatoria();
-  // Pregunta? pregunta;
-
   final preguntaBloc = PreguntaBloc();
 
   Pregunta _pregunta = Pregunta.fromJson({
