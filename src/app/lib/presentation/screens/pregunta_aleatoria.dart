@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
 import '../../domain/bloc/pregunta.dart';
 import '../../domain/models/pregunta.dart';
 
