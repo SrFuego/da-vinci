@@ -8,34 +8,49 @@ class DioClient {
   // https://srfuego.pythonanywhere.com/api/v1/pregunta_aleatoria/
   final _baseUrl = 'https://srfuego.pythonanywhere.com/api/v1/';
 
-  Future<Pregunta> getPregunta() async {
-    Pregunta pregunta;
-    print("va traer data de:");
-    print(_baseUrl + ('pregunta_aleatoria/'));
-    Response response = await _dio.get(_baseUrl + ('pregunta_aleatoria/'));
-    if (response.statusCode == 200) {
-      print('Response data: ${response.data}');
-      pregunta = Pregunta.fromJson(response.data);
-      return pregunta;
-    } else {
-      // Si esta respuesta no fue OK, lanza un error.
-      print('Dio error!');
-      throw Exception('Failed to load post');
-    }
+  // Future<Pregunta> getPregunta() async {
+  //   // Pregunta pregunta;
+  //   print("va traer data de:");
+  //   print(_baseUrl + ('pregunta_aleatoria/'));
+  //   Response response = await _dio.get(_baseUrl + ('pregunta_aleatoria/'));
+  //   if (response.statusCode == 200) {
+  //     print('Response data: ${response.data}');
+  //     return Pregunta.fromJson(response.data);
+  //   } else {
+  //     // Si esta respuesta no fue OK, lanza un error.
+  //     print('Dio error!');
+  //     throw Exception('Failed to load post');
+  //   }
+  // }
 
-    // } on DioException catch (e) {
-    //   // The request was made and the server responded with a status code
-    //   // that falls out of the range of 2xx and is also not 304.
-    //   if (e.response != null) {
-    //     print('Dio error!');
-    //     print('STATUS: ${e.response?.statusCode}');
-    //     print('DATA: ${e.response?.data}');
-    //     print('HEADERS: ${e.response?.headers}');
-    //   } else {
-    //     // Error due to setting up or sending the request
-    //     print('Error sending request!');
-    //     print(e.message);
-    //   }
+  Pregunta getPregunta() {
+    // Future<Pregunta> getPregunta() async {
+    Pregunta pregunta = Pregunta.fromJson({
+      "id": 1,
+      "enunciado": "¿Cuánto es 2 + 2?",
+      "alternativas": [
+        {"id": 3, "valor": "5"},
+        {"id": 2, "valor": "4"},
+        {"id": 4, "valor": "6"},
+        {"id": 1, "valor": "3"},
+        {"id": 5, "valor": "7"}
+      ],
+      "tema": {"id": 1, "nombre": "Operaciones combinadas"},
+      "curso": {"id": 5, "nombre": "Álgebra"}
+    });
+
+    // print("va traer data de:");
+    // print(_baseUrl + ('pregunta_aleatoria/'));
+    // Response response = await _dio.get(_baseUrl + ('pregunta_aleatoria/'));
+    // if (response.statusCode == 200) {
+    //   print('Response data: ${response.data}');
+    //   return Pregunta.fromJson(response.data);
+    // } else {
+    //   // Si esta respuesta no fue OK, lanza un error.
+    //   print('Dio error!');
+    //   throw Exception('Failed to load post');
     // }
+
+    return pregunta;
   }
 }
