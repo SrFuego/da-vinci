@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:da_vinci/presentation/components/base_screen.dart';
+import '../../components/base_screen.dart';
 
 class ExamenesPasadosScreen extends StatelessWidget {
   const ExamenesPasadosScreen({super.key});
