@@ -1,7 +1,8 @@
-import 'package:da_vinci/domain/models/solucion.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
+import '../../domain/models/solucion.dart';
+
 import '../components/solucion.dart';
 
 class SolucionScreen extends StatefulWidget {
