@@ -17,10 +17,12 @@ class BaseScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
       ),
-      body: Center(
-        child: Column(
-          children: body,
-        ),
+      body: ListView(
+        children: [
+          Column(
+            children: body,
+          ),
+        ],
       ),
     );
   }
