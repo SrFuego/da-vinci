@@ -7,6 +7,7 @@ class DioClient {
 
   final Dio _dio = Dio(BaseOptions(
       baseUrl: 'https://srfuego.pythonanywhere.com/api/v1',
+      // baseUrl: 'http://localhost:8000/api/v1',
       connectTimeout: const Duration(seconds: 60),
       receiveTimeout: const Duration(seconds: 60),
       responseType: ResponseType.json));

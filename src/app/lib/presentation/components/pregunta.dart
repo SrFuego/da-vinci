@@ -1,4 +1,5 @@
 // import 'package:da_vinci/main.dart';
+import 'package:da_vinci/presentation/screens/solucion_pregunta.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/models/pregunta.dart';
@@ -45,10 +46,17 @@ class _PreguntaComponentState extends State<PreguntaComponent> {
                 setState(() {
                   alternativaSeleccionada = value;
                 });
+                print("alternativa seleccionada id: $value");
               },
             ),
           const SizedBox(height: 50.0),
-          widget.botonesdeaccion
+          widget.botonesdeaccion,
+          FilledButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/individual/aleatoria/solucion');
+            },
+            child: const Text('Enviar'),
+          ),
         ],
       ),
     );

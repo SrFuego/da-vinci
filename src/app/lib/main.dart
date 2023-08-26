@@ -6,6 +6,7 @@ import 'presentation/screens/wip/grupo_de_preguntas.dart';
 import 'presentation/screens/wip/examenes_pasados.dart';
 import 'presentation/screens/wip/seleccionar_curso.dart';
 import 'presentation/screens/pregunta_aleatoria.dart';
+import 'presentation/screens/solucion_pregunta.dart';
 
 import 'domain/bloc/pregunta.dart';
 import 'domain/models/pregunta.dart';
@@ -59,6 +60,7 @@ class _DaVinciAppState extends State<DaVinciApp> {
           '/': (context) => const HomeScreen(),
           '/individual': (context) => const PreguntaIndividualScreen(),
           '/individual/aleatoria': (context) => const PreguntaAleatoriaScreen(),
+          '/individual/aleatoria/solucion': (context) => const SolucionScreen(),
           '/individual/curso': (context) => const SeleccionarCursoScreen(),
           '/grupo': (context) => const GrupoDePreguntasScreen(),
           '/examenes': (context) => const ExamenesPasadosScreen(),
