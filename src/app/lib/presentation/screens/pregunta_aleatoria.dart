@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
 import '../../domain/models/pregunta.dart';
-import '../../domain/models/solucion.dart';
-import 'solucion_pregunta.dart';
 
 import '../components/pregunta.dart';
 
@@ -19,24 +17,11 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
   @override
   Widget build(BuildContext context) {
     final preguntaBloc = PreguntaBloc();
-    Widget botonesDeAccion = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        FilledButton.tonal(
-          onPressed: () {
-            setState(() {});
-          },
-          child: const Text('Saltar'),
-        ),
-        const SizedBox(width: 70.0),
-        FilledButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/individual/aleatoria/solucion',
-                arguments: const SolucionScreen(respuestaId: 10));
-          },
-          child: const Text('estatico'),
-        ),
-      ],
+    Widget botonSaltar = FilledButton.tonal(
+      onPressed: () {
+        setState(() {});
+      },
+      child: const Text('Saltar'),
     );
 
     return FutureBuilder(
@@ -48,7 +33,7 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
             if (pregunta != null) {
               return PreguntaComponent(
                 pregunta: pregunta,
-                botonesdeaccion: botonesDeAccion,
+                botonSaltar: botonSaltar,
               );
             } else {
               return const Placeholder();

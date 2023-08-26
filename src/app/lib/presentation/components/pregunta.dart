@@ -1,15 +1,13 @@
-// import 'package:da_vinci/main.dart';
-import 'package:da_vinci/presentation/screens/solucion_pregunta.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/models/pregunta.dart';
 
 class PreguntaComponent extends StatefulWidget {
-  final Pregunta pregunta;
-  final Widget botonesdeaccion;
-
   const PreguntaComponent(
-      {super.key, required this.pregunta, required this.botonesdeaccion});
+      {super.key, required this.pregunta, required this.botonSaltar});
+
+  final Pregunta pregunta;
+  final Widget botonSaltar;
 
   @override
   State<PreguntaComponent> createState() => _PreguntaComponentState();
@@ -46,16 +44,23 @@ class _PreguntaComponentState extends State<PreguntaComponent> {
                 setState(() {
                   alternativaSeleccionada = value;
                 });
-                print("alternativa seleccionada id: $value");
+                // print("alternativa seleccionada id: $value");
               },
             ),
           const SizedBox(height: 50.0),
-          widget.botonesdeaccion,
-          FilledButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/individual/aleatoria/solucion');
-            },
-            child: const Text('Enviar'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              widget.botonSaltar,
+              const SizedBox(width: 70.0),
+              FilledButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/individual/aleatoria/solucion',
+                      arguments: {'respuestaId': alternativaSeleccionada});
+                },
+                child: const Text('Enviar'),
+              ),
+            ],
           ),
         ],
       ),
