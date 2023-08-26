@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
 import '../../domain/models/pregunta.dart';
+import '../../domain/models/solucion.dart';
+import 'solucion_pregunta.dart';
 
 import '../components/pregunta.dart';
 
@@ -29,9 +31,10 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
         const SizedBox(width: 70.0),
         FilledButton(
           onPressed: () {
-            setState(() {});
+            Navigator.pushNamed(context, '/individual/aleatoria/solucion',
+                arguments: const SolucionScreen(respuestaId: 10));
           },
-          child: const Text('Enviar'),
+          child: const Text('estatico'),
         ),
       ],
     );
