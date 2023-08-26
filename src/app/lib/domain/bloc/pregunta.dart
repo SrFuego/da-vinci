@@ -8,13 +8,10 @@ class PreguntaBloc extends ChangeNotifier {
   final repository = PreguntaRepositoryImpl();
 
   Future<Pregunta> getPreguntaAleatoria() {
-    Future<Pregunta> pregunta = repository.getPregunta();
-    return pregunta;
+    return repository.getPregunta();
   }
 
-  Future<Solucion> postResolverPreguntaAleatoria(int id) {
-    Future<Solucion> solucion = repository.postResolverPregunta(id);
-    print('en el bloc');
-    return solucion;
+  Future<RespuestaEvaluada> postResolverPreguntaAleatoria(int id) {
+    return repository.postResolverPregunta(id);
   }
 }
