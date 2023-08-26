@@ -23,46 +23,45 @@ class _PreguntaComponentState extends State<PreguntaComponent> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.pregunta.curso.nombre),
       ),
-      body: ListView(
-        children: <Widget>[
-          const SizedBox(height: 15.0),
-          Center(
-            child: Text(widget.pregunta.tema.nombre + (':')),
-          ),
-          const SizedBox(height: 25.0),
-          Center(
-            child: Text(widget.pregunta.enunciado),
-          ),
-          const SizedBox(height: 30.0),
-          for (var i = 0; i < widget.pregunta.alternativas.length; i++)
-            RadioListTile<int>(
-              title: Text('${String.fromCharCode(i + 97)})\t'
-                  '${widget.pregunta.alternativas[i].valor}'),
-              value: widget.pregunta.alternativas[i].id,
-              groupValue: alternativaSeleccionada,
-              onChanged: (int? value) {
-                setState(() {
-                  alternativaSeleccionada = value;
-                });
-                // print("alternativa seleccionada id: $value");
-              },
-            ),
-          const SizedBox(height: 50.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              widget.botonSaltar,
-              const SizedBox(width: 70.0),
-              FilledButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/individual/aleatoria/solucion',
-                      arguments: {'respuestaId': alternativaSeleccionada});
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            const SizedBox(height: 15.0),
+            Text(widget.pregunta.tema.nombre + (':')),
+            const SizedBox(height: 25.0),
+            Text(widget.pregunta.enunciado),
+            const SizedBox(height: 30.0),
+            for (var i = 0; i < widget.pregunta.alternativas.length; i++)
+              RadioListTile<int>(
+                title: Text('${String.fromCharCode(i + 97)})\t'
+                    '${widget.pregunta.alternativas[i].valor}'),
+                value: widget.pregunta.alternativas[i].id,
+                groupValue: alternativaSeleccionada,
+                onChanged: (int? value) {
+                  setState(() {
+                    alternativaSeleccionada = value;
+                  });
+                  // print("alternativa seleccionada id: $value");
                 },
-                child: const Text('Enviar'),
               ),
-            ],
-          ),
-        ],
+            const SizedBox(height: 50.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                widget.botonSaltar,
+                const SizedBox(width: 70.0),
+                FilledButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                        context, '/individual/aleatoria/solucion',
+                        arguments: {'respuestaId': alternativaSeleccionada});
+                  },
+                  child: const Text('Enviar'),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
