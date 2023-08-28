@@ -198,13 +198,14 @@ class Alternativa(models.Model):
 
     def clean(self):
         if not self.id:
-            if not self.pregunta.falta_completar_alternativas:
-                raise ValidationError(
-                    "Ya tiene {} alternativas".format(
-                        self.pregunta.cantidad_alternativas_registradas
-                    ),
-                    code="invalid",
-                )
+            if self.pregunta.id:
+                if not self.pregunta.falta_completar_alternativas:
+                    raise ValidationError(
+                        "Ya tiene {} alternativas".format(
+                            self.pregunta.cantidad_alternativas_registradas
+                        ),
+                        code="invalid",
+                    )
 
     def calificar(self):
         solucion = self.pregunta.solucion
