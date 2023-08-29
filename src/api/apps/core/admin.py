@@ -28,9 +28,9 @@ from .forms import SolucionAdminForm
 
 
 # Register your models here.
-@admin.register(Alternativa)
-class AlternativaModelAdmin(admin.ModelAdmin):
-    list_display = ["id", "valor", "pregunta"]
+# @admin.register(Alternativa)
+# class AlternativaModelAdmin(admin.ModelAdmin):
+#     list_display = ["id", "valor", "pregunta"]
 
 
 class AlternativaInLine(admin.TabularInline):
