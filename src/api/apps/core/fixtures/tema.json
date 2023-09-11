@@ -30,5 +30,93 @@
         "nombre": "Comprensión de Lectura",
         "curso": 1
     }
+},
+{
+    "model": "core.tema",
+    "pk": 5,
+    "fields": {
+        "nombre": "Historia de San Marcos",
+        "curso": 11
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 6,
+    "fields": {
+        "nombre": "Literatura Española",
+        "curso": 8
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 7,
+    "fields": {
+        "nombre": "Cultura prehispanicas",
+        "curso": 11
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 8,
+    "fields": {
+        "nombre": "Fisica conceptos",
+        "curso": 16
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 9,
+    "fields": {
+        "nombre": "triangulos",
+        "curso": 4
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 10,
+    "fields": {
+        "nombre": "Cultura inca",
+        "curso": 11
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 11,
+    "fields": {
+        "nombre": "Los elementos primarios",
+        "curso": 17
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 12,
+    "fields": {
+        "nombre": "Zoología",
+        "curso": 18
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 13,
+    "fields": {
+        "nombre": "Cuerpo humano",
+        "curso": 18
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 14,
+    "fields": {
+        "nombre": "Triángulo",
+        "curso": 4
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 15,
+    "fields": {
+        "nombre": "Hidráulica",
+        "curso": 13
+    }
 }
 ]

@@ -94,5 +94,533 @@
         "valor": "Alan García",
         "pregunta": 3
     }
+},
+{
+    "model": "core.alternativa",
+    "pk": 14,
+    "fields": {
+        "valor": "1821",
+        "pregunta": 4
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 15,
+    "fields": {
+        "valor": "1651",
+        "pregunta": 4
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 16,
+    "fields": {
+        "valor": "1553",
+        "pregunta": 4
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 17,
+    "fields": {
+        "valor": "1442",
+        "pregunta": 4
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 18,
+    "fields": {
+        "valor": "1551",
+        "pregunta": 4
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 19,
+    "fields": {
+        "valor": "Adolfo Becquer",
+        "pregunta": 5
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 20,
+    "fields": {
+        "valor": "Miguel de Cervantes",
+        "pregunta": 5
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 21,
+    "fields": {
+        "valor": "Lope de Vega",
+        "pregunta": 5
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 22,
+    "fields": {
+        "valor": "William Shakespeare",
+        "pregunta": 5
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 23,
+    "fields": {
+        "valor": "2028",
+        "pregunta": 5
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 27,
+    "fields": {
+        "valor": "Calderon de la Barca",
+        "pregunta": 5
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 28,
+    "fields": {
+        "valor": "Homero",
+        "pregunta": 7
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 29,
+    "fields": {
+        "valor": "Ulises",
+        "pregunta": 7
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 30,
+    "fields": {
+        "valor": "Zeuxis",
+        "pregunta": 7
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 31,
+    "fields": {
+        "valor": "Platón",
+        "pregunta": 7
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 32,
+    "fields": {
+        "valor": "Plutarco",
+        "pregunta": 7
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 33,
+    "fields": {
+        "valor": "Chimú",
+        "pregunta": 8
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 34,
+    "fields": {
+        "valor": "Chancha",
+        "pregunta": 8
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 35,
+    "fields": {
+        "valor": "Paracas",
+        "pregunta": 8
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 36,
+    "fields": {
+        "valor": "Nachoc",
+        "pregunta": 8
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 37,
+    "fields": {
+        "valor": "Chavín",
+        "pregunta": 8
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 38,
+    "fields": {
+        "valor": "Galileo",
+        "pregunta": 9
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 39,
+    "fields": {
+        "valor": "Lebniz",
+        "pregunta": 9
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 40,
+    "fields": {
+        "valor": "Newton",
+        "pregunta": 9
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 41,
+    "fields": {
+        "valor": "Gauss",
+        "pregunta": 9
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 42,
+    "fields": {
+        "valor": "Arquimedes",
+        "pregunta": 9
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 43,
+    "fields": {
+        "valor": "120 grados",
+        "pregunta": 10
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 44,
+    "fields": {
+        "valor": "80 grados",
+        "pregunta": 10
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 45,
+    "fields": {
+        "valor": "90 grados",
+        "pregunta": 10
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 46,
+    "fields": {
+        "valor": "360 grados",
+        "pregunta": 10
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 47,
+    "fields": {
+        "valor": "180 grados",
+        "pregunta": 10
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 48,
+    "fields": {
+        "valor": "Hiran Bingman",
+        "pregunta": 11
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 49,
+    "fields": {
+        "valor": "Alexander Von Humbolt",
+        "pregunta": 11
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 50,
+    "fields": {
+        "valor": "Julio Cesar Tello",
+        "pregunta": 11
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 51,
+    "fields": {
+        "valor": "Fernando de Magallanes",
+        "pregunta": 11
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 52,
+    "fields": {
+        "valor": "Hernan Cortes",
+        "pregunta": 11
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 53,
+    "fields": {
+        "valor": "Hidrógeno",
+        "pregunta": 12
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 54,
+    "fields": {
+        "valor": "Carbono",
+        "pregunta": 12
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 55,
+    "fields": {
+        "valor": "Nitrógeno",
+        "pregunta": 12
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 56,
+    "fields": {
+        "valor": "Litio",
+        "pregunta": 12
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 57,
+    "fields": {
+        "valor": "Oxígeno",
+        "pregunta": 12
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 63,
+    "fields": {
+        "valor": "Conejo",
+        "pregunta": 14
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 64,
+    "fields": {
+        "valor": "Cerdo",
+        "pregunta": 14
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 65,
+    "fields": {
+        "valor": "Gallina",
+        "pregunta": 14
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 66,
+    "fields": {
+        "valor": "Leopardo",
+        "pregunta": 14
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 67,
+    "fields": {
+        "valor": "Delfín",
+        "pregunta": 14
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 68,
+    "fields": {
+        "valor": "300",
+        "pregunta": 15
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 69,
+    "fields": {
+        "valor": "206",
+        "pregunta": 15
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 70,
+    "fields": {
+        "valor": "150",
+        "pregunta": 15
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 71,
+    "fields": {
+        "valor": "200",
+        "pregunta": 15
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 72,
+    "fields": {
+        "valor": "190",
+        "pregunta": 15
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 73,
+    "fields": {
+        "valor": "Teorema de Euclides",
+        "pregunta": 16
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 74,
+    "fields": {
+        "valor": "Teorema de Thales",
+        "pregunta": 16
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 75,
+    "fields": {
+        "valor": "Teorema de Pitog",
+        "pregunta": 16
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 76,
+    "fields": {
+        "valor": "Teorema Tolomeo",
+        "pregunta": 16
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 77,
+    "fields": {
+        "valor": "Teorema de Pitágoras",
+        "pregunta": 16
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 78,
+    "fields": {
+        "valor": "Amazonas",
+        "pregunta": 17
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 79,
+    "fields": {
+        "valor": "Misisipi",
+        "pregunta": 17
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 80,
+    "fields": {
+        "valor": "Nilo",
+        "pregunta": 17
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 81,
+    "fields": {
+        "valor": "Ganges",
+        "pregunta": 17
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 82,
+    "fields": {
+        "valor": "Volga",
+        "pregunta": 17
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 83,
+    "fields": {
+        "valor": "Tigre",
+        "pregunta": 18
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 84,
+    "fields": {
+        "valor": "Gato",
+        "pregunta": 18
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 85,
+    "fields": {
+        "valor": "Puma",
+        "pregunta": 18
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 86,
+    "fields": {
+        "valor": "Chita",
+        "pregunta": 18
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 87,
+    "fields": {
+        "valor": "Leopardo",
+        "pregunta": 18
+    }
 }
 ]
