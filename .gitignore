@@ -3,42 +3,42 @@
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
-src/api/__pycache__/
-src/api/*.py[cod]
-src/api/*$py.class
+src/api/**/__pycache__/
+src/api/**/*.py[cod]
+src/api/**/*$py.class
 
 # C extensions
-src/api/*.so
+src/api/**/*.so
 
 # Distribution / packaging
-src/api/.Python
-src/api/build/
-src/api/develop-eggs/
-src/api/dist/
-src/api/downloads/
-src/api/eggs/
-src/api/.eggs/
-src/api/lib/
-src/api/lib64/
-src/api/parts/
-src/api/sdist/
-src/api/var/
-src/api/wheels/
-src/api/share/python-wheels/
-src/api/*.egg-info/
-src/api/.installed.cfg
-src/api/*.egg
-src/api/MANIFEST
+src/api/**/.Python
+src/api/**/build/
+src/api/**/develop-eggs/
+src/api/**/dist/
+src/api/**/downloads/
+src/api/**/eggs/
+src/api/**/.eggs/
+src/api/**/lib/
+src/api/**/lib64/
+src/api/**/parts/
+src/api/**/sdist/
+src/api/**/var/
+src/api/**/wheels/
+src/api/**/share/python-wheels/
+src/api/**/*.egg-info/
+src/api/**/.installed.cfg
+src/api/**/*.egg
+src/api/**/MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
-src/api/*.manifest
-src/api/*.spec
+src/api/**/*.manifest
+src/api/**/*.spec
 
 # Installer logs
-src/api/pip-log.txt
-src/api/pip-delete-this-directory.txt
+src/api/**/pip-log.txt
+src/api/**/pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
@@ -56,20 +56,20 @@ coverage.xml
 cover/
 
 # Translations
-src/api/*.mo
-src/api/*.pot
+src/api/**/*.mo
+src/api/**/*.pot
 
 # Django stuff:
-src/api/*.log
-src/api/local_settings.py
-src/api/db.sqlite3
-src/api/db.sqlite3-journal
+src/api/**/*.log
+src/api/**/local_settings.py
+src/api/**/db.sqlite3
+src/api/**/db.sqlite3-journal
 
 # Sphinx documentation
 src/api/docs/_build/
 
 # PyBuilder
-src/api/.pybuilder/
+src/api/**/.pybuilder/
 src/api/target/
 
 # IPython
