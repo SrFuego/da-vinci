@@ -28,5 +28,135 @@
         "pregunta": 3,
         "alternativa_correcta": 11
     }
+},
+{
+    "model": "core.solucion",
+    "pk": 4,
+    "fields": {
+        "teoria": "En la epoca de Oro",
+        "resolucion": "Don Quijote de la Mancha es una novela escrita por el español Miguel de Cervantes Saavedra. Publicada su primera parte con el título de El ingenioso hidalgo don Quijote de la Mancha a comienzos de 1605",
+        "pregunta": 5,
+        "alternativa_correcta": 20
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 6,
+    "fields": {
+        "teoria": "El elemento más abundante es el oxígeno (O)",
+        "resolucion": "Que representa el 49,5% de la masa total en la materia inerte, y que constituye hasta el 62% en los seres humanos y en los animales y casi el 40% en las plantas.",
+        "pregunta": 12,
+        "alternativa_correcta": 57
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 7,
+    "fields": {
+        "teoria": "Ley física enunciada por Isaac Newton.",
+        "resolucion": "Que establece que una partícula de masa M1 ejerce una fuerza de atracción sobre otra de masa M2, que s directamente proporcional al producto de las dos masas e inversamente proporcional al cuadrado de la distancia que las separa.",
+        "pregunta": 9,
+        "alternativa_correcta": 40
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 8,
+    "fields": {
+        "teoria": "Es una universidad pública ubicada en la ciudad de Lima, Perú.",
+        "resolucion": "Su fundación oficial fue gestada por fray Tomás de San Martín y se concretó el 12 de mayo de 1551 con el decreto del emperador Carlos I de España y V del Sacro Imperio Romano Germánico.",
+        "pregunta": 4,
+        "alternativa_correcta": 18
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 9,
+    "fields": {
+        "teoria": "La historiografía norteamericana sostiene que Machu Picchu fue “descubierto” el 24 de julio de 1911.",
+        "resolucion": "Por el profesor y explorador estadounidense Hiram Bingham (1875-1956) en un viaje de exploración acompañado por algunos colegas de la Universidad de Yale.",
+        "pregunta": 11,
+        "alternativa_correcta": 48
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 10,
+    "fields": {
+        "teoria": "Por tanto",
+        "resolucion": "La suma de los ángulos internos de un triángulo cualquiera es 180°.",
+        "pregunta": 10,
+        "alternativa_correcta": 47
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 11,
+    "fields": {
+        "teoria": "Las “cabezas clavas” son cabezas de piedra talladas, que fueron insertadas en los muros de los templos del antiguo Perú.",
+        "resolucion": "Las Cabezas Clavas representan cabezas de transición humana a seres míticos. Fueron halladas empotradas en una fila horizontal y en forma equidistante en los muros en lo alto del Templo de Chavín de Huántar.",
+        "pregunta": 8,
+        "alternativa_correcta": 37
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 12,
+    "fields": {
+        "teoria": "Poeta griego al que se le atribuye la autoría de las principales poesías épicas griegas: la Ilíada y la Odisea.",
+        "resolucion": "La Odisea AUTOR Homero (c. siglo VIII a. C.)",
+        "pregunta": 7,
+        "alternativa_correcta": 28
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 13,
+    "fields": {
+        "teoria": "Los cerdos comen carne y cualquier tipo de alimento.",
+        "resolucion": "Son omnívoros.",
+        "pregunta": 14,
+        "alternativa_correcta": 64
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 14,
+    "fields": {
+        "teoria": "A la larga, estos se acaban fusionando (se unen al crecer) para pasar a formar el esqueleto de 206 huesos de una persona adulta.",
+        "resolucion": "Cuando nace, el cuerpo de un bebé contiene aproximadamente 300 huesos.",
+        "pregunta": 15,
+        "alternativa_correcta": 68
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 15,
+    "fields": {
+        "teoria": "En un triángulo rectángulo, la hipotenusa es el lado más largo.",
+        "resolucion": "El Teorema de Pitágoras es una relación entre las longitudes de los catetos al cuadrado de un lado.",
+        "pregunta": 16,
+        "alternativa_correcta": 77
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 16,
+    "fields": {
+        "teoria": "Esto debería significar que el Nilo es el río más largo del planeta.",
+        "resolucion": "Oficialmente, el río Nilo tiene 6.650 kilómetros de longitud y el río Amazonas mide 6.400.",
+        "pregunta": 17,
+        "alternativa_correcta": 80
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 17,
+    "fields": {
+        "teoria": "Alcanza una velocidad máxima de entorno los 130 kilómetros por hora y sigue siendo el felino más veloz de todos los que se conocen.",
+        "resolucion": "El animal terrestre más rápido es el guepardo (Acinonyx jubatus). Este mamífero carnívoro, también conocido como chita.",
+        "pregunta": 18,
+        "alternativa_correcta": 86
+    }
 }
 ]

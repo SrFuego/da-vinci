@@ -29,10 +29,179 @@
     "model": "core.pregunta",
     "pk": 3,
     "fields": {
-        "enunciado": "¿Quién ocupa la presidencia en el Perú?",
+        "enunciado": "¿Quién ocupa actualmente la presidencia en el Perú?",
         "lectura": null,
         "tema": 3,
         "cantidad_de_alternativas": 4,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 4,
+    "fields": {
+        "enunciado": "¿En qué año se fundó la UNMSM?",
+        "lectura": null,
+        "tema": 5,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 5,
+    "fields": {
+        "enunciado": "¿Quién escribió el \"Don Quijote\"?",
+        "lectura": null,
+        "tema": 6,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 7,
+    "fields": {
+        "enunciado": "¿Quién escribió la Odisea?",
+        "lectura": null,
+        "tema": 6,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 8,
+    "fields": {
+        "enunciado": "¿De qué cultura eran las cabezas clavas?",
+        "lectura": null,
+        "tema": 7,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 9,
+    "fields": {
+        "enunciado": "¿Quién enunció la ley de la gravitación universal?",
+        "lectura": null,
+        "tema": 8,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 10,
+    "fields": {
+        "enunciado": "¿Cuánto suman los ángulos internos de un triángulo?",
+        "lectura": null,
+        "tema": 9,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 11,
+    "fields": {
+        "enunciado": "¿Quién descubrió Macchu Picchu?",
+        "lectura": null,
+        "tema": 7,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 12,
+    "fields": {
+        "enunciado": "¿Cuál es el elemento químico más abundante de la tierra?",
+        "lectura": null,
+        "tema": 11,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 14,
+    "fields": {
+        "enunciado": "Seleccione el animal omnívoro",
+        "lectura": null,
+        "tema": 12,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 15,
+    "fields": {
+        "enunciado": "¿Cuántos huesos tiene un recién nacido?",
+        "lectura": null,
+        "tema": 13,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 16,
+    "fields": {
+        "enunciado": "¿Cuál es el teorema matemático que tiene cateto opuesto o adyacente?",
+        "lectura": null,
+        "tema": 14,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 17,
+    "fields": {
+        "enunciado": "¿Cuál es el río más extenso del mundo?",
+        "lectura": null,
+        "tema": 15,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 18,
+    "fields": {
+        "enunciado": "¿Qué animal terrestre es el más veloz?",
+        "lectura": null,
+        "tema": 12,
+        "cantidad_de_alternativas": 5,
         "examenes_de_admision": [
             1
         ]
