@@ -16,6 +16,7 @@ from django import forms
 class SolucionAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields[
-            "alternativa_correcta"
-        ].queryset = self.instance.pregunta.alternativas_registradas.all()
+        if self.instance.id:
+            self.fields[
+                "alternativa_correcta"
+            ].queryset = self.instance.pregunta.alternativas_registradas.all()
