@@ -127,7 +127,7 @@ class Lectura(models.Model):
 
 
 class Pregunta(models.Model):
-    enunciado = models.CharField(max_length=50)
+    enunciado = models.CharField(max_length=150)
     examenes_de_admision = models.ManyToManyField("ExamenDeAdmision")
     lectura = models.ForeignKey(
         "Lectura", on_delete=models.CASCADE, blank=True, null=True
