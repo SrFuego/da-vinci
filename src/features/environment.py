@@ -5,6 +5,7 @@ from rest_framework.test import APIClient
 # def django_ready(context, scenario):
 def django_ready(context):
     context.test.client = APIClient()
+    context.api_localhost = "http://localhost:8000/api/v1/"
 
 
 def before_all(context):
