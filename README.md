@@ -40,7 +40,6 @@ Para mostrar las preguntas de admisión es necesario ingresarlas al sistema por 
     - [Actualizar fixtures](#actualizar-fixtures)
     - [Correr tests de características](#correr-tests-de-características)
     - [Correr coverage de codigo](#correr-coverage-de-codigo)
-- [Se vienen cositas](#se-vienen-cositas)
 
 
 ### Levantar el proyecto
@@ -98,19 +97,3 @@ Para sólo un modelo:
 `coverage run src/api/manage.py behave`
 
 `coverage html`
-
-
-# Se vienen cositas
-
-> v0.1.1:
-- Separar el API en apps de Django (todo está en `core`)
-
-> v0.9.0:
-- UI Final
-  - App
-  - Web
-- UX Final
-
-> v1.0.0:
-- App
-- Web
