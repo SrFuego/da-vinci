@@ -14,16 +14,44 @@ from rest_framework.viewsets import GenericViewSet
 
 
 # Local imports
-from .models import Pregunta, Alternativa
+from .models import Alternativa, Curso, Pregunta
 from .serializers import (
     AlternativaSerializer,
     AlternativaSeleccionadaSerializer,
+    CursoSerializer,
     PreguntaSerializer,
     SolucionSerializer,
 )
 
 
 # Create your viewsets here.
+class CursoViewSet(GenericViewSet):
+    serializer_class = CursoSerializer
+
+    def get_queryset(self):
+        return Curso.objects.order_by("nombre")
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class MostrarPreguntaPorCursoViewSet(GenericViewSet):
+    serializer_class = PreguntaSerializer
+
+    def get_queryset(self):
+        curso_seleccionado = Curso.objects.get(id=self.request.query_params["curso_id"])
+        return Pregunta.to_ui_objects.filter(
+            tema__in=curso_seleccionado.tema_set.all()
+        ).order_by("?")
+
+    def list(self, request, *args, **kwargs):
+        pregunta_random = self.get_queryset().first()
+        serializer = self.get_serializer(pregunta_random)
+        return Response(serializer.data)
+
+
 class MostrarPreguntaViewSet(GenericViewSet):
     serializer_class = PreguntaSerializer
 
