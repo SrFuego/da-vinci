@@ -29,7 +29,7 @@ class CursoViewSet(GenericViewSet):
     serializer_class = CursoSerializer
 
     def get_queryset(self):
-        return Curso.objects.order_by("nombre")
+        return Curso.to_ui_objects.all()
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
