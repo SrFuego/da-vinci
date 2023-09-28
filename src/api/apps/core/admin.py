@@ -73,6 +73,8 @@ class LecturaModelAdmin(admin.ModelAdmin):
 @admin.register(Pregunta)
 class PreguntaModelAdmin(admin.ModelAdmin):
     inlines = [AlternativaInLine]
+    list_display = ["enunciado", "tema", "curso"]
+    list_filter = ["tema", "tema__curso"]
 
 
 @admin.register(PreguntasPorCurso)
