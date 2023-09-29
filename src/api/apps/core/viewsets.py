@@ -34,7 +34,8 @@ class CursoViewSet(GenericViewSet):
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+        data = {"cursos": serializer.data}
+        return Response(data)
 
 
 class MostrarPreguntaPorCursoViewSet(GenericViewSet):
