@@ -1,18 +1,10 @@
-// To parse this JSON data, do
-//
-//     final pregunta = preguntaFromJson(jsonString);
-
-// import 'dart:convert';
-
-// Pregunta preguntaFromJson(String str) => Pregunta.fromJson(json.decode(str));
-
-// String preguntaToJson(Pregunta data) => json.encode(data.toJson());
+import 'curso.dart';
 
 class Pregunta {
   final int id;
   final String enunciado;
   final List<Alternativa> alternativas;
-  final Curso tema;
+  final Tema tema;
   final Curso curso;
 
   Pregunta({
@@ -28,7 +20,7 @@ class Pregunta {
         enunciado: json["enunciado"],
         alternativas: List<Alternativa>.from(
             json["alternativas"].map((x) => Alternativa.fromJson(x))),
-        tema: Curso.fromJson(json["tema"]),
+        tema: Tema.fromJson(json["tema"]),
         curso: Curso.fromJson(json["curso"]),
       );
 
@@ -58,25 +50,5 @@ class Alternativa {
   Map<String, dynamic> toJson() => {
         "id": id,
         "valor": valor,
-      };
-}
-
-class Curso {
-  final int id;
-  final String nombre;
-
-  Curso({
-    required this.id,
-    required this.nombre,
-  });
-
-  factory Curso.fromJson(Map<String, dynamic> json) => Curso(
-        id: json["id"],
-        nombre: json["nombre"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "nombre": nombre,
       };
 }
