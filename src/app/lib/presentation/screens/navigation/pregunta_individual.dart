@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../components/navigation_button.dart';
-import '../../components/base_screen.dart';
+import '../../components/route_button.dart';
+import '../base_screen.dart';
 
 class PreguntaIndividualScreen extends StatelessWidget {
   const PreguntaIndividualScreen({super.key});
@@ -15,12 +15,12 @@ class PreguntaIndividualScreen extends StatelessWidget {
         RouterButtonWithDescription(
             title: 'Pregunta Aleatoria',
             description: 'Muestra pregunta, califica y muestra respuesta',
-            route: '/individual/aleatoria'),
+            route: 'individual/aleatoria/'),
         SizedBox(height: 80.0),
         RouterButtonWithDescription(
             title: 'Seleccionar Curso',
             description: 'Combinados, por tema, por curso',
-            route: '/individual/curso'),
+            route: 'individual/curso/'),
       ],
     );
   }
