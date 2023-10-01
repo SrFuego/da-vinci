@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../components/navigation_button.dart';
-import '../../components/base_screen.dart';
+import '../../components/route_button.dart';
+import '../base_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,15 +15,15 @@ class HomeScreen extends StatelessWidget {
         const RouterButtonWithDescription(
             title: 'Pregunta Individual',
             description: 'Muestra preguntas 1x1',
-            route: '/individual'),
+            route: 'individual/'),
         const RouterButtonWithDescription(
             title: 'Grupo de Preguntas',
             description: 'Set de Preguntas',
-            route: '/grupo'),
+            route: 'grupo/'),
         const RouterButtonWithDescription(
             title: 'Exámenes Pasados',
             description: 'Exámenes de admisión completos',
-            route: '/examenes'),
+            route: 'examenes/'),
       ],
     );
   }
