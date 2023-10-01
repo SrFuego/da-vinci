@@ -6,25 +6,22 @@ import '../../infrastructure/repository/dio_client.dart';
 class PreguntaRepositoryImpl implements PreguntaRepository {
   @override
   Future<Pregunta> getPregunta() async {
-    Pregunta preguntaApi;
-
-    // print("va traer data de:");
-    // print(_baseUrl + ('/pregunta_aleatoria/'));
-
     final data = await DioClient.instance.get('/pregunta_aleatoria/');
-    preguntaApi = Pregunta.fromJson(data);
-    return preguntaApi;
+    return Pregunta.fromJson(data);
   }
 
   @override
-  Future<RespuestaEvaluada> postResolverPregunta(int id) async {
-    // print("va traer data de:");
-    // print('/resolver_pregunta_individual/$id');
-    var data = {"alternativa_seleccionada_id": id};
+  Future<Pregunta> getPreguntaPorCurso(int cursoId) async {
+    var path = '/pregunta_individual/?curso_id=$cursoId';
+    final data = await DioClient.instance.get(path);
+    return Pregunta.fromJson(data);
+  }
 
+  @override
+  Future<RespuestaEvaluada> postResolverPregunta(int alternativaId) async {
+    var data = {"alternativa_seleccionada_id": alternativaId};
     final responseData = await DioClient.instance
         .post('/resolver_pregunta_individual/', data: data);
-    // print(responseData);
     return RespuestaEvaluada.fromJson(responseData);
   }
 }

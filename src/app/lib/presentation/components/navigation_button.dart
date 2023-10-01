@@ -6,22 +6,24 @@ class RouterButtonWithDescription extends StatelessWidget {
       required this.title,
       required this.description,
       required this.route,
-      this.verticalSize = 40.0});
+      this.verticalSize = 40.0,
+      this.arguments = const {"foo": 'bar'}});
 
   final String title;
   final String description;
   final String route;
   final double verticalSize;
+  final Map<String, dynamic> arguments;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ElevatedButton(
-          child: Text(title),
           onPressed: () {
-            Navigator.pushNamed(context, route);
+            Navigator.pushNamed(context, route, arguments: arguments);
           },
+          child: Text(title),
         ),
         Text(description),
         SizedBox(height: verticalSize),
