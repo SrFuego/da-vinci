@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/models/solucion.dart';
+
 import '../../controllers/pregunta_aleatoria.dart';
+
 import '../base_screen.dart';
 
 class SolucionPage extends StatefulWidget {
