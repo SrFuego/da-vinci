@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../domain/bloc/pregunta.dart';
 import '../../domain/models/solucion.dart';
 
-import '../components/solucion.dart';
+import '../screens/page/solucion.dart';
 
 class SolucionScreen extends StatefulWidget {
   const SolucionScreen({super.key, this.respuestaId});
@@ -26,20 +26,13 @@ class _SolucionScreenState extends State<SolucionScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
-              final RespuestaEvaluada? respuestaEvaluada = snapshot.data;
-              if (respuestaEvaluada != null) {
-                return SolucionComponent(
-                  respuestaEvaluada: respuestaEvaluada,
-                );
-              } else {
-                return const Placeholder();
-              }
+              final RespuestaEvaluada respuestaEvaluada = snapshot.data!;
+              return SolucionPage(respuestaEvaluada: respuestaEvaluada);
             }
             return const Placeholder();
           } else {
             return const CircularProgressIndicator();
           }
-          // return SolucionComponent(respuestaEvaluada: respuestaEvaluada);
         });
   }
 }

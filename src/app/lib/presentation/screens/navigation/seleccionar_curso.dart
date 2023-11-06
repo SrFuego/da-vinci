@@ -22,12 +22,12 @@ class _SeleccionarCursoScreenState extends State<SeleccionarCursoScreen> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
-            final List<Curso>? cursos = snapshot.data;
+            final List<Curso> cursos = snapshot.data!;
             return BaseScreen(
               title: 'Selecciona Curso',
               body: <Widget>[
                 const SizedBox(height: 40.0),
-                for (Curso curso in cursos!)
+                for (Curso curso in cursos)
                   RouterButtonWithDescription(
                       title: curso.nombre,
                       description: '',

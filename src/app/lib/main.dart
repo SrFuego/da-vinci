@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'presentation/screens/navigation/home.dart';
 import 'presentation/screens/navigation/pregunta_individual.dart';
-
-import 'presentation/wip/grupo_de_preguntas.dart';
-import 'presentation/wip/examenes_pasados.dart';
-
-import 'presentation/controllers/pregunta_individual.dart';
 import 'presentation/screens/navigation/seleccionar_curso.dart';
+import 'presentation/screens/navigation/wip_grupo_de_preguntas.dart';
+import 'presentation/screens/navigation/wip_examenes_pasados.dart';
+
 import 'presentation/controllers/pregunta_aleatoria.dart';
-import 'presentation/controllers/solucion_pregunta.dart';
+// import 'presentation/controllers/solucion_pregunta.dart';
+import 'presentation/controllers/pregunta_individual.dart';
 
 import 'domain/bloc/pregunta.dart';
 import 'domain/models/pregunta.dart';
@@ -42,9 +41,11 @@ class _DaVinciAppState extends State<DaVinciApp> {
   Pregunta get pregunta => _pregunta;
 
   void onPreguntaChange(Pregunta newPregunta) {
-    setState(() {
-      _pregunta = newPregunta;
-    });
+    setState(
+      () {
+        _pregunta = newPregunta;
+      },
+    );
   }
 
   @override
@@ -63,7 +64,7 @@ class _DaVinciAppState extends State<DaVinciApp> {
           '/': (context) => const HomeScreen(),
           'individual/': (context) => const PreguntaIndividualScreen(),
           'individual/aleatoria/': (context) => const PreguntaAleatoriaScreen(),
-          'individual/aleatoria/solucion/': (context) => const SolucionScreen(),
+          // 'individual/aleatoria/solucion/': (context) => const SolucionScreen(),
           'individual/por_curso/': (context) =>
               const PreguntaIndividualCursoScreen(),
           'individual/curso/': (context) => const SeleccionarCursoScreen(),
