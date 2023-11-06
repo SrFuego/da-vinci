@@ -20,7 +20,7 @@ class PreguntaIndividualScreen extends StatelessWidget {
         RouterButtonWithDescription(
             title: 'Seleccionar Curso',
             description: 'Combinados, por tema, por curso',
-            route: 'individual/curso/'),
+            route: 'individual/seleccionar_curso/'),
       ],
     );
   }

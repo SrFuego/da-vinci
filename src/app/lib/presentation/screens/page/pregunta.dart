@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/models/pregunta.dart';
-import '../../controllers/solucion_pregunta.dart';
+import '../../controllers/solucion_aleatoria.dart';
 import '../base_screen.dart';
 
 class PreguntaPage extends StatefulWidget {

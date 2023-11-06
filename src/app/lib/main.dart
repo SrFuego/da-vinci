@@ -67,7 +67,8 @@ class _DaVinciAppState extends State<DaVinciApp> {
           // 'individual/aleatoria/solucion/': (context) => const SolucionScreen(),
           'individual/por_curso/': (context) =>
               const PreguntaIndividualCursoScreen(),
-          'individual/curso/': (context) => const SeleccionarCursoScreen(),
+          'individual/seleccionar_curso/': (context) =>
+              const SeleccionarCursoScreen(),
           'grupo/': (context) => const GrupoDePreguntasScreen(),
           'examenes/': (context) => const ExamenesPasadosScreen(),
         },
