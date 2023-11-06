@@ -22,6 +22,13 @@ class _PreguntaIndividualCursoScreenState
         <String, dynamic>{}) as Map;
     final FilledButton botonSaltar = FilledButton.tonal(
         onPressed: () => setState(() {}), child: const Text('Saltar'));
+    final ElevatedButton botonPreguntaIndividual = ElevatedButton(
+      onPressed: () {
+        Navigator.pushNamed(context, 'individual/por_curso/',
+            arguments: arguments);
+      },
+      child: const Text('Otra Pregunta del Curso'),
+    );
 
     return FutureBuilder(
       future: preguntaBloc.getPreguntaCurso(arguments['curso']),
@@ -32,6 +39,7 @@ class _PreguntaIndividualCursoScreenState
             return PreguntaPage(
               pregunta: pregunta,
               botonSaltar: botonSaltar,
+              botonSolucion: botonPreguntaIndividual,
             );
           }
           return const Placeholder();

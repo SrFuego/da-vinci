@@ -6,12 +6,12 @@ import '../base_screen.dart';
 
 class SolucionPage extends StatefulWidget {
   final RespuestaEvaluada respuestaEvaluada;
-  final ElevatedButton siguientePregunta;
+  final ElevatedButton botonSiguientePregunta;
 
   const SolucionPage(
       {super.key,
       required this.respuestaEvaluada,
-      required this.siguientePregunta});
+      required this.botonSiguientePregunta});
 
   @override
   State<SolucionPage> createState() => _SolucionScreenState();
@@ -87,7 +87,7 @@ class _SolucionScreenState extends State<SolucionPage> {
                 const SizedBox(height: 15.0),
                 Text("Teoría: ${respuestaEvaluada.solucion.teoria}"),
                 const SizedBox(height: 40.0),
-                widget.siguientePregunta,
+                widget.botonSiguientePregunta,
               ],
             ),
           ),
