@@ -7,7 +7,7 @@ class RouterButtonWithDescription extends StatelessWidget {
       required this.description,
       required this.route,
       this.verticalSize = 40.0,
-      this.arguments = const {"foo": 'bar'}});
+      this.arguments = const {}});
 
   final String title;
   final String description;
