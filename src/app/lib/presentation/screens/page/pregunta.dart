@@ -7,9 +7,13 @@ import '../base_screen.dart';
 class PreguntaPage extends StatefulWidget {
   final Pregunta pregunta;
   final FilledButton botonSaltar;
+  final ElevatedButton botonSolucion;
 
   const PreguntaPage(
-      {super.key, required this.pregunta, required this.botonSaltar});
+      {super.key,
+      required this.pregunta,
+      required this.botonSaltar,
+      required this.botonSolucion});
 
   @override
   State<PreguntaPage> createState() => _PreguntaComponentState();
@@ -60,7 +64,9 @@ class _PreguntaComponentState extends State<PreguntaPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SolucionScreen(),
+                      builder: (context) => SolucionScreen(
+                        botonSiguientePregunta: widget.botonSolucion,
+                      ),
                       settings: RouteSettings(
                           arguments: {'respuestaId': alternativaSeleccionada}),
                     ),

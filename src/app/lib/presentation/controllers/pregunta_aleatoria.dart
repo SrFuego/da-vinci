@@ -21,6 +21,17 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
     final preguntaBloc = PreguntaBloc();
     final FilledButton botonSaltar = FilledButton.tonal(
         onPressed: () => setState(() {}), child: const Text('Saltar'));
+    final ElevatedButton botonPreguntaAleatoria = ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const PreguntaAleatoriaScreen(),
+          ),
+        );
+      },
+      child: const Text('Otra Pregunta Aleatoria'),
+    );
 
     return FutureBuilder(
       future: preguntaBloc.getPreguntaAleatoria(),
@@ -31,6 +42,7 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
             return PreguntaPage(
               pregunta: pregunta,
               botonSaltar: botonSaltar,
+              botonSolucion: botonPreguntaAleatoria,
             );
           }
           return const Placeholder();
