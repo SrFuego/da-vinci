@@ -34,7 +34,7 @@ group#Gold  #LimeGreen Pregunta Individual
             activate App
                 App -> Backend: **GET /api/v1/curso/**
                 activate Backend
-                    Backend -> DB: Query: \n- Todos los cursos
+                    Backend -> DB: Query: \n- Cursos válidos (mínimo 1 pregunta)
                     Backend <-- DB: Lista de Cursos
                     App <-- Backend: Response: \n- Lista de objetos:\n\t- id \n\t- Nombre del Curso 
                 deactivate Backend
