@@ -42,7 +42,9 @@ class MostrarPreguntaPorCursoViewSet(GenericViewSet):
     serializer_class = PreguntaSerializer
 
     def get_queryset(self):
-        curso_seleccionado = Curso.objects.get(id=self.request.query_params["curso_id"])
+        curso_seleccionado = Curso.objects.get(
+            id=self.request.query_params["curso_id"]
+        )
         return Pregunta.to_ui_objects.filter(
             tema__in=curso_seleccionado.tema_set.all()
         ).order_by("?")

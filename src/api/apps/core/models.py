@@ -144,7 +144,9 @@ class Pregunta(models.Model):
     lectura = models.ForeignKey(
         "Lectura", on_delete=models.CASCADE, blank=True, null=True
     )
-    tema = models.ForeignKey("Tema", on_delete=models.CASCADE, blank=True, null=True)
+    tema = models.ForeignKey(
+        "Tema", on_delete=models.CASCADE, blank=True, null=True
+    )
     cantidad_de_alternativas = models.SmallIntegerField(default=5)
     # imagen = models.ImageField()
     objects = models.Manager()
@@ -168,11 +170,17 @@ class Pregunta(models.Model):
 
     @property
     def falta_completar_alternativas(self):
-        return self.cantidad_alternativas_registradas < self.cantidad_de_alternativas
+        return (
+            self.cantidad_alternativas_registradas
+            < self.cantidad_de_alternativas
+        )
 
     @property
     def alternativas_completas(self):
-        return self.cantidad_alternativas_registradas == self.cantidad_de_alternativas
+        return (
+            self.cantidad_alternativas_registradas
+            == self.cantidad_de_alternativas
+        )
 
     @property
     def curso(self):
@@ -231,7 +239,9 @@ class Solucion(models.Model):
     teoria = models.TextField()
     resolucion = models.TextField()
     pregunta = models.OneToOneField("Pregunta", on_delete=models.CASCADE)
-    alternativa_correcta = models.OneToOneField("alternativa", on_delete=models.CASCADE)
+    alternativa_correcta = models.OneToOneField(
+        "alternativa", on_delete=models.CASCADE
+    )
     # imagen = models.ImageField()
 
     def __str__(self):
