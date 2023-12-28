@@ -21,11 +21,16 @@ class _PreguntaIndividualCursoScreenState
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     final FilledButton botonSaltar = FilledButton.tonal(
-        onPressed: () => setState(() {}), child: const Text('Saltar'));
+      onPressed: () => setState(() {}),
+      child: const Text('Saltar'),
+    );
     final ElevatedButton botonPreguntaIndividual = ElevatedButton(
       onPressed: () {
-        Navigator.pushNamed(context, 'individual/por_curso/',
-            arguments: arguments);
+        Navigator.pushNamed(
+          context,
+          'individual/por_curso/',
+          arguments: arguments,
+        );
       },
       child: const Text('Otra Pregunta del Curso'),
     );

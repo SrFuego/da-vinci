@@ -5,7 +5,10 @@ class Curso {
   Curso({required this.id, required this.nombre});
 
   factory Curso.fromJson(Map<String, dynamic> json) {
-    return Curso(id: json['id'] as int, nombre: json['nombre'] as String);
+    return Curso(
+      id: json['id'] as int,
+      nombre: json['nombre'] as String,
+    );
   }
 
   Map<String, dynamic> toJson() => {
@@ -21,7 +24,10 @@ class Tema {
   Tema({required this.id, required this.nombre});
 
   factory Tema.fromJson(Map<String, dynamic> json) {
-    return Tema(id: json['id'] as int, nombre: json['nombre'] as String);
+    return Tema(
+      id: json['id'] as int,
+      nombre: json['nombre'] as String,
+    );
   }
 
   Map<String, dynamic> toJson() => {

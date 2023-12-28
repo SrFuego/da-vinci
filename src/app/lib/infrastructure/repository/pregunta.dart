@@ -20,8 +20,10 @@ class PreguntaRepositoryImpl implements PreguntaRepository {
   @override
   Future<RespuestaEvaluada> postResolverPregunta(int alternativaId) async {
     var data = {"alternativa_seleccionada_id": alternativaId};
-    final responseData = await DioClient.instance
-        .post('/resolver_pregunta_individual/', data: data);
+    final responseData = await DioClient.instance.post(
+      '/resolver_pregunta_individual/',
+      data: data,
+    );
     return RespuestaEvaluada.fromJson(responseData);
   }
 }

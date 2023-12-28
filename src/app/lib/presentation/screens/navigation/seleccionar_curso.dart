@@ -29,11 +29,12 @@ class _SeleccionarCursoScreenState extends State<SeleccionarCursoScreen> {
                 const SizedBox(height: 40.0),
                 for (Curso curso in cursos)
                   RouterButtonWithDescription(
-                      title: curso.nombre,
-                      description: '',
-                      verticalSize: 7.0,
-                      arguments: {'curso': curso.id},
-                      route: 'individual/por_curso/'),
+                    title: curso.nombre,
+                    description: '',
+                    verticalSize: 7.0,
+                    arguments: {'curso': curso.id},
+                    route: 'individual/por_curso/',
+                  ),
               ],
             );
           }

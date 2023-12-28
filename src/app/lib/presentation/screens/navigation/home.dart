@@ -13,17 +13,20 @@ class HomeScreen extends StatelessWidget {
       body: <Widget>[
         Image.asset('assets/logo.jpg'),
         const RouterButtonWithDescription(
-            title: 'Pregunta Individual',
-            description: 'Muestra preguntas 1x1',
-            route: 'individual/'),
+          title: 'Pregunta Individual',
+          description: 'Muestra preguntas 1x1',
+          route: 'individual/',
+        ),
         const RouterButtonWithDescription(
-            title: 'Grupo de Preguntas',
-            description: 'Set de Preguntas',
-            route: 'grupo/'),
+          title: 'Grupo de Preguntas',
+          description: 'Set de Preguntas',
+          route: 'grupo/',
+        ),
         const RouterButtonWithDescription(
-            title: 'Exámenes Pasados',
-            description: 'Exámenes de admisión completos',
-            route: 'examenes/'),
+          title: 'Exámenes Pasados',
+          description: 'Exámenes de admisión completos',
+          route: 'examenes/',
+        ),
       ],
     );
   }

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class RouterButtonWithDescription extends StatelessWidget {
-  const RouterButtonWithDescription(
-      {super.key,
-      required this.title,
-      required this.description,
-      required this.route,
-      this.verticalSize = 40.0,
-      this.arguments = const {}});
+  const RouterButtonWithDescription({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.route,
+    this.verticalSize = 40.0,
+    this.arguments = const {},
+  });
 
   final String title;
   final String description;
@@ -21,7 +22,11 @@ class RouterButtonWithDescription extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, route, arguments: arguments);
+            Navigator.pushNamed(
+              context,
+              route,
+              arguments: arguments,
+            );
           },
           child: Text(title),
         ),

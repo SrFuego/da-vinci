@@ -13,14 +13,16 @@ class PreguntaIndividualScreen extends StatelessWidget {
       body: <Widget>[
         SizedBox(height: 80.0),
         RouterButtonWithDescription(
-            title: 'Pregunta Aleatoria',
-            description: 'Muestra pregunta, califica y muestra respuesta',
-            route: 'individual/aleatoria/'),
+          title: 'Pregunta Aleatoria',
+          description: 'Muestra pregunta, califica y muestra respuesta',
+          route: 'individual/aleatoria/',
+        ),
         SizedBox(height: 80.0),
         RouterButtonWithDescription(
-            title: 'Seleccionar Curso',
-            description: 'Combinados, por tema, por curso',
-            route: 'individual/seleccionar_curso/'),
+          title: 'Seleccionar Curso',
+          description: 'Combinados, por tema, por curso',
+          route: 'individual/seleccionar_curso/',
+        ),
       ],
     );
   }

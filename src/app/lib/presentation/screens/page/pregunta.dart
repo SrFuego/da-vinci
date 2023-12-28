@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_tex/flutter_tex.dart';
+
 import '../../../domain/models/pregunta.dart';
 import '../../controllers/solucion_aleatoria.dart';
 import '../base_screen.dart';
@@ -9,11 +11,12 @@ class PreguntaPage extends StatefulWidget {
   final FilledButton botonSaltar;
   final ElevatedButton botonSolucion;
 
-  const PreguntaPage(
-      {super.key,
-      required this.pregunta,
-      required this.botonSaltar,
-      required this.botonSolucion});
+  const PreguntaPage({
+    super.key,
+    required this.pregunta,
+    required this.botonSaltar,
+    required this.botonSolucion,
+  });
 
   @override
   State<PreguntaPage> createState() => _PreguntaComponentState();
@@ -27,9 +30,21 @@ class _PreguntaComponentState extends State<PreguntaPage> {
     return BaseScreen(
       title: widget.pregunta.curso.nombre,
       body: <Widget>[
+        const SizedBox(height: 5.0),
         Text(widget.pregunta.tema.nombre + (':')),
-        const SizedBox(height: 25.0),
-        Text(widget.pregunta.enunciado),
+        const SizedBox(height: 10.0),
+        TeXView(
+          child: TeXViewColumn(
+            children: [
+              TeXViewDocument(
+                widget.pregunta.enunciado,
+                style: const TeXViewStyle(
+                  textAlign: TeXViewTextAlign.center,
+                ),
+              ),
+            ],
+          ),
+        ),
         const SizedBox(height: 30.0),
         SizedBox(
           width: 400,
@@ -37,8 +52,11 @@ class _PreguntaComponentState extends State<PreguntaPage> {
             children: [
               for (var i = 0; i < widget.pregunta.alternativas.length; i++)
                 RadioListTile<int>(
-                  title: Text('${String.fromCharCode(i + 97)})\t'
-                      '${widget.pregunta.alternativas[i].valor}'),
+                  // TODO: cambiar el Text del title por un elemento de LaTeX
+                  title: Text(
+                    '${String.fromCharCode(i + 97)})\t'
+                    '${widget.pregunta.alternativas[i].valor}',
+                  ),
                   value: widget.pregunta.alternativas[i].id,
                   groupValue: alternativaSeleccionada,
                   onChanged: (int? value) {
@@ -68,7 +86,8 @@ class _PreguntaComponentState extends State<PreguntaPage> {
                         botonSiguientePregunta: widget.botonSolucion,
                       ),
                       settings: RouteSettings(
-                          arguments: {'respuestaId': alternativaSeleccionada}),
+                        arguments: {'respuestaId': alternativaSeleccionada},
+                      ),
                     ),
                   );
                 }
