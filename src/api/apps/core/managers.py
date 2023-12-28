@@ -16,7 +16,9 @@ from django.db.models import Manager
 class CursoToUIManager(Manager):
     def get_queryset(self):
         id_curso_con_preguntas = [
-            curso.id for curso in super().get_queryset() if curso.tiene_preguntas
+            curso.id
+            for curso in super().get_queryset()
+            if curso.tiene_preguntas
         ]
         return (
             super()
