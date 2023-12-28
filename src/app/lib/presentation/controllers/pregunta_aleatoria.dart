@@ -6,9 +6,7 @@ import '../../domain/models/pregunta.dart';
 import '../screens/page/pregunta.dart';
 
 class PreguntaAleatoriaScreen extends StatefulWidget {
-  const PreguntaAleatoriaScreen({
-    super.key,
-  });
+  const PreguntaAleatoriaScreen({super.key});
 
   @override
   State<PreguntaAleatoriaScreen> createState() =>
@@ -20,7 +18,9 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
   Widget build(BuildContext context) {
     final preguntaBloc = PreguntaBloc();
     final FilledButton botonSaltar = FilledButton.tonal(
-        onPressed: () => setState(() {}), child: const Text('Saltar'));
+      onPressed: () => setState(() {}),
+      child: const Text('Saltar'),
+    );
     final ElevatedButton botonPreguntaAleatoria = ElevatedButton(
       onPressed: () {
         Navigator.push(

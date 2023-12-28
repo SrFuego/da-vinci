@@ -8,10 +8,11 @@ class SolucionPage extends StatefulWidget {
   final RespuestaEvaluada respuestaEvaluada;
   final ElevatedButton botonSiguientePregunta;
 
-  const SolucionPage(
-      {super.key,
-      required this.respuestaEvaluada,
-      required this.botonSiguientePregunta});
+  const SolucionPage({
+    super.key,
+    required this.respuestaEvaluada,
+    required this.botonSiguientePregunta,
+  });
 
   @override
   State<SolucionPage> createState() => _SolucionScreenState();
@@ -60,8 +61,10 @@ class _SolucionScreenState extends State<SolucionPage> {
                               ? Colors.lightBlueAccent
                               : null,
                   child: RadioListTile<int>(
-                    title: Text('${String.fromCharCode(i + 97)})\t'
-                        '${respuestaEvaluada.solucion.pregunta.alternativas[i].valor}'),
+                    title: Text(
+                      '${String.fromCharCode(i + 97)})\t'
+                      '${respuestaEvaluada.solucion.pregunta.alternativas[i].valor}',
+                    ),
                     value:
                         respuestaEvaluada.solucion.pregunta.alternativas[i].id,
                     groupValue: respuestaEvaluada.esCorrecta

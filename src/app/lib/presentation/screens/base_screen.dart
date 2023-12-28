@@ -18,7 +18,9 @@ class BaseScreen extends StatelessWidget {
         title: Text(title),
         centerTitle: true,
         leading: BackButton(
-          onPressed: () => {Navigator.pushNamed(context, '/')},
+          onPressed: () => {
+            Navigator.pushNamed(context, '/'),
+          },
         ),
       ),
       body: ListView(

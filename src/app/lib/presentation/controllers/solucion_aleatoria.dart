@@ -9,8 +9,11 @@ class SolucionScreen extends StatefulWidget {
   final int? respuestaId;
   final ElevatedButton botonSiguientePregunta;
 
-  const SolucionScreen(
-      {super.key, this.respuestaId, required this.botonSiguientePregunta});
+  const SolucionScreen({
+    super.key,
+    this.respuestaId,
+    required this.botonSiguientePregunta,
+  });
 
   @override
   State<SolucionScreen> createState() => _SolucionScreenState();
