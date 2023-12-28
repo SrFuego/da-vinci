@@ -1,4 +1,5 @@
 # Python imports
+import random
 
 
 # Django imports
@@ -46,7 +47,7 @@ def selecciona_pregunta_aleatoria(context):
 
 @then("le muestra un problema aleatorio y sus alternativas")
 def muestra_problema_aleatorio_de_admision(context):
-    response = context.test.client.get(context.api_localhost + "pregunta_aleatoria/")
+    response = context.test.client.get(context.PREGUNTA_ALEATORIA_URL)
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertIn("alternativas", response.data)
@@ -57,7 +58,9 @@ def muestra_problema_aleatorio_de_admision(context):
 def muestra_el_curso(context):
     context.test.assertIn("curso", context.response_data)
     context.test.assertTrue(len(context.response_data["curso"]) > 0)
-    curso_response = Curso.objects.get(nombre=context.response_data["curso"]["nombre"])
+    curso_response = Curso.objects.get(
+        nombre=context.response_data["curso"]["nombre"]
+    )
     context.curso_response = curso_response
 
 
@@ -65,14 +68,19 @@ def muestra_el_curso(context):
 def muestra_el_tema(context):
     context.test.assertIn("tema", context.response_data)
     context.test.assertTrue(len(context.response_data["tema"]) > 0)
-    tema_response = Tema.objects.get(nombre=context.response_data["tema"]["nombre"])
+    tema_response = Tema.objects.get(
+        nombre=context.response_data["tema"]["nombre"]
+    )
     context.test.assertIn(tema_response, context.curso_response.tema_set.all())
 
 
-@then("el examen de admisión en el que vino esa pregunta (institución, año, etc)")
+@then(
+    "el examen de admisión en el que vino esa pregunta (institución, año, etc)"
+)
 def step_impl(context):
     # raise NotImplementedError(
-    #     "STEP: Then el examen de admisión en el que vino esa pregunta (institución, año, etc)"
+    #     "STEP: Then el examen de admisión en el que vino"
+    #     " esa pregunta (institución, año, etc)"
     # )
     # TODO: Mostrar examen de admisión
     pass
@@ -88,28 +96,32 @@ def selecciona_elegir_curso(context):
 
 @when("le muestra la lista de Cursos")
 def muestra_lista_cursos(context):
-    response = context.test.client.get(context.api_localhost + "curso/")
+    response = context.test.client.get(context.CURSO_URL)
     context.test.assertEqual(response.status_code, 200)
-    # context.test.assertIn("cursos", response.data)
+    context.test.assertIn("cursos", response.data)
+    context.lista_cursos = response.json()["cursos"]
 
 
 @when("selecciona un Curso")
 def selecciona_un_curso(context):
-    pass
+    curso_aleatorio = random.choice(context.lista_cursos)
+    context.curso_aleatorio_id = curso_aleatorio["id"]
 
 
 @then("le muestra un problema del curso y sus alternativas")
 def muestra_problema_del_curso(context):
-    curso_seleccionado_id = 5
     response = context.test.client.get(
-        context.api_localhost
-        + "pregunta_individual/?curso_id={}".format(curso_seleccionado_id)
+        "{}{}".format(
+            context.PREGUNTA_INDIVIDUAL_POR_CURSO_URL,
+            context.curso_aleatorio_id,
+        )
     )
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertIn("alternativas", response.data)
-    curso_seleccionado = Curso.objects.get(id=curso_seleccionado_id)
-    context.curso_seleccionado = curso_seleccionado
+    context.curso_seleccionado = Curso.objects.get(
+        id=context.curso_aleatorio_id
+    )
     context.response_data = response.data
 
 
@@ -124,7 +136,8 @@ def muestra_el_curso_seleccionado(context):
     context.test.assertIn("curso", context.response_data)
     context.test.assertTrue(len(context.response_data["curso"]) > 0)
     context.test.assertEquals(
-        context.curso_seleccionado.nombre, context.response_data["curso"]["nombre"]
+        context.curso_seleccionado.nombre,
+        context.response_data["curso"]["nombre"],
     )
 
 
@@ -132,5 +145,9 @@ def muestra_el_curso_seleccionado(context):
 def muestra_el_tema_y_es_del_curso(context):
     context.test.assertIn("tema", context.response_data)
     context.test.assertTrue(len(context.response_data["tema"]) > 0)
-    tema_response = Tema.objects.get(nombre=context.response_data["tema"]["nombre"])
-    context.test.assertIn(tema_response, context.curso_seleccionado.tema_set.all())
+    tema_response = Tema.objects.get(
+        nombre=context.response_data["tema"]["nombre"]
+    )
+    context.test.assertIn(
+        tema_response, context.curso_seleccionado.tema_set.all()
+    )

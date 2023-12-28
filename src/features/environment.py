@@ -1,11 +1,24 @@
 import coverage
+
 from rest_framework.test import APIClient
+
+from steps.draft_urls import (
+    PREGUNTA_ALEATORIA_URL,
+    CURSO_URL,
+    PREGUNTA_INDIVIDUAL_POR_CURSO_URL,
+    PREGUNTA_INDIVIDUAL_RESOLVER_URL,
+)
 
 
 # def django_ready(context, scenario):
 def django_ready(context):
     context.test.client = APIClient()
-    context.api_localhost = "http://localhost:8000/api/v1/"
+    context.PREGUNTA_ALEATORIA_URL = PREGUNTA_ALEATORIA_URL
+    context.CURSO_URL = CURSO_URL
+    context.PREGUNTA_INDIVIDUAL_POR_CURSO_URL = (
+        PREGUNTA_INDIVIDUAL_POR_CURSO_URL
+    )
+    context.PREGUNTA_INDIVIDUAL_RESOLVER_URL = PREGUNTA_INDIVIDUAL_RESOLVER_URL
 
 
 def before_all(context):

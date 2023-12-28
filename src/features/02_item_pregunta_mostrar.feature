@@ -29,10 +29,6 @@ Característica: Mostrar una pregunta individual
     Cuando que selecciona "Elegir Curso"
     Y le muestra la lista de Cursos
     Y selecciona un Curso
-    # Y le da al botón: "Enviar"
-    # Y le muestra "Tema aleatorio" y "Elegir Tema"
-    # Y selecciona "Tema Aleatorio"
-    # Y le da al botón: "Enviar"
     Entonces le muestra un problema del curso y sus alternativas
     Y el Curso (el que seleccionó)
     Y el Tema (cualquiera del Curso seleccionado)
