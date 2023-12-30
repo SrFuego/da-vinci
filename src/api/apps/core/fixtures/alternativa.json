@@ -622,5 +622,197 @@
         "valor": "Leopardo",
         "pregunta": 18
     }
+},
+{
+    "model": "core.alternativa",
+    "pk": 88,
+    "fields": {
+        "valor": "1000",
+        "pregunta": 19
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 89,
+    "fields": {
+        "valor": "2000",
+        "pregunta": 19
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 90,
+    "fields": {
+        "valor": "10000",
+        "pregunta": 19
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 91,
+    "fields": {
+        "valor": "100",
+        "pregunta": 19
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 92,
+    "fields": {
+        "valor": "0.180932",
+        "pregunta": 20
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 93,
+    "fields": {
+        "valor": "1.180932",
+        "pregunta": 20
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 94,
+    "fields": {
+        "valor": "-1.180932",
+        "pregunta": 20
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 95,
+    "fields": {
+        "valor": "-2.180932",
+        "pregunta": 20
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 96,
+    "fields": {
+        "valor": "2.180932",
+        "pregunta": 20
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 97,
+    "fields": {
+        "valor": "240.747960",
+        "pregunta": 21
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 98,
+    "fields": {
+        "valor": "238.747960",
+        "pregunta": 21
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 99,
+    "fields": {
+        "valor": "239.757960",
+        "pregunta": 21
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 100,
+    "fields": {
+        "valor": "239.947960",
+        "pregunta": 21
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 101,
+    "fields": {
+        "valor": "239.747960",
+        "pregunta": 21
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 102,
+    "fields": {
+        "valor": "27",
+        "pregunta": 22
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 103,
+    "fields": {
+        "valor": "28",
+        "pregunta": 22
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 104,
+    "fields": {
+        "valor": "29",
+        "pregunta": 22
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 105,
+    "fields": {
+        "valor": "26",
+        "pregunta": 22
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 106,
+    "fields": {
+        "valor": "25",
+        "pregunta": 22
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 107,
+    "fields": {
+        "valor": "1587",
+        "pregunta": 23
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 108,
+    "fields": {
+        "valor": "1492",
+        "pregunta": 23
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 109,
+    "fields": {
+        "valor": "1551",
+        "pregunta": 23
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 110,
+    "fields": {
+        "valor": "1821",
+        "pregunta": 23
+    }
+},
+{
+    "model": "core.alternativa",
+    "pk": 111,
+    "fields": {
+        "valor": "1600",
+        "pregunta": 23
+    }
 }
 ]

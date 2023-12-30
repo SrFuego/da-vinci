@@ -118,5 +118,13 @@
         "nombre": "Hidráulica",
         "curso": 13
     }
+},
+{
+    "model": "core.tema",
+    "pk": 16,
+    "fields": {
+        "nombre": "Integral definida",
+        "curso": 19
+    }
 }
 ]

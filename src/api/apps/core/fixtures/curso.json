@@ -124,5 +124,12 @@
     "fields": {
         "nombre": "Biología"
     }
+},
+{
+    "model": "core.curso",
+    "pk": 19,
+    "fields": {
+        "nombre": "Matemática II"
+    }
 }
 ]
