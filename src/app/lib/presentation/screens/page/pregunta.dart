@@ -4,6 +4,7 @@ import 'package:flutter_tex/flutter_tex.dart';
 
 import '../../../domain/models/pregunta.dart';
 import '../../controllers/solucion_aleatoria.dart';
+
 import '../base_screen.dart';
 
 class PreguntaPage extends StatefulWidget {
@@ -45,7 +46,7 @@ class _PreguntaComponentState extends State<PreguntaPage> {
             ],
           ),
         ),
-        const SizedBox(height: 30.0),
+        const SizedBox(height: 10.0),
         SizedBox(
           width: 400,
           child: Column(
@@ -70,7 +71,7 @@ class _PreguntaComponentState extends State<PreguntaPage> {
             ],
           ),
         ),
-        const SizedBox(height: 50.0),
+        const SizedBox(height: 20.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -86,7 +87,9 @@ class _PreguntaComponentState extends State<PreguntaPage> {
                         botonSiguientePregunta: widget.botonSolucion,
                       ),
                       settings: RouteSettings(
-                        arguments: {'respuestaId': alternativaSeleccionada},
+                        arguments: {
+                          'respuestaId': alternativaSeleccionada,
+                        },
                       ),
                     ),
                   );
@@ -94,6 +97,7 @@ class _PreguntaComponentState extends State<PreguntaPage> {
               },
               child: const Text('Enviar'),
             ),
+            const SizedBox(height: 50.0),
           ],
         ),
       ],
