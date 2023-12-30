@@ -12,7 +12,11 @@ class PreguntaBloc {
     return repository.getPregunta();
   }
 
-  Future<RespuestaEvaluada> postResolverPreguntaAleatoria(int id) {
-    return repository.postResolverPregunta(id);
+  Future<Pregunta> getPreguntaCurso(int cursoId) {
+    return repository.getPreguntaPorCurso(cursoId);
+  }
+
+  Future<RespuestaEvaluada> postResolverPreguntaAleatoria(int alternativaId) {
+    return repository.postResolverPregunta(alternativaId);
   }
 }

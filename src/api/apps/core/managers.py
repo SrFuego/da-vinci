@@ -13,6 +13,22 @@ from django.db.models import Manager
 
 
 # Create your managers here.
+class CursoToUIManager(Manager):
+    def get_queryset(self):
+        id_curso_con_preguntas = [
+            curso.id
+            for curso in super().get_queryset()
+            if curso.tiene_preguntas
+        ]
+        return (
+            super()
+            .get_queryset()
+            .filter(
+                id__in=id_curso_con_preguntas,
+            )
+        )
+
+
 class PreguntaToUIManager(Manager):
     def get_queryset(self):
         id_preguntas_completas = [

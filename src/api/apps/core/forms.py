@@ -17,6 +17,6 @@ class SolucionAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if self.instance.id:
-            self.fields[
-                "alternativa_correcta"
-            ].queryset = self.instance.pregunta.alternativas_registradas.all()
+            pregunta = self.instance.pregunta
+            alternativas = pregunta.alternativas_registradas.all()
+            self.fields["alternativa_correcta"].queryset = alternativas

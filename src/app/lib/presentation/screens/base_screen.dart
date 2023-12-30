@@ -16,6 +16,12 @@ class BaseScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
+        centerTitle: true,
+        leading: BackButton(
+          onPressed: () => {
+            Navigator.pushNamed(context, '/'),
+          },
+        ),
       ),
       body: ListView(
         children: [
