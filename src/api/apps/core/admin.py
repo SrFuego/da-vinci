@@ -73,6 +73,10 @@ class LecturaModelAdmin(admin.ModelAdmin):
 @admin.register(Pregunta)
 class PreguntaModelAdmin(admin.ModelAdmin):
     inlines = [AlternativaInLine]
+    raw_id_fields = ["tema", "lectura"]
+    filter_horizontal = ["examenes_de_admision"]
+    list_display = ["enunciado", "tema", "curso"]
+    list_filter = ["tema", "tema__curso"]
 
 
 @admin.register(PreguntasPorCurso)
@@ -88,6 +92,7 @@ class ProcesoDeAdmisionModelAdmin(admin.ModelAdmin):
 @admin.register(Solucion)
 class SolucionModelAdmin(admin.ModelAdmin):
     form = SolucionAdminForm
+    raw_id_fields = ["pregunta"]
 
 
 @admin.register(Tema)

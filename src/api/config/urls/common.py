@@ -30,7 +30,7 @@ from apps.core.routers import core_list as core_router
 
 
 routers_tuples = (core_router,)
-routers_lists = sum(
+routers_lists: list = sum(
     [list(router_tuple) for router_tuple in routers_tuples], []
 )
 

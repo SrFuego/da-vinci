@@ -3,5 +3,6 @@ import '../models/solucion.dart';
 
 abstract class PreguntaRepository {
   Future<Pregunta> getPregunta();
-  Future<RespuestaEvaluada> postResolverPregunta(int id);
+  Future<Pregunta> getPreguntaPorCurso(int cursoId);
+  Future<RespuestaEvaluada> postResolverPregunta(int alternativaId);
 }

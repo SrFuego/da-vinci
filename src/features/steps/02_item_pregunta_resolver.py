@@ -34,7 +34,10 @@ def le_muestra_una_pregunta(context, pregunta):
 @given("sus alternativas: {alternativas}")
 def le_muestra_sus_alternativas(context, alternativas):
     for alternativa in alternativas.split(","):
-        Alternativa.objects.create(valor=alternativa, pregunta=context.pregunta_db)
+        Alternativa.objects.create(
+            valor=alternativa,
+            pregunta=context.pregunta_db,
+        )
     context.alternativas_from_UI = alternativas
 
 
@@ -48,17 +51,19 @@ def una_de_sus_alternativas_es_correcta(context, correcta):
                 resolucion="solucionario de la pregunta",
                 teoria="teoria de la pregunta",
             )
-    response = context.test.client.get(
-        "http://localhost:8000/api/v1/pregunta_aleatoria/"
-    )
+    response = context.test.client.get(context.PREGUNTA_ALEATORIA_URL)
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertIn("alternativas", response.data)
     context.test.assertEqual(
-        ",".join(sorted([item["valor"] for item in response.data["alternativas"]])),
+        ",".join(
+            sorted([item["valor"] for item in response.data["alternativas"]])
+        ),
         context.alternativas_from_UI,
     )
-    context.test.assertEqual(response.data["enunciado"], context.pregunta_db.enunciado)
+    context.test.assertEqual(
+        response.data["enunciado"], context.pregunta_db.enunciado
+    )
 
 
 @when("selecciona una alternativa")
@@ -72,13 +77,15 @@ def la_envia_y_se_evalua_como_respuesta(context, respuesta):
     alternativa_seleccionada = Alternativa.objects.get(valor=respuesta)
     data = {"alternativa_seleccionada_id": alternativa_seleccionada.id}
     response = context.test.client.post(
-        "http://localhost:8000/api/v1/resolver_pregunta_individual/", data
+        context.PREGUNTA_INDIVIDUAL_RESOLVER_URL, data
     )
     context.test.assertEqual(response.status_code, 200)
     context.response_data = response.data
     context.test.assertIn("alternativa_enviada", context.response_data)
     context.test.assertIn("solucion", context.response_data)
-    context.test.assertIn("alternativa_correcta", context.response_data["solucion"])
+    context.test.assertIn(
+        "alternativa_correcta", context.response_data["solucion"]
+    )
     context.test.assertIn("es_correcta", context.response_data)
 
 
