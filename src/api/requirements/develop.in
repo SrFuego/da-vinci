@@ -11,3 +11,4 @@ pyparsing
 pydot
 behave-django
 coverage
+diagrams
