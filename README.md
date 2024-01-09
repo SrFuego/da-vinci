@@ -97,3 +97,8 @@ Para sólo un modelo:
 `coverage run src/api/manage.py behave`
 
 `coverage html`
+
+
+### Current Tech Stack
+
+![Tech Stack](docs/infrastructure/da_vinci.png)
