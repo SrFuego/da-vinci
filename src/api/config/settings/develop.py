@@ -73,7 +73,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 # # Django Rest Framework CORS configuration
 # CORS_ORIGIN_ALLOW_ALL = True
 
-THIRD_PARTY_APPS_DEVELOP = ("django_extensions", "behave_django")
+THIRD_PARTY_APPS_DEVELOP = (
+    "django_extensions",
+    "behave_django",
+    "django_dbml",
+)
 
 INSTALLED_APPS += THIRD_PARTY_APPS_DEVELOP
 

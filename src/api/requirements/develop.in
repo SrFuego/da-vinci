@@ -12,3 +12,4 @@ pydot
 behave-django
 coverage
 diagrams
+django-dbml
