@@ -48,7 +48,7 @@ with Diagram("Da Vinci", show=False):
                     "./assets/app-store.png",
                 )
 
-    with Cluster("Cloud environment"):
+    with Cluster("Stage environment"):
         pythonanywhere = Custom(
             "Pythonanywhere",
             "./assets/pythonanywhere.png",
