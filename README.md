@@ -1,4 +1,4 @@
-# Da Vinci 0.1.0
+# Da Vinci 0.2.0
 
 ## Descripción del proyecto
 
@@ -99,6 +99,38 @@ Para sólo un modelo:
 `coverage html`
 
 
-### Current Tech Stack
+### User Journey
+
+![User Journey](docs/context/out/0.2.0/app.png)
+
+
+
+### Tech Stack
 
 ![Tech Stack](docs/infrastructure/da_vinci.png)
+
+
+
+### Sequence
+
+![Sequence](docs/sequence/out/0.2.0/Da%20Vinci.png)
+
+
+
+### Database
+
+#### Draft
+
+![Database Draft](docs/database/db_draft.png)
+
+#### Implemented
+
+![Database implemented](docs/database/db.png)
+
+
+
+Version X.Y.Z:
+
+- X: Lanzamiento público
+- Y: Agrega funcionalidades (`feature`)
+- Z: Agrega cambios menores

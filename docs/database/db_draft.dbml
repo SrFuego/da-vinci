@@ -54,7 +54,7 @@ Table ProcesoDeAdmision {
 
 Table ExamenDeAdmision {
   id big_auto [pk, unique]
-  area foreign_key [ref: - Area.id]
+  area foreign_key [ref: > Area.id]
   proceso_de_admision foreign_key [ref: > ProcesoDeAdmision.id]
   puntaje_correcta float 
   puntaje_incorrecta float 
@@ -99,8 +99,9 @@ Table Pregunta {
   lectura foreign_key [ref: > Lectura.id]
   tema foreign_key [ref: <> Tema.id]
   cantidad_de_alternativas small_integer [default:`5`]
-  examendeadmision foreign_key [ref: <> ExamenDeAdmision.id]
+  examendeadmision foreign_key
 }
+Ref prueba: Pregunta.examendeadmision <> ExamenDeAdmision.id
 
 
 Table Alternativa {
