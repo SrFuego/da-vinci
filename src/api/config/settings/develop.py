@@ -86,7 +86,7 @@ INSTALLED_APPS += THIRD_PARTY_APPS_DEVELOP
 GRAPH_MODELS = {
     "all_applications": True,
     "group_models": True,
-    "output": "database.png",
+    "output": "docs/database/db.png",
     "exclude_models": ",".join(
         [
             "User",
