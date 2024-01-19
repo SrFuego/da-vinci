@@ -12,8 +12,18 @@ Selecciona Elegir Curso
 //Todos tienen mínimo 1 Pregunta
 Muestra una lista de Cursos
 Selecciona 1 Curso
+//default
+Selecciona Tema Aleatorio
 Muestra un Problema de Admisión del Curso seleccionado
 Muestra un Problema de Admisión
+...
+
+
+...
+Selecciona 1 Curso
+//Siguiente v0.2.1
+Selecciona 1 Tema
+Muestra un Problema de Admisión del Curso seleccionado
 ...
 
 
