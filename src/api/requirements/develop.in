@@ -13,3 +13,4 @@ behave-django
 coverage
 diagrams
 django-dbml
+django-silk

@@ -73,13 +73,28 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 # # Django Rest Framework CORS configuration
 # CORS_ORIGIN_ALLOW_ALL = True
 
+# Override develop apps
 THIRD_PARTY_APPS_DEVELOP = (
     "django_extensions",
     "behave_django",
     "django_dbml",
+    "silk",
 )
 
 INSTALLED_APPS += THIRD_PARTY_APPS_DEVELOP
+
+# Override develop middlewares
+LOCAL_MIDDLEWARE = [
+    "silk.middleware.SilkyMiddleware",
+]
+
+
+MIDDLEWARE = LOCAL_MIDDLEWARE + MIDDLEWARE
+
+
+SILKY_PYTHON_PROFILER = True
+SILKY_META = True
+SILKY_PYTHON_PROFILER = True
 
 
 # # Graph models conf

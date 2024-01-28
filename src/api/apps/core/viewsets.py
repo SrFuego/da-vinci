@@ -11,6 +11,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from rest_framework.viewsets import GenericViewSet
+from silk.profiling.profiler import silk_profile
 
 
 # Local imports
@@ -49,6 +50,7 @@ class MostrarPreguntaPorCursoViewSet(GenericViewSet):
             tema__in=curso_seleccionado.tema_set.all()
         ).order_by("?")
 
+    @silk_profile()
     def list(self, request, *args, **kwargs):
         pregunta_random = self.get_queryset().first()
         serializer = self.get_serializer(pregunta_random)
@@ -61,6 +63,7 @@ class MostrarPreguntaViewSet(GenericViewSet):
     def get_queryset(self):
         return Pregunta.to_ui_objects.order_by("?")
 
+    @silk_profile()
     def list(self, request, *args, **kwargs):
         pregunta_random = self.get_queryset().first()
         serializer = self.get_serializer(pregunta_random)
