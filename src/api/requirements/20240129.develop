@@ -54,6 +54,8 @@ django==4.2.9
     #   django-silk
     #   djangorestframework
     #   drf-spectacular
+django-admin-env-notice==1.0
+    # via -r src/api/requirements/common.in
 django-cors-headers==4.3.1
     # via -r src/api/requirements/common.in
 django-crispy-forms==2.1

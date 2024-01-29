@@ -116,3 +116,8 @@ GRAPH_MODELS = {
         ]
     ),
 }
+
+# Environment name
+ENVIRONMENT_NAME = "Develop server"
+ENVIRONMENT_COLOR = "#42C920"
+ENVIRONMENT_FLOAT = True

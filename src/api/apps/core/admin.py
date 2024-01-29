@@ -27,6 +27,10 @@ from .models import (
 from .forms import SolucionAdminForm
 
 
+admin.site.site_header = "DaVinci Administration"
+admin.site.site_title = "Da Vinci Administration"
+
+
 # Register your models here.
 # @admin.register(Alternativa)
 # class AlternativaModelAdmin(admin.ModelAdmin):
