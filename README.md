@@ -30,16 +30,16 @@ Para mostrar las preguntas de admisión es necesario ingresarlas al sistema por 
 
 ## Indice de comandos:
 
-- [Da Vinci 0.1.0](#da-vinci-010)
+- [Da Vinci 0.2.0](#da-vinci-020)
   - [Descripción del proyecto](#descripción-del-proyecto)
   - [Indice de comandos:](#indice-de-comandos)
     - [Levantar el proyecto](#levantar-el-proyecto)
-    - [Levantar reporte de tests](#levantar-reporte-de-tests)
     - [Conectarse al container de backend](#conectarse-al-container-de-backend)
-    - [Generar dependencias actualizadas](#generar-dependencias-actualizadas)
-    - [Actualizar fixtures](#actualizar-fixtures)
     - [Correr tests de características](#correr-tests-de-características)
     - [Correr coverage de codigo](#correr-coverage-de-codigo)
+    - [Levantar reporte de tests](#levantar-reporte-de-tests)
+    - [Actualizar dependencias API](#actualizar-dependencias-api)
+    - [Actualizar fixtures](#actualizar-fixtures)
 
 
 ### Levantar el proyecto
@@ -50,53 +50,52 @@ https://docs.docker.com/engine/install/
 
 Levantar el entorno de desarrollo y pruebas:
 
-`docker compose -f src/dockerfiles/docker-compose.yml up --build`
-
-
-### Levantar reporte de tests
-
-Generar reporte de Allure (dentro de `features/`):
-
-`behave -f allure_behave.formatter:AllureFormatter -o my_allure .`
-
-Allure serve report:
-
-`allure serve my_allure/`
+- `docker compose -f src/dockerfiles/docker-compose.yml up --build`
 
 
 ### Conectarse al container de backend
 
-`docker exec -it backend bash`
+- `docker exec -it backend bash`
 
 
-### Generar dependencias actualizadas
+### Correr tests de características
+
+- `python src/api/manage.py behave`
+
+
+### Correr coverage de codigo
+
+- `coverage run src/api/manage.py behave && coverage html`
+
+
+### Levantar reporte de tests
+
+Mostrar reporte de Allure en el puerto 8050:
+
+- `allure generate`
+
+- `allure open -p 8050`
+
+
+### Actualizar dependencias API
 
 En el container:
 
-`bash scripts/update_requirements.sh`
+- `bash scripts/update_requirements.sh`
 
 
 ### Actualizar fixtures
 
 En el container:
 
-`bash scripts/update_fixtures.sh`
+- `bash scripts/update_fixtures.sh`
 
 Para sólo un modelo:
 
-`python src/api/manage.py dumpdata core.{Model} --format json --indent 4 -o src/api/apps/core/fixtures/{filename}.json`
+- `python src/api/manage.py dumpdata core.{Model} --format json --indent 4 -o src/api/apps/core/fixtures/{filename}.json`
 
 
-### Correr tests de características
 
-`python src/api/manage.py behave`
-
-
-### Correr coverage de codigo
-
-`coverage run src/api/manage.py behave`
-
-`coverage html`
 
 
 ### User Journey
