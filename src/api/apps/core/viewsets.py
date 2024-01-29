@@ -3,7 +3,7 @@
 
 
 # Django imports
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, get_list_or_404
 
 
 # Third party apps imports
@@ -11,6 +11,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from rest_framework.viewsets import GenericViewSet
+from drf_spectacular.utils import (
+    extend_schema,
+    extend_schema_view,
+    OpenApiParameter,
+)
 from silk.profiling.profiler import silk_profile
 
 
@@ -40,18 +45,31 @@ class CursoViewSet(GenericViewSet):
 
 
 class MostrarPreguntaPorCursoViewSet(GenericViewSet):
+    queryset = Pregunta.objects.none()
     serializer_class = PreguntaSerializer
 
     def get_queryset(self):
-        curso_seleccionado = Curso.objects.get(
-            id=self.request.query_params["curso_id"]
+        curso_seleccionado = get_object_or_404(
+            Curso,
+            id=self.request.query_params["curso_id"],
         )
         return Pregunta.to_ui_objects.filter(
             tema__in=curso_seleccionado.tema_set.all()
         ).order_by("?")
 
     @silk_profile()
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name="curso_id",
+                description="ID del Curso",
+                type=int,
+                required=True,
+            ),
+        ]
+    )
     def list(self, request, *args, **kwargs):
+        get_list_or_404(self.get_queryset())
         pregunta_random = self.get_queryset().first()
         serializer = self.get_serializer(pregunta_random)
         return Response(serializer.data)
