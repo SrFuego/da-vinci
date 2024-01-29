@@ -72,6 +72,6 @@ RUN mkdir tmp_downloads && \
 
 COPY . .
 
-RUN chmod +x scripts/entrypoint.sh
+RUN chmod +x src/api/entrypoint.sh
 
-ENTRYPOINT ["sh", "scripts/entrypoint.sh"]
+ENTRYPOINT ["sh", "src/api/entrypoint.sh"]
