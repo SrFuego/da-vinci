@@ -1,1 +1,1 @@
-python src/api/manage.py loaddata src/api/apps/core/fixtures/*.json
+python api/manage.py loaddata api/apps/core/fixtures/*.json
