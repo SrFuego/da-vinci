@@ -43,6 +43,7 @@ THIRD_PARTY_APPS = (
     # 'rest_auth',
     "django_filters",
     "corsheaders",
+    "drf_spectacular",
 )
 
 LOCAL_APPS = ("apps.core",)
@@ -127,6 +128,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # # Django Rest Framework config
 
-# REST_FRAMEWORK = {
-#   'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
-# }
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "DaVinci API",
+    "DESCRIPTION": "v1: Django Rest",
+    "VERSION": "0.2.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "CONTACT": {
+        "email": "j.delacruz@srfuego.dev",
+        "name": "SrFuego",
+        "url": "https://srfuego.dev",
+    },
+}

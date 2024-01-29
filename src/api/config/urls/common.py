@@ -20,7 +20,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-# from rest_framework.documentation import include_docs_urls
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 from rest_framework.routers import DefaultRouter
 
 from apps.core.routers import core_list as core_router
@@ -45,10 +49,15 @@ urlpatterns = [
     # path(
     #     r'api-auth/',
     #     include('rest_framework.urls', namespace='rest_framework')),
-    # path(
-    #     r"docs/",
-    #     include_docs_urls(title=API_TITLE, description=API_DESCRIPTION),
-    # ),
     path("api/v1/", include((router.urls, "api_v1"), namespace="api_v1")),
     # path(r'api/v1/rest-auth/', include('rest_auth.urls'))
+    # YOUR PATTERNS
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    # Optional UI:
+    path(
+        "",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    # path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
