@@ -1,0 +1,1 @@
+python src/api/manage.py loaddata src/api/apps/core/fixtures/*.json
