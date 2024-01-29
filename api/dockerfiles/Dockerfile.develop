@@ -50,7 +50,7 @@ WORKDIR ${WORK_DIR}
 #     rm -rf /var/lib/apt/lists/* && \
 #     rm -rf tmp_downloads
 
-COPY src/api/requirements/${REQUIREMENTS_FILE} ${REQUIREMENTS_FILE}
+COPY api/requirements/${REQUIREMENTS_FILE} ${REQUIREMENTS_FILE}
 
 RUN mkdir tmp_downloads && \
     curl -o tmp_downloads/allure_2.23.0-1_all.deb \
@@ -72,6 +72,6 @@ RUN mkdir tmp_downloads && \
 
 COPY . .
 
-RUN chmod +x src/api/entrypoint.sh
+RUN chmod +x api/entrypoint.sh
 
-ENTRYPOINT ["sh", "src/api/entrypoint.sh"]
+ENTRYPOINT ["sh", "api/entrypoint.sh"]

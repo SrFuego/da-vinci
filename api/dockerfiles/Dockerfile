@@ -50,7 +50,7 @@ RUN adduser \
 #     rm -rf /var/lib/apt/lists/* && \
 #     rm -rf tmp_downloads
 
-COPY src/api/requirements/${REQUIREMENTS_FILE} ${REQUIREMENTS_FILE}
+COPY api/requirements/${REQUIREMENTS_FILE} ${REQUIREMENTS_FILE}
 
 RUN mkdir tmp_downloads && \
     curl -o tmp_downloads/allure_2.23.0-1_all.deb \

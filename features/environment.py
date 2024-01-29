@@ -35,18 +35,18 @@ def django_ready(context):
 
 def before_all(context):
     context.fixtures = [
-        "src/api/apps/core/fixtures/universidad.json",
-        "src/api/apps/core/fixtures/area.json",
-        "src/api/apps/core/fixtures/proceso_de_admision.json",
-        "src/api/apps/core/fixtures/carrera.json",
-        "src/api/apps/core/fixtures/examen_de_admision.json",
-        "src/api/apps/core/fixtures/curso.json",
-        "src/api/apps/core/fixtures/tema.json",
-        "src/api/apps/core/fixtures/preguntas_por_curso.json",
-        "src/api/apps/core/fixtures/lectura.json",
-        "src/api/apps/core/fixtures/pregunta.json",
-        "src/api/apps/core/fixtures/alternativa.json",
-        "src/api/apps/core/fixtures/solucion.json",
+        "api/apps/core/fixtures/universidad.json",
+        "api/apps/core/fixtures/area.json",
+        "api/apps/core/fixtures/proceso_de_admision.json",
+        "api/apps/core/fixtures/carrera.json",
+        "api/apps/core/fixtures/examen_de_admision.json",
+        "api/apps/core/fixtures/curso.json",
+        "api/apps/core/fixtures/tema.json",
+        "api/apps/core/fixtures/preguntas_por_curso.json",
+        "api/apps/core/fixtures/lectura.json",
+        "api/apps/core/fixtures/pregunta.json",
+        "api/apps/core/fixtures/alternativa.json",
+        "api/apps/core/fixtures/solucion.json",
     ]
     cov = coverage.Coverage()
     cov.start()
@@ -57,4 +57,4 @@ def after_all(context):
     cov = context.cov
     cov.stop()
     cov.save()
-    cov.html_report(directory="./cov")
+    cov.html_report(directory="./htmlcov")
