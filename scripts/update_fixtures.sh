@@ -31,8 +31,8 @@ for entidad_fixture in ${!entidad_fixture_list[@]}; do
     fixture_filename="${arr[1]}"
     echo "entidad: ${entidad}"
     echo "fixture_filename: ${fixture_filename}"
-    echo "command: python src/api/manage.py dumpdata core.${entidad} --format json --indent 4 -o src/api/apps/core/fixtures/${fixture_filename}.json"
-    python src/api/manage.py dumpdata core.${entidad} --format json --indent 4 -o src/api/apps/core/fixtures/${fixture_filename}.json
+    echo "command: python api/manage.py dumpdata core.${entidad} --format json --indent 4 -o api/apps/core/fixtures/${fixture_filename}.json"
+    python api/manage.py dumpdata core.${entidad} --format json --indent 4 -o api/apps/core/fixtures/${fixture_filename}.json
 done
 
-mv src/api/db.sqlite3 src/api/db_backup.sqlite3
+mv api/db.sqlite3 api/db_backup.sqlite3
