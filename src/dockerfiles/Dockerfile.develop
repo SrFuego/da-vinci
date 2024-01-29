@@ -72,9 +72,6 @@ RUN mkdir tmp_downloads && \
 
 COPY . .
 
-# RUN python src/api/manage.py migrate
-# RUN python src/api/manage.py loaddata src/api/apps/core/fixtures/*.json
+RUN chmod +x scripts/entrypoint.sh
 
-EXPOSE 8000
-
-# CMD ["python", "src/api/manage.py", "runserver", "0.0.0.0:8000"]
+ENTRYPOINT ["sh", "scripts/entrypoint.sh"]
