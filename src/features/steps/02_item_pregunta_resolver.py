@@ -2,7 +2,6 @@
 
 
 # Django imports
-from django.apps import apps
 
 
 # Third party apps imports
@@ -13,20 +12,15 @@ from behave import given, when, then
 
 
 # Create your tests here.
-Pregunta = apps.get_model("core", "Pregunta")
-Alternativa = apps.get_model("core", "Alternativa")
-ExamenDeAdmision = apps.get_model("core", "ExamenDeAdmision")
-Tema = apps.get_model("core", "Tema")
-Solucion = apps.get_model("core", "Solucion")
-
-
 @given("que le muestra una pregunta: {pregunta}")
 def le_muestra_una_pregunta(context, pregunta):
-    examen_de_admision = ExamenDeAdmision.objects.first()
-    tema = Tema.objects.first()
-    for pregunta_aux in Pregunta.objects.all():
+    examen_de_admision = context.examen_de_admision_model.objects.first()
+    tema = context.tema_model.objects.first()
+    for pregunta_aux in context.pregunta_model.objects.all():
         pregunta_aux.delete()
-    pregunta_db = Pregunta.objects.create(enunciado=pregunta, tema=tema)
+    pregunta_db = context.pregunta_model.objects.create(
+        enunciado=pregunta, tema=tema
+    )
     pregunta_db.examenes_de_admision.add(examen_de_admision)
     context.pregunta_db = pregunta_db
 
@@ -34,7 +28,7 @@ def le_muestra_una_pregunta(context, pregunta):
 @given("sus alternativas: {alternativas}")
 def le_muestra_sus_alternativas(context, alternativas):
     for alternativa in alternativas.split(","):
-        Alternativa.objects.create(
+        context.alternativa_model.objects.create(
             valor=alternativa,
             pregunta=context.pregunta_db,
         )
@@ -45,7 +39,7 @@ def le_muestra_sus_alternativas(context, alternativas):
 def una_de_sus_alternativas_es_correcta(context, correcta):
     for alternativa in context.pregunta_db.alternativas:
         if alternativa.valor is correcta:
-            Solucion.objects.create(
+            context.solucion_model.objects.create(
                 pregunta=context.pregunta_db,
                 alternativa_correcta=alternativa,
                 resolucion="solucionario de la pregunta",
@@ -74,7 +68,9 @@ def selecciona_una_alternativa(context):
 
 @then("la envía y se evalúa su {respuesta}")
 def la_envia_y_se_evalua_como_respuesta(context, respuesta):
-    alternativa_seleccionada = Alternativa.objects.get(valor=respuesta)
+    alternativa_seleccionada = context.alternativa_model.objects.get(
+        valor=respuesta
+    )
     data = {"alternativa_seleccionada_id": alternativa_seleccionada.id}
     response = context.test.client.post(
         context.PREGUNTA_INDIVIDUAL_RESOLVER_URL, data

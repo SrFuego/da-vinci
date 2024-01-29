@@ -1,6 +1,5 @@
 import coverage
 
-from rest_framework.test import APIClient
 
 from steps.draft_urls import (
     PREGUNTA_ALEATORIA_URL,
@@ -12,13 +11,26 @@ from steps.draft_urls import (
 
 # def django_ready(context, scenario):
 def django_ready(context):
+    from django.apps import apps
+    from rest_framework.test import APIClient
+
     context.test.client = APIClient()
+
     context.PREGUNTA_ALEATORIA_URL = PREGUNTA_ALEATORIA_URL
     context.CURSO_URL = CURSO_URL
     context.PREGUNTA_INDIVIDUAL_POR_CURSO_URL = (
         PREGUNTA_INDIVIDUAL_POR_CURSO_URL
     )
     context.PREGUNTA_INDIVIDUAL_RESOLVER_URL = PREGUNTA_INDIVIDUAL_RESOLVER_URL
+
+    context.pregunta_model = apps.get_model("core", "Pregunta")
+    context.examen_de_admision_model = apps.get_model(
+        "core", "ExamenDeAdmision"
+    )
+    context.tema_model = apps.get_model("core", "Tema")
+    context.alternativa_model = apps.get_model("core", "Alternativa")
+    context.solucion_model = apps.get_model("core", "Solucion")
+    context.curso_model = apps.get_model("core", "Curso")
 
 
 def before_all(context):

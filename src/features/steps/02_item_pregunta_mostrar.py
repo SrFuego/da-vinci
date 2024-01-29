@@ -3,7 +3,6 @@ import random
 
 
 # Django imports
-from django.apps import apps
 
 
 # Third party apps imports
@@ -14,12 +13,6 @@ from behave import given, when, then
 
 
 # Create your tests here.
-# Pregunta = apps.get_model("core", "Pregunta")
-# Alternativa = apps.get_model("core", "Alternativa")
-# ExamenDeAdmision = apps.get_model("core", "ExamenDeAdmision")
-Curso = apps.get_model("core", "Curso")
-Tema = apps.get_model("core", "Tema")
-# Solucion = apps.get_model("core", "Solucion")
 
 
 @given("un usuario en el home de la App Da Vinci")
@@ -58,7 +51,7 @@ def muestra_problema_aleatorio_de_admision(context):
 def muestra_el_curso(context):
     context.test.assertIn("curso", context.response_data)
     context.test.assertTrue(len(context.response_data["curso"]) > 0)
-    curso_response = Curso.objects.get(
+    curso_response = context.curso_model.objects.get(
         nombre=context.response_data["curso"]["nombre"]
     )
     context.curso_response = curso_response
@@ -68,7 +61,7 @@ def muestra_el_curso(context):
 def muestra_el_tema(context):
     context.test.assertIn("tema", context.response_data)
     context.test.assertTrue(len(context.response_data["tema"]) > 0)
-    tema_response = Tema.objects.get(
+    tema_response = context.tema_model.objects.get(
         nombre=context.response_data["tema"]["nombre"]
     )
     context.test.assertIn(tema_response, context.curso_response.tema_set.all())
@@ -119,7 +112,7 @@ def muestra_problema_del_curso(context):
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertIn("alternativas", response.data)
-    context.curso_seleccionado = Curso.objects.get(
+    context.curso_seleccionado = context.curso_model.objects.get(
         id=context.curso_aleatorio_id
     )
     context.response_data = response.data
@@ -145,7 +138,7 @@ def muestra_el_curso_seleccionado(context):
 def muestra_el_tema_y_es_del_curso(context):
     context.test.assertIn("tema", context.response_data)
     context.test.assertTrue(len(context.response_data["tema"]) > 0)
-    tema_response = Tema.objects.get(
+    tema_response = context.tema_model.objects.get(
         nombre=context.response_data["tema"]["nombre"]
     )
     context.test.assertIn(
