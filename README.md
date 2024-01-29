@@ -34,7 +34,7 @@ Para mostrar las preguntas de admisión es necesario ingresarlas al sistema por 
   - [Descripción del proyecto](#descripción-del-proyecto)
   - [Indice de comandos:](#indice-de-comandos)
     - [Levantar el proyecto](#levantar-el-proyecto)
-    - [Conectarse al container de backend](#conectarse-al-container-de-backend)
+    - [Conectarse al container del API](#conectarse-al-container-del-api)
     - [Correr tests de características](#correr-tests-de-características)
     - [Correr coverage de codigo](#correr-coverage-de-codigo)
     - [Levantar reporte de tests](#levantar-reporte-de-tests)
@@ -50,22 +50,22 @@ https://docs.docker.com/engine/install/
 
 Levantar el entorno de desarrollo y pruebas:
 
-- `docker compose -f src/dockerfiles/docker-compose.yml up --build`
+- `docker compose -f api/dockerfiles/docker-compose.yml up --build`
 
 
-### Conectarse al container de backend
+### Conectarse al container del API
 
-- `docker exec -it backend bash`
+- `docker exec -it api bash`
 
 
 ### Correr tests de características
 
-- `python src/api/manage.py behave`
+- `python api/manage.py behave`
 
 
 ### Correr coverage de codigo
 
-- `coverage run src/api/manage.py behave && coverage html`
+- `coverage run api/manage.py behave && coverage html`
 
 
 ### Levantar reporte de tests
@@ -92,7 +92,7 @@ En el container:
 
 Para sólo un modelo:
 
-- `python src/api/manage.py dumpdata core.{Model} --format json --indent 4 -o src/api/apps/core/fixtures/{filename}.json`
+- `python api/manage.py dumpdata core.{Model} --format json --indent 4 -o api/apps/core/fixtures/{filename}.json`
 
 
 
