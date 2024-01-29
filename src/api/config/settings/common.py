@@ -29,6 +29,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "default_secret_key")
 
 # Application definition
 DJANGO_APPS = (
+    "django_admin_env_notice",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -75,6 +76,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django_admin_env_notice.context_processors.from_settings",
             ],
         },
     },
