@@ -54,6 +54,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+cov/
 
 # Translations
 src/api/**/*.mo
@@ -126,9 +127,9 @@ src/api/.ropeproject
 src/api//site
 
 # mypy
-src/api/.mypy_cache/
-src/api/.dmypy.json
-src/api/dmypy.json
+**.mypy_cache/
+**.dmypy.json
+**dmypy.json
 
 # Pyre type checker
 src/api/.pyre/
@@ -203,3 +204,7 @@ src/app/app.*.map.json
 src/app/android/app/debug
 src/app/android/app/profile
 src/app/android/app/release
+
+# Allure reports
+allure-report
+allure-results

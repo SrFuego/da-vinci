@@ -8,11 +8,12 @@ services:
             context: ../../.
             dockerfile: src/dockerfiles/Dockerfile.develop
         command: >
-            sh -c "python src/api/manage.py migrate
-            && python src/api/manage.py loaddata src/api/apps/core/fixtures/*.json
+            sh -c "python src/api/manage.py migrate \
+            && python src/api/manage.py loaddata src/api/apps/core/fixtures/*.json \
             && python src/api/manage.py runserver 0.0.0.0:8000"
         ports:
             - 8000:8000
+            - 8050:8050
         volumes:
             - "$PWD:/daVinci"
         env_file:
