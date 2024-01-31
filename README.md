@@ -112,7 +112,7 @@ Para sólo un modelo:
 
 ### Sequence
 
-![Sequence](docs/sequence/out/0.3.0/Da_Vinci.png)
+![Sequence](docs/sequence/out/0.3.0/Da Vinci.png)
 
 
 
