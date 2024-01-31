@@ -12,7 +12,7 @@ from django.core.exceptions import ValidationError
 
 
 # Local imports
-from .managers import CursoToUIManager, PreguntaToUIManager
+from .managers import CursoToUIManager, TemaToUIManager, PreguntaToUIManager
 
 
 # Create your models here.
@@ -123,9 +123,20 @@ class PreguntasPorCurso(models.Model):
 class Tema(models.Model):
     nombre = models.CharField(max_length=50)
     curso = models.ForeignKey("Curso", on_delete=models.CASCADE)
+    objects = models.Manager()
+    to_ui_objects = TemaToUIManager()
 
     def __str__(self):
         return self.nombre
+
+    @property
+    def tiene_preguntas(self):
+        if self.pregunta_set.all().exists():
+            return True
+        return False
+
+    class Meta:
+        ordering = ["nombre"]
 
 
 class Lectura(models.Model):

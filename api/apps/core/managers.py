@@ -29,6 +29,20 @@ class CursoToUIManager(Manager):
         )
 
 
+class TemaToUIManager(Manager):
+    def get_queryset(self):
+        id_tema_con_preguntas = [
+            tema.id for tema in super().get_queryset() if tema.tiene_preguntas
+        ]
+        return (
+            super()
+            .get_queryset()
+            .filter(
+                id__in=id_tema_con_preguntas,
+            )
+        )
+
+
 class PreguntaToUIManager(Manager):
     def get_queryset(self):
         id_preguntas_completas = [

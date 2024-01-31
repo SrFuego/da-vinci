@@ -16,11 +16,12 @@ from silk.profiling.profiler import silk_profile
 
 
 # Local imports
-from .models import Alternativa, Curso, Pregunta
+from .models import Alternativa, Curso, Tema, Pregunta
 from .serializers import (
     AlternativaSerializer,
     AlternativaSeleccionadaSerializer,
     CursoSerializer,
+    TemaSerializer,
     PreguntaSerializer,
     SolucionSerializer,
 )
@@ -37,6 +38,19 @@ class CursoViewSet(GenericViewSet):
         queryset = self.filter_queryset(self.get_queryset())
         serializer = self.get_serializer(queryset, many=True)
         data = {"cursos": serializer.data}
+        return Response(data)
+
+
+class TemaViewSet(GenericViewSet):
+    serializer_class = TemaSerializer
+
+    def get_queryset(self):
+        return Tema.to_ui_objects.all()
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True)
+        data = {"temas": serializer.data}
         return Response(data)
 
 
