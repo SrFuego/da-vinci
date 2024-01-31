@@ -44,7 +44,13 @@ class PreguntaSerializer(ModelSerializer):
 
     class Meta:
         model = Pregunta
-        fields = ("id", "enunciado", "alternativas", "tema", "curso")
+        fields = (
+            "id",
+            "enunciado",
+            "alternativas",
+            "curso",
+            "tema",
+        )
 
 
 class SolucionSerializer(ModelSerializer):
