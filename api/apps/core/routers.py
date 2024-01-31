@@ -11,6 +11,7 @@
 # Local imports
 from .viewsets import (
     CursoViewSet,
+    TemaViewSet,
     MostrarPreguntaViewSet,
     PreguntaIndividualViewSet,
     ResolverPreguntaViewSet,
@@ -23,4 +24,5 @@ core_list = (
     (r"pregunta_aleatoria", MostrarPreguntaViewSet),
     (r"resolver_pregunta_individual", ResolverPreguntaViewSet),
     (r"curso", CursoViewSet),
+    (r"tema", TemaViewSet),
 )
