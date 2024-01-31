@@ -11,11 +11,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from rest_framework.viewsets import GenericViewSet
-from drf_spectacular.utils import (
-    extend_schema,
-    extend_schema_view,
-    OpenApiParameter,
-)
+from drf_spectacular.utils import OpenApiParameter, extend_schema
 from silk.profiling.profiler import silk_profile
 
 
@@ -44,18 +40,21 @@ class CursoViewSet(GenericViewSet):
         return Response(data)
 
 
-class MostrarPreguntaPorCursoViewSet(GenericViewSet):
+class PreguntaIndividualViewSet(GenericViewSet):
     queryset = Pregunta.objects.none()
     serializer_class = PreguntaSerializer
 
     def get_queryset(self):
-        curso_seleccionado = get_object_or_404(
-            Curso,
-            id=self.request.query_params["curso_id"],
-        )
-        return Pregunta.to_ui_objects.filter(
-            tema__in=curso_seleccionado.tema_set.all()
-        ).order_by("?")
+        if "curso_id" in self.request.query_params:
+            curso_seleccionado = get_object_or_404(
+                Curso,
+                id=self.request.query_params["curso_id"],
+            )
+            return Pregunta.to_ui_objects.filter(
+                tema__in=curso_seleccionado.tema_set.all()
+            ).order_by("?")
+        else:
+            return Pregunta.to_ui_objects.order_by("?")
 
     @silk_profile()
     @extend_schema(
@@ -64,7 +63,6 @@ class MostrarPreguntaPorCursoViewSet(GenericViewSet):
                 name="curso_id",
                 description="ID del Curso",
                 type=int,
-                required=True,
             ),
         ]
     )

@@ -12,15 +12,15 @@
 from .viewsets import (
     CursoViewSet,
     MostrarPreguntaViewSet,
-    MostrarPreguntaPorCursoViewSet,
+    PreguntaIndividualViewSet,
     ResolverPreguntaViewSet,
 )
 
 
 # Create your routers here.
 core_list = (
+    (r"pregunta_individual", PreguntaIndividualViewSet),
     (r"pregunta_aleatoria", MostrarPreguntaViewSet),
     (r"resolver_pregunta_individual", ResolverPreguntaViewSet),
     (r"curso", CursoViewSet),
-    (r"pregunta_individual", MostrarPreguntaPorCursoViewSet),
 )
