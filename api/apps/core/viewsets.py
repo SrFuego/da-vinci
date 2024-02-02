@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 
 # Third party apps imports
 from rest_framework import status
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from rest_framework.viewsets import GenericViewSet
@@ -45,7 +46,9 @@ class TemaViewSet(GenericViewSet):
     serializer_class = TemaSerializer
 
     def get_queryset(self):
-        return Tema.to_ui_objects.all()
+        return Tema.to_ui_objects.filter(
+            curso__id=self.kwargs["curso_id"],
+        )
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
@@ -67,8 +70,15 @@ class PreguntaIndividualViewSet(GenericViewSet):
             return Pregunta.to_ui_objects.filter(
                 tema__in=curso_seleccionado.tema_set.all()
             ).order_by("?")
-        else:
-            return Pregunta.to_ui_objects.order_by("?")
+        if "tema_id" in self.request.query_params:
+            tema_seleccionado = get_object_or_404(
+                Tema,
+                id=self.request.query_params["tema_id"],
+            )
+            return Pregunta.to_ui_objects.filter(
+                tema=tema_seleccionado
+            ).order_by("?")
+        return Pregunta.to_ui_objects.order_by("?")
 
     @silk_profile()
     @extend_schema(
@@ -78,23 +88,15 @@ class PreguntaIndividualViewSet(GenericViewSet):
                 description="ID del Curso",
                 type=int,
             ),
+            OpenApiParameter(
+                name="tema_id",
+                description="ID del Tema",
+                type=int,
+            ),
         ]
     )
     def list(self, request, *args, **kwargs):
         get_list_or_404(self.get_queryset())
-        pregunta_random = self.get_queryset().first()
-        serializer = self.get_serializer(pregunta_random)
-        return Response(serializer.data)
-
-
-class MostrarPreguntaViewSet(GenericViewSet):
-    serializer_class = PreguntaSerializer
-
-    def get_queryset(self):
-        return Pregunta.to_ui_objects.order_by("?")
-
-    @silk_profile()
-    def list(self, request, *args, **kwargs):
         pregunta_random = self.get_queryset().first()
         serializer = self.get_serializer(pregunta_random)
         return Response(serializer.data)
