@@ -43,20 +43,23 @@ def una_de_sus_alternativas_es_correcta(context, correcta):
                 pregunta=context.pregunta_db,
                 alternativa_correcta=alternativa,
                 resolucion="solucionario de la pregunta",
-                teoria="teoria de la pregunta",
+                teoria="teoría de la pregunta",
             )
-    response = context.test.client.get(context.PREGUNTA_ALEATORIA_URL)
+    response = context.test.client.get(context.PREGUNTA_INDIVIDUAL_URL)
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertIn("alternativas", response.data)
     context.test.assertEqual(
         ",".join(
-            sorted([item["valor"] for item in response.data["alternativas"]])
+            sorted(
+                [item["valor"] for item in response.data["alternativas"]],
+            )
         ),
         context.alternativas_from_UI,
     )
     context.test.assertEqual(
-        response.data["enunciado"], context.pregunta_db.enunciado
+        response.data["enunciado"],
+        context.pregunta_db.enunciado,
     )
 
 
@@ -73,7 +76,8 @@ def la_envia_y_se_evalua_como_respuesta(context, respuesta):
     )
     data = {"alternativa_seleccionada_id": alternativa_seleccionada.id}
     response = context.test.client.post(
-        context.PREGUNTA_INDIVIDUAL_RESOLVER_URL, data
+        context.PREGUNTA_INDIVIDUAL_URL,
+        data,
     )
     context.test.assertEqual(response.status_code, 200)
     context.response_data = response.data
