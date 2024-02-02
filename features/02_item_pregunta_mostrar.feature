@@ -16,39 +16,32 @@ Característica: Mostrar una pregunta individual
   Antecedentes:
     Dado un usuario en el home de la App Da Vinci
     Y selecciona "Pregunta Individual"
-    Y le muestra "Pregunta Aleatoria" y "Elegir Curso"
+    Y le muestra "Curso Aleatorio" con la "Lista de Cursos"
 
-  Escenario: Pregunta Individual Aleatoria
-    Cuando selecciona "Pregunta Aleatoria"
+  Escenario: Pregunta Individual Curso Aleatorio
+    Cuando selecciona "Curso Aleatorio"
     Entonces le muestra un problema aleatorio y sus alternativas
     Y el Curso (puede ser cualquiera)
     Y el Tema (puede ser cualquiera del Curso)
     Y el examen de admisión en el que vino esa pregunta (institución, año, etc)
 
-  Escenario: Pregunta Individual de un Curso, cualquier Tema
-    Cuando que selecciona "Elegir Curso"
-    Y le muestra la lista de Cursos
-    Y selecciona un Curso
+  Escenario: Pregunta Individual de un Curso, Tema aleatorio
+    Cuando selecciona "un Curso"
+    Y le muestra "Tema Aleatorio" con la "Lista de Temas del Curso"
+    Y selecciona "Tema Aleatorio"
     Entonces le muestra un problema del curso y sus alternativas
     Y el Curso (el que seleccionó)
     Y el Tema (cualquiera del Curso seleccionado)
     Y el examen de admisión en el que vino esa pregunta (institución, año, etc)
 
-  # Escenario: Pregunta de un Curso, un Tema
-  #   Cuando que selecciona "Elegir Curso"
-  #   Y le muestra la lista de Cursos
-  #   Y selecciona un Curso
-  #   Y le muestra "Tema aleatorio" y "Elegir Tema"
-  #   Y selecciona "Elegir Tema"
-  #   Y le da al botón: "Enviar"
-  #   Y le muestra la lista de temas de ese Curso
-  #   Y selecciona el tema que quiere practicar
-  #   Y le da al botón: "Empezar Problemas"
-  #   Entonces le muestra un problema de admisión
-  #   Y sus alternativas
-  #   Y el Curso (el que seleccionó)
-  #   Y el Tema (el que seleccionó)
-
+  Escenario: Pregunta Individual de un Curso, de un Tema
+    Cuando selecciona "un Curso"
+    Y le muestra "Tema Aleatorio" con la "Lista de Temas del Curso"
+    Y selecciona "un Tema"
+    Entonces le muestra un problema del tema y sus alternativas
+    Y el Curso (el que seleccionó)
+    Y el Tema (el que seleccionó)
+    Y el examen de admisión en el que vino esa pregunta (institución, año, etc)
 
 
 
