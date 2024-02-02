@@ -59,7 +59,6 @@ class TemaViewSet(GenericViewSet):
 
 class PreguntaIndividualViewSet(GenericViewSet):
     queryset = Pregunta.objects.none()
-    serializer_class = PreguntaSerializer
 
     def get_queryset(self):
         if "curso_id" in self.request.query_params:
@@ -79,6 +78,12 @@ class PreguntaIndividualViewSet(GenericViewSet):
                 tema=tema_seleccionado
             ).order_by("?")
         return Pregunta.to_ui_objects.order_by("?")
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return PreguntaSerializer
+        if self.request.method == "POST":
+            return AlternativaSeleccionadaSerializer
 
     @silk_profile()
     @extend_schema(
@@ -101,27 +106,25 @@ class PreguntaIndividualViewSet(GenericViewSet):
         serializer = self.get_serializer(pregunta_random)
         return Response(serializer.data)
 
-
-class ResolverPreguntaViewSet(GenericViewSet):
-    serializer_class = AlternativaSeleccionadaSerializer
-
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         respuesta = get_object_or_404(
-            Alternativa, pk=serializer.data["alternativa_seleccionada_id"]
+            Alternativa,
+            pk=serializer.data["alternativa_seleccionada_id"],
         )
         data_calificada = respuesta.calificar()
         data = {
-            "solucion": SolucionSerializer(data_calificada["solucion"]).data,
-            "alternativa_enviada": AlternativaSerializer(respuesta).data,
+            "solucion": SolucionSerializer(
+                data_calificada["solucion"],
+            ).data,
+            "alternativa_enviada": AlternativaSerializer(
+                respuesta,
+            ).data,
             "es_correcta": data_calificada["es_correcta"],
             "puntaje_obtenido": data_calificada["puntaje_obtenido"],
         }
-        return Response(data, status=status.HTTP_200_OK)
-
-    def get_success_headers(self, data):
-        try:
-            return {"Location": str(data[api_settings.URL_FIELD_NAME])}
-        except (TypeError, KeyError):
-            return {}
+        return Response(
+            data,
+            status=status.HTTP_200_OK,
+        )

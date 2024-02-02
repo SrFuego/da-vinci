@@ -15,7 +15,6 @@ from .viewsets import (
     CursoViewSet,
     TemaViewSet,
     PreguntaIndividualViewSet,
-    ResolverPreguntaViewSet,
 )
 
 
@@ -23,7 +22,6 @@ from .viewsets import (
 core_list = (
     (r"curso", CursoViewSet),
     (r"pregunta_individual", PreguntaIndividualViewSet),
-    (r"resolver_pregunta_individual", ResolverPreguntaViewSet),
 )
 
 
