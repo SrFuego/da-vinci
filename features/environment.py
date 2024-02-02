@@ -2,9 +2,9 @@ import coverage
 
 
 from steps.draft_urls import (
-    PREGUNTA_ALEATORIA_URL,
     CURSO_URL,
-    PREGUNTA_INDIVIDUAL_POR_CURSO_URL,
+    TEMA_URL,
+    PREGUNTA_INDIVIDUAL_URL,
     PREGUNTA_INDIVIDUAL_RESOLVER_URL,
 )
 
@@ -16,11 +16,9 @@ def django_ready(context):
 
     context.test.client = APIClient()
 
-    context.PREGUNTA_ALEATORIA_URL = PREGUNTA_ALEATORIA_URL
     context.CURSO_URL = CURSO_URL
-    context.PREGUNTA_INDIVIDUAL_POR_CURSO_URL = (
-        PREGUNTA_INDIVIDUAL_POR_CURSO_URL
-    )
+    context.TEMA_URL = TEMA_URL
+    context.PREGUNTA_INDIVIDUAL_URL = PREGUNTA_INDIVIDUAL_URL
     context.PREGUNTA_INDIVIDUAL_RESOLVER_URL = PREGUNTA_INDIVIDUAL_RESOLVER_URL
 
     context.pregunta_model = apps.get_model("core", "Pregunta")
