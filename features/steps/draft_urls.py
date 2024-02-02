@@ -21,10 +21,3 @@ PREGUNTA_INDIVIDUAL_URL = "{}{}{}".format(
     API_VERSION,
     "pregunta_individual/",
 )
-
-
-PREGUNTA_INDIVIDUAL_RESOLVER_URL = "{}{}{}".format(
-    HOST_URL,
-    API_VERSION,
-    "resolver_pregunta_individual/",
-)

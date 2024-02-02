@@ -5,7 +5,6 @@ from steps.draft_urls import (
     CURSO_URL,
     TEMA_URL,
     PREGUNTA_INDIVIDUAL_URL,
-    PREGUNTA_INDIVIDUAL_RESOLVER_URL,
 )
 
 
@@ -19,7 +18,6 @@ def django_ready(context):
     context.CURSO_URL = CURSO_URL
     context.TEMA_URL = TEMA_URL
     context.PREGUNTA_INDIVIDUAL_URL = PREGUNTA_INDIVIDUAL_URL
-    context.PREGUNTA_INDIVIDUAL_RESOLVER_URL = PREGUNTA_INDIVIDUAL_RESOLVER_URL
 
     context.pregunta_model = apps.get_model("core", "Pregunta")
     context.examen_de_admision_model = apps.get_model(
