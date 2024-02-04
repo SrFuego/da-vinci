@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'presentation/screens/navigation/home.dart';
-import 'presentation/screens/navigation/pregunta_individual.dart';
-import 'presentation/screens/navigation/seleccionar_curso.dart';
+import 'presentation/screens/navigation/individual_curso.dart';
+import 'presentation/screens/navigation/individual_tema.dart';
 import 'presentation/screens/navigation/wip_grupo_de_preguntas.dart';
 import 'presentation/screens/navigation/wip_examenes_pasados.dart';
 
-import 'presentation/controllers/pregunta_aleatoria.dart';
 // import 'presentation/controllers/solucion_pregunta.dart';
-import 'presentation/controllers/pregunta_individual.dart';
+import 'presentation/controllers/pregunta_aleatoria.dart';
+import 'presentation/controllers/pregunta_curso.dart';
+import 'presentation/controllers/pregunta_tema.dart';
 
 import 'domain/bloc/pregunta.dart';
 import 'domain/models/pregunta.dart';
@@ -56,19 +57,24 @@ class _DaVinciAppState extends State<DaVinciApp> {
       child: MaterialApp(
         title: 'Problemas de Admisión en la palma de tu mano',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigoAccent),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.indigoAccent,
+          ),
           useMaterial3: true,
         ),
         initialRoute: '/',
         routes: {
+          // Navigation
           '/': (context) => const HomeScreen(),
-          'individual/': (context) => const PreguntaIndividualScreen(),
+          'individual/cursos/': (context) => const IndividualCursoScreen(),
+          'individual/temas/': (context) => const IndividualTemaScreen(),
+          // Pages
           'individual/aleatoria/': (context) => const PreguntaAleatoriaScreen(),
           // 'individual/aleatoria/solucion/': (context) => const SolucionScreen(),
           'individual/por_curso/': (context) =>
               const PreguntaIndividualCursoScreen(),
-          'individual/seleccionar_curso/': (context) =>
-              const SeleccionarCursoScreen(),
+          'individual/por_tema/': (context) =>
+              const PreguntaIndividualTemaScreen(),
           'grupo/': (context) => const GrupoDePreguntasScreen(),
           'examenes/': (context) => const ExamenesPasadosScreen(),
         },

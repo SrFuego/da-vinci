@@ -1,4 +1,5 @@
 import 'curso.dart';
+import 'tema.dart';
 
 class Pregunta {
   final int id;

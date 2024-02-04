@@ -16,6 +16,10 @@ class PreguntaBloc {
     return repository.getPreguntaPorCurso(cursoId);
   }
 
+  Future<Pregunta> getPreguntaTema(int temaId) {
+    return repository.getPreguntaPorTema(temaId);
+  }
+
   Future<RespuestaEvaluada> postResolverPreguntaAleatoria(int alternativaId) {
     return repository.postResolverPregunta(alternativaId);
   }
