@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
 import '../../domain/models/pregunta.dart';
-
 import '../screens/page/pregunta.dart';
 
-class PreguntaIndividualCursoScreen extends StatefulWidget {
-  const PreguntaIndividualCursoScreen({super.key});
+class PreguntaIndividualTemaScreen extends StatefulWidget {
+  const PreguntaIndividualTemaScreen({super.key});
 
   @override
-  State<PreguntaIndividualCursoScreen> createState() =>
-      _PreguntaIndividualCursoScreenState();
+  State<PreguntaIndividualTemaScreen> createState() =>
+      _PreguntaIndividualTemaScreenState();
 }
 
-class _PreguntaIndividualCursoScreenState
-    extends State<PreguntaIndividualCursoScreen> {
+class _PreguntaIndividualTemaScreenState
+    extends State<PreguntaIndividualTemaScreen> {
   @override
   Widget build(BuildContext context) {
     final preguntaBloc = PreguntaBloc();
@@ -28,15 +27,15 @@ class _PreguntaIndividualCursoScreenState
       onPressed: () {
         Navigator.pushNamed(
           context,
-          'individual/por_curso/',
+          'individual/por_tema/',
           arguments: arguments,
         );
       },
-      child: const Text('Otra Pregunta del Curso'),
+      child: const Text('Otra Pregunta del Tema'),
     );
 
     return FutureBuilder(
-      future: preguntaBloc.getPreguntaCurso(arguments['curso']),
+      future: preguntaBloc.getPreguntaTema(arguments['temaId']),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {

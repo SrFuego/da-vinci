@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         const RouterButtonWithDescription(
           title: 'Pregunta Individual',
           description: 'Muestra preguntas 1x1',
-          route: 'individual/',
+          route: 'individual/cursos/',
         ),
         const RouterButtonWithDescription(
           title: 'Grupo de Preguntas',

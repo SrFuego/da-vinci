@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/models/curso.dart';
 import '../../../domain/bloc/curso.dart';
+import '../../../domain/models/curso.dart';
 import '../../components/route_button.dart';
 import '../base_screen.dart';
 
-class SeleccionarCursoScreen extends StatefulWidget {
-  const SeleccionarCursoScreen({super.key});
+class IndividualCursoScreen extends StatefulWidget {
+  const IndividualCursoScreen({super.key});
 
   @override
-  State<SeleccionarCursoScreen> createState() => _SeleccionarCursoScreenState();
+  State<IndividualCursoScreen> createState() => _IndividualCursoScreenState();
 }
 
-class _SeleccionarCursoScreenState extends State<SeleccionarCursoScreen> {
+class _IndividualCursoScreenState extends State<IndividualCursoScreen> {
   @override
   Widget build(BuildContext context) {
     final cursoBloc = CursoBloc();
@@ -24,16 +24,23 @@ class _SeleccionarCursoScreenState extends State<SeleccionarCursoScreen> {
           if (snapshot.hasData) {
             final List<Curso> cursos = snapshot.data!;
             return BaseScreen(
-              title: 'Selecciona Curso',
+              title: 'Pregunta Individual',
               body: <Widget>[
                 const SizedBox(height: 40.0),
+                const RouterButtonWithDescription(
+                  title: 'Curso Aleatorio',
+                  description: '',
+                  verticalSize: 7.0,
+                  route: 'individual/aleatoria/',
+                ),
+                // const SizedBox(height: 10.0),
                 for (Curso curso in cursos)
                   RouterButtonWithDescription(
                     title: curso.nombre,
                     description: '',
                     verticalSize: 7.0,
-                    arguments: {'curso': curso.id},
-                    route: 'individual/por_curso/',
+                    arguments: {'cursoId': curso.id},
+                    route: 'individual/temas/',
                   ),
               ],
             );

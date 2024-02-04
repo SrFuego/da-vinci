@@ -8,7 +8,9 @@ class CursoRepositoryImpl implements CursoRepository {
     List<Curso> cursosApi = [];
     final data = await DioClient.instance.get('/curso/');
     for (var index = 0; index < data['cursos'].length; index++) {
-      Curso aux = Curso.fromJson(data['cursos'][index]);
+      Curso aux = Curso.fromJson(
+        data['cursos'][index],
+      );
       cursosApi.add(aux);
     }
     return cursosApi;
