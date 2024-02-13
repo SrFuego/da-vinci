@@ -17,7 +17,12 @@ from silk.profiling.profiler import silk_profile
 
 
 # Local imports
-from .models import Alternativa, Curso, Tema, Pregunta
+from .models import (
+    Alternativa,
+    Curso,
+    Tema,
+    Pregunta,
+)
 from .serializers import (
     AlternativaSerializer,
     AlternativaSeleccionadaSerializer,
@@ -51,6 +56,7 @@ class TemaViewSet(GenericViewSet):
         )
 
     def list(self, request, *args, **kwargs):
+        get_list_or_404(self.get_queryset())
         queryset = self.filter_queryset(self.get_queryset())
         serializer = self.get_serializer(queryset, many=True)
         data = {"temas": serializer.data}

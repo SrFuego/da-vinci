@@ -15,7 +15,13 @@ from rest_framework.serializers import (
 
 
 # Local imports
-from .models import Alternativa, Curso, Pregunta, Solucion, Tema
+from .models import (
+    Alternativa,
+    Curso,
+    Pregunta,
+    Solucion,
+    Tema,
+)
 
 
 # Create your serializers here.
@@ -28,13 +34,13 @@ class AlternativaSerializer(ModelSerializer):
 class CursoSerializer(ModelSerializer):
     class Meta:
         model = Curso
-        fields = ("id", "nombre")
+        fields = ("id", "nombre", "slug")
 
 
 class TemaSerializer(ModelSerializer):
     class Meta:
         model = Tema
-        fields = ("id", "nombre")
+        fields = ("id", "nombre", "slug")
 
 
 class PreguntaSerializer(ModelSerializer):
