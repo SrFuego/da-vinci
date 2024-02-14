@@ -8,3 +8,4 @@ django-filter
 drf-spectacular
 django-admin-env-notice
 django-extensions
+djangorestframework-camel-case

@@ -7,7 +7,7 @@
 FROM python:3.10-bookworm as base
 
 ARG WORK_DIR="/daVinci"
-ARG REQUIREMENTS_FILE="20240109.develop"
+ARG REQUIREMENTS_FILE="20240214.develop"
 
 # Prevents Python from writing pyc files.
 ENV PYTHONDONTWRITEBYTECODE=1
