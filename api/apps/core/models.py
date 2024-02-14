@@ -316,7 +316,7 @@ class Solucion(models.Model):
     def __str__(self):
         return "Solución de: {}".format(self.pregunta)
 
-    def es_correcta(self, alternativa):
+    def es_correcta(self, alternativa) -> bool:
         return self.alternativa_correcta == alternativa
 
     class Meta:
