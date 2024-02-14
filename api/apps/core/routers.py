@@ -30,7 +30,7 @@ tema_router.register("tema", TemaViewSet, basename="tema")
 
 core_urlpatterns = [
     path(
-        "api/v1/curso/<int:curso_id>/",
+        "api/v1/curso/<str:curso>/",
         include(tema_router.urls),
     ),
 ]

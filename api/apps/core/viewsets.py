@@ -8,9 +8,9 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 
 # Third party apps imports
 from rest_framework import status
-from rest_framework.decorators import action
+
+# from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.settings import api_settings
 from rest_framework.viewsets import GenericViewSet
 from drf_spectacular.utils import OpenApiParameter, extend_schema
 from silk.profiling.profiler import silk_profile
@@ -30,55 +30,61 @@ from .serializers import (
     TemaSerializer,
     PreguntaSerializer,
     SolucionSerializer,
+    RespuestaSerializer,
 )
 
 
 # Create your viewsets here.
 class CursoViewSet(GenericViewSet):
+    queryset = Curso.to_ui_objects.all()
     serializer_class = CursoSerializer
 
-    def get_queryset(self):
-        return Curso.to_ui_objects.all()
-
     def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
-        serializer = self.get_serializer(queryset, many=True)
-        data = {"cursos": serializer.data}
-        return Response(data)
+        queryset = self.filter_queryset(
+            self.get_queryset(),
+        )
+        serializer = self.get_serializer(
+            queryset,
+            many=True,
+        )
+        return Response(serializer.data)
 
 
 class TemaViewSet(GenericViewSet):
     serializer_class = TemaSerializer
 
     def get_queryset(self):
-        return Tema.to_ui_objects.filter(
-            curso__id=self.kwargs["curso_id"],
+        queryset = Tema.to_ui_objects.filter(
+            curso__slug=self.kwargs["curso"],
         )
+        get_list_or_404(queryset)
+        return queryset
 
     def list(self, request, *args, **kwargs):
-        get_list_or_404(self.get_queryset())
-        queryset = self.filter_queryset(self.get_queryset())
-        serializer = self.get_serializer(queryset, many=True)
-        data = {"temas": serializer.data}
-        return Response(data)
+        queryset = self.filter_queryset(
+            self.get_queryset(),
+        )
+        serializer = self.get_serializer(
+            queryset,
+            many=True,
+        )
+        return Response(serializer.data)
 
 
 class PreguntaIndividualViewSet(GenericViewSet):
-    queryset = Pregunta.objects.none()
-
     def get_queryset(self):
-        if "curso_id" in self.request.query_params:
+        if "curso" in self.request.query_params:
             curso_seleccionado = get_object_or_404(
                 Curso,
-                id=self.request.query_params["curso_id"],
+                slug=self.request.query_params["curso"],
             )
             return Pregunta.to_ui_objects.filter(
                 tema__in=curso_seleccionado.tema_set.all()
             ).order_by("?")
-        if "tema_id" in self.request.query_params:
+        if "tema" in self.request.query_params:
             tema_seleccionado = get_object_or_404(
                 Tema,
-                id=self.request.query_params["tema_id"],
+                slug=self.request.query_params["tema"],
             )
             return Pregunta.to_ui_objects.filter(
                 tema=tema_seleccionado
@@ -89,20 +95,21 @@ class PreguntaIndividualViewSet(GenericViewSet):
         if self.request.method == "GET":
             return PreguntaSerializer
         if self.request.method == "POST":
-            return AlternativaSeleccionadaSerializer
+            # return AlternativaSeleccionadaSerializer
+            return AlternativaSerializer
 
     @silk_profile()
     @extend_schema(
         parameters=[
             OpenApiParameter(
-                name="curso_id",
-                description="ID del Curso",
-                type=int,
+                name="curso",
+                description="Slug del Curso",
+                type=str,
             ),
             OpenApiParameter(
-                name="tema_id",
-                description="ID del Tema",
-                type=int,
+                name="tema",
+                description="Slug del Tema",
+                type=str,
             ),
         ]
     )
@@ -113,11 +120,13 @@ class PreguntaIndividualViewSet(GenericViewSet):
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        print(request.data)
+        serializer_in = self.get_serializer(data=request.data)
+        serializer_in.is_valid(raise_exception=True)
+        print(serializer_in.data)
         respuesta = get_object_or_404(
             Alternativa,
-            pk=serializer.data["alternativa_seleccionada_id"],
+            pk=serializer_in.data["alternativa_seleccionada_id"],
         )
         data_calificada = respuesta.calificar()
         data = {
@@ -130,7 +139,6 @@ class PreguntaIndividualViewSet(GenericViewSet):
             "es_correcta": data_calificada["es_correcta"],
             "puntaje_obtenido": data_calificada["puntaje_obtenido"],
         }
-        return Response(
-            data,
-            status=status.HTTP_200_OK,
-        )
+        serializer_out = RespuestaSerializer(data=data)
+        serializer_out.is_valid()
+        return Response(serializer_out.data)
