@@ -35,7 +35,7 @@ class _PreguntaIndividualCursoScreenState
     );
 
     return FutureBuilder(
-      future: preguntaBloc.getPreguntaCurso(arguments['cursoId']),
+      future: preguntaBloc.getPreguntaCurso(arguments['cursoSlug']),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {

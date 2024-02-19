@@ -35,7 +35,7 @@ class _PreguntaIndividualTemaScreenState
     );
 
     return FutureBuilder(
-      future: preguntaBloc.getPreguntaTema(arguments['temaId']),
+      future: preguntaBloc.getPreguntaTema(arguments['temaSlug']),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {

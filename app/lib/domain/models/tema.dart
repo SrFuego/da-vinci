@@ -1,18 +1,25 @@
+import 'curso.dart';
+
 class Tema {
-  final int id;
   final String nombre;
+  final String slug;
+  final Curso curso;
 
-  Tema({required this.id, required this.nombre});
+  Tema({
+    required this.nombre,
+    required this.slug,
+    required this.curso,
+  });
 
-  factory Tema.fromJson(Map<String, dynamic> json) {
-    return Tema(
-      id: json['id'] as int,
-      nombre: json['nombre'] as String,
-    );
-  }
+  factory Tema.fromJson(Map<String, dynamic> json) => Tema(
+        nombre: json['nombre'] as String,
+        slug: json['slug'] as String,
+        curso: Curso.fromJson(json["curso"]),
+      );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "nombre": nombre,
+        "slug": slug,
+        "curso": curso.toJson(),
       };
 }

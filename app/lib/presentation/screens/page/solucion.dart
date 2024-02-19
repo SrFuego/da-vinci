@@ -27,7 +27,7 @@ class _SolucionScreenState extends State<SolucionPage> {
     RespuestaEvaluada respuesta = widget.respuestaEvaluada;
     Pregunta pregunta = respuesta.solucion.pregunta;
     return BaseScreen(
-      title: pregunta.curso.nombre,
+      title: pregunta.tema.curso.nombre,
       body: <Widget>[
         const SizedBox(height: 20.0),
         Center(

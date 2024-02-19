@@ -29,7 +29,7 @@ class _PreguntaComponentState extends State<PreguntaPage> {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      title: widget.pregunta.curso.nombre,
+      title: widget.pregunta.tema.curso.nombre,
       body: <Widget>[
         const SizedBox(height: 5.0),
         Text(widget.pregunta.tema.nombre + (':')),
