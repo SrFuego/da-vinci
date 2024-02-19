@@ -7,7 +7,7 @@ class TemaBloc {
 // class PreguntaBloc extends ChangeNotifier {
   final repository = TemaRepositoryImpl();
 
-  Future<List<Tema>> getTemas(int cursoId) {
-    return repository.getTemasPorCurso(cursoId);
+  Future<List<Tema>> getTemas(String cursoSlug) {
+    return repository.getTemasPorCurso(cursoSlug);
   }
 }

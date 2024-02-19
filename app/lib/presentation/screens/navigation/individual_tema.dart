@@ -18,10 +18,10 @@ class _IndividualTemaScreenState extends State<IndividualTemaScreen> {
     final temaBloc = TemaBloc();
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
-    final cursoId = arguments['cursoId'];
+    final cursoSlug = arguments['cursoSlug'];
 
     return FutureBuilder(
-      future: temaBloc.getTemas(cursoId),
+      future: temaBloc.getTemas(cursoSlug),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
@@ -34,7 +34,9 @@ class _IndividualTemaScreenState extends State<IndividualTemaScreen> {
                   title: 'Tema Aleatorio',
                   description: '',
                   verticalSize: 7.0,
-                  arguments: {'cursoId': cursoId},
+                  arguments: {
+                    'cursoSlug': cursoSlug,
+                  },
                   route: 'individual/por_curso/',
                 ),
                 // const SizedBox(height: 10.0),
@@ -43,7 +45,7 @@ class _IndividualTemaScreenState extends State<IndividualTemaScreen> {
                     title: tema.nombre,
                     description: '',
                     verticalSize: 7.0,
-                    arguments: {'temaId': tema.id},
+                    arguments: {'temaSlug': tema.slug},
                     route: 'individual/por_tema/',
                   ),
               ],

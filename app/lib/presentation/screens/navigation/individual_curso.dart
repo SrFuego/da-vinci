@@ -39,7 +39,9 @@ class _IndividualCursoScreenState extends State<IndividualCursoScreen> {
                     title: curso.nombre,
                     description: '',
                     verticalSize: 7.0,
-                    arguments: {'cursoId': curso.id},
+                    arguments: {
+                      'cursoSlug': curso.slug,
+                    },
                     route: 'individual/temas/',
                   ),
               ],

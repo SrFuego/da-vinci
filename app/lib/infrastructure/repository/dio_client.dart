@@ -16,7 +16,7 @@ class DioClient {
   );
 
   ///Get Method
-  Future<Map<String, dynamic>> get(
+  Future<Response> get(
     String path, {
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -32,7 +32,7 @@ class DioClient {
         onReceiveProgress: onReceiveProgress,
       );
       if (response.statusCode == 200) {
-        return response.data;
+        return response;
       }
       throw "something went wrong";
     } catch (e) {

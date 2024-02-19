@@ -29,15 +29,29 @@ class _DaVinciAppState extends State<DaVinciApp> {
   final preguntaBloc = PreguntaBloc();
 
   Pregunta _pregunta = Pregunta.fromJson({
-    "id": 2,
     "enunciado": "¿Cuando se proclamó la independencia del Perú?",
     "alternativas": [
-      {"id": 7, "valor": "1825"},
-      {"id": 9, "valor": "1821"},
-      {"id": 8, "valor": "1823"}
+      {
+        "id": 9,
+        "valor": "1821",
+      },
+      {
+        "id": 8,
+        "valor": "1823",
+      },
+      {
+        "id": 7,
+        "valor": "1825",
+      }
     ],
-    "tema": {"id": 2, "nombre": "Independencia del Perú"},
-    "curso": {"id": 11, "nombre": "Historia del Perú"}
+    "tema": {
+      "nombre": "Independencia del Perú",
+      "slug": "independencia-del-peru",
+      "curso": {
+        "nombre": "Historia del Perú",
+        "slug": "historia-del-peru",
+      }
+    }
   });
   Pregunta get pregunta => _pregunta;
 
