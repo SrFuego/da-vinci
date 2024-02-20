@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
+import '../components/route_button.dart';
 import '../screens/page/pregunta.dart';
 
 class PreguntaIndividualCursoScreen extends StatefulWidget {
@@ -18,23 +19,22 @@ class _PreguntaIndividualCursoScreenState
     final preguntaBloc = PreguntaBloc();
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
+    final cursoSlug = arguments['cursoSlug'];
     final botonSaltar = FilledButton.tonal(
       onPressed: () => setState(() {}),
       child: const Text('Saltar'),
     );
-    final botonPreguntaIndividual = ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(
-          context,
-          'individual/por_curso/',
-          arguments: arguments,
-        );
-      },
-      child: const Text('Otra Pregunta del Curso'),
+    final botonPreguntaIndividual = RouterButton(
+      title: 'Otra Pregunta del Curso',
+      description: '',
+      verticalSize: 7.0,
+      route: 'individual/$cursoSlug/pregunta/',
+      arguments: arguments,
+      nextScreen: const PreguntaIndividualCursoScreen(),
     );
 
     return FutureBuilder(
-      future: preguntaBloc.getPreguntaCurso(arguments['cursoSlug']),
+      future: preguntaBloc.getPreguntaCurso(cursoSlug),
       builder: (context, snapshot) {
         // print("en la cosa de su cosita");
         // print(Uri.base.toString());
@@ -46,6 +46,7 @@ class _PreguntaIndividualCursoScreenState
               pregunta: pregunta,
               botonSaltar: botonSaltar,
               botonSolucion: botonPreguntaIndividual,
+              solucionRoute: 'individual/$cursoSlug/solucion/',
             );
           }
           return const Placeholder();

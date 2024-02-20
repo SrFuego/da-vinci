@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
+import '../components/route_button.dart';
 import '../screens/page/pregunta.dart';
 
 class PreguntaAleatoriaScreen extends StatefulWidget {
@@ -19,14 +20,12 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
       onPressed: () => setState(() {}),
       child: const Text('Saltar'),
     );
-    final botonPreguntaAleatoria = ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(
-          context,
-          'individual/aleatoria/',
-        );
-      },
-      child: const Text('Otra Pregunta Aleatoria'),
+    const botonPreguntaAleatoria = RouterButton(
+      title: 'Curso Aleatorio',
+      description: '',
+      verticalSize: 7.0,
+      route: 'individual/pregunta/',
+      nextScreen: PreguntaAleatoriaScreen(),
     );
 
     return FutureBuilder(
@@ -39,6 +38,7 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
               pregunta: pregunta,
               botonSaltar: botonSaltar,
               botonSolucion: botonPreguntaAleatoria,
+              solucionRoute: 'individual/solucion/',
             );
           }
           return const Placeholder();
