@@ -24,12 +24,6 @@ class _SolucionScreenState extends State<SolucionPage> {
     final respuesta = widget.respuestaEvaluada;
     final pregunta = respuesta.solucion.pregunta;
 
-    print("en la solucion");
-    print("pregunta.enunciado");
-    print(pregunta.enunciado);
-    print("respuesta.solucion.teoria");
-    print(respuesta.solucion.teoria);
-
     return BaseScreen(
       title: pregunta.tema.curso.nombre,
       body: <Widget>[
@@ -52,6 +46,8 @@ class _SolucionScreenState extends State<SolucionPage> {
             children: [
               TeXViewDocument(
                 pregunta.enunciado,
+                // "pregunta.enunciado",
+                // "${pregunta.enunciado}",
                 style: const TeXViewStyle(
                   textAlign: TeXViewTextAlign.center,
                 ),

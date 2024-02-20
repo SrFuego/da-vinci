@@ -27,17 +27,20 @@ class _PreguntaComponentState extends State<PreguntaPage> {
 
   @override
   Widget build(BuildContext context) {
+    final pregunta = widget.pregunta;
+    final tema = pregunta.tema;
+    final curso = tema.curso;
     return BaseScreen(
-      title: widget.pregunta.tema.curso.nombre,
+      title: curso.nombre,
       body: <Widget>[
         const SizedBox(height: 5.0),
-        Text(widget.pregunta.tema.nombre + (':')),
+        Text('${tema.nombre}:'),
         const SizedBox(height: 10.0),
         TeXView(
           child: TeXViewColumn(
             children: [
               TeXViewDocument(
-                widget.pregunta.enunciado,
+                pregunta.enunciado,
                 style: const TeXViewStyle(
                   textAlign: TeXViewTextAlign.center,
                 ),
@@ -79,8 +82,6 @@ class _PreguntaComponentState extends State<PreguntaPage> {
             FilledButton(
               onPressed: () {
                 if (alternativaSeleccionada != null) {
-                  print("alternativaSeleccionada");
-                  print(alternativaSeleccionada);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
