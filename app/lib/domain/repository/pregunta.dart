@@ -1,5 +1,5 @@
+import '../models/respuestaEvaluada.dart';
 import '../models/pregunta.dart';
-import '../models/solucion.dart';
 
 abstract class PreguntaRepository {
   Future<Pregunta> getPregunta();

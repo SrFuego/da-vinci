@@ -7,7 +7,10 @@ class Curso {
     required this.slug,
   });
 
-  factory Curso.fromJson(Map<String, dynamic> json) => Curso(
+  factory Curso.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      Curso(
         nombre: json["nombre"],
         slug: json["slug"],
       );

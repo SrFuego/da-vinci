@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_tex/flutter_tex.dart';
 
 import '../../../domain/models/pregunta.dart';
@@ -80,6 +79,8 @@ class _PreguntaComponentState extends State<PreguntaPage> {
             FilledButton(
               onPressed: () {
                 if (alternativaSeleccionada != null) {
+                  print("alternativaSeleccionada");
+                  print(alternativaSeleccionada);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
