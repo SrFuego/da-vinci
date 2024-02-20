@@ -1,5 +1,5 @@
+import '../../domain/models/respuestaEvaluada.dart';
 import '../../domain/models/pregunta.dart';
-import '../../domain/models/solucion.dart';
 import '../../domain/repository/pregunta.dart';
 import '../../infrastructure/repository/dio_client.dart';
 
@@ -31,6 +31,6 @@ class PreguntaRepositoryImpl implements PreguntaRepository {
       '/pregunta_individual/',
       data: data,
     );
-    return RespuestaEvaluada.fromJson(response);
+    return RespuestaEvaluada.fromJson(response.data);
   }
 }

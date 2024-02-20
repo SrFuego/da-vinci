@@ -37,6 +37,9 @@ class _PreguntaIndividualCursoScreenState
     return FutureBuilder(
       future: preguntaBloc.getPreguntaCurso(arguments['cursoSlug']),
       builder: (context, snapshot) {
+        print("en la cosa de su cosita");
+        print(Uri.base.toString());
+        print(Uri.base.query);
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
             final Pregunta pregunta = snapshot.data!;

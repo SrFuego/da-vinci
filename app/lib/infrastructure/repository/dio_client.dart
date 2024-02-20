@@ -41,7 +41,7 @@ class DioClient {
   }
 
   ///Post Method
-  Future<Map<String, dynamic>> post(
+  Future<Response> post(
     String path, {
     data,
     Map<String, dynamic>? queryParameters,
@@ -61,7 +61,7 @@ class DioClient {
         onReceiveProgress: onReceiveProgress,
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return response.data;
+        return response;
       }
       throw "something went wrong";
     } catch (e) {

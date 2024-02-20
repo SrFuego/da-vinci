@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_tex/flutter_tex.dart';
 
-import '../../../domain/models/solucion.dart';
-import '../../../domain/models/pregunta.dart';
-
+import '../../../domain/models/respuestaEvaluada.dart';
 import '../base_screen.dart';
 
 class SolucionPage extends StatefulWidget {
@@ -24,20 +21,30 @@ class SolucionPage extends StatefulWidget {
 class _SolucionScreenState extends State<SolucionPage> {
   @override
   Widget build(BuildContext context) {
-    RespuestaEvaluada respuesta = widget.respuestaEvaluada;
-    Pregunta pregunta = respuesta.solucion.pregunta;
+    final respuesta = widget.respuestaEvaluada;
+    final pregunta = respuesta.solucion.pregunta;
+
+    print("en la solucion");
+    print("pregunta.enunciado");
+    print(pregunta.enunciado);
+    print("respuesta.solucion.teoria");
+    print(respuesta.solucion.teoria);
+
     return BaseScreen(
       title: pregunta.tema.curso.nombre,
       body: <Widget>[
         const SizedBox(height: 20.0),
         Center(
           child: Text(
-            "Puntaje obtenido: ${respuesta.puntajeObtenido}",
+            "Puntaje obtenido: "
+            "${respuesta.puntajeObtenido}",
           ),
         ),
         const SizedBox(height: 15.0),
         Center(
-          child: Text(pregunta.tema.nombre + (':')),
+          child: Text(
+            "${pregunta.tema.nombre} :",
+          ),
         ),
         const SizedBox(height: 25.0),
         TeXView(
