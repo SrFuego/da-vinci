@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 
 import '../../../domain/models/respuestaEvaluada.dart';
+import '../../components/route_button.dart';
 import '../base_screen.dart';
 
 class SolucionPage extends StatefulWidget {
   final RespuestaEvaluada respuestaEvaluada;
-  final ElevatedButton botonSiguientePregunta;
+  final RouterButton botonSiguientePregunta;
 
   const SolucionPage({
     super.key,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../domain/bloc/tema.dart';
 import '../../../domain/models/tema.dart';
+import '../../controllers/pregunta_tema.dart';
+import '../../controllers/pregunta_curso.dart';
 import '../../components/route_button.dart';
 import '../base_screen.dart';
 
@@ -30,23 +32,25 @@ class _IndividualTemaScreenState extends State<IndividualTemaScreen> {
               title: 'Pregunta Individual',
               body: <Widget>[
                 const SizedBox(height: 40.0),
-                RouterButtonWithDescription(
+                RouterButton(
                   title: 'Tema Aleatorio',
                   description: '',
                   verticalSize: 7.0,
                   arguments: {
                     'cursoSlug': cursoSlug,
                   },
-                  route: 'individual/por_curso/',
+                  route: 'individual/$cursoSlug/pregunta/',
+                  nextScreen: const PreguntaIndividualCursoScreen(),
                 ),
                 // const SizedBox(height: 10.0),
                 for (Tema tema in temas)
-                  RouterButtonWithDescription(
+                  RouterButton(
                     title: tema.nombre,
                     description: '',
                     verticalSize: 7.0,
                     arguments: {'temaSlug': tema.slug},
-                    route: 'individual/por_tema/',
+                    route: 'individual/${tema.slug}/pregunta/',
+                    nextScreen: const PreguntaIndividualTemaScreen(),
                   ),
               ],
             );

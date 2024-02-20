@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
+import '../components/route_button.dart';
 import '../screens/page/solucion.dart';
 
 class SolucionScreen extends StatefulWidget {
   final int? respuestaId;
-  final ElevatedButton botonSiguientePregunta;
+  final RouterButton botonSiguientePregunta;
 
   const SolucionScreen({
     super.key,

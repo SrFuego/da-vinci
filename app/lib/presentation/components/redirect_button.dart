@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
-class RouterButton extends StatelessWidget {
-  const RouterButton({
+class RedirectButton extends StatelessWidget {
+  const RedirectButton({
     super.key,
     required this.title,
     required this.description,
     required this.route,
     this.verticalSize = 40.0,
     this.arguments = const {},
-    required this.nextScreen,
   });
 
   final String title;
   final String description;
   final String route;
   final double verticalSize;
-  final Map<dynamic, dynamic> arguments;
-  final Widget nextScreen;
+  final Map<String, dynamic> arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +22,10 @@ class RouterButton extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
-              MaterialPageRoute(
-                builder: (context) => nextScreen,
-                settings: RouteSettings(
-                  name: route,
-                  arguments: arguments,
-                ),
-              ),
+              route,
+              arguments: arguments,
             );
           },
           child: Text(title),

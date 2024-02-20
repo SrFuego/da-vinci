@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 
 import '../../../domain/models/pregunta.dart';
+import '../../components/route_button.dart';
 import '../../controllers/solucion_aleatoria.dart';
-
 import '../base_screen.dart';
 
 class PreguntaPage extends StatefulWidget {
   final Pregunta pregunta;
   final FilledButton botonSaltar;
-  final ElevatedButton botonSolucion;
+  final RouterButton botonSolucion;
+  final String solucionRoute;
 
   const PreguntaPage({
     super.key,
     required this.pregunta,
     required this.botonSaltar,
     required this.botonSolucion,
+    required this.solucionRoute,
   });
 
   @override
@@ -77,29 +79,27 @@ class _PreguntaComponentState extends State<PreguntaPage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            widget.botonSaltar,
-            const SizedBox(width: 70.0),
-            FilledButton(
-              onPressed: () {
-                if (alternativaSeleccionada != null) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SolucionScreen(
-                        botonSiguientePregunta: widget.botonSolucion,
-                      ),
-                      settings: RouteSettings(
-                        arguments: {
-                          'respuestaId': alternativaSeleccionada,
-                        },
-                      ),
-                    ),
-                  );
-                }
-              },
-              child: const Text('Enviar'),
+            Column(
+              children: [
+                widget.botonSaltar,
+                const Text(''),
+                const SizedBox(height: 0),
+              ],
             ),
-            const SizedBox(height: 50.0),
+            const SizedBox(width: 50.0),
+            if (alternativaSeleccionada != null)
+              RouterButton(
+                title: 'Enviar',
+                description: '',
+                verticalSize: 0.0,
+                route: widget.solucionRoute,
+                arguments: {
+                  'respuestaId': alternativaSeleccionada,
+                },
+                nextScreen: SolucionScreen(
+                  botonSiguientePregunta: widget.botonSolucion,
+                ),
+              ),
           ],
         ),
       ],
