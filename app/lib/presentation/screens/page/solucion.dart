@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_tex/flutter_tex.dart';
 
-import '../../../domain/models/solucion.dart';
-import '../../../domain/models/pregunta.dart';
-
+import '../../../domain/models/respuestaEvaluada.dart';
+import '../../components/route_button.dart';
 import '../base_screen.dart';
 
 class SolucionPage extends StatefulWidget {
   final RespuestaEvaluada respuestaEvaluada;
-  final ElevatedButton botonSiguientePregunta;
+  final RouterButton botonSiguientePregunta;
 
   const SolucionPage({
     super.key,
@@ -24,20 +22,24 @@ class SolucionPage extends StatefulWidget {
 class _SolucionScreenState extends State<SolucionPage> {
   @override
   Widget build(BuildContext context) {
-    RespuestaEvaluada respuesta = widget.respuestaEvaluada;
-    Pregunta pregunta = respuesta.solucion.pregunta;
+    final respuesta = widget.respuestaEvaluada;
+    final pregunta = respuesta.solucion.pregunta;
+
     return BaseScreen(
-      title: pregunta.curso.nombre,
+      title: pregunta.tema.curso.nombre,
       body: <Widget>[
         const SizedBox(height: 20.0),
         Center(
           child: Text(
-            "Puntaje obtenido: ${respuesta.puntajeObtenido}",
+            "Puntaje obtenido: "
+            "${respuesta.puntajeObtenido}",
           ),
         ),
         const SizedBox(height: 15.0),
         Center(
-          child: Text(pregunta.tema.nombre + (':')),
+          child: Text(
+            "${pregunta.tema.nombre} :",
+          ),
         ),
         const SizedBox(height: 25.0),
         TeXView(
@@ -45,6 +47,8 @@ class _SolucionScreenState extends State<SolucionPage> {
             children: [
               TeXViewDocument(
                 pregunta.enunciado,
+                // "pregunta.enunciado",
+                // "${pregunta.enunciado}",
                 style: const TeXViewStyle(
                   textAlign: TeXViewTextAlign.center,
                 ),

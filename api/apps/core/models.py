@@ -3,16 +3,21 @@
 
 
 # Django imports
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import CheckConstraint, Q
-from django.core.exceptions import ValidationError
 
 
 # Third party apps imports
+from django_extensions.db.fields import AutoSlugField
 
 
 # Local imports
-from .managers import CursoToUIManager, PreguntaToUIManager
+from .managers import (
+    CursoToUIManager,
+    TemaToUIManager,
+    PreguntaToUIManager,
+)
 
 
 # Create your models here.
@@ -31,7 +36,10 @@ class Universidad(models.Model):
 class Area(models.Model):
     nombre = models.CharField(max_length=50)
     letra = models.CharField(max_length=50)
-    universidad = models.ForeignKey("Universidad", on_delete=models.CASCADE)
+    universidad = models.ForeignKey(
+        "Universidad",
+        on_delete=models.CASCADE,
+    )
     # logo = models.ImageField()
 
     def __str__(self):
@@ -43,7 +51,10 @@ class Area(models.Model):
 
 class Carrera(models.Model):
     nombre = models.CharField(max_length=50)
-    area = models.ForeignKey("Area", on_delete=models.CASCADE)
+    area = models.ForeignKey(
+        "Area",
+        on_delete=models.CASCADE,
+    )
     vacantes_admision = models.PositiveSmallIntegerField()
     vacantes_pre = models.PositiveSmallIntegerField()
     codigo = models.CharField(max_length=50)
@@ -53,7 +64,10 @@ class Carrera(models.Model):
 
 
 class ProcesoDeAdmision(models.Model):
-    universidad = models.ForeignKey("Universidad", on_delete=models.CASCADE)
+    universidad = models.ForeignKey(
+        "Universidad",
+        on_delete=models.CASCADE,
+    )
     temporada = models.CharField(max_length=50)
     proceso = models.CharField(max_length=50)
 
@@ -66,15 +80,21 @@ class ProcesoDeAdmision(models.Model):
 
 
 class ExamenDeAdmision(models.Model):
-    area = models.ForeignKey("Area", on_delete=models.CASCADE)
+    area = models.ForeignKey(
+        "Area",
+        on_delete=models.CASCADE,
+    )
     proceso_de_admision = models.ForeignKey(
-        "ProcesoDeAdmision", on_delete=models.CASCADE
+        "ProcesoDeAdmision",
+        on_delete=models.CASCADE,
     )
     puntaje_correcta = models.FloatField()
     puntaje_incorrecta = models.FloatField()
     puntaje_en_blanco = models.FloatField(default=0)
     duracion = models.DurationField()
-    cantidad_de_preguntas = models.PositiveSmallIntegerField(default=100)
+    cantidad_de_preguntas = models.PositiveSmallIntegerField(
+        default=100,
+    )
 
     def __str__(self):
         return "{} {}, Area: {}".format(
@@ -89,7 +109,16 @@ class ExamenDeAdmision(models.Model):
 
 
 class Curso(models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(
+        max_length=50,
+        unique=True,
+    )
+    slug = AutoSlugField(
+        populate_from="nombre",
+        null=True,
+        default=None,
+    )
+
     objects = models.Manager()
     to_ui_objects = CursoToUIManager()
 
@@ -104,12 +133,15 @@ class Curso(models.Model):
         return False
 
     class Meta:
-        ordering = ["nombre"]
+        ordering = ["slug"]
 
 
 class PreguntasPorCurso(models.Model):
     cantidad = models.PositiveSmallIntegerField()
-    curso = models.ForeignKey("Curso", on_delete=models.CASCADE)
+    curso = models.ForeignKey(
+        "Curso",
+        on_delete=models.CASCADE,
+    )
     area = models.ManyToManyField("Area")
 
     def __str__(self):
@@ -122,16 +154,39 @@ class PreguntasPorCurso(models.Model):
 
 class Tema(models.Model):
     nombre = models.CharField(max_length=50)
-    curso = models.ForeignKey("Curso", on_delete=models.CASCADE)
+    curso = models.ForeignKey(
+        "Curso",
+        on_delete=models.CASCADE,
+    )
+    slug = AutoSlugField(
+        populate_from="nombre",
+        null=True,
+        default=None,
+    )
+
+    objects = models.Manager()
+    to_ui_objects = TemaToUIManager()
 
     def __str__(self):
         return self.nombre
+
+    @property
+    def tiene_preguntas(self):
+        if self.pregunta_set.all().exists():
+            return True
+        return False
+
+    class Meta:
+        ordering = ["curso", "slug"]
 
 
 class Lectura(models.Model):
     titulo = models.CharField(max_length=50)
     texto = models.TextField()
-    tema = models.ForeignKey("Tema", on_delete=models.CASCADE)
+    tema = models.ForeignKey(
+        "Tema",
+        on_delete=models.CASCADE,
+    )
     # imagen = models.ImageField()
 
     def __str__(self):
@@ -140,14 +195,24 @@ class Lectura(models.Model):
 
 class Pregunta(models.Model):
     enunciado = models.TextField()
-    examenes_de_admision = models.ManyToManyField("ExamenDeAdmision")
+    examenes_de_admision = models.ManyToManyField(
+        "ExamenDeAdmision",
+    )
     lectura = models.ForeignKey(
-        "Lectura", on_delete=models.CASCADE, blank=True, null=True
+        "Lectura",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
     tema = models.ForeignKey(
-        "Tema", on_delete=models.CASCADE, blank=True, null=True
+        "Tema",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
-    cantidad_de_alternativas = models.SmallIntegerField(default=5)
+    cantidad_de_alternativas = models.SmallIntegerField(
+        default=5,
+    )
     # imagen = models.ImageField()
     objects = models.Manager()
     to_ui_objects = PreguntaToUIManager()
@@ -219,35 +284,36 @@ class Alternativa(models.Model):
                         code="invalid",
                     )
 
-    def calificar(self):
-        solucion = self.pregunta.solucion
+    @property
+    def es_correcta(self):
+        return self.pregunta.solucion.es_correcta(self)
+
+    @property
+    def puntaje_obtenido(self):
         examen_de_admision = self.pregunta.examenes_de_admision.first()
-        es_correcta = solucion.es_correcta(self)
-        if es_correcta:
-            puntaje_obtenido = examen_de_admision.puntaje_correcta
+        if self.es_correcta:
+            return examen_de_admision.puntaje_correcta
         else:
-            puntaje_obtenido = examen_de_admision.puntaje_incorrecta
-        data = {
-            "solucion": solucion,
-            "es_correcta": es_correcta,
-            "puntaje_obtenido": puntaje_obtenido,
-        }
-        return data
+            return examen_de_admision.puntaje_incorrecta
 
 
 class Solucion(models.Model):
     teoria = models.TextField()
     resolucion = models.TextField()
-    pregunta = models.OneToOneField("Pregunta", on_delete=models.CASCADE)
+    pregunta = models.OneToOneField(
+        "Pregunta",
+        on_delete=models.CASCADE,
+    )
     alternativa_correcta = models.OneToOneField(
-        "alternativa", on_delete=models.CASCADE
+        "alternativa",
+        on_delete=models.CASCADE,
     )
     # imagen = models.ImageField()
 
     def __str__(self):
         return "Solución de: {}".format(self.pregunta)
 
-    def es_correcta(self, alternativa):
+    def es_correcta(self, alternativa) -> bool:
         return self.alternativa_correcta == alternativa
 
     class Meta:

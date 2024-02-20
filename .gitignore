@@ -177,10 +177,22 @@ api/.history
 api/.svn/
 api/migrate_working_dir/
 
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
 # IntelliJ related
-api/*.iml
-/api/*.ipr
-api/*.iws
+*.iml
+*.ipr
+*.iws
 .idea/
 
 # Flutter/Dart/Pub related

@@ -1,50 +1,49 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
-import '../../domain/models/pregunta.dart';
-
+import '../components/route_button.dart';
 import '../screens/page/pregunta.dart';
 
-class PreguntaIndividualCursoScreen extends StatefulWidget {
-  const PreguntaIndividualCursoScreen({super.key});
+class PreguntaIndividualTemaScreen extends StatefulWidget {
+  const PreguntaIndividualTemaScreen({super.key});
 
   @override
-  State<PreguntaIndividualCursoScreen> createState() =>
-      _PreguntaIndividualCursoScreenState();
+  State<PreguntaIndividualTemaScreen> createState() =>
+      _PreguntaIndividualTemaScreenState();
 }
 
-class _PreguntaIndividualCursoScreenState
-    extends State<PreguntaIndividualCursoScreen> {
+class _PreguntaIndividualTemaScreenState
+    extends State<PreguntaIndividualTemaScreen> {
   @override
   Widget build(BuildContext context) {
     final preguntaBloc = PreguntaBloc();
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
-    final FilledButton botonSaltar = FilledButton.tonal(
+    final temaSlug = arguments['temaSlug'];
+    final botonSaltar = FilledButton.tonal(
       onPressed: () => setState(() {}),
       child: const Text('Saltar'),
     );
-    final ElevatedButton botonPreguntaIndividual = ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(
-          context,
-          'individual/por_curso/',
-          arguments: arguments,
-        );
-      },
-      child: const Text('Otra Pregunta del Curso'),
+    final botonPreguntaIndividual = RouterButton(
+      title: 'Otra Pregunta del Tema',
+      description: '',
+      verticalSize: 7.0,
+      arguments: {'temaSlug': temaSlug},
+      route: 'individual/$temaSlug/pregunta/',
+      nextScreen: const PreguntaIndividualTemaScreen(),
     );
 
     return FutureBuilder(
-      future: preguntaBloc.getPreguntaCurso(arguments['curso']),
+      future: preguntaBloc.getPreguntaTema(temaSlug),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
-            final Pregunta pregunta = snapshot.data!;
+            final pregunta = snapshot.data!;
             return PreguntaPage(
               pregunta: pregunta,
               botonSaltar: botonSaltar,
               botonSolucion: botonPreguntaIndividual,
+              solucionRoute: 'individual/$temaSlug/solucion/',
             );
           }
           return const Placeholder();

@@ -61,7 +61,7 @@ class CarreraModelAdmin(admin.ModelAdmin):
 
 @admin.register(Curso)
 class CursoModelAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["nombre", "slug"]
 
 
 @admin.register(ExamenDeAdmision)
@@ -101,7 +101,8 @@ class SolucionModelAdmin(admin.ModelAdmin):
 
 @admin.register(Tema)
 class TemaModelAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["nombre", "curso"]
+    list_filter = ["curso"]
 
 
 @admin.register(Universidad)

@@ -4,7 +4,8 @@
     "pk": 1,
     "fields": {
         "nombre": "Operaciones combinadas",
-        "curso": 5
+        "curso": 5,
+        "slug": "operaciones-combinadas"
     }
 },
 {
@@ -12,7 +13,8 @@
     "pk": 2,
     "fields": {
         "nombre": "Independencia del Perú",
-        "curso": 11
+        "curso": 11,
+        "slug": "independencia-del-peru"
     }
 },
 {
@@ -20,7 +22,8 @@
     "pk": 3,
     "fields": {
         "nombre": "Cargos Públicos",
-        "curso": 10
+        "curso": 10,
+        "slug": "cargos-publicos"
     }
 },
 {
@@ -28,7 +31,8 @@
     "pk": 4,
     "fields": {
         "nombre": "Comprensión de Lectura",
-        "curso": 1
+        "curso": 1,
+        "slug": "comprension-de-lectura"
     }
 },
 {
@@ -36,7 +40,8 @@
     "pk": 5,
     "fields": {
         "nombre": "Historia de San Marcos",
-        "curso": 11
+        "curso": 11,
+        "slug": "historia-de-san-marcos"
     }
 },
 {
@@ -44,7 +49,8 @@
     "pk": 6,
     "fields": {
         "nombre": "Literatura Española",
-        "curso": 8
+        "curso": 8,
+        "slug": "literatura-espanola"
     }
 },
 {
@@ -52,7 +58,8 @@
     "pk": 7,
     "fields": {
         "nombre": "Cultura prehispanicas",
-        "curso": 11
+        "curso": 11,
+        "slug": "cultura-prehispanicas"
     }
 },
 {
@@ -60,7 +67,8 @@
     "pk": 8,
     "fields": {
         "nombre": "Fisica conceptos",
-        "curso": 16
+        "curso": 16,
+        "slug": "fisica-conceptos"
     }
 },
 {
@@ -68,7 +76,8 @@
     "pk": 9,
     "fields": {
         "nombre": "triangulos",
-        "curso": 4
+        "curso": 4,
+        "slug": "triangulos"
     }
 },
 {
@@ -76,7 +85,8 @@
     "pk": 10,
     "fields": {
         "nombre": "Cultura inca",
-        "curso": 11
+        "curso": 11,
+        "slug": "cultura-inca"
     }
 },
 {
@@ -84,7 +94,8 @@
     "pk": 11,
     "fields": {
         "nombre": "Los elementos primarios",
-        "curso": 17
+        "curso": 17,
+        "slug": "los-elementos-primarios"
     }
 },
 {
@@ -92,7 +103,8 @@
     "pk": 12,
     "fields": {
         "nombre": "Zoología",
-        "curso": 18
+        "curso": 18,
+        "slug": "zoologia"
     }
 },
 {
@@ -100,7 +112,8 @@
     "pk": 13,
     "fields": {
         "nombre": "Cuerpo humano",
-        "curso": 18
+        "curso": 18,
+        "slug": "cuerpo-humano"
     }
 },
 {
@@ -108,7 +121,8 @@
     "pk": 14,
     "fields": {
         "nombre": "Triángulo",
-        "curso": 4
+        "curso": 4,
+        "slug": "triangulo"
     }
 },
 {
@@ -116,7 +130,8 @@
     "pk": 15,
     "fields": {
         "nombre": "Hidráulica",
-        "curso": 13
+        "curso": 13,
+        "slug": "hidraulica"
     }
 },
 {
@@ -124,7 +139,8 @@
     "pk": 16,
     "fields": {
         "nombre": "Integral definida",
-        "curso": 19
+        "curso": 19,
+        "slug": "integral-definida"
     }
 }
 ]

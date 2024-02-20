@@ -3,6 +3,8 @@
 
 
 # Django imports
+from django.urls import include, path
+from rest_framework.routers import SimpleRouter
 
 
 # Third party apps imports
@@ -11,16 +13,24 @@
 # Local imports
 from .viewsets import (
     CursoViewSet,
-    MostrarPreguntaViewSet,
-    MostrarPreguntaPorCursoViewSet,
-    ResolverPreguntaViewSet,
+    TemaViewSet,
+    PreguntaIndividualViewSet,
 )
 
 
 # Create your routers here.
 core_list = (
-    (r"pregunta_aleatoria", MostrarPreguntaViewSet),
-    (r"resolver_pregunta_individual", ResolverPreguntaViewSet),
     (r"curso", CursoViewSet),
-    (r"pregunta_individual", MostrarPreguntaPorCursoViewSet),
+    (r"pregunta_individual", PreguntaIndividualViewSet),
 )
+
+
+tema_router = SimpleRouter()
+tema_router.register("tema", TemaViewSet, basename="tema")
+
+core_urlpatterns = [
+    path(
+        "api/v1/curso/<str:curso>/",
+        include(tema_router.urls),
+    ),
+]
