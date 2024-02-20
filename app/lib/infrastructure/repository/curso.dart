@@ -6,10 +6,11 @@ class CursoRepositoryImpl implements CursoRepository {
   @override
   Future<List<Curso>> getCursos() async {
     List<Curso> cursosApi = [];
-    final data = await DioClient.instance.get('/curso/');
-    for (var index = 0; index < data['cursos'].length; index++) {
-      Curso aux = Curso.fromJson(data['cursos'][index]);
-      cursosApi.add(aux);
+    final response = await DioClient.instance.get('/curso/');
+    for (var item in response.data) {
+      cursosApi.add(
+        Curso.fromJson(item),
+      );
     }
     return cursosApi;
   }

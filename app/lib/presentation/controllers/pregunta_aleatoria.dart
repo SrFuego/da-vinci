@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
-import '../../domain/models/pregunta.dart';
-
+import '../components/route_button.dart';
 import '../screens/page/pregunta.dart';
 
 class PreguntaAleatoriaScreen extends StatefulWidget {
@@ -17,20 +16,16 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
   @override
   Widget build(BuildContext context) {
     final preguntaBloc = PreguntaBloc();
-    final FilledButton botonSaltar = FilledButton.tonal(
+    final botonSaltar = FilledButton.tonal(
       onPressed: () => setState(() {}),
       child: const Text('Saltar'),
     );
-    final ElevatedButton botonPreguntaAleatoria = ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const PreguntaAleatoriaScreen(),
-          ),
-        );
-      },
-      child: const Text('Otra Pregunta Aleatoria'),
+    const botonPreguntaAleatoria = RouterButton(
+      title: 'Curso Aleatorio',
+      description: '',
+      verticalSize: 7.0,
+      route: 'individual/pregunta/',
+      nextScreen: PreguntaAleatoriaScreen(),
     );
 
     return FutureBuilder(
@@ -38,11 +33,12 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
-            final Pregunta pregunta = snapshot.data!;
+            final pregunta = snapshot.data!;
             return PreguntaPage(
               pregunta: pregunta,
               botonSaltar: botonSaltar,
               botonSolucion: botonPreguntaAleatoria,
+              solucionRoute: 'individual/solucion/',
             );
           }
           return const Placeholder();

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../screens/navigation/individual_curso.dart';
+import '../../components/redirect_button.dart';
 import '../../components/route_button.dart';
 import '../base_screen.dart';
 
@@ -12,17 +14,18 @@ class HomeScreen extends StatelessWidget {
       title: 'Problemas de Admisión',
       body: <Widget>[
         Image.asset('assets/logo.jpg'),
-        const RouterButtonWithDescription(
+        const RouterButton(
           title: 'Pregunta Individual',
           description: 'Muestra preguntas 1x1',
-          route: 'individual/',
+          route: 'individual/elegir-curso/',
+          nextScreen: IndividualCursoScreen(),
         ),
-        const RouterButtonWithDescription(
+        const RedirectButton(
           title: 'Grupo de Preguntas',
           description: 'Set de Preguntas',
           route: 'grupo/',
         ),
-        const RouterButtonWithDescription(
+        const RedirectButton(
           title: 'Exámenes Pasados',
           description: 'Exámenes de admisión completos',
           route: 'examenes/',

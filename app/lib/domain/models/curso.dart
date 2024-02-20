@@ -1,37 +1,22 @@
 class Curso {
-  int id;
   String nombre;
+  String slug;
 
-  Curso({required this.id, required this.nombre});
+  Curso({
+    required this.nombre,
+    required this.slug,
+  });
 
-  factory Curso.fromJson(Map<String, dynamic> json) {
-    return Curso(
-      id: json['id'] as int,
-      nombre: json['nombre'] as String,
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "nombre": nombre,
-      };
-}
-
-class Tema {
-  final int id;
-  final String nombre;
-
-  Tema({required this.id, required this.nombre});
-
-  factory Tema.fromJson(Map<String, dynamic> json) {
-    return Tema(
-      id: json['id'] as int,
-      nombre: json['nombre'] as String,
-    );
-  }
+  factory Curso.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      Curso(
+        nombre: json["nombre"],
+        slug: json["slug"],
+      );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "nombre": nombre,
+        "slug": slug,
       };
 }

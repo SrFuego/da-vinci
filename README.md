@@ -100,7 +100,7 @@ Para sólo un modelo:
 
 ### User Journey
 
-![User Journey](docs/context/out/0.2.0/app.png)
+![User Journey](docs/context/out/0.3.0/app.png)
 
 
 
@@ -112,7 +112,7 @@ Para sólo un modelo:
 
 ### Sequence
 
-![Sequence](docs/sequence/out/0.2.0/Da%20Vinci.png)
+![Sequence](docs/sequence/out/0.3.0/Da Vinci.png)
 
 
 

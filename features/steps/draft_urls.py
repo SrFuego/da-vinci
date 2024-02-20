@@ -1,23 +1,23 @@
 HOST_URL = "http://localhost:8000/"
 API_VERSION = "api/v1/"
 
-PREGUNTA_ALEATORIA_URL = "{}{}{}".format(
-    HOST_URL,
-    API_VERSION,
-    "pregunta_aleatoria/",
-)
+
 CURSO_URL = "{}{}{}".format(
     HOST_URL,
     API_VERSION,
     "curso/",
 )
-PREGUNTA_INDIVIDUAL_POR_CURSO_URL = "{}{}{}".format(
+
+
+TEMA_URL = "{}{}{}".format(
     HOST_URL,
     API_VERSION,
-    "pregunta_individual/?curso_id=",
+    "curso/{}/tema/",
 )
-PREGUNTA_INDIVIDUAL_RESOLVER_URL = "{}{}{}".format(
+
+
+PREGUNTA_INDIVIDUAL_URL = "{}{}{}".format(
     HOST_URL,
     API_VERSION,
-    "resolver_pregunta_individual/",
+    "pregunta_individual/",
 )

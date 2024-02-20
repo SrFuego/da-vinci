@@ -11,15 +11,23 @@ database DB
 
 Usuario -> App: Abre la App
 Usuario <-- App: Muestra lista de opciones: \n- Pregunta Individual \n- Grupo de Preguntas \n- Exámenes pasados
-Usuario -> App: Selecciona "Pregunta Individual"
-Usuario <-- App: Muestra lista de opciones: \n- Pregunta Aleatoria \n- Elegir Curso
-
 group#Gold  #LimeGreen Pregunta Individual
+Usuario -> App: Selecciona "Pregunta Individual"
+activate App
+    App -> Backend: **GET /api/v1/curso/**
+        activate Backend
+            Backend -> DB: Query: \n- Cursos válidos (mínimo 1 pregunta)
+            Backend <-- DB: Lista de Cursos
+            App <-- Backend: Response: \n- Lista de objetos:\n\t- id \n\t- Nombre del Curso 
+        deactivate Backend
+    Usuario <-- App: Muestra lista de opciones: \n- Pregunta Aleatoria \n- Lista de Cursos
+deactivate App
+
     group#SkyBlue #LightBlue Mostrar Pregunta
-        group#OliveDrab #LightGray Aleatoria
+        group#DarkGray #LightGray Curso Aleatorio
             Usuario -> App: Selecciona "Pregunta Aleatoria"
             activate App
-                App -> Backend: **GET /api/v1/pregunta_aleatoria/**
+                App -> Backend: **GET /api/v1/pregunta_individual/**
                 activate Backend
                     Backend -> DB: Filtrar por: \n- Preguntas válidas (completas)
                     Backend <-- DB: Objeto Pregunta
@@ -29,34 +37,50 @@ group#Gold  #LimeGreen Pregunta Individual
             deactivate App
         end
 
-        group#AliceBlue #LightPink Elegir Curso
-            Usuario -> App: Selecciona "Selecionar Curso"
-            activate App
-                App -> Backend: **GET /api/v1/curso/**
-                activate Backend
-                    Backend -> DB: Query: \n- Cursos válidos (mínimo 1 pregunta)
-                    Backend <-- DB: Lista de Cursos
-                    App <-- Backend: Response: \n- Lista de objetos:\n\t- id \n\t- Nombre del Curso 
-                deactivate Backend
-                Usuario <-- App: Muestra lista de Cursos
-            deactivate App
+        group#DarkSalmon #LightPink Elige un Curso
             Usuario -> App: Selecciona un Curso
             activate App
-                App -> Backend: **GET /api/v1/pregunta_individual/?curso_id=curso_id**
-                activate Backend
-                    Backend -> DB: Filtrar por: \n- Preguntas válidas (completas)\n- Curso seleccionado
-                    Backend <-- DB: Objeto Pregunta
-                    App <-- Backend: Response: \n- Nombre del Curso \n- Nombre del Tema \n- Enunciado \n- Alternativas
-                deactivate Backend
-                Usuario <-- App: Muestra PEA
+                App -> Backend: **GET /api/v1/curso/{curso_id}/tema/**
+                    activate Backend
+                        Backend -> DB: Query: \n- Temas válidos (mínimo 1 pregunta)
+                        Backend <-- DB: Lista de Temas del Curso
+                        App <-- Backend: Response: \n- Lista de objetos:\n\t- id \n\t- Nombre del Tema 
+                    deactivate Backend
+                Usuario <-- App: Muestra lista de opciones: \n- Tema Aleatorio \n- Lista de Temas
             deactivate App
+
+            group#CornflowerBlue #LightSkyBlue Tema Aleatorio
+                Usuario -> App: Selecciona Tema Aleatorio
+                activate App
+                    App -> Backend: **GET /api/v1/pregunta_individual/?curso_id=curso_id**
+                    activate Backend
+                        Backend -> DB: Filtrar por: \n- Preguntas válidas (completas)\n- Curso seleccionado
+                        Backend <-- DB: Objeto Pregunta
+                        App <-- Backend: Response: \n- Nombre del Curso \n- Nombre del Tema \n- Enunciado \n- Alternativas
+                    deactivate Backend
+                    Usuario <-- App: Muestra PEA
+                deactivate App
+            end
+
+            group#DarkTurquoise #LightCyan Elige un Tema
+                Usuario -> App: Selecciona un Tema
+                activate App
+                    App -> Backend: **GET /api/v1/pregunta_individual/?tema_id=tema_id**
+                    activate Backend
+                        Backend -> DB: Filtrar por: \n- Preguntas válidas (completas)\n- Curso seleccionado
+                        Backend <-- DB: Objeto Pregunta
+                        App <-- Backend: Response: \n- Nombre del Curso \n- Nombre del Tema \n- Enunciado \n- Alternativas
+                    deactivate Backend
+                    Usuario <-- App: Muestra PEA
+                deactivate App
+            end
         end
     end
 
     group#GreenYellow #LightYellow Resolver
         Usuario -> App: Envía su Respuesta: \n- Selecciona una alternativa
         activate App
-            App -> Backend: **POST /api/v1/resolver_pregunta_individual/** \n-ID de la Alternativa seleccionada
+            App -> Backend: **POST /api/v1/pregunta_individual/** \n-ID de la Alternativa seleccionada
             activate Backend
                 Backend -> DB: Filtrar por: \n- ID de Alternativa
                 Backend <-- DB: Objeto Alternativa

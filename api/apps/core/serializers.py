@@ -9,42 +9,66 @@
 from rest_framework.serializers import (
     ModelSerializer,
     Serializer,
-    # ValidationError,
     IntegerField,
+    FloatField,
+    BooleanField,
+    SerializerMethodField,
 )
+from drf_spectacular.utils import extend_schema_field
 
 
 # Local imports
-from .models import Alternativa, Curso, Pregunta, Solucion, Tema
+from .models import (
+    Alternativa,
+    Curso,
+    Pregunta,
+    Solucion,
+    Tema,
+)
 
 
 # Create your serializers here.
 class AlternativaSerializer(ModelSerializer):
     class Meta:
         model = Alternativa
-        fields = ("id", "valor")
+        fields = (
+            "id",
+            "valor",
+        )
 
 
 class CursoSerializer(ModelSerializer):
     class Meta:
         model = Curso
-        fields = ("id", "nombre")
+        fields = (
+            "nombre",
+            "slug",
+        )
 
 
 class TemaSerializer(ModelSerializer):
+    curso = CursoSerializer()
+
     class Meta:
         model = Tema
-        fields = ("id", "nombre")
+        fields = (
+            "nombre",
+            "slug",
+            "curso",
+        )
 
 
 class PreguntaSerializer(ModelSerializer):
     alternativas = AlternativaSerializer(many=True)
-    curso = CursoSerializer()
     tema = TemaSerializer()
 
     class Meta:
         model = Pregunta
-        fields = ("id", "enunciado", "alternativas", "tema", "curso")
+        fields = (
+            "enunciado",
+            "alternativas",
+            "tema",
+        )
 
 
 class SolucionSerializer(ModelSerializer):
@@ -54,7 +78,6 @@ class SolucionSerializer(ModelSerializer):
     class Meta:
         model = Solucion
         fields = (
-            "id",
             "teoria",
             "resolucion",
             "pregunta",
@@ -63,21 +86,38 @@ class SolucionSerializer(ModelSerializer):
         read_only_fields = ("texto",)
 
 
-class AlternativaSeleccionadaSerializer(Serializer):
-    alternativa_seleccionada_id = IntegerField()
-
-
-class PreguntaPostSerializer(ModelSerializer):
-    class Meta:
-        model = Pregunta
-        fields = ("id",)
-
-
-class SolucionPostSerializer(ModelSerializer):
-    class Meta:
-        model = Solucion
-        fields = ("id",)
-
-
-class RespuestaEnviadaSerializer(Serializer):
+class RespuestaSerializer(Serializer):
     solucion = SolucionSerializer()
+    alternativa_enviada = AlternativaSerializer()
+    es_correcta = BooleanField()
+    puntaje_obtenido = FloatField()
+
+
+class AlternativaRespuestaSerializer(ModelSerializer):
+    alternativa_seleccionada_id = IntegerField(
+        source="id",
+        write_only=True,
+    )
+    solucion = SolucionSerializer(
+        source="pregunta.solucion",
+        read_only=True,
+    )
+    alternativa_enviada = SerializerMethodField()
+    es_correcta = BooleanField(read_only=True)
+    puntaje_obtenido = FloatField(read_only=True)
+
+    class Meta:
+        model = Alternativa
+        fields = (
+            "alternativa_seleccionada_id",
+            "solucion",
+            "alternativa_enviada",
+            "es_correcta",
+            "puntaje_obtenido",
+        )
+
+    @extend_schema_field(AlternativaSerializer)
+    def get_alternativa_enviada(self, obj):
+        if type(obj) == Alternativa:
+            return AlternativaSerializer(obj).data
+        return None

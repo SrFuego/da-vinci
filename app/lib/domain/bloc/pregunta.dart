@@ -1,8 +1,8 @@
 // import 'package:flutter/material.dart';
 
-import '../models/pregunta.dart';
-import '../models/solucion.dart';
 import '../../infrastructure/repository/pregunta.dart';
+import '../models/respuestaEvaluada.dart';
+import '../models/pregunta.dart';
 
 class PreguntaBloc {
 // class PreguntaBloc extends ChangeNotifier {
@@ -12,8 +12,12 @@ class PreguntaBloc {
     return repository.getPregunta();
   }
 
-  Future<Pregunta> getPreguntaCurso(int cursoId) {
-    return repository.getPreguntaPorCurso(cursoId);
+  Future<Pregunta> getPreguntaCurso(String cursoSlug) {
+    return repository.getPreguntaPorCurso(cursoSlug);
+  }
+
+  Future<Pregunta> getPreguntaTema(String temaSlug) {
+    return repository.getPreguntaPorTema(temaSlug);
   }
 
   Future<RespuestaEvaluada> postResolverPreguntaAleatoria(int alternativaId) {
