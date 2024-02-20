@@ -101,7 +101,8 @@ class SolucionModelAdmin(admin.ModelAdmin):
 
 @admin.register(Tema)
 class TemaModelAdmin(admin.ModelAdmin):
-    list_display = ["nombre", "curso", "slug"]
+    list_display = ["nombre", "curso"]
+    list_filter = ["curso"]
 
 
 @admin.register(Universidad)
