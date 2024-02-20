@@ -14,6 +14,7 @@ from rest_framework.serializers import (
     BooleanField,
     SerializerMethodField,
 )
+from drf_spectacular.utils import extend_schema_field
 
 
 # Local imports
@@ -115,6 +116,7 @@ class AlternativaRespuestaSerializer(ModelSerializer):
             "puntaje_obtenido",
         )
 
+    @extend_schema_field(AlternativaSerializer)
     def get_alternativa_enviada(self, obj):
         if type(obj) == Alternativa:
             return AlternativaSerializer(obj).data
