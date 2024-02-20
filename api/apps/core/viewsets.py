@@ -24,13 +24,10 @@ from .models import (
     Pregunta,
 )
 from .serializers import (
-    AlternativaSerializer,
-    AlternativaSeleccionadaSerializer,
+    AlternativaRespuestaSerializer,
     CursoSerializer,
     TemaSerializer,
     PreguntaSerializer,
-    SolucionSerializer,
-    RespuestaSerializer,
 )
 
 
@@ -95,8 +92,7 @@ class PreguntaIndividualViewSet(GenericViewSet):
         if self.request.method == "GET":
             return PreguntaSerializer
         if self.request.method == "POST":
-            # return AlternativaSeleccionadaSerializer
-            return AlternativaSerializer
+            return AlternativaRespuestaSerializer
 
     @silk_profile()
     @extend_schema(
@@ -120,25 +116,9 @@ class PreguntaIndividualViewSet(GenericViewSet):
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
-        print(request.data)
-        serializer_in = self.get_serializer(data=request.data)
-        serializer_in.is_valid(raise_exception=True)
-        print(serializer_in.data)
-        respuesta = get_object_or_404(
+        alternativa_seleccionada = get_object_or_404(
             Alternativa,
-            pk=serializer_in.data["alternativa_seleccionada_id"],
+            id=request.data["alternativa_seleccionada_id"],
         )
-        data_calificada = respuesta.calificar()
-        data = {
-            "solucion": SolucionSerializer(
-                data_calificada["solucion"],
-            ).data,
-            "alternativa_enviada": AlternativaSerializer(
-                respuesta,
-            ).data,
-            "es_correcta": data_calificada["es_correcta"],
-            "puntaje_obtenido": data_calificada["puntaje_obtenido"],
-        }
-        serializer_out = RespuestaSerializer(data=data)
-        serializer_out.is_valid()
-        return Response(serializer_out.data)
+        serializer = self.get_serializer(alternativa_seleccionada)
+        return Response(serializer.data)

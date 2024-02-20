@@ -284,20 +284,17 @@ class Alternativa(models.Model):
                         code="invalid",
                     )
 
-    def calificar(self):
-        solucion = self.pregunta.solucion
+    @property
+    def es_correcta(self):
+        return self.pregunta.solucion.es_correcta(self)
+
+    @property
+    def puntaje_obtenido(self):
         examen_de_admision = self.pregunta.examenes_de_admision.first()
-        es_correcta = solucion.es_correcta(self)
-        if es_correcta:
-            puntaje_obtenido = examen_de_admision.puntaje_correcta
+        if self.es_correcta:
+            return examen_de_admision.puntaje_correcta
         else:
-            puntaje_obtenido = examen_de_admision.puntaje_incorrecta
-        data = {
-            "solucion": solucion,
-            "es_correcta": es_correcta,
-            "puntaje_obtenido": puntaje_obtenido,
-        }
-        return data
+            return examen_de_admision.puntaje_incorrecta
 
 
 class Solucion(models.Model):
