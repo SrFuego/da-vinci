@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
+import '../../presentation/screens/base_screen.dart';
 import '../components/route_button.dart';
 import '../screens/page/pregunta.dart';
 
@@ -41,9 +42,24 @@ class _PreguntaAleatoriaScreenState extends State<PreguntaAleatoriaScreen> {
               solucionRoute: 'individual/solucion/',
             );
           }
-          return const Placeholder();
+          return const BaseScreen(
+            title: "",
+            body: <Widget>[
+              Placeholder(),
+            ],
+          );
         } else {
-          return const CircularProgressIndicator();
+          return BaseScreen(
+            title: "",
+            body: <Widget>[
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height - 2 * kToolbarHeight,
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            ],
+          );
         }
       },
     );

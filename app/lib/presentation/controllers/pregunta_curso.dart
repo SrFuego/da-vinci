@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
+import '../../presentation/screens/base_screen.dart';
 import '../components/route_button.dart';
 import '../screens/page/pregunta.dart';
 
@@ -24,7 +25,7 @@ class _PreguntaIndividualCursoScreenState
       onPressed: () => setState(() {}),
       child: const Text('Saltar'),
     );
-    final botonPreguntaIndividual = RouterButton(
+    final botonPreguntaDelCurso = RouterButton(
       title: 'Otra Pregunta del Curso',
       description: '',
       verticalSize: 7.0,
@@ -36,22 +37,34 @@ class _PreguntaIndividualCursoScreenState
     return FutureBuilder(
       future: preguntaBloc.getPreguntaCurso(cursoSlug),
       builder: (context, snapshot) {
-        // print("en la cosa de su cosita");
-        // print(Uri.base.toString());
-        // print(Uri.base.query);
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
             final pregunta = snapshot.data!;
             return PreguntaPage(
               pregunta: pregunta,
               botonSaltar: botonSaltar,
-              botonSolucion: botonPreguntaIndividual,
+              botonSolucion: botonPreguntaDelCurso,
               solucionRoute: 'individual/$cursoSlug/solucion/',
             );
           }
-          return const Placeholder();
+          return const BaseScreen(
+            title: "",
+            body: <Widget>[
+              Placeholder(),
+            ],
+          );
         } else {
-          return const CircularProgressIndicator();
+          return BaseScreen(
+            title: "",
+            body: <Widget>[
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height - 2 * kToolbarHeight,
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            ],
+          );
         }
       },
     );

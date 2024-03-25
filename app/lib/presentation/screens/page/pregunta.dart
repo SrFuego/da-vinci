@@ -32,6 +32,8 @@ class _PreguntaComponentState extends State<PreguntaPage> {
     final pregunta = widget.pregunta;
     final tema = pregunta.tema;
     final curso = tema.curso;
+    final alternativas = pregunta.alternativas;
+
     return BaseScreen(
       title: curso.nombre,
       body: <Widget>[
@@ -55,7 +57,7 @@ class _PreguntaComponentState extends State<PreguntaPage> {
           width: 400,
           child: Column(
             children: [
-              for (var i = 0; i < widget.pregunta.alternativas.length; i++)
+              for (var i = 0; i < alternativas.length; i++)
                 RadioListTile<int>(
                   // TODO: cambiar el Text del title por un elemento de LaTeX
                   title: Text(
@@ -87,19 +89,22 @@ class _PreguntaComponentState extends State<PreguntaPage> {
               ],
             ),
             const SizedBox(width: 50.0),
-            if (alternativaSeleccionada != null)
-              RouterButton(
-                title: 'Enviar',
-                description: '',
-                verticalSize: 0.0,
-                route: widget.solucionRoute,
-                arguments: {
-                  'respuestaId': alternativaSeleccionada,
-                },
-                nextScreen: SolucionScreen(
-                  botonSiguientePregunta: widget.botonSolucion,
-                ),
+            RouterButton(
+              title: 'Enviar',
+              description: '',
+              verticalSize: 0.0,
+              enabled: alternativaSeleccionada != null,
+              route: widget.solucionRoute,
+              arguments: {
+                'respuestaId': alternativaSeleccionada,
+              },
+              nextScreen: SolucionScreen(
+                respuestaId: alternativaSeleccionada != null
+                    ? alternativaSeleccionada!
+                    : 0,
+                botonSiguientePregunta: widget.botonSolucion,
               ),
+            ),
           ],
         ),
       ],
