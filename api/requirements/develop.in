@@ -1,0 +1,15 @@
+-r common.in
+
+black
+pip-tools
+behave
+allure-behave
+ipython
+pygraphviz
+pyparsing
+pydot
+behave-django
+coverage
+diagrams
+django-dbml
+django-silk

@@ -1,0 +1,283 @@
+Table LogEntry {
+  id auto [pk, unique]
+  action_time date_time [default:`django.utils.timezone.now()`]
+  user foreign_key 
+  content_type foreign_key [null]
+  object_id text [null]
+  object_repr char 
+  action_flag positive_small_integer 
+  change_message text 
+  Note: '''LogEntry(id, action_time, user, content_type, object_id, object_repr, action_flag, change_message)'''
+}
+ref: LogEntry.user > User.id
+ref: LogEntry.content_type > ContentType.id
+
+
+Table Permission {
+  id auto [pk, unique]
+  name char 
+  content_type foreign_key 
+  codename char 
+  Note: '''
+    The permissions system provides a way to assign permissions to specific
+    users and groups of users.
+
+    The permission system is used by the Django admin site, but may also be
+    useful in your own code. The Django admin site uses permissions as follows:
+
+        - The "add" permission limits the user's ability to view the "add" form
+          and add an object.
+        - The "change" permission limits a user's ability to view the change
+          list, view the "change" form and change an object.
+        - The "delete" permission limits the ability to delete an object.
+        - The "view" permission limits the ability to view an object.
+
+    Permissions are set globally per type of object, not per specific object
+    instance. It is possible to say "Mary may change news stories," but it's
+    not currently possible to say "Mary may change news stories, but only the
+    ones she created herself" or "Mary may only change news stories that have a
+    certain status or publication date."
+
+    The permissions listed above are automatically created for each model.
+    '''
+}
+ref: Permission.content_type > ContentType.id
+
+
+Table Group {
+  id auto [pk, unique]
+  name char [unique]
+  Note: '''
+    Groups are a generic way of categorizing users to apply permissions, or
+    some other label, to those users. A user can belong to any number of
+    groups.
+
+    A user in a group automatically has all the permissions granted to that
+    group. For example, if the group 'Site editors' has the permission
+    can_edit_home_page, any user in that group will have that permission.
+
+    Beyond permissions, groups are a convenient way to categorize users to
+    apply some label, or extended functionality, to them. For example, you
+    could create a group 'Special users', and you could write code that would
+    do special things to those users -- such as giving them access to a
+    members-only portion of your site, or sending them members-only email
+    messages.
+    '''
+}
+
+
+Table auth_group_permissions {
+  permission_id auto [pk]
+  group_id auto [pk]
+}
+ref: Group.id > auth_group_permissions.group_id
+ref: Permission.id > auth_group_permissions.permission_id
+
+
+Table User {
+  id auto [pk, unique]
+  password char 
+  last_login date_time [null]
+  is_superuser boolean [note:"Indica que este usuario tiene todos los permisos sin asignárselos explícitamente.", default:`False`]
+  username char [note:"Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y @/./+/-/_ ", unique]
+  first_name char 
+  last_name char 
+  email email 
+  is_staff boolean [note:"Indica si el usuario puede entrar en este sitio de administración.", default:`False`]
+  is_active boolean [note:"Indica si el usuario debe ser tratado como activo. Desmarque esta opción en lugar de borrar la cuenta.", default:`True`]
+  date_joined date_time [default:`django.utils.timezone.now()`]
+  Note: '''
+    Users within the Django authentication system are represented by this
+    model.
+
+    Username and password are required. Other fields are optional.
+    '''
+}
+
+
+Table auth_user_groups {
+  group_id auto [pk]
+  user_id auto [pk]
+}
+ref: User.id > auth_user_groups.user_id
+ref: Group.id > auth_user_groups.group_id
+
+
+Table auth_user_user_permissions {
+  permission_id auto [pk]
+  user_id auto [pk]
+}
+ref: User.id > auth_user_user_permissions.user_id
+ref: Permission.id > auth_user_user_permissions.permission_id
+
+
+Table ContentType {
+  id auto [pk, unique]
+  app_label char 
+  model char 
+  Note: '''ContentType(id, app_label, model)'''
+}
+
+
+Table Session {
+  session_key char [pk, unique]
+  session_data text 
+  expire_date date_time 
+  Note: '''
+    Django provides full support for anonymous sessions. The session
+    framework lets you store and retrieve arbitrary data on a
+    per-site-visitor basis. It stores data on the server side and
+    abstracts the sending and receiving of cookies. Cookies contain a
+    session ID -- not the data itself.
+
+    The Django sessions framework is entirely cookie-based. It does
+    not fall back to putting session IDs in URLs. This is an intentional
+    design decision. Not only does that behavior make URLs ugly, it makes
+    your site vulnerable to session-ID theft via the "Referer" header.
+
+    For complete documentation on using Sessions in your code, consult
+    the sessions documentation that is shipped with Django (also available
+    on the Django web site).
+    '''
+}
+
+
+Table Universidad {
+  id big_auto [pk, unique]
+  nombre char 
+  abreviatura char 
+  Note: '''Universidad(id, nombre, abreviatura)'''
+}
+
+
+Table Area {
+  id big_auto [pk, unique]
+  nombre char 
+  letra char 
+  universidad foreign_key 
+  Note: '''Area(id, nombre, letra, universidad)'''
+}
+ref: Area.universidad > Universidad.id
+
+
+Table Carrera {
+  id big_auto [pk, unique]
+  nombre char 
+  area foreign_key 
+  vacantes_admision positive_small_integer 
+  vacantes_pre positive_small_integer 
+  codigo char 
+  Note: '''Carrera(id, nombre, area, vacantes_admision, vacantes_pre, codigo)'''
+}
+ref: Carrera.area > Area.id
+
+
+Table ProcesoDeAdmision {
+  id big_auto [pk, unique]
+  universidad foreign_key 
+  temporada char 
+  proceso char 
+  Note: '''ProcesoDeAdmision(id, universidad, temporada, proceso)'''
+}
+ref: ProcesoDeAdmision.universidad > Universidad.id
+
+
+Table ExamenDeAdmision {
+  id big_auto [pk, unique]
+  area foreign_key 
+  proceso_de_admision foreign_key 
+  puntaje_correcta float 
+  puntaje_incorrecta float 
+  puntaje_en_blanco float [default:`0`]
+  duracion duration 
+  cantidad_de_preguntas positive_small_integer [default:`100`]
+  Note: '''ExamenDeAdmision(id, area, proceso_de_admision, puntaje_correcta, puntaje_incorrecta, puntaje_en_blanco, duracion, cantidad_de_preguntas)'''
+}
+ref: ExamenDeAdmision.area > Area.id
+ref: ExamenDeAdmision.proceso_de_admision > ProcesoDeAdmision.id
+
+
+Table Curso {
+  id big_auto [pk, unique]
+  nombre char 
+  Note: '''Curso(id, nombre)'''
+}
+
+
+Table PreguntasPorCurso {
+  id big_auto [pk, unique]
+  cantidad positive_small_integer 
+  curso foreign_key 
+  Note: '''PreguntasPorCurso(id, cantidad, curso)'''
+}
+ref: PreguntasPorCurso.curso > Curso.id
+
+
+Table core_preguntasporcurso_area {
+  area_id auto [pk]
+  preguntasporcurso_id auto [pk]
+}
+ref: PreguntasPorCurso.id > core_preguntasporcurso_area.preguntasporcurso_id
+ref: Area.id > core_preguntasporcurso_area.area_id
+
+
+Table Tema {
+  id big_auto [pk, unique]
+  nombre char 
+  curso foreign_key 
+  Note: '''Tema(id, nombre, curso)'''
+}
+ref: Tema.curso > Curso.id
+
+
+Table Lectura {
+  id big_auto [pk, unique]
+  titulo char 
+  texto text 
+  tema foreign_key 
+  Note: '''Lectura(id, titulo, texto, tema)'''
+}
+ref: Lectura.tema > Tema.id
+
+
+Table Pregunta {
+  id big_auto [pk, unique]
+  enunciado text 
+  lectura foreign_key [null]
+  tema foreign_key [null]
+  cantidad_de_alternativas small_integer [default:`5`]
+  Note: '''Pregunta(id, enunciado, lectura, tema, cantidad_de_alternativas)'''
+}
+ref: Pregunta.lectura > Lectura.id
+ref: Pregunta.tema > Tema.id
+
+
+Table core_pregunta_examenes_de_admision {
+  examendeadmision_id auto [pk]
+  pregunta_id auto [pk]
+}
+ref: Pregunta.id > core_pregunta_examenes_de_admision.pregunta_id
+ref: ExamenDeAdmision.id > core_pregunta_examenes_de_admision.examendeadmision_id
+
+
+Table Alternativa {
+  id big_auto [pk, unique]
+  valor char 
+  pregunta foreign_key 
+  Note: '''Alternativa(id, valor, pregunta)'''
+}
+ref: Alternativa.pregunta > Pregunta.id
+
+
+Table Solucion {
+  id big_auto [pk, unique]
+  teoria text 
+  resolucion text 
+  pregunta one_to_one [unique]
+  alternativa_correcta one_to_one [unique]
+  Note: '''Solucion(id, teoria, resolucion, pregunta, alternativa_correcta)'''
+}
+ref: Solucion.pregunta - Pregunta.id
+ref: Solucion.alternativa_correcta - Alternativa.id
+
+

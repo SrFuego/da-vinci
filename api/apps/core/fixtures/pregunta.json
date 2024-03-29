@@ -1,0 +1,275 @@
+[
+{
+    "model": "core.pregunta",
+    "pk": 1,
+    "fields": {
+        "enunciado": "¿Cuánto es 2 + 2?",
+        "lectura": null,
+        "tema": 1,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 2,
+    "fields": {
+        "enunciado": "¿Cuando se proclamó la independencia del Perú?",
+        "lectura": null,
+        "tema": 2,
+        "cantidad_de_alternativas": 3,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 3,
+    "fields": {
+        "enunciado": "¿Quién ocupa actualmente la presidencia en el Perú?",
+        "lectura": null,
+        "tema": 3,
+        "cantidad_de_alternativas": 4,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 4,
+    "fields": {
+        "enunciado": "¿En qué año se fundó la UNMSM?",
+        "lectura": null,
+        "tema": 5,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 5,
+    "fields": {
+        "enunciado": "¿Quién escribió el \"Don Quijote\"?",
+        "lectura": null,
+        "tema": 6,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 7,
+    "fields": {
+        "enunciado": "¿Quién escribió la Odisea?",
+        "lectura": null,
+        "tema": 6,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 8,
+    "fields": {
+        "enunciado": "¿De qué cultura eran las cabezas clavas?",
+        "lectura": null,
+        "tema": 7,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 9,
+    "fields": {
+        "enunciado": "¿Quién enunció la ley de la gravitación universal?",
+        "lectura": null,
+        "tema": 8,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 10,
+    "fields": {
+        "enunciado": "¿Cuánto suman los ángulos internos de un triángulo?",
+        "lectura": null,
+        "tema": 9,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 11,
+    "fields": {
+        "enunciado": "¿Quién descubrió Macchu Picchu?",
+        "lectura": null,
+        "tema": 7,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 12,
+    "fields": {
+        "enunciado": "¿Cuál es el elemento químico más abundante de la tierra?",
+        "lectura": null,
+        "tema": 11,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 14,
+    "fields": {
+        "enunciado": "Seleccione el animal omnívoro",
+        "lectura": null,
+        "tema": 12,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 15,
+    "fields": {
+        "enunciado": "¿Cuántos huesos tiene un recién nacido?",
+        "lectura": null,
+        "tema": 13,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 16,
+    "fields": {
+        "enunciado": "¿Cuál es el teorema matemático que tiene cateto opuesto o adyacente?",
+        "lectura": null,
+        "tema": 14,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 17,
+    "fields": {
+        "enunciado": "¿Cuál es el río más extenso del mundo?",
+        "lectura": null,
+        "tema": 15,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 18,
+    "fields": {
+        "enunciado": "¿Qué animal terrestre es el más veloz?",
+        "lectura": null,
+        "tema": 12,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 19,
+    "fields": {
+        "enunciado": "La función de ingreso marginal de un fabricante es: $$R'_{(q)}=\\frac{50}{\\sqrt{q}}$$\r\nSi R está en dólares calcule el cambio en el ingreso total si la producción aumenta de 100 a 400",
+        "lectura": null,
+        "tema": 16,
+        "cantidad_de_alternativas": 4,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 20,
+    "fields": {
+        "enunciado": "La vida útil de las bombillas fabricadas por cierta compañia, se mide mediante una variable aleatoria X cuya función de densidad de probabilidad es:\r\n$$f_{(x)}=0.02 e^{-0.02x}$$\r\n\r\nDonde X denota la duración en horas de una bombilla seleccionada aleatoriamente. Indique cual es la probabilidad de que la duración de una bombilla seleccionada aleatoriamente dure entre 30 y 50 horas:\r\n\r\n$$P_{(30\\leq x\\leq 50)}=\\int_{30}^{50}0.02e^{-0.02x}dx$$",
+        "lectura": null,
+        "tema": 16,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 21,
+    "fields": {
+        "enunciado": "Un fabricante descubrió que el costo marginal es $$\\frac{dc}{dq}=(0.1q+1)e^{0.03q}$$ dólares la unidad cuando se producen q unidades. Si el costo total de producir 10 unidades es de $200, Cuál es el costo total de producir las primeras 20 unidades?",
+        "lectura": null,
+        "tema": 16,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 22,
+    "fields": {
+        "enunciado": "Determinar la utilidad total si las funciones de ingreso marginal y de costo marginal están dadas por $$\\frac{dr}{dq}=25-5q-2q^2$$ y $$\\frac{dc}{dq}=10-3q-q^2$$ (q= unidades producidas)",
+        "lectura": null,
+        "tema": 16,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+},
+{
+    "model": "core.pregunta",
+    "pk": 23,
+    "fields": {
+        "enunciado": "Un fabricante ha encontrado que el costo marginal de su producto es $$3q^2-60q+400$$ pesos cuando se han producido q unidades. El costo total de las primeras dos unidades es $900. ¿Cuál es el costo total de producción de las primeras 5 unidades?",
+        "lectura": null,
+        "tema": 16,
+        "cantidad_de_alternativas": 5,
+        "examenes_de_admision": [
+            1
+        ]
+    }
+}
+]
