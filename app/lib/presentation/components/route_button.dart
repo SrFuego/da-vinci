@@ -9,6 +9,7 @@ class RouterButton extends StatelessWidget {
     this.verticalSize = 40.0,
     this.arguments = const {},
     required this.nextScreen,
+    this.enabled = true,
   });
 
   final String title;
@@ -17,24 +18,27 @@ class RouterButton extends StatelessWidget {
   final double verticalSize;
   final Map<dynamic, dynamic> arguments;
   final Widget nextScreen;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => nextScreen,
-                settings: RouteSettings(
-                  name: route,
-                  arguments: arguments,
-                ),
-              ),
-            );
-          },
+          onPressed: enabled
+              ? () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => nextScreen,
+                      settings: RouteSettings(
+                        name: route,
+                        arguments: arguments,
+                      ),
+                    ),
+                  );
+                }
+              : null,
           child: Text(title),
         ),
         Text(description),

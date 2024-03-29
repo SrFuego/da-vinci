@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
+import '../../presentation/screens/base_screen.dart';
 import '../components/route_button.dart';
 import '../screens/page/pregunta.dart';
 
@@ -24,7 +25,7 @@ class _PreguntaIndividualTemaScreenState
       onPressed: () => setState(() {}),
       child: const Text('Saltar'),
     );
-    final botonPreguntaIndividual = RouterButton(
+    final botonPreguntaDelTema = RouterButton(
       title: 'Otra Pregunta del Tema',
       description: '',
       verticalSize: 7.0,
@@ -42,13 +43,28 @@ class _PreguntaIndividualTemaScreenState
             return PreguntaPage(
               pregunta: pregunta,
               botonSaltar: botonSaltar,
-              botonSolucion: botonPreguntaIndividual,
+              botonSolucion: botonPreguntaDelTema,
               solucionRoute: 'individual/$temaSlug/solucion/',
             );
           }
-          return const Placeholder();
+          return const BaseScreen(
+            title: "",
+            body: <Widget>[
+              Placeholder(),
+            ],
+          );
         } else {
-          return const CircularProgressIndicator();
+          return BaseScreen(
+            title: "",
+            body: <Widget>[
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height - 2 * kToolbarHeight,
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            ],
+          );
         }
       },
     );

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/bloc/pregunta.dart';
+import '../../presentation/screens/base_screen.dart';
 import '../components/route_button.dart';
 import '../screens/page/solucion.dart';
 
 class SolucionScreen extends StatefulWidget {
-  final int? respuestaId;
+  final int respuestaId;
   final RouterButton botonSiguientePregunta;
 
   const SolucionScreen({
     super.key,
-    this.respuestaId,
+    required this.respuestaId,
     required this.botonSiguientePregunta,
   });
 
@@ -38,9 +39,24 @@ class _SolucionScreenState extends State<SolucionScreen> {
               botonSiguientePregunta: widget.botonSiguientePregunta,
             );
           }
-          return const Placeholder();
+          return const BaseScreen(
+            title: "",
+            body: <Widget>[
+              Placeholder(),
+            ],
+          );
         } else {
-          return const CircularProgressIndicator();
+          return BaseScreen(
+            title: "",
+            body: <Widget>[
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height - 2 * kToolbarHeight,
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            ],
+          );
         }
       },
     );
