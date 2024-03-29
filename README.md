@@ -1,4 +1,4 @@
-# Da Vinci 0.2.0
+# Da Vinci 0.3.0
 
 ## Descripción del proyecto
 
@@ -30,7 +30,7 @@ Para mostrar las preguntas de admisión es necesario ingresarlas al sistema por 
 
 ## Indice de comandos:
 
-- [Da Vinci 0.2.0](#da-vinci-020)
+- [Da Vinci 0.3.0](#da-vinci-030)
   - [Descripción del proyecto](#descripción-del-proyecto)
   - [Indice de comandos:](#indice-de-comandos)
     - [Levantar el proyecto](#levantar-el-proyecto)
@@ -125,11 +125,3 @@ Para sólo un modelo:
 #### Implemented
 
 ![Database implemented](docs/database/db.png)
-
-
-
-Version X.Y.Z:
-
-- X: Lanzamiento público
-- Y: Agrega funcionalidades (`feature`)
-- Z: Agrega cambios menores
