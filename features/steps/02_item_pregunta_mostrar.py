@@ -29,8 +29,8 @@ def step_impl(context):
 def step_impl(context):
     response = context.test.client.get(context.CURSO_URL)
     context.test.assertEqual(response.status_code, 200)
-    context.test.assertIn("cursos", response.data)
-    context.lista_cursos = response.json()["cursos"]
+    # context.test.assertIn("cursos", response.data)
+    context.lista_cursos = response.json()
 
 
 # Flujo Pregunta Individual Aleatoria
@@ -54,12 +54,12 @@ def step_impl(context):
 
 @then("el Curso (puede ser cualquiera)")
 def step_impl(context):
-    context.test.assertIn("curso", context.response_data)
+    context.test.assertIn("curso", context.response_data["tema"])
     context.test.assertTrue(
-        len(context.response_data["curso"]) > 0,
+        len(context.response_data["tema"]["curso"]) > 0,
     )
     curso_response = context.curso_model.objects.get(
-        nombre=context.response_data["curso"]["nombre"]
+        nombre=context.response_data["tema"]["curso"]["nombre"]
     )
     context.curso_response = curso_response
 
@@ -93,7 +93,7 @@ def step_impl(context):
 @when('selecciona "un Curso"')
 def step_impl(context):
     curso_aleatorio = context.curso_model.objects.get(
-        id=random.choice(context.lista_cursos)["id"],
+        slug=random.choice(context.lista_cursos)["slug"],
     )
     context.curso_aleatorio = curso_aleatorio
 
@@ -102,19 +102,18 @@ def step_impl(context):
 def step_impl(context):
     response = context.test.client.get(
         context.TEMA_URL.format(
-            context.curso_aleatorio.id,
+            context.curso_aleatorio.slug,
         )
     )
     context.test.assertEqual(response.status_code, 200)
-    context.test.assertIn("temas", response.data)
-    context.lista_temas = response.json()["temas"]
+    context.lista_temas = response.json()
     queryset_temas_del_curso = context.curso_aleatorio.tema_set.all()
     for tema in context.lista_temas:
         context.test.assertIn(
-            tema["id"],
+            tema["slug"],
             list(
                 queryset_temas_del_curso.values_list(
-                    "id",
+                    "slug",
                     flat=True,
                 ),
             ),
@@ -129,29 +128,29 @@ def step_impl(context):
 @then("le muestra un problema del curso y sus alternativas")
 def step_impl(context):
     response = context.test.client.get(
-        "{}?curso_id={}".format(
+        "{}?curso={}".format(
             context.PREGUNTA_INDIVIDUAL_URL,
-            context.curso_aleatorio.id,
+            context.curso_aleatorio.slug,
         )
     )
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertIn("alternativas", response.data)
     context.curso_seleccionado = context.curso_model.objects.get(
-        id=context.curso_aleatorio.id
+        slug=context.curso_aleatorio.slug
     )
     context.response_data = response.data
 
 
 @then("el Curso (el que seleccionó)")
 def step_impl(context):
-    context.test.assertIn("curso", context.response_data)
+    # context.test.assertIn("curso", context.response_data)
     context.test.assertTrue(
-        len(context.response_data["curso"]) > 0,
+        len(context.response_data["tema"]["curso"]) > 0,
     )
     context.test.assertEquals(
         context.curso_seleccionado.nombre,
-        context.response_data["curso"]["nombre"],
+        context.response_data["tema"]["curso"]["nombre"],
     )
 
 
@@ -175,28 +174,28 @@ def step_impl(context):
 @when('selecciona "un Tema"')
 def step_impl(context):
     tema_aleatorio = random.choice(context.lista_temas)
-    context.tema_aleatorio_id = tema_aleatorio["id"]
+    context.tema_aleatorio_slug = tema_aleatorio["slug"]
 
 
 @then("le muestra un problema del tema y sus alternativas")
 def step_impl(context):
     response = context.test.client.get(
-        "{}?tema_id={}".format(
+        "{}?tema={}".format(
             context.PREGUNTA_INDIVIDUAL_URL,
-            context.tema_aleatorio_id,
+            context.tema_aleatorio_slug,
         )
     )
     context.test.assertEqual(response.status_code, 200)
     context.test.assertIn("enunciado", response.data)
     context.test.assertIn("alternativas", response.data)
     context.tema_seleccionado = context.tema_model.objects.get(
-        id=context.tema_aleatorio_id
+        slug=context.tema_aleatorio_slug
     )
     context.curso_seleccionado = context.tema_seleccionado.curso
     context.test.assertIn("tema", response.data)
     context.test.assertEqual(
-        response.data["tema"]["id"],
-        context.tema_aleatorio_id,
+        response.data["tema"]["slug"],
+        context.tema_aleatorio_slug,
     )
     context.test.assertEqual(
         response.data["tema"]["nombre"],
