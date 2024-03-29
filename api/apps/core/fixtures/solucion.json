@@ -1,0 +1,212 @@
+[
+{
+    "model": "core.solucion",
+    "pk": 1,
+    "fields": {
+        "teoria": "",
+        "resolucion": "Se pasan los números a unidades, 2 + 2 pasa a ser 1 + 1 + 1 + 1, entonces sumaria 4 unidades",
+        "pregunta": 1,
+        "alternativa_correcta": 2
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 2,
+    "fields": {
+        "teoria": "",
+        "resolucion": "Se declaro el 28 de Julio de 1821",
+        "pregunta": 2,
+        "alternativa_correcta": 9
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 3,
+    "fields": {
+        "teoria": "",
+        "resolucion": "Dina Boluarte",
+        "pregunta": 3,
+        "alternativa_correcta": 11
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 4,
+    "fields": {
+        "teoria": "En la epoca de Oro",
+        "resolucion": "Don Quijote de la Mancha es una novela escrita por el español Miguel de Cervantes Saavedra. Publicada su primera parte con el título de El ingenioso hidalgo don Quijote de la Mancha a comienzos de 1605",
+        "pregunta": 5,
+        "alternativa_correcta": 20
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 6,
+    "fields": {
+        "teoria": "El elemento más abundante es el oxígeno (O)",
+        "resolucion": "Que representa el 49,5% de la masa total en la materia inerte, y que constituye hasta el 62% en los seres humanos y en los animales y casi el 40% en las plantas.",
+        "pregunta": 12,
+        "alternativa_correcta": 57
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 7,
+    "fields": {
+        "teoria": "Ley física enunciada por Isaac Newton.",
+        "resolucion": "Que establece que una partícula de masa M1 ejerce una fuerza de atracción sobre otra de masa M2, que s directamente proporcional al producto de las dos masas e inversamente proporcional al cuadrado de la distancia que las separa.",
+        "pregunta": 9,
+        "alternativa_correcta": 40
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 8,
+    "fields": {
+        "teoria": "Es una universidad pública ubicada en la ciudad de Lima, Perú.",
+        "resolucion": "Su fundación oficial fue gestada por fray Tomás de San Martín y se concretó el 12 de mayo de 1551 con el decreto del emperador Carlos I de España y V del Sacro Imperio Romano Germánico.",
+        "pregunta": 4,
+        "alternativa_correcta": 18
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 9,
+    "fields": {
+        "teoria": "La historiografía norteamericana sostiene que Machu Picchu fue “descubierto” el 24 de julio de 1911.",
+        "resolucion": "Por el profesor y explorador estadounidense Hiram Bingham (1875-1956) en un viaje de exploración acompañado por algunos colegas de la Universidad de Yale.",
+        "pregunta": 11,
+        "alternativa_correcta": 48
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 10,
+    "fields": {
+        "teoria": "Por tanto",
+        "resolucion": "La suma de los ángulos internos de un triángulo cualquiera es 180°.",
+        "pregunta": 10,
+        "alternativa_correcta": 47
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 11,
+    "fields": {
+        "teoria": "Las “cabezas clavas” son cabezas de piedra talladas, que fueron insertadas en los muros de los templos del antiguo Perú.",
+        "resolucion": "Las Cabezas Clavas representan cabezas de transición humana a seres míticos. Fueron halladas empotradas en una fila horizontal y en forma equidistante en los muros en lo alto del Templo de Chavín de Huántar.",
+        "pregunta": 8,
+        "alternativa_correcta": 37
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 12,
+    "fields": {
+        "teoria": "Poeta griego al que se le atribuye la autoría de las principales poesías épicas griegas: la Ilíada y la Odisea.",
+        "resolucion": "La Odisea AUTOR Homero (c. siglo VIII a. C.)",
+        "pregunta": 7,
+        "alternativa_correcta": 28
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 13,
+    "fields": {
+        "teoria": "Los cerdos comen carne y cualquier tipo de alimento.",
+        "resolucion": "Son omnívoros.",
+        "pregunta": 14,
+        "alternativa_correcta": 64
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 14,
+    "fields": {
+        "teoria": "A la larga, estos se acaban fusionando (se unen al crecer) para pasar a formar el esqueleto de 206 huesos de una persona adulta.",
+        "resolucion": "Cuando nace, el cuerpo de un bebé contiene aproximadamente 300 huesos.",
+        "pregunta": 15,
+        "alternativa_correcta": 68
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 15,
+    "fields": {
+        "teoria": "En un triángulo rectángulo, la hipotenusa es el lado más largo.",
+        "resolucion": "El Teorema de Pitágoras es una relación entre las longitudes de los catetos al cuadrado de un lado.",
+        "pregunta": 16,
+        "alternativa_correcta": 77
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 16,
+    "fields": {
+        "teoria": "Esto debería significar que el Nilo es el río más largo del planeta.",
+        "resolucion": "Oficialmente, el río Nilo tiene 6.650 kilómetros de longitud y el río Amazonas mide 6.400.",
+        "pregunta": 17,
+        "alternativa_correcta": 80
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 17,
+    "fields": {
+        "teoria": "Alcanza una velocidad máxima de entorno los 130 kilómetros por hora y sigue siendo el felino más veloz de todos los que se conocen.",
+        "resolucion": "El animal terrestre más rápido es el guepardo (Acinonyx jubatus). Este mamífero carnívoro, también conocido como chita.",
+        "pregunta": 18,
+        "alternativa_correcta": 86
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 18,
+    "fields": {
+        "teoria": "prueba integral definida",
+        "resolucion": "$$R'_{(q)}=\\frac{dR_{(q)}}{dq}=\\frac{50}{\\sqrt{q}}$$\r\n$$\\Longrightarrow dR_{(q)}=\\frac{50}{\\sqrt{q}}dq$$\r\n$$\\int dR_{(q)}=\\int \\frac{50}{\\sqrt{q}}dq$$\r\n$$R_{(q)}=50 \\int \\frac{dq}{\\sqrt{q}}$$\r\n$$50 \\int q^{-\\frac{1}{2}}dq=50\\frac{q^{\\frac{1}{2}}}{\\frac{1}{2}}+C$$\r\n$$\\therefore R_{(q)}=100\\sqrt{q}+C$$\r\n\r\nNos piden: $$\\Delta R\\Bigm\\lvert^{400}_{100}$$\r\n\r\n$$\\Longrightarrow R_{400}-R_{100}$$\r\n$$100\\sqrt{400}-100\\sqrt{100}$$\r\n$$1000$$",
+        "pregunta": 19,
+        "alternativa_correcta": 88
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 19,
+    "fields": {
+        "teoria": "Aplicamos el cambio de variable",
+        "resolucion": "Sea una función u(x) tal que:\r\n$$u=-0.02x$$\r\n\r\n$$du=-0.02dx$$\r\n\r\n$$dx=\\frac{du}{-0.02}$$\r\n\r\nReemplazando en la integral I:\r\n$$I=\\int0.02e^{-0.02x}dx$$\r\n$$\\int 0.02e^{u}\\frac{du}{-0.02}$$\r\n$$-\\int e^{u}du=-(e^u)+C$$\r\n$$\\Longrightarrow \\quad I=-e^{-0.02x}+C$$\r\n$$\\therefore\\quad P_{(30\\leq x\\leq 50)}=-e^{-0.02x}\\Biggm\\lvert^{50}_{30}$$\r\n$$P_{(30\\leq x\\leq 50)}=-e^{0.02(50)}-\\left(-e^{0.02(30)}\\right)$$\r\n$$\\Longrightarrow \\quad P_{(30\\leq x\\leq 50)}=0.180932$$",
+        "pregunta": 20,
+        "alternativa_correcta": 92
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 20,
+    "fields": {
+        "teoria": "El Costo Marginal es la derivada del Costo Total respecto a la cantidad producida q",
+        "resolucion": "Hallamos la función C(q) que representa el Costo Total:\r\n\r\n$$\\frac{dC_{(q)}}{dq}=(0.1q+1)e^{0.03q}$$\r\n\r\n$$dC_{(q)}=0.1qe^{0.03q}dq+e^{0.03q}dq$$\r\n\r\n$$\\int dC_{(q)}=\\frac{1}{10}\\int qe^{0.03q}dq+\\int e^{0.03q}dq$$\r\n\r\nDesarrollamos por partes la integral:\r\n\r\n$$I_1=\\int qe^{0.03q}dq$$\r\n  \r\n  Haciendo: $$u=q \\quad\\wedge\\quad dv=e^{0.03q}dq$$\r\n  \r\n  $$\\Longrightarrow \\quad du=dq \\quad\\wedge\\quad v=\\frac{e^{0.03q}}{0.03}$$\r\n  \r\n  $$I_1=\\int qe^{0.03q}dq=\\frac{qe^{0.03q}}{0.03}-\\int \\frac{e^{0.03q}}{0.03}dq$$\r\n\r\nReemplazando en la integral original:\r\n\r\n$$C_{(q)}=\\frac{1}{10}\\left(\\frac{qe^{0.03q}}{0.03}-\\int \\frac{e^{0.03q}}{0.03}dq\\right)+\\int e^{0.03q}dq$$\r\n\r\n$$C_{(q)}=\\frac{qe^{0.03q}}{0.3}-\\frac{1}{0.3}\\int e^{0.03q}dq+\\int e^{0.03q}dq$$\r\n\r\n$$C_{(q)}=\\frac{10}{3}qe^{0.03q}-\\frac{10}{3}\\int e^{0.03q}dq+\\int e^{0.03q}dq$$\r\n\r\n$$C_{(q)}=\\frac{10}{3}qe^{0.03q}-\\frac{7}{3}\\int e^{0.03q}dq$$\r\n\r\n$$C_{(q)}=\\frac{10}{3}qe^{0.03q}-\\frac{7}{3}\\left(\\frac{e^{0.03q}}{0.03}\\right)+k$$\r\n\r\n$$C_{(q)}=\\frac{10}{3}qe^{0.03q}-\\frac{7}{3}\\left(\\frac{1}{0.03}\\right)e^{0.03q}+k$$\r\n\r\n$$C_{(q)}=\\frac{10}{3}qe^{0.03q}-\\frac{7}{3}\\left(\\frac{100}{3}\\right)e^{0.03q}+k$$\r\n\r\n$$C_{(q)}=\\frac{10}{3}qe^{0.03q}-\\frac{700}{9}e^{0.03q}+k$$\r\n\r\nHallamos la variable de integración con el dato que nos dan que cuando q=10 el costo total es C(10)=200:\r\n\r\n$$ C_{(q)}=\\frac{10}{3}qe^{0.03q}-\\frac{700}{9}e^{0.03q}+k$$\r\n\r\n$$ C_{(10)}=\\frac{10}{3}(10)e^{0.03(10)}-\\frac{700}{9}e^{0.03(10)}+k$$\r\n\r\n$$ \\frac{10}{3}(10)e^{0.03(10)}-\\frac{700}{9}e^{0.03(10)}+k=200$$\r\n\r\n$$\\therefore k=259.993724$$\r\n\r\n$$\\Longrightarrow C_{(q)}=\\frac{10}{3}qe^{0.03q}-\\frac{700}{9}e^{0.03q}+259.993724$$\r\n\r\nNos piden el costo en q=20:\r\n\r\n$$ C_{(20)}=\\frac{10}{3}(20)e^{0.03(20)}-\\frac{700}{9}e^{0.03(20)}+259.99372$$\r\n\r\n$$ C_{(20)}=239.747960$$",
+        "pregunta": 21,
+        "alternativa_correcta": 101
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 21,
+    "fields": {
+        "teoria": "La utilidad total es el ingreso total menos los costos totales, ya que nos dan de dato los ingresos y costos marginales partimos de ahí para obtener los totales y luego los restamos para obtener la utilidad del periodo sea positiva o negativa (ganancia o pérdida)",
+        "resolucion": "Igualamos el Ingreso Marginal con el Costo Marginal para determinar la cantidad producida q en ese punto:\r\n\r\n$$\\frac{dr}{dq}-\\frac{dc}{dq}=0$$\r\n\r\n$$25-5q-2q^2-(10-3q-q^2)=0$$\r\n\r\n$$25-5q-2q^2-10+3q+q^2=0$$\r\n\r\n$$q^2+2q-15=0$$\r\n\r\n$$(q+5)(q-3)=0$$\r\n\r\nComo q representa la cantidad producida entonces:\r\n\r\n$$q \\in \\mathbb{N}$$\r\n\r\n$$\\therefore\\quad q=3$$\r\n\r\nIntegramos la Utilidad Marginal para obtener la Utilidad Total al producir y vender q unidades:\r\n\r\n$$U_{(q)}=\\int \\left(\\frac{dr}{dq}-\\frac{dc}{dq}\\right)dq$$\r\n\r\n$$U_{(q)}=\\int (25-5q-2q^2-10+3q+q^2)dq$$\r\n\r\n$$U_{(q)}=\\int (15-2q-q^2)dq$$\r\n\r\n$$U_{(q)}=15\\int dq-2\\int qdq-\\int q^2dq$$\r\n\r\n$$U_{(q)}=15q-2\\frac{q^2}{2}-\\frac{q^3}{3}+k$$\r\n\r\n$$U_{(q)}=15q-q^2-\\frac{q^3}{3}+k$$\r\n\r\nComo la utilidad al producir y vender cero unidades es cero, entonces:\r\n\r\n    $$U_{(0)}=15(0)-(0)^2-\\frac{(0)^3}{3}+k=0$$\r\n\r\n    $$\\therefore\\quad k=0$$\r\n\r\n    $$\\Longrightarrow \\quad U_{(q)}=15q-q^2-\\frac{q^3}{3}$$\r\n\r\nLa utilidad total al producir y vender 3 unidades es:\r\n\r\n$$U_{(3)}=15(3)-(3)^2-\\frac{(3)^3}{3}=27$$",
+        "pregunta": 22,
+        "alternativa_correcta": 102
+    }
+},
+{
+    "model": "core.solucion",
+    "pk": 22,
+    "fields": {
+        "teoria": "El Costo Marginal se relaciona con el Costo Total mediante una integral, ya que el término \"marginal\" se refiere al margen de variación en la función (costo en este caso) cuando la variable analizada (en este caso la cantidad producida) aumenta en 1 unidad",
+        "resolucion": "$$C'_{(q)}=3q^2-60q+400$$\r\n$$\\frac{dC_{(q)}}{dq}=3q^2-60q+400$$\r\n$$dC_{(q)}=(3q^2-60q+400)dq$$\r\n$$\\int dC_{(q)}=\\int(3q^2-60q+400)dq$$\r\n$$3\\int q^2dq-60\\int qdq+400\\int dq$$\r\n$$C_{(q)}=3\\frac{q^3}{3}-60\\frac{q^2}{2}+400q+C$$\r\n$$C_{(q)}=q^3-30q^2+400q+C$$\r\n\r\nReemplazamos q=2 que nos dan como dato para hallar K:\r\n\r\n$$C_{(2)}=(2)^3-30(2)^2+400(2)+K$$\r\n$$900=(2)^3-30(2)^2+400(2)+K$$\r\n$$\\therefore K=212$$\r\n$$\\Longrightarrow C_{(q)}=q^3-30q^2+400q+212$$\r\n$$C_{(5)}=(5)^3-30(5)^2+400(5)+212$$\r\n$$\\therefore C_{(5)}=1587$$",
+        "pregunta": 23,
+        "alternativa_correcta": 107
+    }
+}
+]

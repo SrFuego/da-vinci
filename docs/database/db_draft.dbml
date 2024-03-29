@@ -1,0 +1,122 @@
+Table User {
+  id auto [pk, unique]
+  password char 
+  last_login date_time [null]
+  is_superuser boolean [note:"Indica que este usuario tiene todos los permisos sin asignárselos explícitamente.", default:`False`]
+  username char [note:"Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y @/./+/-/_ ", unique]
+  first_name char 
+  last_name char 
+  email email 
+  is_staff boolean [note:"Indica si el usuario puede entrar en este sitio de administración.", default:`False`]
+  is_active boolean [note:"Indica si el usuario debe ser tratado como activo. Desmarque esta opción en lugar de borrar la cuenta.", default:`True`]
+  date_joined date_time [default:`django.utils.timezone.now()`]
+  Note: '''
+    Users within the Django authentication system are represented by this
+    model.
+
+    Username and password are required. Other fields are optional.
+    '''
+}
+
+
+Table Universidad {
+  id big_auto [pk, unique]
+  nombre char 
+  abreviatura char 
+}
+
+
+Table Area {
+  id big_auto [pk, unique]
+  nombre char 
+  letra char 
+  universidad foreign_key [ref: > Universidad.id]
+}
+
+
+Table Carrera {
+  id big_auto [pk, unique]
+  nombre char 
+  area foreign_key [ref: > Area.id]
+  vacantes_admision positive_small_integer 
+  vacantes_pre positive_small_integer 
+  codigo char 
+}
+
+
+Table ProcesoDeAdmision {
+  id big_auto [pk, unique]
+  universidad foreign_key [ref: > Universidad.id]
+  temporada char 
+  proceso char 
+}
+
+
+Table ExamenDeAdmision {
+  id big_auto [pk, unique]
+  area foreign_key [ref: > Area.id]
+  proceso_de_admision foreign_key [ref: > ProcesoDeAdmision.id]
+  puntaje_correcta float 
+  puntaje_incorrecta float 
+  puntaje_en_blanco float [default:`0`]
+  duracion duration 
+  cantidad_de_preguntas positive_small_integer [default:`100`]
+}
+
+
+Table Curso {
+  id big_auto [pk, unique]
+  nombre char
+}
+
+
+Table PreguntasPorCurso {
+  id big_auto [pk, unique]
+  cantidad positive_small_integer 
+  curso foreign_key [ref: > Curso.id]
+  area foreign_key [ref: <> Area.id]
+}
+
+
+Table Tema {
+  id big_auto [pk, unique]
+  nombre char 
+  curso foreign_key [ref: > Curso.id]
+}
+
+
+Table Lectura {
+  id big_auto [pk, unique]
+  titulo char 
+  texto text 
+  tema foreign_key [ref: > Tema.id]
+}
+
+
+Table Pregunta {
+  id big_auto [pk, unique]
+  enunciado text 
+  lectura foreign_key [ref: > Lectura.id]
+  tema foreign_key [ref: <> Tema.id]
+  cantidad_de_alternativas small_integer [default:`5`]
+  examendeadmision foreign_key
+}
+Ref prueba: Pregunta.examendeadmision <> ExamenDeAdmision.id
+
+
+Table Alternativa {
+  id big_auto [pk, unique]
+  valor char 
+  pregunta foreign_key [ref: > Pregunta.id]
+}
+
+
+Table Solucion {
+  id big_auto [pk, unique]
+  teoria text 
+  resolucion text 
+  pregunta one_to_one [ref: - Pregunta.id]
+  alternativa_correcta one_to_one [ref: - Alternativa.id]
+}
+
+

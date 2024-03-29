@@ -1,0 +1,146 @@
+[
+{
+    "model": "core.tema",
+    "pk": 1,
+    "fields": {
+        "nombre": "Operaciones combinadas",
+        "curso": 5,
+        "slug": "operaciones-combinadas"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 2,
+    "fields": {
+        "nombre": "Independencia del Perú",
+        "curso": 11,
+        "slug": "independencia-del-peru"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 3,
+    "fields": {
+        "nombre": "Cargos Públicos",
+        "curso": 10,
+        "slug": "cargos-publicos"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 4,
+    "fields": {
+        "nombre": "Comprensión de Lectura",
+        "curso": 1,
+        "slug": "comprension-de-lectura"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 5,
+    "fields": {
+        "nombre": "Historia de San Marcos",
+        "curso": 11,
+        "slug": "historia-de-san-marcos"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 6,
+    "fields": {
+        "nombre": "Literatura Española",
+        "curso": 8,
+        "slug": "literatura-espanola"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 7,
+    "fields": {
+        "nombre": "Cultura prehispanicas",
+        "curso": 11,
+        "slug": "cultura-prehispanicas"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 8,
+    "fields": {
+        "nombre": "Fisica conceptos",
+        "curso": 16,
+        "slug": "fisica-conceptos"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 9,
+    "fields": {
+        "nombre": "triangulos",
+        "curso": 4,
+        "slug": "triangulos"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 10,
+    "fields": {
+        "nombre": "Cultura inca",
+        "curso": 11,
+        "slug": "cultura-inca"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 11,
+    "fields": {
+        "nombre": "Los elementos primarios",
+        "curso": 17,
+        "slug": "los-elementos-primarios"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 12,
+    "fields": {
+        "nombre": "Zoología",
+        "curso": 18,
+        "slug": "zoologia"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 13,
+    "fields": {
+        "nombre": "Cuerpo humano",
+        "curso": 18,
+        "slug": "cuerpo-humano"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 14,
+    "fields": {
+        "nombre": "Triángulo",
+        "curso": 4,
+        "slug": "triangulo"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 15,
+    "fields": {
+        "nombre": "Hidráulica",
+        "curso": 13,
+        "slug": "hidraulica"
+    }
+},
+{
+    "model": "core.tema",
+    "pk": 16,
+    "fields": {
+        "nombre": "Integral definida",
+        "curso": 19,
+        "slug": "integral-definida"
+    }
+}
+]

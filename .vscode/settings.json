@@ -1,10 +1,8 @@
 {
     "[python]": {
-        "editor.defaultFormatter": "ms-python.python"
+        "editor.defaultFormatter": "ms-python.black-formatter"
     },
+    "python.analysis.typeCheckingMode": "off",
     "python.formatting.provider": "none",
-    "python.linting.mypyEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true,
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.autoImportCompletions": true
 }

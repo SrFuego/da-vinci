@@ -4,23 +4,44 @@ Abre la App Da Vinci
 
 ...
 Abre la App Da Vinci
-Da Vinci:
+Da Vinci 0.3.0:
 Home de Da Vinci
 //Una pregunta, envías tu respuesta, la califica y muestra solución
-Selecciona Individual
-Selecciona Elegir Curso
+Pregunta Individual
+//Todos los cursos tienen mínimo 1 Pregunta
+Pantalla de Cursos \n-Lista de Cursos \n-Curso Aleatorio
+Qué selecciona en cursos?
+un Curso
+//Todos tienen mínimo 1 Pregunta
+Pantalla de Temas \n-Lista de Temas \n-Muestra Tema Aleatorio
+Qué selecciona en temas?
+Tema Aleatorio
+Problema de Admisión del Curso seleccionado
+Problema de Admisión
+...
 
 
 ...
-Selecciona Individual
-Selecciona Pregunta Aleatoria
-Muestra un problema de Admisión Aleatorio
+Qué selecciona en temas?
+un Tema
+Problema de Admisión del Tema seleccionado
+Problema de Admisión
+...
+
+
+
+
+
+...
+Qué selecciona en cursos?
+Curso Aleatorio
+Problema de Admisión de cualquier Curso
 //Contiene:
 //- Nombre del Curso
 //- Nombre del Tema
 //- Enunciado
 //- Alternativas
-Muestra un Problema de Admisión
+Problema de Admisión
 Selecciona una Alternativa
 Le da al botón= Enviar (Alternativa)
 Se envía su Respuesta (puede dejar en blanco)
@@ -31,15 +52,9 @@ Da Vinci evalúa su Respuesta
 ///Muestra la Pregunta con todas las Alternativas, la resolución y teoría del Tema y/o Curso relacionado
 Muestra la Solucion= \n-Enunciado \n-Alternativas \n-Resolución \n-Teoría del Tema y/o Curso relacionado \n-Puntaje obtenido
 También muestra botones de navegación
-Muestra un botón de Siguiente Pregunta
-Muestra un Problema de Admisión
+Botón de Siguiente Pregunta
+Problema de Admisión
 ...
-
-
-
-
-
-
 
 
 
@@ -61,7 +76,7 @@ Exámenes pasados
 
 ...
 También muestra botones de navegación
-Muestra un botón de Home
+Botón de Home
 Home de Da Vinci
 ...
 

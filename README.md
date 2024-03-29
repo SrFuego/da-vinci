@@ -1,4 +1,4 @@
-# Da Vinci 0.1.0
+# Da Vinci 0.3.0
 
 ## Descripción del proyecto
 
@@ -30,17 +30,16 @@ Para mostrar las preguntas de admisión es necesario ingresarlas al sistema por 
 
 ## Indice de comandos:
 
-- [Da Vinci 0.1.0](#da-vinci-010)
+- [Da Vinci 0.3.0](#da-vinci-030)
   - [Descripción del proyecto](#descripción-del-proyecto)
   - [Indice de comandos:](#indice-de-comandos)
     - [Levantar el proyecto](#levantar-el-proyecto)
-    - [Levantar reporte de tests](#levantar-reporte-de-tests)
-    - [Conectarse al container de backend](#conectarse-al-container-de-backend)
-    - [Generar dependencias actualizadas](#generar-dependencias-actualizadas)
-    - [Actualizar fixtures](#actualizar-fixtures)
+    - [Conectarse al container del API](#conectarse-al-container-del-api)
     - [Correr tests de características](#correr-tests-de-características)
     - [Correr coverage de codigo](#correr-coverage-de-codigo)
-- [Se vienen cositas](#se-vienen-cositas)
+    - [Levantar reporte de tests](#levantar-reporte-de-tests)
+    - [Actualizar dependencias API](#actualizar-dependencias-api)
+    - [Actualizar fixtures](#actualizar-fixtures)
 
 
 ### Levantar el proyecto
@@ -51,66 +50,78 @@ https://docs.docker.com/engine/install/
 
 Levantar el entorno de desarrollo y pruebas:
 
-`docker compose -f src/dockerfiles/docker-compose.yml up --build`
+- `docker compose -f api/dockerfiles/docker-compose.yml up --build`
+
+
+### Conectarse al container del API
+
+- `docker exec -it api bash`
+
+
+### Correr tests de características
+
+- `python api/manage.py behave`
+
+
+### Correr coverage de codigo
+
+- `coverage run api/manage.py behave && coverage html`
 
 
 ### Levantar reporte de tests
 
-Generar reporte de Allure (dentro de `features/`):
+Mostrar reporte de Allure en el puerto 8050:
 
-`behave -f allure_behave.formatter:AllureFormatter -o my_allure .`
+- `allure generate`
 
-Allure serve report:
-
-`allure serve my_allure/`
+- `allure open -p 8050`
 
 
-### Conectarse al container de backend
-
-`docker exec -it backend bash`
-
-
-### Generar dependencias actualizadas
+### Actualizar dependencias API
 
 En el container:
 
-`bash scripts/update_requirements.sh`
+- `bash scripts/update_requirements.sh`
 
 
 ### Actualizar fixtures
 
 En el container:
 
-`bash scripts/update_fixtures.sh`
+- `bash scripts/update_fixtures.sh`
 
 Para sólo un modelo:
 
-`python src/api/manage.py dumpdata core.{Model} --format json --indent 4 -o src/api/apps/core/fixtures/{filename}.json`
+- `python api/manage.py dumpdata core.{Model} --format json --indent 4 -o api/apps/core/fixtures/{filename}.json`
 
 
-### Correr tests de características
-
-`python src/api/manage.py behave`
 
 
-### Correr coverage de codigo
 
-`coverage run src/api/manage.py behave`
+### User Journey
 
-`coverage html`
+![User Journey](docs/context/out/0.3.0/app.png)
 
 
-# Se vienen cositas
 
-> v0.1.1:
-- Separar el API en apps de Django (todo está en `core`)
+### Tech Stack
 
-> v0.9.0:
-- UI Final
-  - App
-  - Web
-- UX Final
+![Tech Stack](docs/infrastructure/da_vinci.png)
 
-> v1.0.0:
-- App
-- Web
+
+
+### Sequence
+
+![Sequence](docs/sequence/out/0.3.0/Da%20Vinci.png)
+
+
+
+### Database
+
+#### Draft
+
+![Database Draft](docs/database/db_draft.png)
+
+#### Implemented
+
+![Database implemented](docs/database/db.png)
