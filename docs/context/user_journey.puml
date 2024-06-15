@@ -1,0 +1,125 @@
+@startuml Da Vinci
+|Primer Contacto|
+start
+
+
+split
+    :Redes Sociales;
+split again
+    :Recomendaciones de contactos;
+split again
+    :Páginas Web de terceros;
+end split
+
+
+
+:Landing page de Da Vinci;
+note 
+* Visualiza:
+- El logotipo de Da Vinci
+- Una descripción de Da Vinci,
+    destacando sus ventajas y beneficios
+- Un título que dice:
+    "Prepárate para el éxito universitario"
+- Screenshots de la App
+- Una sección con testimonios
+    de usuarios satisfechos
+- Los próximos examenes de admisión
+====
+* Links para instalar en:
+- Android
+- iOS
+end note
+
+
+
+:Instalar App;
+:Abre la App Da Vinci;
+
+
+|Da Vinci|
+:Home de Da Vinci;
+split 
+    :Selecciona Grupo;
+    note
+    * Un conjunto de preguntas, agrupadas por:
+    - Área
+    - Curso
+    - Tema
+    ====
+    * Envía las respuestas de todo el grupo y
+        las evalúa en conjunto
+    end note
+    end
+split again
+    :Exámenes pasados;
+    note
+    * Exámenes de admisión completos
+    * Envía todas las respuestas y
+        las evalúa en conjunto
+    end note
+    end
+split again
+    :Selecciona Individual;
+    note
+    * Una pregunta, envías tu respuesta,
+        la califica y muestra solución
+    end note
+    note
+    -Lista de Cursos
+    -Curso Aleatorio
+    ====
+    * Todos los cursos tienen:
+    - Mínimo 1 Pregunta
+    end note
+    if (Pantalla:\n -Lista de Cursos)then (un Curso)
+        if (Pantalla de Temas) then (un Tema)
+            :Problema de Admisión del Tema seleccionado;
+        else (Tema aleatorio)
+            :Problema de Admisión del Curso seleccionado;
+        endif
+    else (Curso aleatorio)
+        :Problema de Admisión de cualquier Curso;
+    endif
+
+
+
+
+
+
+    split
+        :Selecciona un Curso;
+    split again
+        :Selecciona Curso Aleatorio;
+        :Solicita una pregunta al
+            Banco de Preguntas de Da Vinci;
+        note
+        - De cualquier Tema
+        - De cualquier Curso
+        end note
+        :Muestra un Problema de Admisión del Banco de Preguntas de Da Vinci;
+        note 
+        - Nombre del Curso
+        - Nombre del Tema
+        - Enunciado
+        - Alternativas
+        end note
+        :Selecciona una Alternativa;
+        :Le da al botón= Enviar (Alternativa);
+        :Se envía su Respuesta (puede dejar en blanco);
+        :Da Vinci evalúa su Respuesta;
+        :Muestra la Solucion= \n-Enunciado \n-Alternativas \n-Resolución \n-Teoría del Tema y/o Curso relacionado \n-Puntaje obtenido;
+        note
+        * Resalta:
+        - La Alternativa enviada
+        - La Alternativa correcta
+        end note
+        :También muestra botones de navegación;
+        :Muestra un botón de Siguiente Pregunta;
+        :Muestra un Problema de Admisión del Banco de Preguntas de Da Vinci;
+
+end split
+
+
+stop
+@enduml
