@@ -1,4 +1,7 @@
 @startuml Da Vinci
+' skinparam handwritten true
+
+
 |Primer Contacto|
 start
 
@@ -50,18 +53,36 @@ note
         respuestas de todo el grupo y las evalúa
     * Exámenes pasados:
         - Exámenes de admisión pasados, completos
-end note
-repeat :Home de Da Vinci;
+endnote
+
+
+:Home:
+\t /     \t
+{{
+    salt
+    {+
+    .
+    \t<b>Da Vinci
+    .
+    .
+    [Pregunta Individual]
+    [Grupo de Preguntas]
+    [Examenes pasados]
+    }
+}}
+;
+
+repeat :Selecciona una opción;
     split 
-        :Selecciona Grupo;
+        :Grupo de Preguntas;
         note
-            * Un conjunto de preguntas, agrupadas por:
+            * Agrupadas por:
             - Área
             - Curso
             - Tema
             ====
-            * Envía las respuestas de todo el grupo y
-                las evalúa en conjunto
+            * Envía las respuestas del grupo
+                y las evalúa en conjunto
         end note
     end
 
@@ -84,25 +105,61 @@ repeat :Home de Da Vinci;
                 la califica y
                 muestra solución
         end note
-        :Pantalla:
-            - Cursos;
+        :Cursos:
+        \t /individual/elegir-curso/  \t
+        {{
+            salt
+            {+
+            <&home>\t<b>Lista de Cursos
+            .
+            .
+            [Curso Aleatorio]
+            [Álgebra]
+            [Aritmética]
+            [Biología]
+            [Educación Cívica]
+            [Física]
+            [Geografía]
+            [Historia del Perú]
+            [Literatura]
+            [Química]
+            }
+        }}
+        ;
         note
-            - Curso Aleatorio
-            - Lista de Cursos
-            ====
-            * Todos los cursos:
+            * Los cursos que se muestran:
                 - Mínimo 1 Pregunta
-        end note
+        endnote
         if (Selecciona)then (un Curso)
-            :Pantalla:
-                - Temas del Curso;
+            :Temas:
+            \t /individual/[curso_slug]/elegir-tema/  \t
+            
+
+            /individual/historia-del-peru/elegir-tema/ \t
+            {{
+                salt
+                {+
+                <&home>\t<b>Historia del Perú
+                .
+                .
+                [Tema Aleatorio]
+                [Periodo formativo]
+                [El Tawantinsuyo]
+                [Virreinato]
+                [Reformas borbónicas]
+                [Guerra con Chile]
+                [Boom del guano]
+                [República Aristocrática]
+                [Oncenio]
+                [Militarismo]
+                [Perú en el siglo XXI]
+                }
+            }}
+            ;
             note 
-                - Tema Aleatorio
-                - Lista de Temas
-                ====
                 * Todos los temas:
                     - Mínimo 1 Pregunta
-            end note
+            endnote
             if (Selecciona) then (un Tema)
                 :Problema de Admisión
                     del Tema seleccionado;
@@ -119,41 +176,124 @@ repeat :Home de Da Vinci;
             end note
         endif
         repeat :Solicita una pregunta \nal Banco de Preguntas de Da Vinci;
-            :Muestra un Problema de Admisión
-                del Banco de Preguntas de Da Vinci;
+            :Pregunta Individual:
+            \t /individual/[curso_slug]/pregunta/  \t
+            
+
+            /individual/historia-del-peru/pregunta/ \t
+            {{
+                salt
+                {+
+                <&home>\t\t<b>Historia del Perú
+                Periodo formativo:
+                .
+                ¿De qué cultura eran las cabezas clavas?
+                .
+                () Chavín
+                () Paracas
+                () Nachoc
+                () Chancha
+                () Chimú
+                .
+                [Saltar] | [Enviar]
+                }
+            }}
+            ;
             note 
                 - Nombre del Curso
                 - Nombre del Tema
                 - Enunciado
                 - Alternativas
-            end note
-            :Selecciona una Alternativa;
-            :Le da al botón:
-                Enviar (Alternativa);
-            :Se envía su Respuesta;
-            note
-                puede dejar en blanco (saltar pregunta)
-            end note
-            :Da Vinci evalúa su Respuesta;
-            :Muestra la Solucion:
-                -Enunciado
-                - Alternativas
-                - Resolución
-                - Teoría del Tema y/o
-                    Curso relacionado
-                - Puntaje obtenido;
-            note
-                * Resalta:
-                - La Alternativa enviada
-                - La Alternativa correcta
-            end note
-            :También muestra botones de navegación;
-            :Muestra un botón de Siguiente Pregunta;
-            :Muestra un Problema de Admisión del Banco de Preguntas de Da Vinci;
-        backward: Otra pregunta de su selección;
+            endnote
+            if (Selecciona) then (otra pregunta)
+                :Deja en blanco y pasa a otra pregunta:
+                {{
+                    skinparam Backgroundcolor red
+                    salt
+                    {
+                    [Saltar]
+                    }
+                }}
+                ;
+            else (resolver)
+                :Selecciona una Alternativa
+                {{
+                    salt
+                    {
+                    (X) Paracas
+                    }
+                }}
+                Envía su respuesta:
+                {{
+                    salt
+                    {
+                    [Enviar]
+                    }
+                }}
+                ;
+            endif
+            :Solución de Pregunta Individual:
+            \t /individual/[curso_slug]/solucion/  \t
+
+
+            /individual/historia-del-peru/solucion/ \t
+            {{
+                salt
+                {+
+                <&home>\t\t<b>Historia del Perú
+                .
+                Puntaje obtenido: 20
+                .
+                Periodo formativo:
+                ¿De qué cultura eran las cabezas clavas?
+                .
+                (X) Chavín
+                () Paracas
+                () Nachoc
+                () Chancha
+                () Chimú
+                .
+                Solución:
+                .
+                .
+                Resolución:
+                .
+                .
+                [Siguiente Pregunta]
+                }
+            }}
+            ;
+            if (Respuesta) then (incorrecta)
+                :
+                {{
+                    salt
+                    {
+                    <back:DodgerBlue>( ) Chavín</back>
+                    <back:LightCoral>(X) Paracas</back>
+                    () Nachoc
+                    () Chancha
+                    () Chimú
+                    }
+                }}
+                ;
+            else (correcta)
+                :
+                {{
+                    salt
+                    {
+                    <back:LawnGreen>(X) Chavín</back>
+                    () Paracas
+                    () Nachoc
+                    () Chancha
+                    () Chimú
+                    }
+                }}
+                ;
+            endif
+        backward: Mismas opciones;
         repeat while (botón de Siguiente Pregunta)
     end split
-backward :Selecciona otras opciones;
+backward: Selecciona otras opciones;
 repeat while (botón al Home)
 stop
 
