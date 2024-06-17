@@ -158,7 +158,7 @@ repeat :Selecciona una opción;
             * Los cursos que se muestran:
                 - Mínimo 1 Pregunta
         endnote
-        if (Selecciona)then (un Curso)
+        if (Selecciona)then (uno o varios Cursos)
             split
                 :=<color:Blue>E03: Temas
                 URL:\t /individual/[curso_slug]/elegir-tema/  \t
