@@ -106,58 +106,113 @@ repeat :Selecciona una opción;
                 la califica y
                 muestra solución
         end note
-        :=<color:LimeGreen>E02: Cursos
-        URL:\t /individual/elegir-curso/  \t
+        split
+            :=<color:Blue>E02: Cursos
+            URL:\t /individual/elegir-curso/  \t
 
-        {{
-            salt
-            {+
-            <&home>\t<b>Lista de Cursos
-            .
-            .
-            [Curso Aleatorio]
-            [Álgebra]
-            [Aritmética]
-            [Biología]
-            [Educación Cívica]
-            [Física]
-            [Geografía]
-            [Historia del Perú]
-            [Literatura]
-            [Química]
-            }
-        }}
-        ;
+            {{
+                salt
+                skinparam Backgroundcolor pink
+                {+
+                <&home>\t<b>Lista de Cursos
+                .
+                .
+                [Curso Aleatorio]
+                [ ] Álgebra
+                [ ] Aritmética
+                [ ] Biología
+                [ ] Educación Cívica
+                [ ] Física
+                [ ] Geografía
+                [ ] Historia del Perú
+                [ ] Literatura
+                [ ] Química
+                }
+            }}
+            ;
+        split again
+            :=<color:LimeGreen>E02: Cursos
+            URL:\t /individual/elegir-curso/  \t
+
+            {{
+                salt
+                {+
+                <&home>\t<b>Lista de Cursos
+                .
+                .
+                [Curso Aleatorio]
+                [Álgebra]
+                [Aritmética]
+                [Biología]
+                [Educación Cívica]
+                [Física]
+                [Geografía]
+                [Historia del Perú]
+                [Literatura]
+                [Química]
+                }
+            }}
+            ;
+        endsplit
         note
             * Los cursos que se muestran:
                 - Mínimo 1 Pregunta
         endnote
         if (Selecciona)then (un Curso)
-            :=<color:LimeGreen>E03: Temas
-            URL:\t /individual/[curso_slug]/elegir-tema/  \t
-            
+            split
+                :=<color:Blue>E03: Temas
+                URL:\t /individual/[curso_slug]/elegir-tema/  \t
+                
 
-            /individual/historia-del-peru/elegir-tema/ \t
-            {{
-                salt
-                {+
-                <&home>\t<b>Historia del Perú
-                .
-                .
-                [Tema Aleatorio]
-                [Periodo formativo]
-                [El Tawantinsuyo]
-                [Virreinato]
-                [Reformas borbónicas]
-                [Guerra con Chile]
-                [Boom del guano]
-                [República Aristocrática]
-                [Oncenio]
-                [Militarismo]
-                [Perú en el siglo XXI]
-                }
-            }}
-            ;
+                /individual/historia-del-peru/elegir-tema/ \t
+                {{
+                    salt
+                    skinparam Backgroundcolor pink
+                    {+
+                    <&home>\t<b>Historia del Perú
+                    .
+                    .
+                    [Tema Aleatorio]
+                    [ ] Periodo formativo
+                    [ ] El Tawantinsuyo
+                    [ ] Virreinato
+                    [ ] Reformas borbónicas
+                    [ ] Guerra con Chile
+                    [ ] Boom del guano
+                    [ ] República Aristocrática
+                    [ ] Oncenio
+                    [ ] Militarismo
+                    [ ] Perú en el siglo XXI
+                    }
+                }}
+                ;
+            split again
+                :=<color:LimeGreen>E03: Temas
+                URL:\t /individual/[curso_slug]/elegir-tema/  \t
+                
+
+                /individual/historia-del-peru/elegir-tema/ \t
+                {{
+                    salt
+                    {+
+                    <&home>\t<b>Historia del Perú
+                    .
+                    .
+                    [Tema Aleatorio]
+                    [Periodo formativo]
+                    [El Tawantinsuyo]
+                    [Virreinato]
+                    [Reformas borbónicas]
+                    [Guerra con Chile]
+                    [Boom del guano]
+                    [República Aristocrática]
+                    [Oncenio]
+                    [Militarismo]
+                    [Perú en el siglo XXI]
+                    }
+                }}
+                ;
+            endsplit
             note 
                 * Todos los temas:
                     - Mínimo 1 Pregunta
@@ -210,13 +265,14 @@ repeat :Selecciona una opción;
             if (Selecciona) then (otra pregunta)
                 :Deja en blanco y pasa a otra pregunta:
                 {{
-                    skinparam Backgroundcolor red
+                    ' skinparam Backgroundcolor red
                     salt
                     {
                     [Saltar]
                     }
                 }}
                 ;
+                end
             else (resolver)
                 :Selecciona una Alternativa
                 {{
@@ -234,7 +290,7 @@ repeat :Selecciona una opción;
                 }}
                 ;
             endif
-            :=<color:LimeGreen>Solución de Pregunta Individual
+            :=<color:LimeGreen>E05: Solución de Pregunta Individual
             URL:\t /individual/[curso_slug]/solucion/  \t
 
 
