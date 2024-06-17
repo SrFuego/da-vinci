@@ -56,8 +56,8 @@ note
 endnote
 
 
-:Home:
-\t /     \t
+:=Home:\t /     \t
+
 {{
     salt
     {+
@@ -105,8 +105,8 @@ repeat :Selecciona una opción;
                 la califica y
                 muestra solución
         end note
-        :Cursos:
-        \t /individual/elegir-curso/  \t
+        :=Cursos:\t /individual/elegir-curso/  \t
+
         {{
             salt
             {+
@@ -131,8 +131,7 @@ repeat :Selecciona una opción;
                 - Mínimo 1 Pregunta
         endnote
         if (Selecciona)then (un Curso)
-            :Temas:
-            \t /individual/[curso_slug]/elegir-tema/  \t
+            :=Temas:\t /individual/[curso_slug]/elegir-tema/  \t
             
 
             /individual/historia-del-peru/elegir-tema/ \t
@@ -176,8 +175,7 @@ repeat :Selecciona una opción;
             end note
         endif
         repeat :Solicita una pregunta \nal Banco de Preguntas de Da Vinci;
-            :Pregunta Individual:
-            \t /individual/[curso_slug]/pregunta/  \t
+            :=Pregunta Individual:\t /individual/[curso_slug]/pregunta/  \t
             
 
             /individual/historia-del-peru/pregunta/ \t
@@ -232,8 +230,7 @@ repeat :Selecciona una opción;
                 }}
                 ;
             endif
-            :Solución de Pregunta Individual:
-            \t /individual/[curso_slug]/solucion/  \t
+            :=Solución de Pregunta Individual:\t /individual/[curso_slug]/solucion/  \t
 
 
             /individual/historia-del-peru/solucion/ \t
