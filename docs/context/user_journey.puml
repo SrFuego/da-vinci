@@ -1,0 +1,386 @@
+@startuml Da Vinci
+' skinparam handwritten true
+
+
+|Primer Contacto|
+start
+
+
+split
+    :Redes Sociales;
+split again
+    :Recomendaciones de contactos;
+split again
+    :Páginas Web de terceros;
+end split
+
+
+
+:Landing page de Da Vinci;
+note 
+    * Visualiza:
+    - El logotipo de Da Vinci
+    - Una descripción de Da Vinci,
+        destacando sus ventajas y beneficios
+    - Un título que dice:
+        "Prepárate para el éxito universitario"
+    - Screenshots de la App
+    - Una sección con testimonios
+        de usuarios satisfechos
+    - Los próximos examenes de admisión
+    ====
+    * Links para instalar en:
+    - Android
+    - iOS
+end note
+
+
+
+:Instalar App;
+stop
+
+
+|Da Vinci|
+start
+:Abre la App;
+note
+    Da Vinci:
+    * Individual:
+        - Una pregunta, envías tu respuesta y la califica
+    * Grupo:
+        - Un conjunto de preguntas (agrupadas por
+        Área, Curso, Tema, etc), envía las
+        respuestas de todo el grupo y las evalúa
+    * Exámenes pasados:
+        - Exámenes de admisión pasados, completos
+endnote
+
+
+:=<color:LimeGreen>E01: Home
+URL:\t /     \t
+
+{{
+    salt
+    {+
+    .
+    \t<b>Da Vinci
+    .
+    .
+    [Pregunta Individual]
+    [Grupo de Preguntas]
+    [Examenes pasados]
+    }
+}}
+;
+
+repeat :Selecciona una opción;
+    split 
+        :Grupo de Preguntas;
+        note
+            * Agrupadas por:
+            - Área
+            - Curso
+            - Tema
+            ====
+            * Envía las respuestas del grupo
+                y las evalúa en conjunto
+        end note
+    end
+
+
+    split again
+        :Exámenes pasados;
+        note
+            * Exámenes de admisión completos
+            * Envía todas las respuestas y
+                las evalúa en conjunto
+        end note
+    end
+
+
+    split again
+        :Pregunta Individual;
+        note
+            * Una pregunta,
+                envías tu respuesta,
+                la califica y
+                muestra solución
+        end note
+        split
+            :=<color:Blue>E02: Cursos
+            URL:\t /individual/elegir-curso/  \t
+
+            {{
+                salt
+                skinparam Backgroundcolor pink
+                {+
+                <&home>\t<b>Lista de Cursos
+                .
+                .
+                [Curso Aleatorio]
+                [ ] Álgebra
+                [ ] Aritmética
+                [ ] Biología
+                [ ] Educación Cívica
+                [ ] Física
+                [ ] Geografía
+                [ ] Historia del Perú
+                [ ] Literatura
+                [ ] Química
+                }
+            }}
+            ;
+        split again
+            :=<color:LimeGreen>E02: Cursos
+            URL:\t /individual/elegir-curso/  \t
+
+            {{
+                salt
+                {+
+                <&home>\t<b>Lista de Cursos
+                .
+                .
+                [Curso Aleatorio]
+                [Álgebra]
+                [Aritmética]
+                [Biología]
+                [Educación Cívica]
+                [Física]
+                [Geografía]
+                [Historia del Perú]
+                [Literatura]
+                [Química]
+                }
+            }}
+            ;
+        endsplit
+        note
+            * Los cursos que se muestran:
+                - Mínimo 1 Pregunta
+        endnote
+        if (Selecciona)then (uno o varios Cursos)
+            split
+                :=<color:Blue>E03: Temas
+                URL:\t /individual/[curso_slug]/elegir-tema/  \t
+                
+
+                /individual/historia-del-peru/elegir-tema/ \t
+                {{
+                    salt
+                    skinparam Backgroundcolor pink
+                    {+
+                    <&home>\t<b>Historia del Perú
+                    .
+                    .
+                    [Tema Aleatorio]
+                    [ ] Periodo formativo
+                    [ ] El Tawantinsuyo
+                    [ ] Virreinato
+                    [ ] Reformas borbónicas
+                    [ ] Guerra con Chile
+                    [ ] Boom del guano
+                    [ ] República Aristocrática
+                    [ ] Oncenio
+                    [ ] Militarismo
+                    [ ] Perú en el siglo XXI
+                    }
+                }}
+                ;
+            split again
+                :=<color:LimeGreen>E03: Temas
+                URL:\t /individual/[curso_slug]/elegir-tema/  \t
+                
+
+                /individual/historia-del-peru/elegir-tema/ \t
+                {{
+                    salt
+                    {+
+                    <&home>\t<b>Historia del Perú
+                    .
+                    .
+                    [Tema Aleatorio]
+                    [Periodo formativo]
+                    [El Tawantinsuyo]
+                    [Virreinato]
+                    [Reformas borbónicas]
+                    [Guerra con Chile]
+                    [Boom del guano]
+                    [República Aristocrática]
+                    [Oncenio]
+                    [Militarismo]
+                    [Perú en el siglo XXI]
+                    }
+                }}
+                ;
+            endsplit
+            note 
+                * Todos los temas:
+                    - Mínimo 1 Pregunta
+            endnote
+            if (Selecciona) then (un Tema)
+                :Problema de Admisión
+                    del Tema seleccionado;
+            else (Tema aleatorio)
+                :Problema de Admisión
+                    del Curso seleccionado;
+            endif
+        else (Curso aleatorio)
+            :Problema de Admisión
+                de cualquier Curso;
+            note
+                - De cualquier Curso
+                - De cualquier Tema
+            end note
+        endif
+        repeat :Solicita una pregunta \nal Banco de Preguntas de Da Vinci;
+            :=<color:LimeGreen>E04: Pregunta Individual
+            URL:\t /individual/[curso_slug]/pregunta/  \t
+            
+
+            /individual/historia-del-peru/pregunta/ \t
+            {{
+                salt
+                {+
+                <&home>\t\t<b>Historia del Perú
+                Periodo formativo:
+                .
+                ¿De qué cultura eran las cabezas clavas?
+                .
+                () Chavín
+                () Paracas
+                () Nachoc
+                () Chancha
+                () Chimú
+                .
+                [Saltar] | [Enviar]
+                }
+            }}
+            ;
+            note 
+                - Nombre del Curso
+                - Nombre del Tema
+                - Enunciado
+                - Alternativas
+            endnote
+            if (Selecciona) then (otra pregunta)
+                :Deja en blanco y pasa a otra pregunta:
+                {{
+                    ' skinparam Backgroundcolor red
+                    salt
+                    {
+                    [Saltar]
+                    }
+                }}
+                ;
+                end
+            else (resolver)
+                :Selecciona una Alternativa
+                {{
+                    salt
+                    {
+                    (X) Paracas
+                    }
+                }}
+                Envía su respuesta:
+                {{
+                    salt
+                    {
+                    [Enviar]
+                    }
+                }}
+                ;
+            endif
+            :=<color:LimeGreen>E05: Solución de Pregunta Individual
+            URL:\t /individual/[curso_slug]/solucion/  \t
+
+
+            /individual/historia-del-peru/solucion/ \t
+            {{
+                salt
+                {+
+                <&home>\t\t<b>Historia del Perú
+                .
+                Puntaje obtenido: 20
+                .
+                Periodo formativo:
+                ¿De qué cultura eran las cabezas clavas?
+                .
+                (X) Chavín
+                () Paracas
+                () Nachoc
+                () Chancha
+                () Chimú
+                .
+                Solución:
+                .
+                .
+                Resolución:
+                .
+                .
+                [Siguiente Pregunta]
+                }
+            }}
+            ;
+            if (Respuesta) then (incorrecta)
+                :
+                {{
+                    salt
+                    {
+                    <back:DodgerBlue>( ) Chavín</back>
+                    <back:LightCoral>(X) Paracas</back>
+                    () Nachoc
+                    () Chancha
+                    () Chimú
+                    }
+                }}
+                ;
+            else (correcta)
+                :
+                {{
+                    salt
+                    {
+                    <back:LawnGreen>(X) Chavín</back>
+                    () Paracas
+                    () Nachoc
+                    () Chancha
+                    () Chimú
+                    }
+                }}
+                ;
+            endif
+        backward: Mismas opciones;
+        repeat while (botón de Siguiente Pregunta)
+    end split
+backward: Selecciona otras opciones;
+repeat while (botón al Home)
+stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+|Backoffice|
+start
+:Login;
+:Autenticación;
+:Completar datos donde va ir la pregunta;
+note
+    - Área
+    - Temporada (año)
+    - Examen de Admisión
+end note
+:Ingresa pregunta;
+:Agrega alternativas;
+:Muesta confirmación "Pregunta ingresada";
+stop
+
+@enduml
