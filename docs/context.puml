@@ -1,21 +1,14 @@
 @startuml Da Vinci
-' skinparam handwritten true
-
 
 |Primer Contacto|
 start
-
-
 split
     :Redes Sociales;
 split again
     :Recomendaciones de contactos;
 split again
     :Páginas Web de terceros;
-end split
-
-
-
+endsplit
 :=Landing page de Da Vinci;
 note 
     * Visualiza:
@@ -33,11 +26,8 @@ note
     - Android
     - iOS
 end note
-
-
-
 :Instalar App;
-stop
+end
 
 
 |Da Vinci|
@@ -632,10 +622,6 @@ repeat :Selecciona una opción;
             endif
         backward: Mismas opciones;
         repeat while (botón de Siguiente Pregunta)
-
-
-
-
     split again
         :=Grupo de Preguntas
         Un conjunto de preguntas, envía
@@ -649,9 +635,7 @@ repeat :Selecciona una opción;
             * Envía las respuestas del grupo
                 y las evalúa en conjunto
         end note
-    end
-
-
+        end
     split again
         :=Exámenes pasados
         Exámenes de admisión pasados, completos;
@@ -660,14 +644,8 @@ repeat :Selecciona una opción;
             * Envía todas las respuestas y
                 las evalúa en conjunto
         end note
-    end
-
-
-
-
-
-
-    end split
+        end
+    endsplit
 backward: Selecciona otras opciones;
 repeat while (botón al Home)
 stop
@@ -689,15 +667,14 @@ stop
 start
 :Login;
 :Autenticación;
-:Completar datos donde va ir la pregunta;
-note
+:Completar datos de la pregunta
     - Área
     - Temporada (año)
-    - Examen de Admisión
-end note
+    - Examen de Admisión;
 :Ingresa pregunta;
 :Agrega alternativas;
-:Muesta confirmación "Pregunta ingresada";
+:Muesta confirmación
+    - "Pregunta ingresada";
 stop
 
 @enduml
