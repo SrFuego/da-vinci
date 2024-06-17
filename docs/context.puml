@@ -54,9 +54,8 @@ start
     salt
     {+
     .
-    \t<b>Da Vinci
-    .
-    .
+    \t\t\t<b>Da Vinci
+    <img:app/assets/logo.png>
     [Pregunta Individual]
     [Grupo de Preguntas]
     [Examenes pasados]
