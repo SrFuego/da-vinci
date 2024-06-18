@@ -67,7 +67,6 @@ repeat :Selecciona una opción;
                 {+
                 <&home>\t<b>Lista de Cursos
                 .
-                .
                 [Curso Aleatorio]
                 [ ] Álgebra
                 [ ] Aritmética
@@ -95,7 +94,6 @@ repeat :Selecciona una opción;
                 salt
                 {+
                 <&home>\t<b>Lista de Cursos
-                .
                 .
                 [Curso Aleatorio]
                 [Álgebra]
@@ -171,7 +169,6 @@ repeat :Selecciona una opción;
                     {+
                     <&home>\t<b>Historia del Perú
                     .
-                    .
                     [Tema Aleatorio]
                     [ ] Periodo formativo
                     [ ] El Tawantinsuyo
@@ -226,7 +223,6 @@ repeat :Selecciona una opción;
                     salt
                     {+
                     <&home>\t<b>Historia del Perú
-                    .
                     .
                     [Tema Aleatorio]
                     [Periodo formativo]
