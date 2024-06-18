@@ -100,7 +100,8 @@ Para sólo un modelo:
 
 ### User Journey
 
-![User Journey](out/docs/context/Da%20Vinci.png)
+<!-- ![User Journey](out/docs/context/Da%20Vinci.png) -->
+![User Journey](docs/context/Da%20Vinci.png)
 
 
 

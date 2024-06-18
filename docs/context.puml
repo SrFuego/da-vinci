@@ -43,7 +43,7 @@ start
     salt
     {+
     .
-    \t\t\t<b>Da Vinci
+    =<b><b>\tDa Vinci
     <img:app/assets/logo.png>
     [Pregunta Individual]
     [Grupo de Preguntas]
@@ -55,8 +55,15 @@ start
 repeat :Selecciona una opción;
     split 
         :=Pregunta Individual
-        * Una pregunta, envías tu respuesta,
-            la califica y muestra solución;
+
+        * Una pregunta a la vez
+        * Seleccionas:
+            - Aleatorio
+            - Por Curso
+                - Tema aleatorio
+                - Por Tema del Curso
+        * Envías tu respuesta
+        * Te califica y muestra solución;
         split
             :=<color:Blue>E02: Cursos
             *URL:
@@ -66,7 +73,7 @@ repeat :Selecciona una opción;
             {{
                 salt
                 {+
-                <&home>\t<b>Lista de Cursos
+                =<&home>\tLista de Cursos
                 .
                 [Curso Aleatorio]
                 [ ] Álgebra
@@ -94,7 +101,7 @@ repeat :Selecciona una opción;
             {{
                 salt
                 {+
-                <&home>\t<b>Lista de Cursos
+                =<&home>\tLista de Cursos
                 .
                 [Curso Aleatorio]
                 [Álgebra]
@@ -168,7 +175,7 @@ repeat :Selecciona una opción;
                 {{
                     salt
                     {+
-                    <&home>\t<b>Historia del Perú
+                    =<&home>\tHistoria del Perú
                     .
                     [Tema Aleatorio]
                     [ ] Periodo formativo
@@ -223,7 +230,7 @@ repeat :Selecciona una opción;
                 {{
                     salt
                     {+
-                    <&home>\t<b>Historia del Perú
+                    =<&home>\tHistoria del Perú
                     .
                     [Tema Aleatorio]
                     [Periodo formativo]
@@ -401,16 +408,17 @@ repeat :Selecciona una opción;
             * De cualquier Tema
             end note
         endif
+        (A)
         repeat :Muestra una Pregunta a partir de las opciones seleccionadas;
             :=<color:LimeGreen>E04: Pregunta Individual
             *UI/UX:
             {{
                 salt
                 {+
-                <&home>\t\t<b>Historia del Perú
-                Cultura prehispanicas:
+                =<b><&home>\tHistoria del Perú
+                ====Cultura prehispanicas:
                 .
-                ¿Quién descubrió Macchu Picchu?
+                ===¿Quién descubrió Macchu Picchu?
                 .
                 () Fernando de Magallanes
                 () Hiran Bingman
@@ -423,7 +431,7 @@ repeat :Selecciona una opción;
             }}
             ;
             if (Selecciona) then (otra pregunta)
-                :Deja en blanco y pasa a otra pregunta:
+                :*Deja en blanco y pasa a otra pregunta:
                 {{
                     ' skinparam Backgroundcolor red
                     salt
@@ -432,9 +440,10 @@ repeat :Selecciona una opción;
                     }
                 }}
                 ;
-                end
+                (A)
+                detach
             else (resolver)
-                :Selecciona una Alternativa
+                :*Selecciona una Alternativa:
                 {{
                     salt
                     {
@@ -442,7 +451,7 @@ repeat :Selecciona una opción;
                     }
                 }}
 
-                Envía su respuesta
+                *Envía su respuesta:
                 {{
                     salt
                     {
@@ -453,20 +462,20 @@ repeat :Selecciona una opción;
                 *DATA:
                 \tPOST
                 \t/api/v1/pregunta_individual/\t
-                \tPayload ->;
-                note
+                \tPayload --->;
+                note right
                     {
                         "alternativa_seleccionada_id": 51
                     }\t
                 endnote
             endif
-            :DaVinci evalúa su Respuesta y
+            :El API evalúa su Respuesta y
                 envía la Solución
             
             *DATA:
             \tPOST
             \t/api/v1/pregunta_individual/\t
-            \t<- Response;
+            \t---> Response;
             note
                 {
                     "solucion": {
@@ -532,25 +541,25 @@ repeat :Selecciona una opción;
                 {{
                     salt
                     {+
-                    <&home>\t\t<b>Historia del Perú
-                    Cultura prehispanicas:
+                    =<b><&home>\tHistoria del Perú
+                    ====Cultura prehispanicas:
                     .
-                    Puntaje obtenido: -5
+                    =<color:red>Puntaje obtenido: -5
                     .
                     ¿Quién descubrió Macchu Picchu?
-                    .
+
                     <back:LightCoral>(X) Fernando de Magallanes
                     <back:DodgerBlue>( ) Hiran Bingman
                     () Hernan Cortes
                     () Alexander Von Humbolt
                     () Julio Cesar Tello
                     .
-                    Solución:
+                    ===Solución:
                     La historiografía norteamericana sostiene que
                     Machu Picchu fue “descubierto” el
                     24 de julio de 1911
                     .
-                    Resolución:
+                    ===Resolución:
                     Por el profesor y explorador estadounidense
                     Hiram Bingham (1875-1956) en un viaje
                     de exploración acompañado por algunos
@@ -571,25 +580,24 @@ repeat :Selecciona una opción;
                     {{
                         salt
                         {+
-                        <&home>\t\t<b>Historia del Perú
-                        Cultura prehispanicas:
+                        =<b><&home>\tHistoria del Perú
+                        ====Cultura prehispanicas:
                         .
-                        Puntaje obtenido: 20
+                        =<color:LimeGreen>Puntaje obtenido: 20
                         .
                         ¿Quién descubrió Macchu Picchu?
-                        .
                         () Fernando de Magallanes
                         <back:LawnGreen>(X) Hiran Bingman
                         () Hernan Cortes
                         () Alexander Von Humbolt
                         () Julio Cesar Tello
                         .
-                        Solución:
+                        ==Solución:
                         La historiografía norteamericana sostiene que
                         Machu Picchu fue “descubierto” el
                         24 de julio de 1911
                         .
-                        Resolución:
+                        ==Resolución:
                         Por el profesor y explorador estadounidense
                         Hiram Bingham (1875-1956) en un viaje
                         de exploración acompañado por algunos
