@@ -37,8 +37,6 @@ start
 *URL:
 \t/\t
 
-*DATA:
-
 *UI/UX:
 {{
     salt
@@ -58,56 +56,10 @@ repeat :Selecciona una opción;
         :=Pregunta Individual
         * Una pregunta, envías tu respuesta,
             la califica y muestra solución;
-        note
-            * Los cursos que se muestran:
-                - Mínimo 1 Pregunta
-        endnote
         split
             :=<color:Blue>E02: Cursos
             *URL:
             \t/individual/elegir-curso/\t
-            
-            *DATA:
-            \tGET
-            \t/api/v1/curso/\t
-            [
-                {
-                    "nombre": "Álgebra",
-                    "slug": "algebra"
-                },
-                {
-                    "nombre": "Biología",
-                    "slug": "biologia"
-                },
-                {
-                    "nombre": "Educación Cívica",
-                    "slug": "educacion-civica"
-                },
-                {
-                    "nombre": "Física",
-                    "slug": "fisica"
-                },
-                { 
-                    "nombre": "Geografía",
-                    "slug": "geografia"
-                },
-                { 
-                    "nombre": "Geometría",
-                    "slug": "geometria"
-                },
-                { 
-                    "nombre": "Historia del Perú",
-                    "slug": "historia-del-peru"
-                },
-                { 
-                    "nombre": "Literatura",
-                    "slug": "literatura"
-                },
-                { 
-                    "nombre": "Química",
-                    "slug": "quimica"
-                } \t
-            ] \t
 
             *<back:Orange>UI/UX:
             {{
@@ -137,6 +89,28 @@ repeat :Selecciona una opción;
             *DATA:
             \tGET
             \t/api/v1/curso/\t
+
+            *UI/UX:
+            {{
+                salt
+                {+
+                <&home>\t<b>Lista de Cursos
+                .
+                .
+                [Curso Aleatorio]
+                [Álgebra]
+                [Biología]
+                [Educación Cívica]
+                [Física]
+                [Geografía]
+                [Geometría]
+                [Historia del Perú]
+                [Literatura]
+                [Química]
+                }
+            }}
+            ;
+            note
             [
                 {
                     "nombre": "Álgebra",
@@ -175,27 +149,10 @@ repeat :Selecciona una opción;
                     "slug": "quimica"
                 } \t
             ] \t
-
-            *UI/UX:
-            {{
-                salt
-                {+
-                <&home>\t<b>Lista de Cursos
-                .
-                .
-                [Curso Aleatorio]
-                [Álgebra]
-                [Biología]
-                [Educación Cívica]
-                [Física]
-                [Geografía]
-                [Geometría]
-                [Historia del Perú]
-                [Literatura]
-                [Química]
-                }
-            }}
-            ;
+            ====
+            * Los cursos que se muestran:
+                - Mínimo 1 Pregunta
+            endnote
         endsplit
         if (Selecciona)then (un Curso)
             split
@@ -207,26 +164,6 @@ repeat :Selecciona una opción;
                 \tcurso_slug*\thistoria-del-peru
                 \tGET
                 \t/api/v1/curso/historia-del-peru/tema/\t
-                {
-                    "curso": {
-                        "nombre": "Historia del Perú",
-                        "slug": "historia-del-peru"
-                    }\t
-                    "temas": [
-                        {
-                            "nombre": "Cultura prehispanicas",
-                            "slug": "cultura-prehispanicas"
-                        },\t
-                        {
-                            "nombre": "Historia de San Marcos",
-                            "slug": "historia-de-san-marcos"
-                        },\t
-                        {
-                            "nombre": "Independencia del Perú",
-                            "slug": "independencia-del-peru"
-                        }\t
-                    ]\t
-                }\t
 
                 *<back:Orange>UI/UX:
                 {{
@@ -249,6 +186,31 @@ repeat :Selecciona una opción;
                     }
                 }}
                 ;
+                note
+                {
+                    "curso": {
+                        "nombre": "Historia del Perú",
+                        "slug": "historia-del-peru"
+                    }\t
+                    "temas": [
+                        {
+                            "nombre": "Cultura prehispanicas",
+                            "slug": "cultura-prehispanicas"
+                        },\t
+                        {
+                            "nombre": "Historia de San Marcos",
+                            "slug": "historia-de-san-marcos"
+                        },\t
+                        {
+                            "nombre": "Independencia del Perú",
+                            "slug": "independencia-del-peru"
+                        }\t
+                    ]\t
+                }\t
+                ====
+                * Todos los temas:
+                    - Mínimo 1 Pregunta
+                endnote
             split again
                 :=<color:LimeGreen>E03: Temas
                 *URL:
@@ -258,6 +220,29 @@ repeat :Selecciona una opción;
                 \tcurso_slug*\thistoria-del-peru
                 \tGET
                 \t/api/v1/curso/historia-del-peru/tema/\t
+
+                *UI/UX:
+                {{
+                    salt
+                    {+
+                    <&home>\t<b>Historia del Perú
+                    .
+                    .
+                    [Tema Aleatorio]
+                    [Periodo formativo]
+                    [El Tawantinsuyo]
+                    [Virreinato]
+                    [Reformas borbónicas]
+                    [Guerra con Chile]
+                    [Boom del guano]
+                    [República Aristocrática]
+                    [Oncenio]
+                    [Militarismo]
+                    [Perú en el siglo XXI]
+                    }
+                }}
+                ;
+                note
                 [
                     {
                         "nombre": "Cultura prehispanicas",
@@ -284,33 +269,11 @@ repeat :Selecciona una opción;
                         }\t
                     }\t
                 ]\t
-
-                *UI/UX:
-                {{
-                    salt
-                    {+
-                    <&home>\t<b>Historia del Perú
-                    .
-                    .
-                    [Tema Aleatorio]
-                    [Periodo formativo]
-                    [El Tawantinsuyo]
-                    [Virreinato]
-                    [Reformas borbónicas]
-                    [Guerra con Chile]
-                    [Boom del guano]
-                    [República Aristocrática]
-                    [Oncenio]
-                    [Militarismo]
-                    [Perú en el siglo XXI]
-                    }
-                }}
-                ;
+                ====
+                    * Todos los temas:
+                        - Mínimo 1 Pregunta
+                endnote
             endsplit
-            note 
-                * Todos los temas:
-                    - Mínimo 1 Pregunta
-            endnote
             if (Selecciona) then (un Tema)
                 :*URL:
                 \t/individual/[tema_slug]/pregunta/\t
@@ -318,7 +281,8 @@ repeat :Selecciona una opción;
                 *DATA:
                 \ttema_slug*\tindependencia-del-peru
                 \tGET
-                \t/api/v1/pregunta_individual/?tema=independencia-del-peru\t
+                \t/api/v1/pregunta_individual/?tema=independencia-del-peru;
+                note
                 {
                     "enunciado": "¿Cuando se proclamó la independencia del Perú?",
                     "alternativas": [
@@ -343,7 +307,10 @@ repeat :Selecciona una opción;
                             "slug": "historia-del-peru"
                         }\t
                     }\t
-                };
+                }
+                ====
+                * Del Tema elegido
+                endnote
             else (Tema aleatorio)
                 :*URL:
                 \t/individual/[curso_slug]/pregunta/\t
@@ -351,7 +318,8 @@ repeat :Selecciona una opción;
                 *DATA:
                 \tcurso_slug*\thistoria-del-peru
                 \tGET
-                \t/api/v1/pregunta_individual/?curso=historia-del-peru\t
+                \t/api/v1/pregunta_individual/?curso=historia-del-peru;
+                note
                 {
                     "enunciado": "¿Quién descubrió Macchu Picchu?",
                     "alternativas": [
@@ -384,7 +352,10 @@ repeat :Selecciona una opción;
                             "slug": "historia-del-peru"
                         }\t
                     }\t
-                };
+                }
+                ====
+                * De cualquier Tema del Curso elegido
+                endnote
             endif
         else (Curso aleatorio)
             :*URL:
@@ -392,7 +363,8 @@ repeat :Selecciona una opción;
 
             *DATA:
             \tGET
-            \t/api/v1/pregunta_individual/\t
+            \t/api/v1/pregunta_individual/;
+            note
             {
                 "enunciado": "¿Cuánto suman los
                 ángulos internos de un triángulo?",
@@ -426,10 +398,10 @@ repeat :Selecciona una opción;
                         "slug": "geometria"
                     }\t
                 }\t
-            };
-            note
-                - De cualquier Curso
-                - De cualquier Tema
+            }
+            ====
+            * De cualquier Curso
+            * De cualquier Tema
             end note
         endif
         repeat :Muestra una Pregunta a partir de las opciones seleccionadas;
@@ -472,76 +444,85 @@ repeat :Selecciona una opción;
                     (X) Fernando de Magallanes
                     }
                 }}
-                Envía su respuesta:
+
+                Envía su respuesta
                 {{
                     salt
                     {
                     [Enviar]
                     }
                 }}
-                ;
+
+                *DATA:
+                \tPOST
+                \t/api/v1/pregunta_individual/\t
+                \t- Payload;
+                note
+                    {
+                        "alternativa_seleccionada_id": 51
+                    }\t
+                endnote
             endif
-            :*DATA:
+            :DaVinci evalúa su Respuesta y envía la Solución
+            *DATA:
             \tPOST
             \t/api/v1/pregunta_individual/\t
-            \t- Payload
-            {
-                "alternativa_seleccionada_id": 51
-            }\t
-            \t- Response
-            {
-                "solucion": {
-                    "teoria": "La historiografía norteamericana sostiene que
-                    Machu Picchu fue “descubierto” el 24 de julio de 1911.",
-                    "resolucion": "Por el profesor y explorador estadounidense 
-                    Hiram Bingham (1875-1956) en un viaje de exploración
-                    acompañado por algunos colegas de la Universidad de Yale.",
-                    "pregunta": {
-                        "enunciado": "¿Quién descubrió Macchu Picchu?",
-                        "alternativas": [
-                            {
-                                "id": 51,
-                                "valor": "Fernando de Magallanes"
-                            },
-                            {
-                                "id": 49,
-                                "valor": "Alexander Von Humbolt"
-                            },
-                            {
-                                "id": 52,
-                                "valor": "Hernan Cortes"
-                            },
-                            {
-                                "id": 48,
-                                "valor": "Hiran Bingman"
-                            },
-                            {
-                                "id": 50,
-                                "valor": "Julio Cesar Tello"
+            \t- Response;
+            note
+                {
+                    "solucion": {
+                        "teoria": "La historiografía norteamericana sostiene que
+                        Machu Picchu fue “descubierto” el 24 de julio de 1911.",
+                        "resolucion": "Por el profesor y explorador estadounidense 
+                        Hiram Bingham (1875-1956) en un viaje de exploración
+                        acompañado por algunos colegas de la Universidad de Yale.",
+                        "pregunta": {
+                            "enunciado": "¿Quién descubrió Macchu Picchu?",
+                            "alternativas": [
+                                {
+                                    "id": 51,
+                                    "valor": "Fernando de Magallanes"
+                                },
+                                {
+                                    "id": 49,
+                                    "valor": "Alexander Von Humbolt"
+                                },
+                                {
+                                    "id": 52,
+                                    "valor": "Hernan Cortes"
+                                },
+                                {
+                                    "id": 48,
+                                    "valor": "Hiran Bingman"
+                                },
+                                {
+                                    "id": 50,
+                                    "valor": "Julio Cesar Tello"
+                                }\t
+                            ],
+                            "tema": {
+                                "nombre": "Cultura prehispanicas",
+                                "slug": "cultura-prehispanicas",
+                                "curso": {
+                                    "nombre": "Historia del Perú",
+                                    "slug": "historia-del-peru"
+                                }\t
                             }\t
-                        ],
-                        "tema": {
-                            "nombre": "Cultura prehispanicas",
-                            "slug": "cultura-prehispanicas",
-                            "curso": {
-                                "nombre": "Historia del Perú",
-                                "slug": "historia-del-peru"
-                            }\t
+                        },
+                        "alternativa_correcta": {
+                            "id": 48,
+                            "valor": "Hiran Bingman"
                         }\t
                     },
-                    "alternativa_correcta": {
-                        "id": 48,
-                        "valor": "Hiran Bingman"
-                    }\t
-                },
-                "alternativa_enviada": {
-                    "id": 51,
-                    "valor": "Fernando de Magallanes"
-                },
-                "es_correcta": false,
-                "puntaje_obtenido": -5
-            };
-            if (Respuesta) then (incorrecta)
+                    "alternativa_enviada": {
+                        "id": 51,
+                        "valor": "Fernando de Magallanes"
+                    },
+                    "es_correcta": false,
+                    "puntaje_obtenido": -5
+                }
+            endnote
+            if (Resalta diferente según el tipo de Respuesta) then (incorrecta)
                 :=<color:LimeGreen>E05: Solución de Pregunta Individual
                 *URL:
                 \t/individual/solucion/\t
@@ -621,7 +602,7 @@ repeat :Selecciona una opción;
                 ;
             endif
         backward: Mismas opciones;
-        repeat while (botón de Siguiente Pregunta)
+        repeat while (botón:\t Siguiente Pregunta)
     split again
         :=Grupo de Preguntas
         Un conjunto de preguntas, envía
@@ -647,7 +628,7 @@ repeat :Selecciona una opción;
         end
     endsplit
 backward: Selecciona otras opciones;
-repeat while (botón al Home)
+repeat while (botón:\t Home)
 stop
 
 
