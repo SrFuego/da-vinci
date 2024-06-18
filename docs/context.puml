@@ -453,18 +453,20 @@ repeat :Selecciona una opción;
                 *DATA:
                 \tPOST
                 \t/api/v1/pregunta_individual/\t
-                \t- Payload;
+                \tPayload ->;
                 note
                     {
                         "alternativa_seleccionada_id": 51
                     }\t
                 endnote
             endif
-            :DaVinci evalúa su Respuesta y envía la Solución
+            :DaVinci evalúa su Respuesta y
+                envía la Solución
+            
             *DATA:
             \tPOST
             \t/api/v1/pregunta_individual/\t
-            \t- Response;
+            \t<- Response;
             note
                 {
                     "solucion": {
