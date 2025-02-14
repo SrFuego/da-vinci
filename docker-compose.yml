@@ -1,0 +1,18 @@
+services:
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: api/dockerfiles/Dockerfile.develop
+    ports:
+      - 8000:8000
+      - 8050:8050
+    volumes:
+      - .:/daVinci
+    env_file:
+      - api/.env_develop
+    networks:
+      - net
+
+networks:
+  net:

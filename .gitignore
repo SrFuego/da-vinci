@@ -109,6 +109,9 @@ api/__pypackages__/
 
 # Environments
 api/.env
+api/.env_develop
+api/.env_stage
+api/.env_production
 api/.venv
 api/env/
 api/venv/
@@ -124,7 +127,7 @@ api/.spyproject
 api/.ropeproject
 
 # mkdocs documentation
-api//site
+api/site
 
 # mypy
 **.mypy_cache/
