@@ -1,37 +1,58 @@
 # apps/core/viewsets.py
 # Python imports
 
-
 # Django imports
-from django.shortcuts import get_object_or_404, get_list_or_404
-
+from django.db import connections
+from django.db.utils import OperationalError
+from django.shortcuts import get_list_or_404, get_object_or_404
+from django.utils import timezone
+from drf_spectacular.utils import OpenApiParameter, extend_schema
 
 # Third party apps imports
 from rest_framework import status
-
-# from rest_framework.decorators import action
+from rest_framework.decorators import action
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
-from drf_spectacular.utils import OpenApiParameter, extend_schema
 from silk.profiling.profiler import silk_profile
 
-
 # Local imports
-from .models import (
-    Alternativa,
-    Curso,
-    Tema,
-    Pregunta,
-)
+from .models import Alternativa, Curso, Pregunta, Tema
 from .serializers import (
     AlternativaRespuestaSerializer,
     CursoSerializer,
-    TemaSerializer,
     PreguntaSerializer,
+    TemaSerializer,
 )
 
 
 # Create your viewsets here.
+class HealthCheck(GenericViewSet):
+    permission_classes = (AllowAny,)
+
+    def list(self, request, *args, **kwargs):
+        try:
+            # Check database connection
+            connections["default"].ensure_connection()
+            return Response(
+                {
+                    "status": "healthy",
+                    "database": "connected",
+                    "timestamp": timezone.now().isoformat(),
+                },
+                status=status.HTTP_200_OK,
+            )
+        except OperationalError:
+            return Response(
+                {
+                    "status": "unhealthy",
+                    "database": "disconnected",
+                    "timestamp": timezone.now().isoformat(),
+                },
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
+
+
 class CursoViewSet(GenericViewSet):
     queryset = Curso.to_ui_objects.all()
     serializer_class = CursoSerializer
