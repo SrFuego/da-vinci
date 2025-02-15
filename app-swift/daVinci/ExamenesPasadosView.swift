@@ -2,13 +2,12 @@ import SwiftUI
 
 struct ExamenesPasadosView: View {
     var body: some View {
-        Text("Exámenes Pasados")
-            .navigationTitle("Exámenes Pasados")
-    }
-}
-
-struct ExamenesPasadosView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExamenesPasadosView()
+        VStack {
+            Text("Próximamente")
+                .font(.title)
+            Text("Esta funcionalidad estará disponible pronto")
+                .foregroundColor(.secondary)
+        }
+        .navigationTitle("Exámenes Pasados")
     }
 }
