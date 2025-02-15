@@ -10,9 +10,22 @@
 		0557D0102D5F762D00B81600 /* daVinci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = daVinci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		0557D0542D5FCB1B00B81600 /* Exceptions for "daVinci" folder in "Copy Bundle Resources" phase from "daVinci" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 0557D00E2D5F762D00B81600 /* Resources */;
+			membershipExceptions = (
+				SorprendemeViewModel.swift,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0557D0122D5F762D00B81600 /* daVinci */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0557D0542D5FCB1B00B81600 /* Exceptions for "daVinci" folder in "Copy Bundle Resources" phase from "daVinci" target */,
+			);
 			path = daVinci;
 			sourceTree = "<group>";
 		};
