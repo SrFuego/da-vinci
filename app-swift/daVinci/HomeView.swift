@@ -35,13 +35,20 @@ struct HomeView: View {
                 Spacer().frame(height: 30)
                 
                 Text("Selecciona tu desafío:")
-                NavigationLink(destination: PreguntaIndividualView()) {
+                NavigationLink(destination: EnConstruccionView(message: "Una por Una")) {
                     Text("Una por Una")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
+//                NavigationLink(destination: PreguntaIndividualView()) {
+//                    Text("Una por Una")
+//                        .padding()
+//                        .background(Color.blue)
+//                        .foregroundColor(.white)
+//                        .cornerRadius(8)
+//                }
                 NavigationLink(destination: EnConstruccionView(message: "Grupo de Preguntas")) {
                     Text("Grupo de Preguntas")
                         .padding()
