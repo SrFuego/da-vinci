@@ -76,10 +76,18 @@ struct SorprendemeView: View {
                         HStack {
                             Button(action: {
                                 selectedAlternative = nil
-                                viewModel.fetchRandomQuestion()
-                                withAnimation {
-                                    scrollProxy.scrollTo("top", anchor: .top)
+                                viewModel.currentQuestion = nil
+                                viewModel.isLoading = true
+                                
+                                DispatchQueue.main.async {
+                                    viewModel.fetchRandomQuestion()
                                 }
+                            
+                                
+//                                withAnimation {
+//                                    scrollProxy.scrollTo("top", anchor: .top)
+//                                }
+//                                viewModel.fetchRandomQuestion()
                             }) {
                                 Text("Saltar")
                                     .padding()
@@ -105,8 +113,15 @@ struct SorprendemeView: View {
                         }
                         .padding()
                     } else if viewModel.isLoading {
-                        ProgressView("Loading...")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        ScrollView {
+                            Color.clear
+                                .frame(height: UIScreen.main.bounds.height / 2.5)
+                            ProgressView()
+                                .scaleEffect(2.5)
+                                .frame(maxWidth: .infinity)
+                            Color.clear
+                                .frame(height: UIScreen.main.bounds.height / 2.5)
+                        }
                     } else if let error = viewModel.error {
                         Text("Error: \(error.localizedDescription)")
                             .foregroundColor(.red)
