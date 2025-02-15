@@ -1,5 +1,5 @@
 //
-//  SorprendemeViewModel.swift
+//  SorprendemeView.swift
 //  daVinci
 //
 //  Created by Jesús De la Cruz on 14/02/25.
@@ -12,13 +12,23 @@ import SwiftUI
 
 struct SorprendemeView: View {
     @StateObject private var viewModel = SorprendemeViewModel()
-    @State private var selectedAlternative: String?
+    @State private var selectedAlternative: Alternativa?
     
     var body: some View {
         ScrollViewReader { scrollProxy in
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    if let question = viewModel.currentQuestion {
+                    if let respuesta = viewModel.respuesta {
+                        RespuestaIndividualView(
+                            respuesta: respuesta,
+                            onNextQuestion: {
+                                viewModel.fetchRandomQuestion()
+                                withAnimation {
+                                    scrollProxy.scrollTo("top", anchor: .top)
+                                }
+                            }
+                        )
+                    } else if let question = viewModel.currentQuestion {
                         if let curso = question.tema?.curso?.nombre {
                             Text(curso)
                                 .font(.title)
@@ -40,12 +50,12 @@ struct SorprendemeView: View {
                             .multilineTextAlignment(.leading)
                             .fixedSize(horizontal: false, vertical: true)
                         
-                        ForEach(question.alternativas, id: \.valor) { alternativa in
+                        ForEach(question.alternativas, id: \.id) { alternativa in
                             Button(action: {
-                                selectedAlternative = alternativa.valor
+                                selectedAlternative = alternativa
                             }) {
                                 HStack {
-                                    Image(systemName: selectedAlternative == alternativa.valor ? "circle.fill" : "circle")
+                                    Image(systemName: selectedAlternative?.id == alternativa.id ? "circle.fill" : "circle")
                                         .foregroundColor(.blue)
                                     
                                     Text(alternativa.valor)
@@ -80,7 +90,9 @@ struct SorprendemeView: View {
                             }
                             
                             Button(action: {
-                                // Handle submit
+                                if let alternativa = selectedAlternative {
+                                    viewModel.submitAnswer(alternativaId: alternativa.id)
+                                }
                             }) {
                                 Text("Enviar")
                                     .padding()
