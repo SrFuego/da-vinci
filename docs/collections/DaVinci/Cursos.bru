@@ -1,0 +1,15 @@
+meta {
+  name: Cursos
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api_url}}/api/v1/curso/
+  body: none
+  auth: none
+}
+
+vars:post-response {
+  curso_slug: res.body[0].slug
+}
