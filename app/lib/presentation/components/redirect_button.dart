@@ -30,7 +30,10 @@ class RedirectButton extends StatelessWidget {
           },
           child: Text(title),
         ),
-        Text(description),
+        Text(
+          description,
+          style: const TextStyle(fontSize: 12.0),
+        ),
         SizedBox(height: verticalSize),
       ],
     );
