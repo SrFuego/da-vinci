@@ -10,31 +10,37 @@ enum ApiError: Error {
 class ApiService {
     static let shared = ApiService()
     private let baseURL = "https://srfuego.pythonanywhere.com/api/v1/"
-    
-    func getIndividualQuestion(completion: @escaping (Result<Question, ApiError>) -> Void) {
+
+    func getIndividualQuestion(completion: @escaping (Result<
+        Question,
+        ApiError
+    >) -> Void) {
         guard let url = URL(string: "\(baseURL)pregunta_individual/") else {
             print("Invalid URL")
             completion(.failure(.invalidURL))
             return
         }
-        
+
         print("Requesting: \(url)")
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error {
                 print("Network error: \(error)")
                 completion(.failure(.networkError(error)))
                 return
             }
-            
-            guard let data = data else {
+
+            guard let data else {
                 print("No data received")
                 completion(.failure(.noData))
                 return
             }
-            
+
             do {
-                let question = try JSONDecoder().decode(Question.self, from: data)
+                let question = try JSONDecoder().decode(
+                    Question.self,
+                    from: data
+                )
                 print("Received question: \(question)")
                 completion(.success(question))
             } catch {
@@ -43,17 +49,20 @@ class ApiService {
             }
         }.resume()
     }
-    
-    func submitAnswer(alternativaId: Int, completion: @escaping (Result<RespuestaData, ApiError>) -> Void) {
+
+    func submitAnswer(
+        alternativaId: Int,
+        completion: @escaping (Result<RespuestaData, ApiError>) -> Void
+    ) {
         guard let url = URL(string: "\(baseURL)pregunta_individual/") else {
             completion(.failure(.invalidURL))
             return
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let requestBody = ["alternativa_seleccionada_id": alternativaId]
         do {
             request.httpBody = try JSONEncoder().encode(requestBody)
@@ -61,20 +70,23 @@ class ApiService {
             completion(.failure(.decodingError))
             return
         }
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
+
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error {
                 completion(.failure(.networkError(error)))
                 return
             }
-            
-            guard let data = data else {
+
+            guard let data else {
                 completion(.failure(.noData))
                 return
             }
-            
+
             do {
-                let respuesta = try JSONDecoder().decode(RespuestaData.self, from: data)
+                let respuesta = try JSONDecoder().decode(
+                    RespuestaData.self,
+                    from: data
+                )
                 completion(.success(respuesta))
             } catch {
                 print("Decoding error: \(error)")
@@ -83,7 +95,6 @@ class ApiService {
         }.resume()
     }
 }
-
 
 struct Alternativa: Codable {
     let id: Int
@@ -120,4 +131,3 @@ struct Solucion: Codable {
     let pregunta: Question
     let alternativa_correcta: Alternativa
 }
-

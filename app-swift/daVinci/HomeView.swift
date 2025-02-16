@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  daVinci
 //
 //  Created by Jesús De la Cruz on 14/02/25.
@@ -17,13 +17,13 @@ struct HomeView: View {
                     .foregroundColor(.blue)
                     .shadow(radius: 2)
                     .padding(.top, 20)
-                
+
                 Image("logo")
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200)
                     .padding(.vertical, 10)
-        
+
                 NavigationLink(destination: SorprendemeView()) {
                     Text("¡Sorpréndeme!")
                         .padding()
@@ -31,11 +31,13 @@ struct HomeView: View {
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
-                
+
                 Spacer().frame(height: 30)
-                
+
                 Text("Selecciona tu desafío:")
-                NavigationLink(destination: EnConstruccionView(message: "Una por Una")) {
+                NavigationLink(
+                    destination: EnConstruccionView(message: "Una por Una")
+                ) {
                     Text("Una por Una")
                         .padding()
                         .background(Color.blue)
@@ -49,14 +51,22 @@ struct HomeView: View {
 //                        .foregroundColor(.white)
 //                        .cornerRadius(8)
 //                }
-                NavigationLink(destination: EnConstruccionView(message: "Grupo de Preguntas")) {
+                NavigationLink(
+                    destination: EnConstruccionView(
+                        message: "Grupo de Preguntas"
+                    )
+                ) {
                     Text("Grupo de Preguntas")
                         .padding()
                         .background(Color.green)
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
-                NavigationLink(destination: EnConstruccionView(message: "Exámenes de Admisión")) {
+                NavigationLink(
+                    destination: EnConstruccionView(
+                        message: "Exámenes de Admisión"
+                    )
+                ) {
                     Text("Exámenes de Admisión")
                         .padding()
                         .background(Color.purple)
@@ -75,8 +85,6 @@ struct PreguntaIndividualView: View {
         Text("Pregunta Individual")
     }
 }
-
-
 
 // #Preview {
 //     HomeView()
