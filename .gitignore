@@ -224,4 +224,8 @@ app/android/app/release
 allure-report
 allure-results
 
-git-filter-repo
+# Ignore Flutter build directory
+app-flutter/build/
+
+# Ignore Swift build directory
+app-swift/build/
