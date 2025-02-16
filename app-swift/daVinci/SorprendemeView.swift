@@ -28,20 +28,16 @@ struct SorprendemeView: View {
                             viewModel: viewModel
                         )
                     } else if let question = viewModel.currentQuestion {
-                        if let curso = question.tema?.curso?.nombre {
-                            Text(curso)
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .padding(.horizontal)
-                                .id("top")
-                        }
+                        Text(question.tema.curso.nombre)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding(.horizontal)
+                            .id("top")
 
-                        if let tema = question.tema?.nombre {
-                            Text(tema)
-                                .font(.title2)
-                                .foregroundColor(.gray)
-                                .padding(.horizontal)
-                        }
+                        Text(question.tema.nombre)
+                            .font(.title2)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal)
 
                         Text(question.enunciado)
                             .font(.title3)
@@ -101,7 +97,11 @@ struct SorprendemeView: View {
                                 if let alternativa = selectedAlternative {
                                     viewModel.currentQuestion = nil
                                     viewModel.isLoading = true
-                                    viewModel.submitAnswer(alternativaId: alternativa.id)
+                                    viewModel
+                                        .submitAnswer(
+                                            alternativaId: alternativa
+                                                .id
+                                        )
                                 }
                             }) {
                                 Text("Enviar")
