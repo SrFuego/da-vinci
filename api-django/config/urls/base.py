@@ -23,6 +23,7 @@ from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework import versioning
 from rest_framework.routers import DefaultRouter
+from rest_framework.versioning import NamespaceVersioning
 
 routers_tuples = (core_list,)
 routers_lists: list = sum(
@@ -39,10 +40,11 @@ for router_list in sorted(routers_lists):
         basename=router_list[0],
     )
 
-class APIVersioning:
-    default_version = '1'
-    allowed_versions = ['1', '2']
-    version_param = 'version'
+
+class APIVersioning(NamespaceVersioning):
+    default_version = "1"
+    allowed_versions = ["1", "2"]
+    version_param = "version"
     urlpatterns = [
         path("admin/", admin.site.urls),
         # path(

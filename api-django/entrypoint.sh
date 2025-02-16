@@ -8,12 +8,20 @@ python manage.py loaddata apps/core/fixtures/*.json
 
 bash scripts/clean_reports.sh
 
-coverage run manage.py behave
+coverage run --source=apps -m behave
+
+coverage report 
 
 coverage html
 
-allure generate --clean
+behave -f allure_behave.formatter:AllureFormatter -o allure-results features/
 
-nohup allure open -p 8050 &
+allure generate allure-results --clean -o allure-report
+
+# nohup allure open -p 8050 &
+
+nohup python3 -m http.server 8500 -d htmlcov/ &
+
+nohup python3 -m http.server 8050 -d allure-report/ &
 
 python manage.py runserver 0.0.0.0:8000

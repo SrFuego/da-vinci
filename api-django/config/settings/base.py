@@ -130,6 +130,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # # Django Rest Framework config
 
 REST_FRAMEWORK = {
+    "TITLE": "DaVinci API",
+    "DESCRIPTION": "v1: Django Rest",
+    "VERSION": "0.2.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "CONTACT": {
+        "email": "j.delacruz@srfuego.dev",
+        "name": "SrFuego",
+        "url": "https://srfuego.dev",
+    },
+    "SCHEMA_PATH_PREFIX": "/api/v[0-9]",
+    "SERVE_PERMISSIONS": ["rest_framework.permissions.AllowAny"],
+    "COMPONENT_SPLIT_REQUEST": True,
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
