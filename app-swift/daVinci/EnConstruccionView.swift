@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EnConstruccionView: View {
     let message: String
-    
+
     var body: some View {
         VStack {
             Text("\(message) en construcción")
