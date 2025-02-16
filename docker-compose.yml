@@ -3,14 +3,16 @@ services:
     container_name: api
     build:
       context: .
-      dockerfile: api/dockerfiles/Dockerfile.develop
+      dockerfile: api-django/dockerfiles/Dockerfile.develop
     ports:
       - 8000:8000
       - 8050:8050
     volumes:
       - .:/daVinci
+      - /daVinci/app-flutter
+      - /daVinci/app-swift
     env_file:
-      - api/.env_develop
+      - api-django/.env_develop
     networks:
       - network
     healthcheck:
