@@ -39,14 +39,6 @@ WORKDIR ${WORK_DIR}/api-django
 
 COPY api-django/ .
 
-# Add debugging commands
-RUN echo "==== Current directory contents ====" && \
-    pwd && \
-    echo "==== Files in current directory ====" && \
-    ls -la && \
-    echo "==== All files recursively ====" && \
-    find . -type f
-
 RUN chmod +x entrypoint.sh
 
 # ENTRYPOINT ["entrypoint.sh"]

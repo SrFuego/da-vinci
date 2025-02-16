@@ -4,7 +4,7 @@
 
 # Django imports
 from django.db.models import Manager
-
+from django.db.utils import OperationalError
 
 # Third party apps imports
 
@@ -15,18 +15,21 @@ from django.db.models import Manager
 # Create your managers here.
 class CursoToUIManager(Manager):
     def get_queryset(self):
-        id_curso_con_preguntas = [
-            curso.id
-            for curso in super().get_queryset()
-            if curso.tiene_preguntas
-        ]
-        return (
-            super()
-            .get_queryset()
-            .filter(
-                id__in=id_curso_con_preguntas,
+        try:
+            id_curso_con_preguntas = [
+                curso.id
+                for curso in super().get_queryset()
+                if curso.tiene_preguntas
+            ]
+            return (
+                super()
+                .get_queryset()
+                .filter(
+                    id__in=id_curso_con_preguntas,
+                )
             )
-        )
+        except OperationalError:
+            return super().get_queryset().none()
 
 
 class TemaToUIManager(Manager):
