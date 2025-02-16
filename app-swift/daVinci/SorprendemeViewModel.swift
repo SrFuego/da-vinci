@@ -15,6 +15,7 @@ class SorprendemeViewModel: ObservableObject {
 
     func fetchRandomQuestion() {
         respuesta = nil
+        currentQuestion = nil
         isLoading = true
         ApiService.shared.getIndividualQuestion { [weak self] result in
             DispatchQueue.main.async {

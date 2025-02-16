@@ -19,11 +19,13 @@ struct SorprendemeView: View {
                         RespuestaIndividualView(
                             respuesta: respuesta,
                             onNextQuestion: {
+                                selectedAlternative = nil
                                 viewModel.fetchRandomQuestion()
                                 withAnimation {
                                     scrollProxy.scrollTo("top", anchor: .top)
                                 }
-                            }
+                            },
+                            viewModel: viewModel
                         )
                     } else if let question = viewModel.currentQuestion {
                         if let curso = question.tema?.curso?.nombre {
@@ -97,11 +99,9 @@ struct SorprendemeView: View {
 
                             Button(action: {
                                 if let alternativa = selectedAlternative {
-                                    viewModel
-                                        .submitAnswer(
-                                            alternativaId: alternativa
-                                                .id
-                                        )
+                                    viewModel.currentQuestion = nil
+                                    viewModel.isLoading = true
+                                    viewModel.submitAnswer(alternativaId: alternativa.id)
                                 }
                             }) {
                                 Text("Enviar")
