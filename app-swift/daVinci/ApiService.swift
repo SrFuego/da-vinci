@@ -94,6 +94,62 @@ class ApiService {
             }
         }.resume()
     }
+
+    func getCursos(completion: @escaping (Result<[Curso], ApiError>) -> Void) {
+        guard let url = URL(string: "\(baseURL)curso/") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error {
+                completion(.failure(.networkError(error)))
+                return
+            }
+
+            guard let data else {
+                completion(.failure(.noData))
+                return
+            }
+
+            do {
+                let cursos = try JSONDecoder().decode([Curso].self, from: data)
+                completion(.success(cursos))
+            } catch {
+                completion(.failure(.decodingError))
+            }
+        }.resume()
+    }
+
+    func getTemas(
+        cursoSlug: String,
+        completion: @escaping (Result<[Tema], ApiError>) -> Void
+    ) {
+        guard let url = URL(string: "\(baseURL)curso/\(cursoSlug)/tema/") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error {
+                completion(.failure(.networkError(error)))
+                return
+            }
+
+            guard let data else {
+                completion(.failure(.noData))
+                return
+            }
+
+            do {
+                // Ahora decodificamos directamente el array de Tema
+                let temas = try JSONDecoder().decode([Tema].self, from: data)
+                completion(.success(temas))
+            } catch {
+                completion(.failure(.decodingError))
+            }
+        }.resume()
+    }
 }
 
 struct Alternativa: Codable {
@@ -104,13 +160,18 @@ struct Alternativa: Codable {
 struct Question: Codable {
     let enunciado: String
     let alternativas: [Alternativa]
-    let tema: Tema?
+    let tema: Tema
 }
 
 struct Tema: Codable {
     let nombre: String
     let slug: String
-    let curso: Curso?
+    let curso: Curso
+}
+
+struct TemasResponse: Codable {
+    let curso: Curso
+    let temas: [Tema]
 }
 
 struct Curso: Codable {

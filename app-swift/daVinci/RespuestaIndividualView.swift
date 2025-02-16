@@ -20,19 +20,15 @@ struct RespuestaIndividualView: View {
                     .padding()
                     .id("top")
 
-                if let curso = respuesta.solucion.pregunta.tema?.curso?.nombre {
-                    Text(curso)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding(.horizontal)
-                }
+                Text(respuesta.solucion.pregunta.tema.curso.nombre)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.horizontal)
 
-                if let tema = respuesta.solucion.pregunta.tema?.nombre {
-                    Text(tema)
-                        .font(.title2)
-                        .foregroundColor(.gray)
-                        .padding(.horizontal)
-                }
+                Text(respuesta.solucion.pregunta.tema.nombre)
+                    .font(.title2)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal)
 
                 Text(respuesta.solucion.pregunta.enunciado)
                     .font(.title3)

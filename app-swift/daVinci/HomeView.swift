@@ -35,22 +35,13 @@ struct HomeView: View {
                 Spacer().frame(height: 30)
 
                 Text("Selecciona tu desafío:")
-                NavigationLink(
-                    destination: EnConstruccionView(message: "Una por Una")
-                ) {
+                NavigationLink(destination: PreguntaIndividualView()) {
                     Text("Una por Una")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
-//                NavigationLink(destination: PreguntaIndividualView()) {
-//                    Text("Una por Una")
-//                        .padding()
-//                        .background(Color.blue)
-//                        .foregroundColor(.white)
-//                        .cornerRadius(8)
-//                }
                 NavigationLink(
                     destination: EnConstruccionView(
                         message: "Grupo de Preguntas"
@@ -77,12 +68,6 @@ struct HomeView: View {
             .navigationTitle("")
             .navigationBarHidden(true)
         }
-    }
-}
-
-struct PreguntaIndividualView: View {
-    var body: some View {
-        Text("Pregunta Individual")
     }
 }
 
