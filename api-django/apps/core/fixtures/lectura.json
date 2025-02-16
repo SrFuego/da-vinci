@@ -1,0 +1,11 @@
+[
+{
+    "model": "core.lectura",
+    "pk": 1,
+    "fields": {
+        "titulo": "Lorem Ipsum",
+        "texto": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec accumsan varius enim vel dapibus. Aenean non quam non mauris pulvinar condimentum. Duis at diam id velit fringilla pretium at finibus lorem. Nulla lacinia fringilla arcu et ornare. Aenean iaculis dui nisl, eu faucibus orci luctus sed. Sed non risus urna. In pretium consequat nisl ac molestie.\r\n\r\nInteger id accumsan dolor. Morbi convallis velit feugiat consectetur feugiat. Vivamus luctus, augue in mollis ullamcorper, velit purus imperdiet augue, eget luctus sapien enim vel quam. Phasellus sed ornare elit, bibendum scelerisque erat. Aliquam ultricies eros nec neque ultrices, non tincidunt sem placerat. Cras sapien tellus, dignissim ut ante quis, gravida tincidunt erat. Nulla et erat vestibulum, auctor nisl et, laoreet leo. Etiam blandit eu tortor at porta. Mauris ultrices mauris a sem luctus pretium posuere eget dui. Vestibulum feugiat risus et eros cursus convallis.\r\n\r\nDuis condimentum auctor elit. In dignissim lacus lacus, non vestibulum quam lacinia vel. Vestibulum vitae dolor dui. Nulla facilisi. Praesent nec malesuada erat, eget ornare felis. In facilisis ultricies dignissim. Vestibulum laoreet pretium lectus eget facilisis.\r\n\r\nEtiam sit amet condimentum lectus. Etiam tristique diam felis, non placerat tortor ultrices quis. Aliquam non nisi posuere, egestas nisl nec, ultricies metus. Mauris eu nunc at quam faucibus blandit. In sit amet iaculis ex, a porttitor lectus. Nulla facilisi. Nullam sit amet sodales eros. Integer porttitor sem eu turpis euismod feugiat.\r\n\r\nMorbi vel efficitur lacus. Maecenas dapibus commodo mauris quis aliquet. Mauris porttitor enim nec vestibulum pharetra. Phasellus euismod at dolor non pretium. Phasellus fringilla pellentesque turpis, sit amet venenatis ex imperdiet quis. Maecenas rhoncus, lorem et blandit ultricies, est neque sollicitudin dolor, non tincidunt felis libero at massa. Duis finibus ultrices vulputate. Quisque et arcu consectetur, cursus orci ut, gravida velit. Quisque sem magna, molestie sed venenatis at, imperdiet efficitur massa.",
+        "tema": 4
+    }
+}
+]

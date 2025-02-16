@@ -1,0 +1,11 @@
+[
+{
+    "model": "core.procesodeadmision",
+    "pk": 1,
+    "fields": {
+        "universidad": 1,
+        "temporada": "2023",
+        "proceso": "II"
+    }
+}
+]

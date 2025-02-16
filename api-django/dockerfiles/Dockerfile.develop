@@ -1,0 +1,53 @@
+# syntax=docker/dockerfile:1
+
+# Comments are provided throughout this file to help you get started.
+# If you need more help, visit the Dockerfile reference guide at
+# https://docs.docker.com/engine/reference/builder/
+
+FROM python:3.11-bookworm as base
+
+ARG WORK_DIR="/daVinci"
+ARG REQUIREMENTS_FILE="api-django/requirements/20250214.develop"
+
+# Prevents Python from writing pyc files.
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Keeps Python from buffering stdout and stderr to avoid situations where
+# the application crashes without emitting any logs due to buffering.
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR ${WORK_DIR}
+
+COPY ${REQUIREMENTS_FILE} requirements.txt
+
+RUN mkdir tmp_downloads && \
+    curl -o tmp_downloads/allure_2.23.0-1_all.deb \
+    -Ls https://github.com/allure-framework/allure2/releases/download/2.23.0/allure_2.23.0-1_all.deb && \
+    apt update && \
+    apt-get install -y --no-install-recommends \
+    git python3-dev build-essential default-jre \
+    graphviz graphviz-dev && \
+    dpkg -i tmp_downloads/allure_2.23.0-1_all.deb && \
+    pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf tmp_downloads
+
+WORKDIR ${WORK_DIR}/api-django
+
+COPY api-django/ .
+
+# Add debugging commands
+RUN echo "==== Current directory contents ====" && \
+    pwd && \
+    echo "==== Files in current directory ====" && \
+    ls -la && \
+    echo "==== All files recursively ====" && \
+    find . -type f
+
+RUN chmod +x entrypoint.sh
+
+# ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/daVinci/api-django/entrypoint.sh"]

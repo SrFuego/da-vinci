@@ -1,0 +1,20 @@
+-r base.in
+
+pip-tools
+
+black
+isort
+ipython
+
+behave
+allure-behave
+behave-django
+coverage
+
+pygraphviz
+pyparsing
+pydot
+
+django-dbml
+django-silk
+django-extensions
