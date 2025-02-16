@@ -13,23 +13,6 @@ class SorprendemeViewModel: ObservableObject {
     @Published var error: Error?
     @Published var respuesta: RespuestaData?
 
-    func fetchRandomQuestion() {
-        respuesta = nil
-        currentQuestion = nil
-        isLoading = true
-        ApiService.shared.getIndividualQuestion { [weak self] result in
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                switch result {
-                    case let .success(question):
-                        self?.currentQuestion = question
-                    case let .failure(error):
-                        self?.error = error
-                }
-            }
-        }
-    }
-
     func submitAnswer(alternativaId: Int) {
         isLoading = true
         ApiService.shared
@@ -44,5 +27,25 @@ class SorprendemeViewModel: ObservableObject {
                     }
                 }
             }
+    }
+
+    func fetchQuestion(cursoSlug: String? = nil, temaSlug: String? = nil) {
+        respuesta = nil
+        currentQuestion = nil
+        isLoading = true
+        ApiService.shared.getIndividualQuestion(
+            cursoSlug: cursoSlug,
+            temaSlug: temaSlug
+        ) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                    case let .success(question):
+                        self?.currentQuestion = question
+                    case let .failure(error):
+                        self?.error = error
+                }
+            }
+        }
     }
 }
