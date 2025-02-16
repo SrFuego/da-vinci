@@ -1,0 +1,9 @@
+django < 4.3
+# pillow
+djangorestframework
+django-cors-headers
+django-crispy-forms
+markdown
+django-filter
+drf-spectacular
+django-admin-env-notice

@@ -1,26 +1,25 @@
 # apps/core/routers.py
 # Python imports
 
-
 # Django imports
 from django.urls import include, path
 from rest_framework.routers import SimpleRouter
 
-
-# Third party apps imports
-
-
 # Local imports
 from .viewsets import (
     CursoViewSet,
-    TemaViewSet,
+    HealthCheck,
     PreguntaIndividualViewSet,
+    TemaViewSet,
 )
+
+# Third party apps imports
 
 
 # Create your routers here.
 core_list = (
     (r"curso", CursoViewSet),
+    (r"health_check", HealthCheck),
     (r"pregunta_individual", PreguntaIndividualViewSet),
 )
 

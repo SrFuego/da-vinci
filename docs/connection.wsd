@@ -1,0 +1,125 @@
+@startuml Da Vinci
+!theme vibrant
+
+title Resuelve Preguntas de Admisión\na) Pregunta Aleatoria\nb) Pregunta Individual\nc) Grupo de Preguntas\nd) Examenes de Admisión
+
+actor Usuario
+boundary App
+queue Backend
+database DB
+
+
+Usuario -> App: Abre la App
+Usuario <-- App: Muestra lista de opciones: \n\t- ¡Sorpréndeme!\n\t- Una por Una \n\t- Grupo de Preguntas \n\t- Exámenes de Admisión
+
+
+
+
+group 1 Pregunta
+    group Mostrar
+        group#DeepSkyBlue #LightBlue Pregunta Aleatoria
+            Usuario -> App: Selecciona "¡Sorpréndeme!"
+            activate App
+                App -> Backend: Pide una Pregunta Aleatoria
+                activate Backend
+                    Backend -> DB: Pide una Pregunta válida
+                    Backend <-- DB: PEA válida (completa)
+                    App <-- Backend: Pregunta de Examen de Admisión
+                deactivate Backend
+                Usuario <-- App: Muestra:\n- PEA
+            deactivate App
+        end
+    end
+    group#Yellow #LightGoldenRodYellow Resolver
+        Usuario -> App: - Selecciona una alternativa\n- Envía su Respuesta
+        activate App
+            App -> Backend: Alternativa seleccionada
+            activate Backend
+                Backend -> DB: Pide la Solución de esa Alternativa
+                Backend <-- DB: - Solución
+                App <-- Backend: - Alternativa seleccionada\n- Solución\n\nCalculados:\n- Puntaje obtenido
+            deactivate Backend
+            Usuario <-- App: Muestra: \n- La PEA \n- Puntaje obtenido \n- La solución \n- Teoría del Tema \n\nBotón:\n- Siguiente Pregunta
+        deactivate App
+    end
+end
+
+
+
+
+
+
+
+group#Gold  #LimeGreen Pregunta Individual
+Usuario -> App: Selecciona "Pregunta Individual"
+activate App
+    App -> Backend:
+        activate Backend
+            Backend -> DB: 
+            Backend <-- DB: Lista de Cursos:\n\t- Cursos válidos\n\t- Tienen mínimo 1 pregunta
+            App <-- Backend: Lista de Cursos
+        deactivate Backend
+    Usuario <-- App: Muestra lista de opciones: \n- Pregunta Aleatoria \n- Lista de Cursos
+deactivate App
+
+    group#SkyBlue #LightBlue Mostrar Pregunta
+        group#DarkGray #LightGray Curso Aleatorio
+            Usuario -> App: Selecciona "Pregunta Aleatoria"
+            activate App
+                App -> Backend: **GET /api/v1/pregunta_individual/**
+                activate Backend
+                    Backend -> DB: Filtrar por: \n- Preguntas válidas (completas)
+                    Backend <-- DB: Objeto Pregunta
+                    App <-- Backend: Response: \n- Nombre del Curso \n- Nombre del Tema \n- Enunciado \n- Alternativas
+                deactivate Backend
+                Usuario <-- App: Muestra PEA
+            deactivate App
+        end
+
+        group#DarkSalmon #LightPink Elige un Curso
+            Usuario -> App: Selecciona un Curso
+            activate App
+                App -> Backend: **GET /api/v1/curso/{curso_id}/tema/**
+                    activate Backend
+                        Backend -> DB: Query: \n- Temas válidos (mínimo 1 pregunta)
+                        Backend <-- DB: Lista de Temas del Curso
+                        App <-- Backend: Response: \n- Lista de objetos:\n\t- id \n\t- Nombre del Tema 
+                    deactivate Backend
+                Usuario <-- App: Muestra lista de opciones: \n- Tema Aleatorio \n- Lista de Temas
+            deactivate App
+
+            group#CornflowerBlue #LightSkyBlue Tema Aleatorio
+                Usuario -> App: Selecciona Tema Aleatorio
+                activate App
+                    App -> Backend: **GET /api/v1/pregunta_individual/?curso_id=curso_id**
+                    activate Backend
+                        Backend -> DB: Filtrar por: \n- Preguntas válidas (completas)\n- Curso seleccionado
+                        Backend <-- DB: Objeto Pregunta
+                        App <-- Backend: Response: \n- Nombre del Curso \n- Nombre del Tema \n- Enunciado \n- Alternativas
+                    deactivate Backend
+                    Usuario <-- App: Muestra PEA
+                deactivate App
+            end
+
+            group#DarkTurquoise #LightCyan Elige un Tema
+                Usuario -> App: Selecciona un Tema
+                activate App
+                    App -> Backend: **GET /api/v1/pregunta_individual/?tema_id=tema_id**
+                    activate Backend
+                        Backend -> DB: Filtrar por: \n- Preguntas válidas (completas)\n- Curso seleccionado
+                        Backend <-- DB: Objeto Pregunta
+                        App <-- Backend: Response: \n- Nombre del Curso \n- Nombre del Tema \n- Enunciado \n- Alternativas
+                    deactivate Backend
+                    Usuario <-- App: Muestra PEA
+                deactivate App
+            end
+        end
+    end
+
+end
+
+
+
+
+
+@enduml

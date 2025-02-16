@@ -1,0 +1,17 @@
+--indent 4
+--indentcase true
+--trimwhitespace always
+--maxwidth 80
+--wraparguments before-first
+--wrapcollections before-first
+--commas always
+--comments indent
+--decimalgrouping 3,6
+--hexgrouping 4,8
+--ifdef no-indent
+--importgrouping testable-bottom
+--ranges no-space
+--self remove
+--semicolons never
+--stripunusedargs closure-only
+--swiftversion 5.9

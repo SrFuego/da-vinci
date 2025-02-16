@@ -1,15 +1,20 @@
--r common.in
+-r base.in
+
+pip-tools
 
 black
-pip-tools
+isort
+ipython
+
 behave
 allure-behave
-ipython
+behave-django
+coverage
+
 pygraphviz
 pyparsing
 pydot
-behave-django
-coverage
-diagrams
+
 django-dbml
 django-silk
+django-extensions

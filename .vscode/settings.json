@@ -4,5 +4,6 @@
     },
     "python.analysis.typeCheckingMode": "off",
     "python.formatting.provider": "none",
-    "python.analysis.autoImportCompletions": true
+    "python.analysis.autoImportCompletions": true,
+    "plantuml.exportOutDir": "out/"
 }

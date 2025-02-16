@@ -34,46 +34,117 @@ end
 |Da Vinci|
 start
 :Abre la App;
-:=<color:LimeGreen>E01: Home
-*URL:
-\t/\t
+split
+    :=<color:Blue>E00: Home
+    *URL:
+    \t/\t
 
-*UI/UX:
-{{
-    salt
-    {+
-    .
-    =<b><b>\tDa Vinci
-    <img:app/assets/logo.png>
-    [Pregunta Individual]
-    [Grupo de Preguntas]
-    [Examenes pasados]
-    }
-}}
-;
+    *<back:Orange>UI/UX:
+    {{
+        salt
+        {+
+        .
+        =<b><b>\tDa Vinci
+        <img:app/assets/logo.png>
+        [¡Sorpréndeme!]
+        .
+        Elige tu Desafío:
+        [Una por Una]
+        [Grupo de Preguntas]
+        [Exámenes de Admisión]
+        }
+    }}
+    ;
+split again
+    :=<color:LimeGreen>E01: Home
+    *URL:
+    \t/\t
+
+    *UI/UX:
+    {{
+        salt
+        {+
+        .
+        =<b><b>\tDa Vinci
+        <img:app/assets/logo.png>
+        [Pregunta Individual]
+        [Grupo de Preguntas]
+        [Examenes pasados]
+        }
+    }}
+    ;
+endsplit
 
 repeat :Selecciona una opción;
-    split 
-        :=Pregunta Individual
+    split
+        :=<color:Blue>E01: ¡Sorpréndeme!
+        - Una Pregunta Aleatoria a la vez
+        - De cualquier Tema de cualquier Curso
+        
+        *URL:
+            \t/individual/pregunta/\t
 
-        * Una pregunta a la vez
-        * Seleccionas:
-            - Aleatorio
-            - Por Curso
-                - Tema aleatorio
-                - Por Tema del Curso
-        * Envías tu respuesta
-        * Te califica y muestra solución;
+        *DATA:
+        \tGET
+        \t/api/v1/pregunta_individual/;
+        note
+        {
+            "enunciado": "¿Cuánto suman
+                los ángulos internos de
+                un triángulo?",
+            "alternativas": [
+                {
+                    "id": 45,
+                    "valor": "90 grados"
+                },
+                {
+                    "id": 47,
+                    "valor": "180 grados"
+                },
+                {
+                    "id": 43,
+                    "valor": "120 grados"
+                },
+                {
+                    "id": 44,
+                    "valor": "80 grados"
+                },
+                {
+                    "id": 46,
+                    "valor": "360 grados"
+                }\t
+            ],
+            "tema": {
+                "nombre": "Triángulos",
+                "slug": "triangulos",
+                "curso": {
+                    "nombre": "Geometría",
+                    "slug": "geometria"
+                }\t
+            }\t
+        }
+        end note
+        (A)
+        detach
+    split again
         split
-            :=<color:Blue>E02: Cursos
+            :=<color:Blue>E02: Una por Una
+            - Una pregunta a la vez
+            - Los Cursos que se muestran tienen mínimo 1 Pregunta
+            - Selecciona el Curso
+
             *URL:
             \t/individual/elegir-curso/\t
+
+            *DATA:
+            \tGET
+            \t/api/v1/curso/\t
 
             *<back:Orange>UI/UX:
             {{
                 salt
                 {+
-                =<&home>\tLista de Cursos
+                =<&home>\tElegir Curso
                 .
                 [Curso Aleatorio]
                 [ ] Álgebra
@@ -90,6 +161,8 @@ repeat :Selecciona una opción;
             ;
         split again
             :=<color:LimeGreen>E02: Cursos
+            - Los Cursos que se muestran tienen mínimo 1 Pregunta
+
             *URL:
             \t/individual/elegir-curso/\t
 
@@ -155,14 +228,19 @@ repeat :Selecciona una opción;
                     "slug": "quimica"
                 } \t
             ] \t
-            ====
-            * Los cursos que se muestran:
-                - Mínimo 1 Pregunta
             endnote
         endsplit
-        if (Selecciona)then (un Curso)
+        if (Selecciona)then (1 Curso)
             split
-                :=<color:Blue>E03: Temas
+                split
+                    :Curso seleccionado;
+                split again
+                    (C)
+                endsplit
+                :=<color:Blue>E03: Temas de 1 Curso
+                - Los Temas que se muestran tienen
+                    mínimo 1 Pregunta
+
                 *URL:
                 \t/individual/[curso_slug]/elegir-tema/\t
 
@@ -170,7 +248,7 @@ repeat :Selecciona una opción;
                 \tcurso_slug*\thistoria-del-peru
                 \tGET
                 \t/api/v1/curso/historia-del-peru/tema/\t
-
+                
                 *<back:Orange>UI/UX:
                 {{
                     salt
@@ -199,22 +277,47 @@ repeat :Selecciona una opción;
                     }\t
                     "temas": [
                         {
-                            "nombre": "Cultura prehispanicas",
-                            "slug": "cultura-prehispanicas"
+                            "nombre": "Periodo formativo",
+                            "slug": "periodo-formativo"
                         },\t
                         {
-                            "nombre": "Historia de San Marcos",
-                            "slug": "historia-de-san-marcos"
+                            "nombre": "El Tawantinsuyo",
+                            "slug": "el-tawantinsuyo"
                         },\t
                         {
-                            "nombre": "Independencia del Perú",
-                            "slug": "independencia-del-peru"
+                            "nombre": "Virreinato",
+                            "slug": "virreinato"
+                        }\t
+                        {
+                            "nombre": "Reformas borbónicas",
+                            "slug": "reformas-borbonicas"
+                        }\t
+                        {
+                            "nombre": "Guerra con Chile",
+                            "slug": "guerra-con-chile"
+                        }\t
+                        {
+                            "nombre": "Boom del guano",
+                            "slug": "boom-del-guano"
+                        }\t
+                        {
+                            "nombre": "República Aristocrática",
+                            "slug": "republica-aristocrática"
+                        }\t
+                        {
+                            "nombre": "Oncenio",
+                            "slug": "oncenio"
+                        }\t
+                        {
+                            "nombre": "Militarismo",
+                            "slug": "militarismo"
+                        }\t
+                        {
+                            "nombre": "Perú en el siglo XXI",
+                            "slug": "peru-en-el-siglo-xxi"
                         }\t
                     ]\t
                 }\t
-                ====
-                * Todos los temas:
-                    - Mínimo 1 Pregunta
                 endnote
             split again
                 :=<color:LimeGreen>E03: Temas
@@ -278,8 +381,9 @@ repeat :Selecciona una opción;
                         - Mínimo 1 Pregunta
                 endnote
             endsplit
-            if (Selecciona) then (un Tema)
-                :*URL:
+            if (Selecciona) then (1 Tema)
+                :=Pregunta del Tema elegido
+                *URL:
                 \t/individual/[tema_slug]/pregunta/\t
 
                 *DATA:
@@ -288,7 +392,8 @@ repeat :Selecciona una opción;
                 \t/api/v1/pregunta_individual/?tema=independencia-del-peru;
                 note
                 {
-                    "enunciado": "¿Cuando se proclamó la independencia del Perú?",
+                    "enunciado": "¿Cuando se proclamó
+                        la independencia del Perú?",
                     "alternativas": [
                         {
                             "id": 7,
@@ -312,11 +417,10 @@ repeat :Selecciona una opción;
                         }\t
                     }\t
                 }
-                ====
-                * Del Tema elegido
                 endnote
             else (Tema aleatorio)
-                :*URL:
+                :=Pregunta de cualquier Tema del Curso elegido
+                *URL:
                 \t/individual/[curso_slug]/pregunta/\t
 
                 *DATA:
@@ -357,12 +461,19 @@ repeat :Selecciona una opción;
                         }\t
                     }\t
                 }
-                ====
-                * De cualquier Tema del Curso elegido
                 endnote
             endif
         else (Curso aleatorio)
-            :*URL:
+            split
+                :=<color:Blue>Obtiene 1 Curso
+                * De forma Aleatoria
+                * Con el curso_slug va a la lista
+                de Temas del Curso obtenido;
+                (C)
+                detach
+            split again
+            :=Pregunta Aleatoria
+            *URL:
             \t/individual/pregunta/\t
 
             *DATA:
@@ -407,8 +518,14 @@ repeat :Selecciona una opción;
             * De cualquier Curso
             * De cualquier Tema
             end note
+            endsplit
         endif
-        (A)
+        split
+        split again
+            (A)
+        split again
+            (B)
+        endsplit
         repeat :Muestra una Pregunta a partir de las opciones seleccionadas;
             :=<color:LimeGreen>E04: Pregunta Individual
             *UI/UX:
@@ -440,10 +557,12 @@ repeat :Selecciona una opción;
                     }
                 }}
                 ;
-                (A)
+                (B)
                 detach
             else (resolver)
-                :*Selecciona una Alternativa:
+                :=Envía Respuesta al API
+                
+                *Selecciona una Alternativa:
                 {{
                     salt
                     {
@@ -469,8 +588,7 @@ repeat :Selecciona una opción;
                     }\t
                 endnote
             endif
-            :El API evalúa su Respuesta y
-                envía la Solución
+            :=API evalúa Respuesta y envía Solución
             
             *DATA:
             \tPOST
@@ -625,7 +743,7 @@ repeat :Selecciona una opción;
         end note
         end
     split again
-        :=Exámenes pasados
+        :=Exámenes de Admisión
         Exámenes de admisión pasados, completos;
         note
             * Exámenes de admisión completos
