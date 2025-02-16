@@ -41,7 +41,10 @@ class RouterButton extends StatelessWidget {
               : null,
           child: Text(title),
         ),
-        Text(description),
+        Text(
+          description,
+          style: const TextStyle(fontSize: 12.0),
+        ),
         SizedBox(height: verticalSize),
       ],
     );
