@@ -11,12 +11,20 @@ class ApiService {
     static let shared = ApiService()
     private let baseURL = "https://srfuego.pythonanywhere.com/api/v1/"
 
-    func getIndividualQuestion(completion: @escaping (Result<
-        Question,
-        ApiError
-    >) -> Void) {
-        guard let url = URL(string: "\(baseURL)pregunta_individual/") else {
-            print("Invalid URL")
+    func getIndividualQuestion(
+        cursoSlug: String? = nil,
+        temaSlug: String? = nil,
+        completion: @escaping (Result<Question, ApiError>) -> Void
+    ) {
+        var urlString = "\(baseURL)pregunta_individual/"
+
+        if let curso = cursoSlug {
+            urlString += "?curso=\(curso)"
+        } else if let tema = temaSlug {
+            urlString += "?tema=\(tema)"
+        }
+
+        guard let url = URL(string: urlString) else {
             completion(.failure(.invalidURL))
             return
         }

@@ -79,7 +79,7 @@ struct RespuestaIndividualView: View {
                     viewModel.isLoading = true
                     onNextQuestion()
                 }) {
-                    Text("Siguente pregunta aleatoria")
+                    Text("Siguente Pregunta")
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
