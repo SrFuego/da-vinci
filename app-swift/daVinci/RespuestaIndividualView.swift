@@ -10,6 +10,7 @@ import SwiftUI
 struct RespuestaIndividualView: View {
     let respuesta: RespuestaData
     let onNextQuestion: () -> Void
+    @ObservedObject var viewModel: SorprendemeViewModel
 
     var body: some View {
         ScrollView {
@@ -63,6 +64,13 @@ struct RespuestaIndividualView: View {
                     .padding(.horizontal)
                 }
 
+                Text("Teoría:")
+                    .font(.title3)
+                    .padding()
+
+                Text(respuesta.solucion.teoria)
+                    .padding(.horizontal)
+
                 Text("Resolución:")
                     .font(.title3)
                     .padding()
@@ -70,8 +78,12 @@ struct RespuestaIndividualView: View {
                 Text(respuesta.solucion.resolucion)
                     .padding(.horizontal)
 
-                Button(action: onNextQuestion) {
-                    Text("Curso Aleatorio")
+                Button(action: {
+                    viewModel.currentQuestion = nil
+                    viewModel.isLoading = true
+                    onNextQuestion()
+                }) {
+                    Text("Siguente pregunta aleatoria")
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
