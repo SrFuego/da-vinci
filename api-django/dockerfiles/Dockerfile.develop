@@ -2,9 +2,12 @@
 
 # Comments are provided throughout this file to help you get started.
 # If you need more help, visit the Dockerfile reference guide at
-# https://docs.docker.com/engine/reference/builder/
+# https://docs.docker.com/go/dockerfile-reference/
 
-FROM python:3.11-bookworm as base
+# Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
+
+ARG PYTHON_VERSION=3.11.7
+FROM python:${PYTHON_VERSION}-slim as base
 
 ARG WORK_DIR="/daVinci"
 ARG REQUIREMENTS_FILE="api-django/requirements/20250214.develop"
@@ -20,13 +23,13 @@ WORKDIR ${WORK_DIR}
 
 COPY ${REQUIREMENTS_FILE} requirements.txt
 
-RUN mkdir tmp_downloads && \
+RUN apt update && \
+    apt-get install -y --no-install-recommends \
+    git python3-dev build-essential default-jre curl \
+    graphviz graphviz-dev && \
+    mkdir tmp_downloads && \
     curl -o tmp_downloads/allure_2.23.0-1_all.deb \
     -Ls https://github.com/allure-framework/allure2/releases/download/2.23.0/allure_2.23.0-1_all.deb && \
-    apt update && \
-    apt-get install -y --no-install-recommends \
-    git python3-dev build-essential default-jre \
-    graphviz graphviz-dev && \
     dpkg -i tmp_downloads/allure_2.23.0-1_all.deb && \
     pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
@@ -39,7 +42,8 @@ WORKDIR ${WORK_DIR}/api-django
 
 COPY api-django/ .
 
+EXPOSE 8000
+
 RUN chmod +x entrypoint.sh
 
-# ENTRYPOINT ["entrypoint.sh"]
 ENTRYPOINT ["/daVinci/api-django/entrypoint.sh"]
