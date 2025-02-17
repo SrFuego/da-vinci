@@ -1,7 +1,7 @@
 meta {
   name: Cursos
   type: http
-  seq: 2
+  seq: 1
 }
 
 get {
@@ -11,5 +11,5 @@ get {
 }
 
 vars:post-response {
-  curso_slug: res.body[0].slug
+  curso_slug: res.body[Math.floor(Math.random() * res.body.length)].slug
 }

@@ -1,0 +1,17 @@
+meta {
+  name: Item Respuesta
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{api_url}}/api/v1/pregunta_individual/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "alternativa_seleccionada_id": 2
+  }
+}

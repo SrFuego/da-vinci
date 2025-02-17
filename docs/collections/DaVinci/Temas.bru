@@ -1,11 +1,15 @@
 meta {
   name: Temas
   type: http
-  seq: 3
+  seq: 2
 }
 
 get {
   url: {{api_url}}/api/v1/curso/{{curso_slug}}/tema/
   body: none
   auth: none
+}
+
+vars:post-response {
+  tema_slug: res.body[Math.floor(Math.random() * res.body.length)].slug
 }
