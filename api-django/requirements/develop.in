@@ -6,7 +6,6 @@ black
 isort
 ipython
 
-behave
 allure-behave
 behave-django
 coverage
