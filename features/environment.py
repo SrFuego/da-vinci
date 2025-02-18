@@ -1,11 +1,5 @@
 import coverage
-
-
-from steps.draft_urls import (
-    CURSO_URL,
-    TEMA_URL,
-    PREGUNTA_INDIVIDUAL_URL,
-)
+from steps.draft_urls import CURSO_URL, PREGUNTA_INDIVIDUAL_URL, TEMA_URL
 
 
 # def django_ready(context, scenario):
@@ -31,18 +25,18 @@ def django_ready(context):
 
 def before_all(context):
     context.fixtures = [
-        "api/apps/core/fixtures/universidad.json",
-        "api/apps/core/fixtures/area.json",
-        "api/apps/core/fixtures/proceso_de_admision.json",
-        "api/apps/core/fixtures/carrera.json",
-        "api/apps/core/fixtures/examen_de_admision.json",
-        "api/apps/core/fixtures/curso.json",
-        "api/apps/core/fixtures/tema.json",
-        "api/apps/core/fixtures/preguntas_por_curso.json",
-        "api/apps/core/fixtures/lectura.json",
-        "api/apps/core/fixtures/pregunta.json",
-        "api/apps/core/fixtures/alternativa.json",
-        "api/apps/core/fixtures/solucion.json",
+        "api-django/apps/core/fixtures/universidad.json",
+        "api-django/apps/core/fixtures/area.json",
+        "api-django/apps/core/fixtures/proceso_de_admision.json",
+        "api-django/apps/core/fixtures/carrera.json",
+        "api-django/apps/core/fixtures/examen_de_admision.json",
+        "api-django/apps/core/fixtures/curso.json",
+        "api-django/apps/core/fixtures/tema.json",
+        "api-django/apps/core/fixtures/preguntas_por_curso.json",
+        "api-django/apps/core/fixtures/lectura.json",
+        "api-django/apps/core/fixtures/pregunta.json",
+        "api-django/apps/core/fixtures/alternativa.json",
+        "api-django/apps/core/fixtures/solucion.json",
     ]
     cov = coverage.Coverage()
     cov.start()

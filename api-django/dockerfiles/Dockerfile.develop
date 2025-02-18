@@ -10,7 +10,7 @@ ARG PYTHON_VERSION=3.11.7
 FROM python:${PYTHON_VERSION}-slim as base
 
 ARG WORK_DIR="/daVinci"
-ARG REQUIREMENTS_FILE="api-django/requirements/20250214.develop"
+ARG REQUIREMENTS_FILE="api-django/requirements/20250218.develop"
 
 # Prevents Python from writing pyc files.
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -38,12 +38,12 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf tmp_downloads
 
-WORKDIR ${WORK_DIR}/api-django
+# WORKDIR ${WORK_DIR}/api-django
 
-COPY api-django/ .
+COPY api-django/ api-django/
 
 EXPOSE 8000
 
-RUN chmod +x entrypoint.sh
+RUN chmod +x api-django/entrypoint.sh
 
 ENTRYPOINT ["/daVinci/api-django/entrypoint.sh"]

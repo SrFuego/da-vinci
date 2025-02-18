@@ -1,5 +1,6 @@
-rm -r allure-*
-rm -r htmlcov
+rm -rf allure-*
+rm -rf htmlcov
 rm .coverage
+
 
 echo "Reports cleaned"

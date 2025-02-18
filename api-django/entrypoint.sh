@@ -1,27 +1,35 @@
 #!/bin/bash
 
+
+cd api-django/
+
 python manage.py migrate
 
 python manage.py loaddata apps/core/fixtures/*.json
 
-# python api/manage.py behave
+cd ..
 
-bash scripts/clean_reports.sh
+rm -rf allure-*
+rm -rf htmlcov
+rm .coverage
 
-coverage run --source=apps -m behave
+python api-django/manage.py behave
 
-coverage report 
 
+# Generate coverage report
+coverage report
 coverage html
 
-behave -f allure_behave.formatter:AllureFormatter -o allure-results features/
+# Generate allure report
+allure generate allure-results \
+    --clean \
+    -o allure-report \
+    --clean
 
-allure generate allure-results --clean -o allure-report
-
-# nohup allure open -p 8050 &
-
+# Start servers for reports
 nohup python3 -m http.server 8500 -d htmlcov/ &
-
 nohup python3 -m http.server 8050 -d allure-report/ &
 
-python manage.py runserver 0.0.0.0:8000
+# Start Django server
+python api-django/manage.py runserver 0.0.0.0:8000
+
