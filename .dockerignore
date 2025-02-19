@@ -1,0 +1,36 @@
+# Mobile Apps (complete directories)
+app-flutter/
+app-swift/
+
+# Python
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.Python
+**/env/
+**/venv/
+**/.env
+**/.venv
+**/pip-log.txt
+
+# Development/IDE
+**/.idea/
+**/.vscode/
+**/.DS_Store
+**/*.swp
+**/*.swo
+
+# Git
+!.git/
+
+# Test and Cache
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Allure Reports
+allure-report/
+allure-results/
+**/my_allure/

@@ -1,0 +1,30 @@
+@startuml 0.1.0
+!theme vibrant
+
+title Muestra una Pregunta de Admisión Aleatoria
+
+actor "Usuario" as User
+boundary "Aplicación" as App
+queue "Backend" as API
+database "Base de Datos" as DB
+
+
+User -> App: Abre la App
+User <-- App: Muestra lista de opciones: \n\t- ¡Sorpréndeme!\n\t- Una por Una \n\t- Grupo de Preguntas \n\t- Exámenes de Admisión
+group#DeepSkyBlue #LightBlue Pregunta Aleatoria
+    User -> App: Selecciona "¡Sorpréndeme!"
+    activate App
+        App -> API: Pide una Pregunta Aleatoria
+        activate API
+            API -> DB: Pide una Pregunta válida
+            API <-- DB: PEA válida (completa)
+            App <-- API: Pregunta de Examen de Admisión
+        deactivate API
+        User <-- App: Muestra:\n- PEA
+    deactivate App
+end
+
+
+
+
+@enduml

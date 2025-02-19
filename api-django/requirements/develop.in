@@ -1,0 +1,46 @@
+-r base.in
+
+pip-tools
+black
+isort
+ipython
+
+# Testing and Documentation
+allure-behave
+behave-django
+coverage
+# pytest
+# pytest-django
+# pytest-cov
+# factory-boy
+# faker
+
+# Debugging and Profiling
+# django-debug-toolbar
+django-extensions
+django-silk
+
+# Code Quality
+# flake8
+# pylint
+# mypy
+# bandit
+# safety
+
+# Database and Schema
+django-dbml
+pygraphviz
+pyparsing
+pydot
+
+# Development Tools
+# django-browser-reload
+# ipdb
+
+
+
+
+
+
+
+

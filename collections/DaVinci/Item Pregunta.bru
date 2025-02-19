@@ -1,0 +1,16 @@
+meta {
+  name: Item Pregunta
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api_url}}/api/v1/pregunta_individual/
+  body: none
+  auth: none
+}
+
+params:query {
+  ~curso: {{curso_slug}}
+  ~tema: {{tema_slug}}
+}
