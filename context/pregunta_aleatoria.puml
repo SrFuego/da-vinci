@@ -7,10 +7,11 @@ start
 
 !include screens/e00_home.puml
 
-:Selecciona
+:Selecciona:
+
 {{
     salt
-    {+
+    {
     [ ¡Sorpréndeme! ]
     }
 }}
@@ -18,7 +19,7 @@ start
 
 !include screens/e01_pregunta_aleatoria.puml
 
-stop
+' stop
 
 
 

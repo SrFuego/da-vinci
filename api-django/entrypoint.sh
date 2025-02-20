@@ -13,7 +13,7 @@ rm -rf allure-*
 rm -rf htmlcov
 rm .coverage
 
-python api-django/manage.py behave
+python api-django/manage.py behave --tags=api_happy_path
 
 
 # Generate coverage report

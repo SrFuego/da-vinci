@@ -30,7 +30,7 @@ repeat
         () Alexander Von Humbolt
         () Julio Cesar Tello
         .
-        [Saltar] | [ ---<color:#9a9a9a>Enviar-- ]
+        [Saltar] | [<color:#9a9a9a>--Enviar--]
         }
     }}
 
@@ -38,7 +38,7 @@ repeat
     ' \tNone
     ;
 
-    split
+    split 
         ' :
         ' {{
         '     salt
@@ -48,7 +48,8 @@ repeat
         ' }}
         ' ;
     split again
-        :Selecciona una alternativa
+        :Selecciona una alternativa:
+
         {{
             salt
             {
@@ -60,7 +61,8 @@ repeat
             }
         }}
         ;
-        :Se habilita el botón
+        :Se habilita el botón:
+
         {{
             salt
             {
@@ -68,7 +70,6 @@ repeat
             }
         }}
         ;
-
         end
     endsplit
 
