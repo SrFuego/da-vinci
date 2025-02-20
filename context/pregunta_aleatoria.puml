@@ -1,86 +1,24 @@
 @startuml Pregunta Aleatoria
 title Pregunta Aleatoria
 
-' skinparam ActivityBackgroundColor white
-
 
 start
 :Abre la App;
-split
-    :=<color:Blue>E00: Home
-    Pantalla principal de la aplicación
 
-    *URL Frontend:
-    \t/\t
+!include screens/e00_home.puml
 
-    *Contenido:
-    - Logo
-    - Botón principal
-    - Lista de opciones
+:Selecciona:
+{{
+    salt
+    {+
+    [ ¡Sorpréndeme! ]
+    }
+}}
+;
 
-    *<back:Orange>UI/UX:
-    {{
-        salt
-        {+
-        .
-        =<b><b>\tDa Vinci
-        <img:app-flutter/assets/logo.png>
-        {
-            \t\t {} [ ¡Sorpréndeme! ]
-        }
-        .
-        \t Elige tu Desafío:
-        .
-        {
-            \t {} [ Una por Una ]
-            \t {} [ Grupo de Preguntas ]
-            \t {} [ Exámenes de Admisión ]
-        }
-        .
-        }
-    }}
-    ;
-split again
-    :=<color:LimeGreen>E01: Home
-    *URL:
-    \t/\t
 
-    *UI/UX:
-    {{
-        salt
-        {+
-        .
-        =<b><b>\tDa Vinci
-        <img:app-flutter/assets/logo.png>
-        [Pregunta Individual]
-        [Grupo de Preguntas]
-        [Examenes pasados]
-        }
-    }}
-    ;
-endsplit
+!include screens/e01_pregunta_aleatoria.puml
 
-repeat :Selecciona una opción;
-    :=<color:LimeGreen>E04: Pregunta Individual
-    *UI/UX:
-    {{
-        salt
-        {+
-        =<b><&home>\tHistoria del Perú
-        ====Cultura prehispanicas:
-        .
-        ===¿Quién descubrió Macchu Picchu?
-        .
-        () Fernando de Magallanes
-        () Hiran Bingman
-        () Hernan Cortes
-        () Alexander Von Humbolt
-        () Julio Cesar Tello
-        .
-        [Saltar] | [Enviar]
-        }
-    }}
-    ;
 stop
 
 

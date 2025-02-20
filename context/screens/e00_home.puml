@@ -1,0 +1,44 @@
+@startuml E01_Home
+
+
+:=<color:Orange>E00: Home
+Pantalla principal de la aplicación
+
+*<color:Orange>Estado:
+\t<color:Orange>En desarrollo
+
+*URL:
+\t/\t
+
+*Data Fetching:
+\tNone
+
+*<back:Orange>UI/UX:
+{{
+    salt
+    {+
+    .
+    =<b><b>\tDa Vinci
+    <img:app-flutter/assets/logo.png>
+    {
+        \t\t {} [ ¡Sorpréndeme! ]
+    }
+    .
+    \t Elige tu Desafío:
+    .
+    {
+        \t {} [ Una por Una ]
+        \t {} [ Grupo de Preguntas ]
+        \t {} [ Exámenes de Admisión ]
+    }
+    .
+    }
+}}
+
+*Data Input:
+\tNone
+;
+
+
+
+@enduml

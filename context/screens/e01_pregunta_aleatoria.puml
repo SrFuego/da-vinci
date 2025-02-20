@@ -1,0 +1,71 @@
+@startuml E01_Pregunta_Aleatoria
+
+
+split
+    :=<color:Blue>E01: Pregunta Aleatoria
+    Muestra una pregunta de examen de admisión
+    con su curso, tema, enunciado y alternativas
+
+    *<color:Blue>Estado:
+    \t<color:Blue>Implementando
+
+    *URL:
+    \tEn algún lugar se debe mostrar
+
+    *Data Fetching:
+    \tAlgo necesita
+
+    *UI/UX:
+    {{
+        salt
+        {+
+        =<b><&home>\tHistoria del Perú
+        ====Cultura prehispanicas:
+        .
+        ===¿Quién descubrió Macchu Picchu?
+        .
+        () Fernando de Magallanes
+        () Hiran Bingman
+        () Hernan Cortes
+        () Alexander Von Humbolt
+        () Julio Cesar Tello
+        .
+        [Saltar] | [Enviar]
+        }
+    }}
+
+    *Data Input:
+    ' \tNone
+    ;
+split again
+    :=<color:LimeGreen>E01: Pregunta Aleatoria
+    *<color:LimeGreen>Estado:
+    \t<color:LimeGreen>Online en Stage
+
+    *UI/UX:
+    {{
+        salt
+        {+
+        =<b><&home>\tHistoria del Perú
+        ====Cultura prehispanicas:
+        .
+        ===¿Quién descubrió Macchu Picchu?
+        .
+        () Fernando de Magallanes
+        () Hiran Bingman
+        () Hernan Cortes
+        () Alexander Von Humbolt
+        () Julio Cesar Tello
+        .
+        [Saltar] | [Enviar]
+        }
+    }}
+    ;
+
+endsplit
+
+
+
+
+
+@enduml
