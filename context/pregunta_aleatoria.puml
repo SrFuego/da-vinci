@@ -7,7 +7,7 @@ start
 
 !include screens/e00_home.puml
 
-:Selecciona:
+:Selecciona
 {{
     salt
     {+
@@ -15,7 +15,6 @@ start
     }
 }}
 ;
-
 
 !include screens/e01_pregunta_aleatoria.puml
 

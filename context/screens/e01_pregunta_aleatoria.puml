@@ -1,48 +1,21 @@
 @startuml E01_Pregunta_Aleatoria
 
-
-split
-    :=<color:Blue>E01: Pregunta Aleatoria
+repeat
+    :=<color:LimeGreen>E01: Pregunta Aleatoria
     Muestra una pregunta de examen de admisión
     con su curso, tema, enunciado y alternativas
 
-    *<color:Blue>Estado:
-    \t<color:Blue>Implementando
-
-    *URL:
-    \tEn algún lugar se debe mostrar
-
-    *Data Fetching:
-    \tAlgo necesita
-
-    *UI/UX:
-    {{
-        salt
-        {+
-        =<b><&home>\tHistoria del Perú
-        ====Cultura prehispanicas:
-        .
-        ===¿Quién descubrió Macchu Picchu?
-        .
-        () Fernando de Magallanes
-        () Hiran Bingman
-        () Hernan Cortes
-        () Alexander Von Humbolt
-        () Julio Cesar Tello
-        .
-        [Saltar] | [Enviar]
-        }
-    }}
-
-    *Data Input:
-    ' \tNone
-    ;
-split again
-    :=<color:LimeGreen>E01: Pregunta Aleatoria
-    *<color:LimeGreen>Estado:
+    * **<color:LimeGreen>Estado:**
     \t<color:LimeGreen>Online en Stage
 
-    *UI/UX:
+    * **URL:**
+    \t/individual/pregunta/\t
+
+    * **Data Fetching:**
+    \t- Pregunta aleatoria
+    \t/api/v1/pregunta_individual/\t
+
+    * **UI/UX:**
     {{
         salt
         {+
@@ -57,15 +30,65 @@ split again
         () Alexander Von Humbolt
         () Julio Cesar Tello
         .
-        [Saltar] | [Enviar]
+        [Saltar] | [ ---<color:#9a9a9a>Enviar-- ]
         }
     }}
+
+    * **Data Input:**
+    ' \tNone
     ;
 
-endsplit
+    split
+        ' :
+        ' {{
+        '     salt
+        '     {+
+        '     [ Saltar ]
+        '     }
+        ' }}
+        ' ;
+    split again
+        :Selecciona una alternativa
+        {{
+            salt
+            {
+            () Fernando de Magallanes
+            (X) Hiran Bingman
+            () Hernan Cortes
+            () Alexander Von Humbolt
+            () Julio Cesar Tello
+            }
+        }}
+        ;
+        :Se habilita el botón
+        {{
+            salt
+            {
+            [ Enviar ]
+            }
+        }}
+        ;
+
+        end
+    endsplit
+
+repeat while ({{
+        salt
+        {
+        [ Saltar ]
+        }
+    }})
 
 
-
-
+' backward :
+'     {{
+'         salt
+'         {+
+'         [ Saltar ]
+'         }
+'     }}
+'     ;
+' repeat while (Nueva Pregunta?) is (Sí)
+' ->No;
 
 @enduml

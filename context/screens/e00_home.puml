@@ -4,16 +4,16 @@
 :=<color:Orange>E00: Home
 Pantalla principal de la aplicación
 
-*<color:Orange>Estado:
+* **<color:Orange>Estado:**
 \t<color:Orange>En desarrollo
 
-*URL:
+* **URL:**
 \t/\t
 
-*Data Fetching:
+* **Data Fetching:**
 \tNone
 
-*<back:Orange>UI/UX:
+* **<back:Orange>UI/UX:**
 {{
     salt
     {+
@@ -24,7 +24,7 @@ Pantalla principal de la aplicación
         \t\t {} [ ¡Sorpréndeme! ]
     }
     .
-    \t Elige tu Desafío:
+    \tElige tu Desafío:
     .
     {
         \t {} [ Una por Una ]
@@ -35,7 +35,7 @@ Pantalla principal de la aplicación
     }
 }}
 
-*Data Input:
+* **Data Input:**
 \tNone
 ;
 
