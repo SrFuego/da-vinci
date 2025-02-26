@@ -1,0 +1,167 @@
+@startuml E03_Lista_Temas
+
+split
+    :=<color:Blue>E03: Temas de 1 Curso
+    - Los Temas que se muestran tienen
+        mínimo 1 Pregunta
+
+    *URL:
+    \t/individual/[curso_slug]/elegir-tema/\t
+
+    *<back:Orange>DATA:
+    \tcurso_slug*\thistoria-del-peru
+    \tGET
+    \t/api/v1/curso/{curso_slug}/tema/\t
+    \t/api/v1/curso/historia-del-peru/tema/\t
+    \t<back:Orange>/api/v2/{curso_slug}/tema/\t
+    \t<back:Orange>/api/v2/historia-del-peru/tema/\t
+    
+    *<back:Orange>UI/UX:
+    {{
+        salt
+        {+
+        =<&home>\tHistoria del Perú
+        .
+        [Tema Aleatorio]
+        [ ] Periodo formativo
+        [ ] El Tawantinsuyo
+        [ ] Virreinato
+        [ ] Reformas borbónicas
+        [ ] Guerra con Chile
+        [ ] Boom del guano
+        [ ] República Aristocrática
+        [ ] Oncenio
+        [ ] Militarismo
+        [ ] Perú en el siglo XXI
+        }
+    }}
+    ;
+    note
+    {
+        "nombre": "Historia del Perú",
+        ' "slug": "historia-del-peru",
+        "temas": [
+            {
+                "nombre": "Periodo formativo",
+                "slug": "periodo-formativo"
+            },\t
+            {
+                "nombre": "El Tawantinsuyo",
+                "slug": "el-tawantinsuyo"
+            },\t
+            {
+                "nombre": "Virreinato",
+                "slug": "virreinato"
+            }\t
+            {
+                "nombre": "Reformas borbónicas",
+                "slug": "reformas-borbonicas"
+            }\t
+            {
+                "nombre": "Guerra con Chile",
+                "slug": "guerra-con-chile"
+            }\t
+            {
+                "nombre": "Boom del guano",
+                "slug": "boom-del-guano"
+            }\t
+            {
+                "nombre": "República Aristocrática",
+                "slug": "republica-aristocrática"
+            }\t
+            {
+                "nombre": "Oncenio",
+                "slug": "oncenio"
+            }\t
+            {
+                "nombre": "Militarismo",
+                "slug": "militarismo"
+            }\t
+            {
+                "nombre": "Perú en el siglo XXI",
+                "slug": "peru-en-el-siglo-xxi"
+            }\t
+        ]\t
+    }\t
+    endnote
+split again
+    -> Temas del Curso;
+    :=<color:LimeGreen>E03: Lista de Temas
+    Muestra la lista de temas disponibles
+    del curso seleccionado
+
+    * **<color:LimeGreen>Estado:**
+    \t<color:LimeGreen>Online en Stage
+
+    * **URL:**
+    \t/individual/{curso_slug}/elegir-tema/\t
+
+    * **Data Fetching:**
+    \t- Lista de temas
+    \t/api/v1/curso/{curso_slug}/tema/\t
+    \t---
+    \tcurso_slug*\thistoria-del-peru
+    \tGET\t/api/v1/curso/historia-del-peru/tema/\t
+
+    * **UI/UX:**
+    {{
+        salt
+        {+
+        .
+        =<&home> {} =Historia del Perú
+        .
+        \t {} [Tema Aleatorio] {} \t
+        .
+        \t {} [Periodo formativo] {} \t
+        \t {} [El Tawantinsuyo] {} \t
+        \t {} [Virreinato] {} \t
+        \t {} [Reformas borbónicas] {} \t
+        \t {} [Guerra con Chile] {} \t
+        \t {} [Boom del guano] {} \t
+        \t {} [República Aristocrática] {} \t
+        \t {} [ Oncenio ] {} \t
+        \t {} [ Militarismo ] {} \t
+        \t {} [Perú en el siglo XXI] {} \t
+        .
+        }
+    }}
+
+    * **Data Input:**
+    \t- Selección de tema
+    ;
+endsplit
+
+
+
+
+
+
+
+
+
+
+
+' :=<color:LimeGreen>E04: Lista de Temas
+
+
+
+
+' * **UI/UX:**
+' {{
+'     salt
+'     {+
+'     =<b><&home>\tMatemática > Temas
+'     .
+'     [X] Aritmética
+'     [ ] Álgebra
+'     [ ] Geometría
+'     [ ] Trigonometría
+'     .
+'     [Continuar]
+'     }
+' }}
+
+
+' ;
+
+@enduml
