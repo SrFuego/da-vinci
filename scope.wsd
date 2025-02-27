@@ -1,7 +1,7 @@
-@startuml 0.1.0
+@startuml 0.2.0
 !theme vibrant
 
-title Muestra una Pregunta de Admisión Aleatoria
+title Muestra una Pregunta de Admisión:\n\n\t- Aleatoria\n\t- Por Curso\n\t- Por Tema
 
 actor "Usuario" as User
 boundary "Aplicación" as App
@@ -10,20 +10,71 @@ database "Base de Datos" as DB
 
 
 User -> App: Abre la App
-User <-- App: Muestra lista de opciones: \n\t- ¡Sorpréndeme!\n\t- Una por Una \n\t- Grupo de Preguntas \n\t- Exámenes de Admisión
-group#DeepSkyBlue #LightBlue Pregunta Aleatoria
-    User -> App: Selecciona "¡Sorpréndeme!"
-    activate App
-        App -> API: Pide una Pregunta Aleatoria
+App --> User: Muestra lista de opciones: \n\t- ¡Sorpréndeme!\n\t- Una por Una \n\t- Grupo de Preguntas \n\t- Exámenes de Admisión
+
+
+User -> App: Selecciona "Una por Una"
+activate App
+    App -> API: **GET /api/v1/curso/**
         activate API
-            API -> DB: Pide una Pregunta válida
-            API <-- DB: PEA válida (completa)
-            App <-- API: Pregunta de Examen de Admisión
+            API -> DB: 
+            DB --> API: Cursos válidos:\n\t- Tienen mínimo 1 pregunta
+            API --> App: [Curso]:\n\t- nombre\n\t- slug
         deactivate API
-        User <-- App: Muestra:\n- PEA
+    App --> User:  Muestra lista de opciones: \n- Curso Aleatorio \n- Lista de Cursos
+deactivate App
+
+
+group#DeepSkyBlue #LightBlue Pregunta ¡Sorpréndeme!
+    User -> App: Selecciona "Curso Aleatorio"
+    activate App
+        App -> API: **GET /api/v1/pregunta_individual/**
+        activate API
+            API -> DB:
+            DB --> API: PEA válida:\n\t- Completa
+            API --> App: Pregunta de Examen de Admisión Aleatoria:\n\t- enunciado\n\t- [alternativas]\n\t\t- id\n\t\t- valor\n\t- curso\n\t\t- nombre\n\t\t- slug\n\t- tema\n\t\t- nombre\n\t\t- slug
+        deactivate API
+        App --> User: Muestra:\n- PEA
     deactivate App
 end
 
+
+User -> App: Selecciona un Curso
+activate App
+    App -> API: **GET /api/v1/curso/{{curso_slug}}/tema/**
+        activate API
+            API -> DB: 
+            DB --> API: Temas válidos del Curso:\n\t- Tienen mínimo 1 pregunta\n\t- Del curso seleccionado
+            API --> App: [Tema]:\n\t- nombre \n\t- slug
+        deactivate API
+    App --> User: Muestra lista de opciones: \n- Tema Aleatorio \n- Lista de Temas
+deactivate App
+
+group#CornflowerBlue #LightSkyBlue Pregunta por Curso
+    User -> App: Selecciona Tema Aleatorio
+    activate App
+        App -> API: **GET /api/v1/pregunta_individual/?curso={{curso_slug}}**
+        activate API
+            API -> DB: 
+            DB --> API: PEA válida del Curso:\n\t- Completa\n\t- Del curso seleccionado
+            API --> App: Pregunta de Examen de Admisión del Curso:\n\t- enunciado\n\t- [alternativas]\n\t\t- id\n\t\t- valor\n\t- curso\n\t\t- nombre\n\t\t- slug\n\t- tema\n\t\t- nombre\n\t\t- slug
+        deactivate API
+        App --> User: Muestra PEA
+    deactivate App
+end
+
+group#DarkTurquoise #LightCyan Pregunta por Tema
+    User -> App: Selecciona un Tema
+    activate App
+        App -> API: **GET /api/v1/pregunta_individual/?tema={{tema_slug}}**
+        activate API
+            API -> DB:
+            DB --> API: PEA válida del Tema:\n\t- Completa\n\t- Del tema seleccionado
+            API --> App: Pregunta de Examen de Admisión del Tema:\n\t- enunciado\n\t- [alternativas]\n\t\t- id\n\t\t- valor\n\t- curso\n\t\t- nombre\n\t\t- slug\n\t- tema\n\t\t- nombre\n\t\t- slug
+        deactivate API
+        App --> User: Muestra PEA
+    deactivate App
+end
 
 
 

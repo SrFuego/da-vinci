@@ -1,0 +1,111 @@
+@startuml Pregunta Individual
+title Pregunta Individual
+
+
+start
+
+-> Abre la App;
+
+!include screens/e00_home.puml
+
+-> Selecciona;
+
+split
+    -> ¡Sorpréndeme!;
+    :
+    * **URL:**
+    \t/individual/pregunta/\t
+
+    * **Data Fetching:**
+    \t- Pregunta aleatoria
+    \tGET\t/api/v1/pregunta_individual/\t
+    ;
+    ' !include screens/e01_pregunta_aleatoria.puml
+    ' end
+    ' break
+    (A)
+    detach
+split again
+    -> Una por Una;
+    !include screens/e02_lista_cursos.puml
+    -> Selecciona un Curso;
+    split
+        -> Curso Aleatorio;
+        ' kill
+        :
+        * **URL:**
+        \t/individual/pregunta/\t
+
+        * **Data Fetching:**
+        \t- Pregunta aleatoria
+        \tGET\t/api/v1/pregunta_individual/\t
+        ;
+        (A)
+        detach
+        ' break
+    split again
+        -> Temas del Curso;
+        !include screens/e03_lista_temas.puml
+        split
+            -> Tema Aleatorio;
+            :
+            * **URL:**
+            \t/individual/{curso_slug}/pregunta/\t
+
+            * **Data Fetching:**
+            \t- Pregunta por Curso
+            \tGET\t/api/v1/pregunta_individual/?curso={curso_slug}\t
+            \t---
+            \tcurso_slug*\thistoria-del-peru
+            \tGET\t/api/v1/pregunta_individual/?curso=historia-del-peru\t
+            ;
+            (B)
+            detach
+            ' detach
+            ' :Muestra pregunta del curso;
+            ' !include screens/e03_pregunta_curso.puml
+            ' end
+        split again
+            -> Pregunta por Tema;
+            :
+            * **URL:**
+            \t/individual/{tema_slug}/pregunta/\t
+
+            * **Data Fetching:**
+            \t- Pregunta por Tema
+            \tGET\t/api/v1/pregunta_individual/?tema={tema_slug}\t
+            \t---
+            \ttema_slug*\tindependencia-del-peru
+            \tGET\t/api/v1/pregunta_individual/?tema=independencia-del-peru\t
+            ;
+            (C)
+            detach
+            ' detach
+            ' !include screens/e05_pregunta_tema.puml
+        end split
+    end split
+    ' end
+split again
+    -> Grupo de Preguntas;
+    end
+split again
+    -> Exámenes de Admisión;
+    end
+end split
+
+
+split
+    (A)
+    -> Pregunta Aleatoria;
+split again
+    (B)
+    -> Pregunta por Curso;
+split again
+    (C)
+    -> Pregunta por Tema;
+end split
+
+!include screens/e01_pregunta_individual.puml
+
+@enduml
+
