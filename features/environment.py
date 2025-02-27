@@ -1,26 +1,35 @@
+import logging
+
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
 import coverage
-from steps.draft_urls import CURSO_URL, PREGUNTA_INDIVIDUAL_URL, TEMA_URL
+from django.apps import apps
+from rest_framework.test import APIClient
+
+from features.draft_urls import CURSO_URL, PREGUNTA_INDIVIDUAL_URL, TEMA_URL
 
 
 # def django_ready(context, scenario):
 def django_ready(context):
-    from django.apps import apps
-    from rest_framework.test import APIClient
-
-    context.test.client = APIClient()
+    context.client = APIClient()
 
     context.CURSO_URL = CURSO_URL
     context.TEMA_URL = TEMA_URL
     context.PREGUNTA_INDIVIDUAL_URL = PREGUNTA_INDIVIDUAL_URL
 
-    context.pregunta_model = apps.get_model("core", "Pregunta")
-    context.examen_de_admision_model = apps.get_model(
-        "core", "ExamenDeAdmision"
-    )
-    context.tema_model = apps.get_model("core", "Tema")
-    context.alternativa_model = apps.get_model("core", "Alternativa")
-    context.solucion_model = apps.get_model("core", "Solucion")
-    context.curso_model = apps.get_model("core", "Curso")
+    try:
+        context.pregunta_model = apps.get_model("core", "Pregunta")
+        context.examen_de_admision_model = apps.get_model(
+            "core", "ExamenDeAdmision"
+        )
+        context.tema_model = apps.get_model("core", "Tema")
+        context.alternativa_model = apps.get_model("core", "Alternativa")
+        context.solucion_model = apps.get_model("core", "Solucion")
+        context.curso_model = apps.get_model("core", "Curso")
+    except LookupError as e:
+        raise RuntimeError(f"Model loading error: {e}")
 
 
 def before_all(context):

@@ -1,0 +1,94 @@
+@startuml E01_Pregunta_Individual
+
+:=<color:LimeGreen>E01: Pregunta Individual
+Muestra una pregunta de examen de admisión
+con su curso, tema, enunciado y alternativas
+
+* **<color:LimeGreen>Estado:**
+\t<color:LimeGreen>Online en Stage
+
+* **UI/UX:**
+{{
+    salt
+    {+
+    .
+    =<b><&home>\tHistoria del Perú
+    ====\tCultura prehispanicas:
+    .
+    ===\t¿Quién descubrió Macchu Picchu?
+    .
+    ()Fernando de Magallanes
+    () Hiran Bingman
+    () Hernan Cortes
+    () Alexander Von Humbolt
+    () Julio Cesar Tello
+    .
+    .
+    [Saltar] | [<color:#9a9a9a>--Enviar--]
+    .
+    }
+}}
+
+* **Data Input:**
+
+;
+
+split 
+    ' :
+    ' {{
+    '     salt
+    '     {+
+    '     [ Saltar ]
+    '     }
+    ' }}
+    ' ;
+    -> Saltar;
+split again
+    -> Selecciona una alternativa;
+    :
+    {{
+        salt
+        {
+        () Fernando de Magallanes
+        (X) Hiran Bingman
+        () Hernan Cortes
+        () Alexander Von Humbolt
+        () Julio Cesar Tello
+        }
+    }}
+    ;
+    -> Se habilita el botón;
+    :
+    {{
+        salt
+        {
+        [ Enviar ]
+        }
+    }}
+    ;
+
+end split
+
+' :Siguiente Pregunta;
+' {{
+'     salt
+'     {
+'     [ Saltar ]
+'     }
+' }}
+
+
+' backward :
+'     {{
+'         salt
+'         {+
+'         [ Saltar ]
+'         }
+'     }}
+'     ;
+' repeat while (Nueva Pregunta?) is (Sí)
+' ->No;
+
+' end
+
+@enduml

@@ -1,0 +1,79 @@
+@startuml E02_Lista_Cursos
+
+
+split
+    :=<color:Blue>E02: Una por Una
+    - Una pregunta a la vez
+    - Los Cursos que se muestran tienen mínimo 1 Pregunta
+    - Selecciona el Curso
+
+    *URL:
+    \t/individual/elegir-curso/\t
+
+    *DATA:
+    \tGET
+    \t/api/v1/curso/\t
+
+    *<back:Orange>UI/UX:
+    {{
+        salt
+        {+
+        =<&home>\tElegir Curso
+        .
+        [Curso Aleatorio]
+        [ ] Álgebra
+        [ ] Aritmética
+        [ ] Biología
+        [ ] Educación Cívica
+        [ ] Física
+        [ ] Geografía
+        [ ] Historia del Perú
+        [ ] Literatura
+        [ ] Química
+        }
+    }}
+    ;
+split again
+    :=<color:LimeGreen>E02: Lista de Cursos
+    Muestra la lista de cursos que tienen
+    mínimo 1 Pregunta disponible
+
+    * **<color:LimeGreen>Estado:**
+    \t<color:LimeGreen>Online en Stage
+
+    * **URL:**
+    \t/individual/elegir-curso/\t
+
+    * **Data Fetching:**
+    \t- Lista de cursos
+    \tGET\t/api/v1/curso/\t
+
+    * **UI/UX:**
+    {{
+        salt
+        {+
+        .
+        =<&home> {} =Lista de Cursos
+        .
+        .
+        \t {} [Curso Aleatorio] {} \t
+        .
+        \t {} [Álgebra] {} \t
+        \t {} [Biología] {} \t
+        \t {} [Educación Cívica] {} \t
+        \t {} [Física] {} \t
+        \t {} [Geografía] {} \t
+        \t {} [Geometría] {} \t
+        \t {} [Historia del Perú] {} \t
+        \t {} [Literatura] {} \t
+        \t {} [Química] {} \t
+        .
+        }
+    }}
+
+    * **Data Input:**
+    \t- Opción seleccionada
+    ;
+endsplit
+
+@enduml
