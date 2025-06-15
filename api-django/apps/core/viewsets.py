@@ -2,6 +2,7 @@
 # Python imports
 
 # Django imports
+from django.core.cache import cache
 from django.db import connections
 from django.db.utils import OperationalError
 from django.shortcuts import get_list_or_404, get_object_or_404
@@ -30,31 +31,46 @@ from .serializers import (
 # Create your viewsets here.
 class HealthCheck(GenericViewSet):
     permission_classes = (AllowAny,)
-    serializer_class = HealthCheckSerializer
+    CACHE_KEY = "health_check_status"
+    CACHE_TIMEOUT = 600  # 10 minutes
 
     def list(self, request, *args, **kwargs):
+        cached_status = cache.get(self.CACHE_KEY)
+        if cached_status:
+            return Response(
+                cached_status,
+                status=status.HTTP_200_OK,
+            )
+
         try:
-            # Check database connection
-            connections["default"].ensure_connection()
-            data = {
+            db_conn = connections["default"].connection
+            if db_conn is None:
+                connections["default"].connect()
+
+            status_data = {
                 "status": "healthy",
                 "database": "connected",
                 "timestamp": timezone.now().isoformat(),
             }
-            serializer = self.get_serializer(data)
+            cache.set(
+                self.CACHE_KEY,
+                status_data,
+                self.CACHE_TIMEOUT,
+            )
+
             return Response(
-                serializer.data,
+                status_data,
                 status=status.HTTP_200_OK,
             )
+
         except OperationalError:
-            data = {
+            status_data = {
                 "status": "unhealthy",
                 "database": "disconnected",
                 "timestamp": timezone.now().isoformat(),
             }
-            serializer = self.get_serializer(data)
             return Response(
-                serializer.data,
+                status_data,
                 status=status.HTTP_503_SERVICE_UNAVAILABLE,
             )
 
