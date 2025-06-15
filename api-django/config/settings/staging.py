@@ -1,5 +1,5 @@
 # config/settings/staging.py
-from .base import *
+from .develop import *
 
 # Environment name
 ENVIRONMENT_NAME = "Staging server"
