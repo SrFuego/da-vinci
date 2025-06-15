@@ -15,7 +15,6 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
-from silk.profiling.profiler import silk_profile
 
 # Local imports
 from .models import Alternativa, Curso, Pregunta, Tema
@@ -26,6 +25,8 @@ from .serializers import (
     PreguntaSerializer,
     TemaSerializer,
 )
+
+# from silk.profiling.profiler import silk_profile
 
 
 # Create your viewsets here.
@@ -137,7 +138,7 @@ class PreguntaIndividualViewSet(GenericViewSet):
         if self.request.method == "POST":
             return AlternativaRespuestaSerializer
 
-    @silk_profile()
+    # @silk_profile()
     @extend_schema(
         parameters=[
             OpenApiParameter(
